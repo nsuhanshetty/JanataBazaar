@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace JanataBazaar.Views.Details
 {
-    public partial class Winform_VendorDetails : WinForm_Abstract
+    public partial class Winform_VendorDetails : JanataBazaar.View.Details.Winform_Details
     {
         Vendors _vendor = new Vendors();
 

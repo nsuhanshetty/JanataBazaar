@@ -1,6 +1,6 @@
-﻿namespace JanataBazaar.Views.Details
+﻿namespace JanataBazaar.View.Details
 {
-    partial class WinForm_Abstract
+    partial class Winform_Details
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinForm_Abstract));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Winform_Details));
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStrip_Label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripParent = new System.Windows.Forms.ToolStrip();
             this.CancelToolStrip = new System.Windows.Forms.ToolStripButton();
             this.SaveToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStrip_Label = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripParent.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.toolStripParent.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip_Label,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 367);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(455, 22);
+            this.statusStrip1.TabIndex = 124;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStrip_Label
+            // 
+            this.toolStrip_Label.Name = "toolStrip_Label";
+            this.toolStrip_Label.Size = new System.Drawing.Size(307, 17);
+            this.toolStrip_Label.Spring = true;
+            this.toolStrip_Label.Text = "Enter Details and Click Save.";
+            this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             // 
             // toolStripParent
             // 
@@ -51,8 +75,8 @@
             this.toolStripParent.Name = "toolStripParent";
             this.toolStripParent.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStripParent.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.toolStripParent.Size = new System.Drawing.Size(590, 54);
-            this.toolStripParent.TabIndex = 121;
+            this.toolStripParent.Size = new System.Drawing.Size(455, 54);
+            this.toolStripParent.TabIndex = 123;
             this.toolStripParent.Text = "toolStrip1";
             // 
             // CancelToolStrip
@@ -66,7 +90,6 @@
             this.CancelToolStrip.Size = new System.Drawing.Size(47, 51);
             this.CancelToolStrip.Text = "&Cancel";
             this.CancelToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.CancelToolStrip.Click += new System.EventHandler(this.CancelToolStrip_Click);
             // 
             // SaveToolStrip
             // 
@@ -79,52 +102,24 @@
             this.SaveToolStrip.Text = "&Save";
             this.SaveToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SaveToolStrip.ToolTipText = "Click to Save Customers";
-            this.SaveToolStrip.Click += new System.EventHandler(this.SaveToolStrip_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStrip_Label,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 365);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(590, 22);
-            this.statusStrip1.TabIndex = 122;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStrip_Label
-            // 
-            this.toolStrip_Label.Name = "toolStrip_Label";
-            this.toolStrip_Label.Size = new System.Drawing.Size(442, 17);
-            this.toolStrip_Label.Spring = true;
-            this.toolStrip_Label.Text = "Enter Details and Click Save.";
-            this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // WinForm_Abstract
+            // Winform_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 387);
+            this.ClientSize = new System.Drawing.Size(455, 389);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStripParent);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "WinForm_Abstract";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.Winform_DetailsFormat_Load);
-            this.toolStripParent.ResumeLayout(false);
-            this.toolStripParent.PerformLayout();
+            this.Name = "Winform_Details";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.toolStripParent.ResumeLayout(false);
+            this.toolStripParent.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,13 +127,12 @@
 
         #endregion
 
+        protected System.Windows.Forms.StatusStrip statusStrip1;
+        protected System.Windows.Forms.ToolStripStatusLabel toolStrip_Label;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         protected System.Windows.Forms.ToolStrip toolStripParent;
         protected System.Windows.Forms.ToolStripButton CancelToolStrip;
         protected System.Windows.Forms.ToolStripButton SaveToolStrip;
         protected System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        protected System.Windows.Forms.StatusStrip statusStrip1;
-        protected System.Windows.Forms.ToolStripStatusLabel toolStrip_Label;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-
     }
 }

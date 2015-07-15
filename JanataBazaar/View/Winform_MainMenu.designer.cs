@@ -82,6 +82,9 @@
             this.stockControlFormToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceControlFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vatStatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.priceVariationStatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockLiabiltiyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockLiabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -360,15 +363,19 @@
             this.ordersReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stockControlFormToolStripMenuItem1,
             this.invoiceControlFormToolStripMenuItem,
-            this.vatStatementToolStripMenuItem});
+            this.vatStatementToolStripMenuItem,
+            this.priceVariationStatementToolStripMenuItem,
+            this.stockLiabilityToolStripMenuItem});
             this.ordersReportToolStripMenuItem.Name = "ordersReportToolStripMenuItem";
             this.ordersReportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.ordersReportToolStripMenuItem.Text = "Purchase Report";
             // 
             // salesrToolStripMenuItem
             // 
+            this.salesrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stockLiabiltiyToolStripMenuItem});
             this.salesrToolStripMenuItem.Name = "salesrToolStripMenuItem";
-            this.salesrToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.salesrToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.salesrToolStripMenuItem.Text = "Sales Report";
             // 
             // settingToolStripMenuItem
@@ -529,8 +536,26 @@
             // vatStatementToolStripMenuItem
             // 
             this.vatStatementToolStripMenuItem.Name = "vatStatementToolStripMenuItem";
-            this.vatStatementToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.vatStatementToolStripMenuItem.Text = "&Vat Statement";
+            this.vatStatementToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.vatStatementToolStripMenuItem.Text = "&VAT Statement";
+            // 
+            // priceVariationStatementToolStripMenuItem
+            // 
+            this.priceVariationStatementToolStripMenuItem.Name = "priceVariationStatementToolStripMenuItem";
+            this.priceVariationStatementToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.priceVariationStatementToolStripMenuItem.Text = "&Price Variation Statement";
+            // 
+            // stockLiabiltiyToolStripMenuItem
+            // 
+            this.stockLiabiltiyToolStripMenuItem.Name = "stockLiabiltiyToolStripMenuItem";
+            this.stockLiabiltiyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stockLiabiltiyToolStripMenuItem.Text = "Stock Liabiltiy";
+            // 
+            // stockLiabilityToolStripMenuItem
+            // 
+            this.stockLiabilityToolStripMenuItem.Name = "stockLiabilityToolStripMenuItem";
+            this.stockLiabilityToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.stockLiabilityToolStripMenuItem.Text = "Stock Liability";
             // 
             // Winform_MainMenu
             // 
@@ -613,6 +638,9 @@
         private System.Windows.Forms.ToolStripMenuItem stockControlFormToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem invoiceControlFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vatStatementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem priceVariationStatementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockLiabiltiyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockLiabilityToolStripMenuItem;
     }
 }
 

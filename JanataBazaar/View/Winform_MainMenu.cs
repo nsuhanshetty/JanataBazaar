@@ -294,7 +294,7 @@ namespace JanataBazaar
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //new WinForm_SKUDetails().ShowDialog();
+            new Winform_Item().ShowDialog();
         }
 
         private void SalesRegisterToolStripMenuItem_Click(object sender, EventArgs e)

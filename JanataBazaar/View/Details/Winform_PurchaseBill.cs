@@ -1,18 +1,10 @@
 ﻿
 using JanataBazaar.Views.Details;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace JanataBazaar.View.Details
 {
-    public partial class Winform_PurchaseBill : WinForm_Abstract
+    public partial class Winform_PurchaseBill : Winform_Details
     {
         public Winform_PurchaseBill()
         {
@@ -21,7 +13,18 @@ namespace JanataBazaar.View.Details
 
         private void Winform_PurchaseBill_Load(object sender, EventArgs e)
         {
-            //todo: add button for new vendor and new item
+            this.toolStripParent.Items.Add(this.AddItemToolStrip);
+            this.toolStripParent.Items.Add(this.AddVendorToolStrip);
+        }
+
+        private void AddVendorToolStrip_Click(object sender, EventArgs e)
+        {
+            new Winform_VendorDetails().ShowDialog();
+        }
+
+        private void AddItemToolStrip_Click(object sender, EventArgs e)
+        {
+           // new Winform_VendorDetails().ShowDialog();
         }
     }
 }
