@@ -1,0 +1,148 @@
+﻿namespace JanataBazaar.View.Register
+{
+    partial class WinformRegister
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinformRegister));
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStrip_Label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvRegister = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.NewVendToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStrip_Label,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 309);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(393, 22);
+            this.statusStrip1.TabIndex = 125;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStrip_Label
+            // 
+            this.toolStrip_Label.Name = "toolStrip_Label";
+            this.toolStrip_Label.Size = new System.Drawing.Size(276, 17);
+            this.toolStrip_Label.Spring = true;
+            this.toolStrip_Label.Text = "Searching..";
+            this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvRegister);
+            this.groupBox1.Location = new System.Drawing.Point(0, 106);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(388, 200);
+            this.groupBox1.TabIndex = 126;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Register List";
+            // 
+            // dgvRegister
+            // 
+            this.dgvRegister.AllowUserToAddRows = false;
+            this.dgvRegister.AllowUserToDeleteRows = false;
+            this.dgvRegister.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRegister.Location = new System.Drawing.Point(3, 16);
+            this.dgvRegister.Name = "dgvRegister";
+            this.dgvRegister.ReadOnly = true;
+            this.dgvRegister.Size = new System.Drawing.Size(382, 181);
+            this.dgvRegister.TabIndex = 0;
+            this.dgvRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellContentClick);
+            this.dgvRegister.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvRegister_DataError);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewVendToolStrip});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(393, 54);
+            this.toolStrip1.TabIndex = 127;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // NewVendToolStrip
+            // 
+            this.NewVendToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("NewVendToolStrip.Image")));
+            this.NewVendToolStrip.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.NewVendToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewVendToolStrip.Name = "NewVendToolStrip";
+            this.NewVendToolStrip.Size = new System.Drawing.Size(36, 51);
+            this.NewVendToolStrip.Text = "&New";
+            this.NewVendToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.NewVendToolStrip.Click += new System.EventHandler(this.NewVendToolStrip_Click);
+            // 
+            // WinformRegister
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(393, 331);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.statusStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "WinformRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        protected System.Windows.Forms.StatusStrip statusStrip1;
+        protected System.Windows.Forms.ToolStripStatusLabel toolStrip_Label;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.DataGridView dgvRegister;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton NewVendToolStrip;
+    }
+}

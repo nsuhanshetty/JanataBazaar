@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using JanataBazaar.View.Details;
 
 namespace JanataBazaar.View.Details
 {
@@ -26,10 +18,15 @@ namespace JanataBazaar.View.Details
         {
         }
 
-        protected virtual void UpdateStatus(string statusText, int statusValue = 0)
+        protected virtual void UpdateStatus(string statusText= "Enter Details and Click Save.", int statusValue = 0)
         {
             toolStrip_Label.Text = statusText;
             toolStripProgressBar1.Value = statusValue;
+        }
+
+        protected virtual bool IsNullOrEmpty(object obj)
+        {
+            return (obj == null || obj.ToString() == "");
         }
     }
 }

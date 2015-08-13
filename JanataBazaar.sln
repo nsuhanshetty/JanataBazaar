@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JanataBazaar", "JanataBazaar\JanataBazaar.csproj", "{7FDFDA1B-90F5-4BD1-BF52-2FCA47B7CD05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JanataBazaar_Test", "JanataBazaar_Test\JanataBazaar_Test.csproj", "{7C9FC89E-CB6B-47B5-A8CF-A131AA6AA29E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JanataBazaar_TestCases", "JanataBazaar_TestCases\JanataBazaar_TestCases.csproj", "{E576D32D-E04E-4DEB-B4F2-F2E24F7DEB5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7FDFDA1B-90F5-4BD1-BF52-2FCA47B7CD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FDFDA1B-90F5-4BD1-BF52-2FCA47B7CD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FDFDA1B-90F5-4BD1-BF52-2FCA47B7CD05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9FC89E-CB6B-47B5-A8CF-A131AA6AA29E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9FC89E-CB6B-47B5-A8CF-A131AA6AA29E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9FC89E-CB6B-47B5-A8CF-A131AA6AA29E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9FC89E-CB6B-47B5-A8CF-A131AA6AA29E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E576D32D-E04E-4DEB-B4F2-F2E24F7DEB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E576D32D-E04E-4DEB-B4F2-F2E24F7DEB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E576D32D-E04E-4DEB-B4F2-F2E24F7DEB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E576D32D-E04E-4DEB-B4F2-F2E24F7DEB5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

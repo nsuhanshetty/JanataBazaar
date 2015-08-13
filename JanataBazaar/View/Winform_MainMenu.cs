@@ -1,13 +1,6 @@
 ﻿using JanataBazaar.View.Details;
-using JanataBazaar.Views.Details;
+using JanataBazaar.View.Register;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JanataBazaar
@@ -289,12 +282,12 @@ namespace JanataBazaar
 
         private void vendorRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //new Winform_VendorsRegister().ShowDialog();
+            new Winform_VendorRegister().ShowDialog();
         }
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Winform_Item().ShowDialog();
+            new Winform_ItemSKUDetails().ShowDialog();
         }
 
         private void SalesRegisterToolStripMenuItem_Click(object sender, EventArgs e)

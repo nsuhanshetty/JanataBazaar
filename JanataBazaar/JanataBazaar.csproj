@@ -32,6 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
@@ -45,21 +58,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\PeoplePractice.cs" />
+    <Compile Include="Builders\ItemDetailsBuilder.cs" />
+    <Compile Include="Builders\PeoplePracticeBuilder.cs" />
+    <Compile Include="Mappers\ItemMapping.cs" />
+    <Compile Include="Mappers\PeoplePracticeMapper.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\PeoplePractice.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Savers\ItemDetailsSavers.cs" />
+    <Compile Include="Savers\PeoplePracticeSaver.cs" />
     <Compile Include="Utilities\Validation.cs" />
+    <Compile Include="View\Details\Winform_AddSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_AddSection.Designer.cs">
+      <DependentUpon>Winform_AddSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Details\Winform_Details.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Details\Winform_Details.Designer.cs">
       <DependentUpon>Winform_Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Details\Winform_Item.cs">
+    <Compile Include="View\Details\Winform_ItemSKUDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Details\Winform_Item.Designer.cs">
-      <DependentUpon>Winform_Item.cs</DependentUpon>
+    <Compile Include="View\Details\Winform_ItemSKUDetails.Designer.cs">
+      <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Details\Winform_PurchaseBill.cs">
       <SubType>Form</SubType>
@@ -72,6 +100,36 @@
     </Compile>
     <Compile Include="View\Details\Winform_VendorDetails.designer.cs">
       <DependentUpon>Winform_VendorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Details\Winfrom_ItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winfrom_ItemDetails.Designer.cs">
+      <DependentUpon>Winfrom_ItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\WinformRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\WinformRegister.Designer.cs">
+      <DependentUpon>WinformRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddItemRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddItemRegistry.Designer.cs">
+      <DependentUpon>Winform_AddItemRegistry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddVendor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddVendor.Designer.cs">
+      <DependentUpon>Winform_AddVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_VendorRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_VendorRegister.Designer.cs">
+      <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Winform_MainMenu.cs">
       <SubType>Form</SubType>
@@ -88,11 +146,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Details\Winform_AddSection.resx">
+      <DependentUpon>Winform_AddSection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_Details.resx">
       <DependentUpon>Winform_Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Details\Winform_Item.resx">
-      <DependentUpon>Winform_Item.cs</DependentUpon>
+    <EmbeddedResource Include="View\Details\Winform_ItemSKUDetails.resx">
+      <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_PurchaseBill.resx">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
@@ -100,9 +161,25 @@
     <EmbeddedResource Include="View\Details\Winform_VendorDetails.resx">
       <DependentUpon>Winform_VendorDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winfrom_ItemDetails.resx">
+      <DependentUpon>Winfrom_ItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\WinformRegister.resx">
+      <DependentUpon>WinformRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_AddItemRegistry.resx">
+      <DependentUpon>Winform_AddItemRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_AddVendor.resx">
+      <DependentUpon>Winform_AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_VendorRegister.resx">
+      <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Winform_MainMenu.resx">
       <DependentUpon>Winform_MainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,13 +194,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Register\" />
+    <None Include="Resources\shopping-bag-blue.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\suppliers.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shopping-bag-blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

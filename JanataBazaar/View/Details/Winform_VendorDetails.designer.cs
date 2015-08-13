@@ -1,4 +1,4 @@
-﻿namespace JanataBazaar.Views.Details
+﻿namespace JanataBazaar.View.Details
 {
     partial class Winform_VendorDetails
     {
@@ -39,6 +39,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtIfscCode = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPhoneNo = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtMobNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,18 +49,25 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.UpdownDuration = new System.Windows.Forms.NumericUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.udDuration = new System.Windows.Forms.NumericUpDown();
+            this.txtPLP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTin = new System.Windows.Forms.TextBox();
+            this.txtCST = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbMonth = new System.Windows.Forms.RadioButton();
+            this.rdbDays = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdownDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udDuration)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -71,10 +80,10 @@
             this.groupBox4.Controls.Add(this.cmbBankName);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.txtIfscCode);
-            this.groupBox4.Location = new System.Drawing.Point(12, 250);
+            this.groupBox4.Location = new System.Drawing.Point(12, 274);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(266, 128);
-            this.groupBox4.TabIndex = 1;
+            this.groupBox4.Size = new System.Drawing.Size(268, 128);
+            this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Bank Details";
             // 
@@ -149,6 +158,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtPhoneNo);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtMobNo);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -157,10 +171,28 @@
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Location = new System.Drawing.Point(12, 137);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 107);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Size = new System.Drawing.Size(268, 134);
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
+            // 
+            // txtPhoneNo
+            // 
+            this.txtPhoneNo.Location = new System.Drawing.Point(94, 72);
+            this.txtPhoneNo.MaxLength = 10;
+            this.txtPhoneNo.Name = "txtPhoneNo";
+            this.txtPhoneNo.Size = new System.Drawing.Size(156, 20);
+            this.txtPhoneNo.TabIndex = 2;
+            this.txtPhoneNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhoneNo_Validating);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 77);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Phone No";
             // 
             // txtMobNo
             // 
@@ -201,7 +233,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 75);
+            this.label4.Location = new System.Drawing.Point(10, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 29;
@@ -209,11 +241,11 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(94, 72);
+            this.txtAddress.Location = new System.Drawing.Point(94, 96);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(156, 30);
-            this.txtAddress.TabIndex = 2;
+            this.txtAddress.TabIndex = 3;
             // 
             // errorProvider1
             // 
@@ -222,25 +254,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 386);
+            this.label3.Location = new System.Drawing.Point(10, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 13);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 35;
-            this.label3.Text = "Payment Duration Limit ";
+            this.label3.Text = "Limit ";
             // 
-            // UpdownDuration
+            // udDuration
             // 
-            this.UpdownDuration.Location = new System.Drawing.Point(161, 386);
-            this.UpdownDuration.Name = "UpdownDuration";
-            this.UpdownDuration.Size = new System.Drawing.Size(101, 20);
-            this.UpdownDuration.TabIndex = 123;
+            this.udDuration.Location = new System.Drawing.Point(48, 21);
+            this.udDuration.Name = "udDuration";
+            this.udDuration.Size = new System.Drawing.Size(47, 20);
+            this.udDuration.TabIndex = 0;
+            this.udDuration.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
             // 
-            // textBox1
+            // txtPLP
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(84, 20);
-            this.textBox1.TabIndex = 35;
+            this.txtPLP.Location = new System.Drawing.Point(177, 90);
+            this.txtPLP.Name = "txtPLP";
+            this.txtPLP.Size = new System.Drawing.Size(84, 20);
+            this.txtPLP.TabIndex = 1;
             // 
             // label5
             // 
@@ -260,6 +297,7 @@
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 39;
             this.label6.Text = "PLP No.";
+            this.toolTip1.SetToolTip(this.label6, "Personal Ledger Folio");
             // 
             // label7
             // 
@@ -271,53 +309,120 @@
             this.label7.Text = "CST No.";
             this.toolTip1.SetToolTip(this.label7, "Central Sales Tax");
             // 
-            // textBox2
+            // txtTin
             // 
-            this.textBox2.Location = new System.Drawing.Point(177, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(84, 20);
-            this.textBox2.TabIndex = 34;
+            this.txtTin.Location = new System.Drawing.Point(177, 64);
+            this.txtTin.Name = "txtTin";
+            this.txtTin.Size = new System.Drawing.Size(84, 20);
+            this.txtTin.TabIndex = 0;
             // 
-            // textBox3
+            // txtCST
             // 
-            this.textBox3.Location = new System.Drawing.Point(177, 116);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(84, 20);
-            this.textBox3.TabIndex = 124;
+            this.txtCST.Location = new System.Drawing.Point(177, 116);
+            this.txtCST.Name = "txtCST";
+            this.txtCST.Size = new System.Drawing.Size(84, 20);
+            this.txtCST.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdbMonth);
+            this.groupBox2.Controls.Add(this.rdbDays);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.udDuration);
+            this.groupBox2.Location = new System.Drawing.Point(12, 405);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(268, 51);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Payment Duration ";
+            // 
+            // rdbMonth
+            // 
+            this.rdbMonth.AutoSize = true;
+            this.rdbMonth.Location = new System.Drawing.Point(176, 21);
+            this.rdbMonth.Name = "rdbMonth";
+            this.rdbMonth.Size = new System.Drawing.Size(55, 17);
+            this.rdbMonth.TabIndex = 2;
+            this.rdbMonth.TabStop = true;
+            this.rdbMonth.Text = "Month";
+            this.rdbMonth.UseVisualStyleBackColor = true;
+            // 
+            // rdbDays
+            // 
+            this.rdbDays.AutoSize = true;
+            this.rdbDays.Checked = true;
+            this.rdbDays.Location = new System.Drawing.Point(121, 21);
+            this.rdbDays.Name = "rdbDays";
+            this.rdbDays.Size = new System.Drawing.Size(49, 17);
+            this.rdbDays.TabIndex = 1;
+            this.rdbDays.TabStop = true;
+            this.rdbDays.Text = "Days";
+            this.rdbDays.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(77, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 125;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(77, 53);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 13);
+            this.label14.TabIndex = 126;
+            this.label14.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(77, 101);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.TabIndex = 127;
+            this.label15.Text = "*";
             // 
             // Winform_VendorDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 434);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.UpdownDuration);
+            this.ClientSize = new System.Drawing.Size(288, 481);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.txtCST);
+            this.Controls.Add(this.txtPLP);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtTin);
             this.Controls.Add(this.groupBox4);
             this.Name = "Winform_VendorDetails";
             this.Text = "Vendor Details";
+            this.Load += new System.EventHandler(this.Winform_VendorDetails_Load);
             this.Controls.SetChildIndex(this.groupBox4, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.txtTin, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.label7, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.UpdownDuration, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
+            this.Controls.SetChildIndex(this.txtPLP, 0);
+            this.Controls.SetChildIndex(this.txtCST, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdownDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udDuration)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,13 +448,21 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown UpdownDuration;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown udDuration;
+        private System.Windows.Forms.TextBox txtPLP;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTin;
+        private System.Windows.Forms.TextBox txtCST;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdbMonth;
+        private System.Windows.Forms.RadioButton rdbDays;
+        private System.Windows.Forms.TextBox txtPhoneNo;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }

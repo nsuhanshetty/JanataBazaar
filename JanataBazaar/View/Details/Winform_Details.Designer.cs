@@ -54,7 +54,7 @@
             // toolStrip_Label
             // 
             this.toolStrip_Label.Name = "toolStrip_Label";
-            this.toolStrip_Label.Size = new System.Drawing.Size(307, 17);
+            this.toolStrip_Label.Size = new System.Drawing.Size(338, 17);
             this.toolStrip_Label.Spring = true;
             this.toolStrip_Label.Text = "Enter Details and Click Save.";
             this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -90,6 +90,7 @@
             this.CancelToolStrip.Size = new System.Drawing.Size(47, 51);
             this.CancelToolStrip.Text = "&Cancel";
             this.CancelToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CancelToolStrip.Click += new System.EventHandler(this.CancelToolStrip_Click);
             // 
             // SaveToolStrip
             // 
@@ -102,6 +103,7 @@
             this.SaveToolStrip.Text = "&Save";
             this.SaveToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SaveToolStrip.ToolTipText = "Click to Save Customers";
+            this.SaveToolStrip.Click += new System.EventHandler(this.SaveToolStrip_Click);
             // 
             // toolStripSeparator1
             // 
@@ -115,7 +117,10 @@
             this.ClientSize = new System.Drawing.Size(455, 389);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStripParent);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Winform_Details";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStripParent.ResumeLayout(false);
