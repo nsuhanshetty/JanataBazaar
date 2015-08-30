@@ -27,6 +27,10 @@ namespace JanataBazaar.Mappers
                                     .Columns("SectionID")
                                     .Cascade.None();
             Map(x => x.QuantityUnit);
+            Map(x => x.Brand);
+            Map(x => x.IsVatExempted);
+            Map(x => x.VatPercent);
+            Map(x => x.ReserveStock);
         }
     }
 
@@ -35,7 +39,13 @@ namespace JanataBazaar.Mappers
         public SKUMapping()
         {
             Id(x => x.ID).GeneratedBy.Identity();
-            References(x => x.ItemID).Class<Item>()
+            References(x => x.Purchase).Class<PurchaseOrder>()
+                                     .Columns("PurchaseID")
+                                     .Cascade.None();
+            References(x => x.Package).Class<Package>()
+                                     .Columns("PackageID")
+                                     .Cascade.None();
+            References(x => x.Item).Class<Item>()
                                     .Columns("ItemID")
                                     .Cascade.None();
             Map(x => x.ManufacturedDate);
@@ -53,6 +63,28 @@ namespace JanataBazaar.Mappers
             Map(x => x.Wholesale);
             Map(x => x.RetailMargin);
             Map(x => x.Retail);
+
+            Map(x => x.PurchaseValue);
+            Map(x => x.QuantityPerPack);
+            Map(x => x.PackageQuantity);
+
+            Map(x => x.NetWeight);
+            Map(x => x.GrossWeight);
+
+            Map(x => x.TotalPurchaseValue);
+            Map(x => x.TotalWholesaleValue);
+            Map(x => x.TotalResaleValue);
+        }
+    }
+
+    class PackageMapping : ClassMap<Package>
+    {
+        public PackageMapping()
+        {
+            Id(x => x.ID).GeneratedBy.Identity();
+            Map(x => x.Name);
+            Map(x => x.Weight);
+            Map(x => x.IsStocked);
         }
     }
 }

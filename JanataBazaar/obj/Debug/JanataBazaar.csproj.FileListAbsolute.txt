@@ -25,4 +25,7 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_AddVendor.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_AddItemRegistry.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_ItemSKUDetails.resources
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winfrom_ItemDetails.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_PackageDetails.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_PurchaseIndentForm.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_ItemDetails.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_SCFRegister.resources

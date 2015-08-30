@@ -9,7 +9,7 @@ namespace JanataBazaar.View.Register
             InitializeComponent();
         }
 
-        protected virtual void UpdateStatus(string statusText = "Click On Item to Edit.", int statusValue = 0)
+        protected virtual void UpdateStatus(string statusText = "Enter Details to Search.", int statusValue = 0)
         {
             toolStrip_Label.Text = statusText;
             toolStripProgressBar1.Value = statusValue;

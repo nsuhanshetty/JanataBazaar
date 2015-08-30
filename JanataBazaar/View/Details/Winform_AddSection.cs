@@ -55,5 +55,17 @@ namespace JanataBazaar.View.Details
             UpdateStatus("Section Saved", 100);
             this.Close();
         }
+
+        protected override void CancelToolStrip_Click(object sender, EventArgs e)
+        {
+            if (Utilities.Validation.IsInEdit(txtSectionName, false))
+            {
+                var _dialogResult = MessageBox.Show("Do you want to Exit?", "Exit Section Details", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (_dialogResult == DialogResult.No)
+                    return;
+            };
+
+            this.Close();
+        }
     }
 }

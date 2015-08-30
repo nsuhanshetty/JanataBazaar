@@ -117,44 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AddSectionToolStrip.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing">
-    <value>267, 17</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AddPackageToolStrip.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\Resources\Package_converted.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

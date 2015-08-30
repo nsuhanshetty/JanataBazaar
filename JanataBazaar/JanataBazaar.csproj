@@ -60,8 +60,10 @@
   <ItemGroup>
     <Compile Include="Builders\ItemDetailsBuilder.cs" />
     <Compile Include="Builders\PeoplePracticeBuilder.cs" />
+    <Compile Include="Builders\PurchaseBillBuilder.cs" />
     <Compile Include="Mappers\ItemMapping.cs" />
     <Compile Include="Mappers\PeoplePracticeMapper.cs" />
+    <Compile Include="Mappers\PurchaseOrderMapping.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\PeoplePractice.cs" />
     <Compile Include="Models\Purchase.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Savers\ItemDetailsSavers.cs" />
     <Compile Include="Savers\PeoplePracticeSaver.cs" />
+    <Compile Include="Savers\PurchaseOrderSaver.cs" />
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="View\Details\Winform_AddSection.cs">
       <SubType>Form</SubType>
@@ -89,6 +92,12 @@
     <Compile Include="View\Details\Winform_ItemSKUDetails.Designer.cs">
       <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Details\Winform_PackageDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_PackageDetails.Designer.cs">
+      <DependentUpon>Winform_PackageDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Details\Winform_PurchaseBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,11 +110,11 @@
     <Compile Include="View\Details\Winform_VendorDetails.designer.cs">
       <DependentUpon>Winform_VendorDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Details\Winfrom_ItemDetails.cs">
+    <Compile Include="View\Details\Winform_ItemDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Details\Winfrom_ItemDetails.Designer.cs">
-      <DependentUpon>Winfrom_ItemDetails.cs</DependentUpon>
+    <Compile Include="View\Details\Winform_ItemDetails.Designer.cs">
+      <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\WinformRegister.cs">
       <SubType>Form</SubType>
@@ -124,6 +133,18 @@
     </Compile>
     <Compile Include="View\Register\Winform_AddVendor.Designer.cs">
       <DependentUpon>Winform_AddVendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_PurchaseIndentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_PurchaseIndentForm.Designer.cs">
+      <DependentUpon>Winform_PurchaseIndentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_SCFRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_SCFRegister.Designer.cs">
+      <DependentUpon>Winform_SCFRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\Winform_VendorRegister.cs">
       <SubType>Form</SubType>
@@ -155,14 +176,17 @@
     <EmbeddedResource Include="View\Details\Winform_ItemSKUDetails.resx">
       <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_PackageDetails.resx">
+      <DependentUpon>Winform_PackageDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_PurchaseBill.resx">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_VendorDetails.resx">
       <DependentUpon>Winform_VendorDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Details\Winfrom_ItemDetails.resx">
-      <DependentUpon>Winfrom_ItemDetails.cs</DependentUpon>
+    <EmbeddedResource Include="View\Details\Winform_ItemDetails.resx">
+      <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\WinformRegister.resx">
       <DependentUpon>WinformRegister.cs</DependentUpon>
@@ -172,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_AddVendor.resx">
       <DependentUpon>Winform_AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_PurchaseIndentForm.resx">
+      <DependentUpon>Winform_PurchaseIndentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_SCFRegister.resx">
+      <DependentUpon>Winform_SCFRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_VendorRegister.resx">
       <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
@@ -198,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\suppliers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Package_converted.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

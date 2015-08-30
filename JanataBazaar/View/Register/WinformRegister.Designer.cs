@@ -47,7 +47,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStrip_Label,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 309);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 325);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(393, 22);
             this.statusStrip1.TabIndex = 125;
@@ -58,7 +58,7 @@
             this.toolStrip_Label.Name = "toolStrip_Label";
             this.toolStrip_Label.Size = new System.Drawing.Size(276, 17);
             this.toolStrip_Label.Spring = true;
-            this.toolStrip_Label.Text = "Searching..";
+            this.toolStrip_Label.Text = "Enter Details to Search.";
             this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripProgressBar1
@@ -68,10 +68,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dgvRegister);
-            this.groupBox1.Location = new System.Drawing.Point(0, 106);
+            this.groupBox1.Location = new System.Drawing.Point(0, 122);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 200);
+            this.groupBox1.Size = new System.Drawing.Size(393, 200);
             this.groupBox1.TabIndex = 126;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Register List";
@@ -86,7 +88,7 @@
             this.dgvRegister.Location = new System.Drawing.Point(3, 16);
             this.dgvRegister.Name = "dgvRegister";
             this.dgvRegister.ReadOnly = true;
-            this.dgvRegister.Size = new System.Drawing.Size(382, 181);
+            this.dgvRegister.Size = new System.Drawing.Size(387, 181);
             this.dgvRegister.TabIndex = 0;
             this.dgvRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellContentClick);
             this.dgvRegister.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvRegister_DataError);
@@ -116,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 331);
+            this.ClientSize = new System.Drawing.Size(393, 347);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);

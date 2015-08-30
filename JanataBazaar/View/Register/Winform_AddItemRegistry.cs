@@ -3,12 +3,8 @@ using JanataBazaar.Models;
 using JanataBazaar.View.Details;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JanataBazaar.View.Register
@@ -26,19 +22,23 @@ namespace JanataBazaar.View.Register
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
             cmbSection.ValueMember = "ID";
+
+            cmbSection.Text = "";
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             //todo : Enable textchange to combobox also.
-            UpdateStatus("Searching", 50);
             LoadRegisterDgv();
         }
 
         public void LoadRegisterDgv()
         {
-            if (cmbSection.Text == "JanataBazaar.Models.Section") return;
+            //todo: find reason for "JanataBazaar.Models.Section" in cmb
+            if (cmbSection.Text == "JanataBazaar.Models.Section" || String.IsNullOrEmpty(txtName.Text))
+                return;
 
+            UpdateStatus("Searching", 50);
             dgvRegister.DataSource = (from item in (ItemDetailsBuilder.GetItemsList(txtName.Text, cmbSection.Text))
                                       select new { item.ID, item.Name, item.QuantityUnit }).ToList();
             if (dgvRegister.RowCount == 0)
@@ -49,7 +49,7 @@ namespace JanataBazaar.View.Register
 
         protected override void NewVendToolStrip_Click(object sender, EventArgs e)
         {
-            new Details.Winfrom_ItemDetails().ShowDialog();
+            new Winform_ItemDetails().ShowDialog();
             txtName_TextChanged(this, new EventArgs());
         }
 
@@ -61,6 +61,7 @@ namespace JanataBazaar.View.Register
 
         protected override void dgvRegister_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) return;
             Item _item = new Item();
             var ID = dgvRegister.Rows[e.RowIndex].Cells["ID"].Value;
             _item = ItemDetailsBuilder.GetItemInfo(int.Parse(ID.ToString()));

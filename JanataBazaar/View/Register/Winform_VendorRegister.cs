@@ -33,14 +33,15 @@ namespace JanataBazaar.View.Register
             txtName_TextChanged(this, new EventArgs());
         }
 
-        private void txtName_TextChanged(object sender, System.EventArgs e)
+        private void txtName_TextChanged(object sender, EventArgs e)
         {
-            UpdateStatus("Searching", 50);
+            if (txtName.Text == "" && txtMobNo.Text == "") return;
             LoadDgv();
         }
 
         public void LoadDgv()
         {
+            UpdateStatus("Searching", 50);
             dgvRegister.DataSource = (from vend in (PeoplePracticeBuilder.GetVendorsList(txtName.Text, txtMobNo.Text))
                                       select new { vend.ID, vend.Name, vend.MobileNo }).ToList();
             if (dgvRegister.RowCount == 0)

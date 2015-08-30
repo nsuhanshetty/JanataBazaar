@@ -43,7 +43,7 @@ namespace JanataBazaar.Savers
                     {
                         session.SaveOrUpdate(_item);
                         tx.Commit();
-                        log.Info("Section Saved");
+                        log.Info("Item Saved");
                         return _item.ID;
                     }
                     catch (Exception ex)
@@ -54,26 +54,34 @@ namespace JanataBazaar.Savers
                     }
             }
         }
+    }
 
-        //public static int SaveItemSku(ItemSKU _itemSKU)
-        //{
-        //    using (var session = NHibernateHelper.OpenSession())
-        //    {
-        //        using (var tx = session.BeginTransaction())
-        //            try
-        //            {
-        //                session.SaveOrUpdate(_itemSKU);
-        //                log.Info("Section Saved");
-        //                return _item.ID;
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                tx.Rollback();
-        //                log.Error(ex);
-        //                return 0;
-        //            }
-        //    }
-        //}
+    class PackageDetailsSavers
+    {
+        static ILog log = LogManager.GetLogger(typeof(ItemDetailsSavers));
+
+        public static int SavePackage(Package _pack)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.SaveOrUpdate(_pack);
+                        tx.Commit();
+                        log.Info("Package type Saved");
+                        return _pack.ID;
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        log.Error(ex);
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
 

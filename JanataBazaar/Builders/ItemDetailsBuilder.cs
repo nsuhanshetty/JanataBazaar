@@ -42,10 +42,9 @@ namespace JanataBazaar.Builders
             using (var session = NHibernateHelper.OpenSession())
             {
                 return (from _item in session.Query<Item>()
-                        select _item.QuantityUnit).ToList();
+                        select _item.QuantityUnit).Distinct().ToList();
             }
         }
-
         public static List<Item> GetItemsList(string name, string sectionName)
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -56,20 +55,21 @@ namespace JanataBazaar.Builders
                 List<Item> itemList = session.QueryOver<Item>(() => itemAlias)
                                    .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Name).IsLike(name + "%"))
                                    .Where(() => itemAlias.Section.ID == section.ID)
+                                   .TransformUsing(NHibernate.Transform.Transformers.DistinctRootEntity)
                                    .List() as List<Item>;
                 return itemList;
             }
         }
 
-        public static bool ItemExists(string name, string unit, string sectionName)
+        public static bool ItemExists(string name, string brand, string unit, string sectionName)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 int sectID = (from sect in session.Query<Section>()
                               where sect.Name == sectionName
                               select sect.ID).SingleOrDefault();
-                return session.Query<Item>().Any(x => (x.Name == name && x.QuantityUnit == unit
-                                                       && x.Section.ID == sectID));
+                return session.Query<Item>().Any(x => (x.Name == name && x.QuantityUnit == unit &&
+                                                       x.Brand == brand && x.Section.ID == sectID));
             }
         }
 
@@ -82,6 +82,28 @@ namespace JanataBazaar.Builders
                         .Fetch(s => s.Section).Eager
                         .Future().SingleOrDefault();
                 return _item;
+            }
+        }
+    }
+
+    public class PackageDetailsBuilder
+    {
+        public static bool PackageExists(string packageName)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return session.Query<Package>().Any(x => x.Name == packageName);
+            }
+        }
+
+        public static Package GetPackage(string packageName)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                Package pack = (from _pack in session.Query<Package>()
+                                where _pack.Name == packageName
+                                select _pack).FirstOrDefault();
+                return pack;
             }
         }
     }

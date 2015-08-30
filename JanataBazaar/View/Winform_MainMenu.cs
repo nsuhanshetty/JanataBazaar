@@ -287,7 +287,7 @@ namespace JanataBazaar
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Winform_ItemSKUDetails().ShowDialog();
+            new Winform_ItemDetails().ShowDialog();
         }
 
         private void SalesRegisterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -298,6 +298,16 @@ namespace JanataBazaar
         private void addPurchaseBillToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Winform_PurchaseBill().ShowDialog();
+        }
+
+        private void purchaseIndentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_PurchaseIndentForm().ShowDialog();
+        }
+
+        private void stockControlFormToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
