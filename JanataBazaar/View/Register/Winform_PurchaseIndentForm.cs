@@ -37,7 +37,12 @@ namespace JanataBazaar.View.Register
             }
 
             //display Itemname, Brand, Quantity unit, current stock, Expected Reserve
+            dgvRegister.DataSource = ReportsBuilder.GetPIFReport(cmbSection.Text);
 
+            if (dgvRegister.Rows.Count == 0)
+                UpdateStatus("No Results Found");
+            else
+                UpdateStatus(dgvRegister.Rows.Count + " Results Found");
         }
     }
 }

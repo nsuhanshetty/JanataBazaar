@@ -28,6 +28,7 @@ namespace JanataBazaar.Models
         public virtual string Brand { get; set; }
         public virtual float VatPercent { get; set; }
         public virtual bool IsVatExempted { get; set; }
+        public virtual bool InReserve { get; set; }
         public virtual int ReserveStock { get; set; }
 
         public Item() { }

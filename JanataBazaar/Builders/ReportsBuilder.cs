@@ -13,6 +13,7 @@ namespace JanataBazaar.Builders
 {
     class ReportsBuilder
     {
+        /*Stock Control Form*/
         public static IList GetSCFReport(string name = "", string brand = "", string section = "")
         {
             ItemSKU itemSKUAlias = null;
@@ -44,6 +45,35 @@ namespace JanataBazaar.Builders
                                   TotalResale = itm.TotalResaleValue
                               })
                               .ToList();
+                return list;
+            }
+        }
+
+        /*Purchase Indent Form*/
+        public static IList GetPIFReport(string section)
+        {
+            Item itemAlias = null;
+            Section sectionAlias = null;
+            ItemSKU itemSKUAlias = null;
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                IList list = (from itm in (session.QueryOver<ItemSKU>(() => itemSKUAlias)
+                           .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
+                           .JoinAlias(() => itemAlias.Section, () => sectionAlias)
+                           .Where(() => sectionAlias.Name == section)
+                           .Where(() => itemAlias.InReserve == true)
+                           .List())
+                              select new
+                              {
+                                  itm.Item.Name,
+                                  itm.Item.Brand,
+                                  itm.PackageQuantity,
+                                  itm.QuantityPerPack,
+                                  itm.Item.QuantityUnit,
+                                  itm.Item.ReserveStock,
+                                  itm.Item.InReserve
+                              }).ToList(); ;
+
                 return list;
             }
         }

@@ -31,6 +31,7 @@ namespace JanataBazaar.Mappers
             Map(x => x.IsVatExempted);
             Map(x => x.VatPercent);
             Map(x => x.ReserveStock);
+            Map(x => x.InReserve);
         }
     }
 
