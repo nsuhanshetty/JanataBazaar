@@ -142,7 +142,7 @@
         protected System.Windows.Forms.StatusStrip statusStrip1;
         protected System.Windows.Forms.ToolStripStatusLabel toolStrip_Label;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.GroupBox groupBox1;
         protected System.Windows.Forms.DataGridView dgvRegister;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton NewVendToolStrip;

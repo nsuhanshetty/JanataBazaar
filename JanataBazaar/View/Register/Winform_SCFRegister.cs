@@ -1,6 +1,7 @@
 ﻿using JanataBazaar.Builders;
 using JanataBazaar.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,23 @@ namespace JanataBazaar.View.Register
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
             cmbSection.ValueMember = "ID";
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text) && string.IsNullOrEmpty(txtBrand.Text))
+            {
+                dgvRegister.DataSource = "";
+                return;
+            }
+
+            IList list = (ReportsBuilder.GetSCFReport(txtName.Text, txtBrand.Text, cmbSection.Text));
+            dgvRegister.DataSource = list;
+
+            if (list == null)
+                UpdateStatus("No Results Found");
+            else
+                UpdateStatus(list.Count + " Results Found", 100);
         }
     }
 }

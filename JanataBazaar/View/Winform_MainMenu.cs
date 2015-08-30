@@ -307,7 +307,7 @@ namespace JanataBazaar
 
         private void stockControlFormToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            new Winform_SCFRegister().ShowDialog();
         }
     }
 

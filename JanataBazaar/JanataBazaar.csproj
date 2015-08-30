@@ -61,6 +61,7 @@
     <Compile Include="Builders\ItemDetailsBuilder.cs" />
     <Compile Include="Builders\PeoplePracticeBuilder.cs" />
     <Compile Include="Builders\PurchaseBillBuilder.cs" />
+    <Compile Include="Builders\ReportsBuilder.cs" />
     <Compile Include="Mappers\ItemMapping.cs" />
     <Compile Include="Mappers\PeoplePracticeMapper.cs" />
     <Compile Include="Mappers\PurchaseOrderMapping.cs" />

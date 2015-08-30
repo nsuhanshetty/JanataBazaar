@@ -29,9 +29,15 @@ namespace JanataBazaar.View.Register
 
         private void cmbSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //get items where stock less their stock
+            //get items where stock less their stock(packetquant * itemsperpack)
+            if (string.IsNullOrEmpty(cmbSection.Text))
+            {
+                dgvRegister.DataSource = "";
+                return;
+            }
 
             //display Itemname, Brand, Quantity unit, current stock, Expected Reserve
+
         }
     }
 }
