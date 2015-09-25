@@ -45,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpDOE = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtpDOM = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtVATPercent = new System.Windows.Forms.TextBox();
@@ -83,6 +82,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtRetailPercent = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dtpDOM = new System.Windows.Forms.DateTimePicker();
             this.chkDOE = new System.Windows.Forms.CheckBox();
             this.chkDOM = new System.Windows.Forms.CheckBox();
             this.AddSectionToolStrip = new System.Windows.Forms.ToolStripButton();
@@ -100,6 +100,10 @@
             this.cmbPackType = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.AddPackageToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtPurchaseRate = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -108,6 +112,7 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -137,17 +142,6 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(113, 20);
             this.txtBrand.TabIndex = 3;
-            //
-            // AddPackageToolStrip
-            // 
-            this.AddPackageToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("AddPackageToolStrip.Image")));
-            this.AddPackageToolStrip.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.AddPackageToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddPackageToolStrip.Name = "AddPackageToolStrip";
-            this.AddPackageToolStrip.Size = new System.Drawing.Size(76, 51);
-            this.AddPackageToolStrip.Text = "New &Package Type";
-            this.AddPackageToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.AddPackageToolStrip.Click += new System.EventHandler(this.AddPackageToolStrip_Click);
             // 
             // txtSection
             // 
@@ -266,16 +260,6 @@
             this.label5.TabIndex = 132;
             this.label5.Text = "Manufactured Date";
             // 
-            // dtpDOM
-            // 
-            this.dtpDOM.Enabled = false;
-            this.dtpDOM.Location = new System.Drawing.Point(314, 17);
-            this.dtpDOM.MinDate = new System.DateTime(1973, 7, 11, 0, 0, 0, 0);
-            this.dtpDOM.Name = "dtpDOM";
-            this.dtpDOM.Size = new System.Drawing.Size(113, 20);
-            this.dtpDOM.TabIndex = 1;
-            this.dtpDOM.Value = new System.DateTime(2015, 7, 11, 0, 0, 0, 0);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.groupBox6);
@@ -294,7 +278,7 @@
             this.groupBox2.Controls.Add(this.txtTransPercent);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtBasic);
-            this.groupBox2.Location = new System.Drawing.Point(14, 315);
+            this.groupBox2.Location = new System.Drawing.Point(14, 312);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(445, 192);
             this.groupBox2.TabIndex = 3;
@@ -327,7 +311,7 @@
             // 
             this.chkIsExempted.AutoSize = true;
             this.chkIsExempted.Enabled = false;
-            this.chkIsExempted.Location = new System.Drawing.Point(122, 16);
+            this.chkIsExempted.Location = new System.Drawing.Point(116, 12);
             this.chkIsExempted.Name = "chkIsExempted";
             this.chkIsExempted.Size = new System.Drawing.Size(108, 17);
             this.chkIsExempted.TabIndex = 0;
@@ -505,12 +489,12 @@
             this.groupBox3.Controls.Add(this.txtWholeRate);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtWholePercent);
-            this.groupBox3.Location = new System.Drawing.Point(13, 513);
+            this.groupBox3.Location = new System.Drawing.Point(13, 560);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(446, 46);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Wholesale Per Unit";
+            this.groupBox3.Text = "Wholesale Price Per Unit";
             // 
             // label26
             // 
@@ -576,12 +560,12 @@
             this.groupBox4.Controls.Add(this.txtRetailRate);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.txtRetailPercent);
-            this.groupBox4.Location = new System.Drawing.Point(13, 565);
+            this.groupBox4.Location = new System.Drawing.Point(13, 611);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(446, 46);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Retail Per Unit";
+            this.groupBox4.Text = "Retail Price Per Unit";
             // 
             // label27
             // 
@@ -641,18 +625,27 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.dtpDOM);
             this.groupBox5.Controls.Add(this.chkDOE);
             this.groupBox5.Controls.Add(this.chkDOM);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.dtpDOE);
-            this.groupBox5.Controls.Add(this.dtpDOM);
             this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Location = new System.Drawing.Point(13, 136);
+            this.groupBox5.Location = new System.Drawing.Point(13, 135);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(446, 70);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Specification";
+            // 
+            // dtpDOM
+            // 
+            this.dtpDOM.Enabled = false;
+            this.dtpDOM.Location = new System.Drawing.Point(315, 17);
+            this.dtpDOM.MinDate = new System.DateTime(2015, 7, 11, 0, 0, 0, 0);
+            this.dtpDOM.Name = "dtpDOM";
+            this.dtpDOM.Size = new System.Drawing.Size(113, 20);
+            this.dtpDOM.TabIndex = 135;
             // 
             // chkDOE
             // 
@@ -706,7 +699,7 @@
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.cmbPackType);
             this.groupBox7.Controls.Add(this.label25);
-            this.groupBox7.Location = new System.Drawing.Point(13, 212);
+            this.groupBox7.Location = new System.Drawing.Point(13, 210);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(446, 97);
             this.groupBox7.TabIndex = 2;
@@ -810,10 +803,62 @@
             this.label25.TabIndex = 132;
             this.label25.Text = "Type";
             // 
+            // AddPackageToolStrip
+            // 
+            this.AddPackageToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("AddPackageToolStrip.Image")));
+            this.AddPackageToolStrip.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AddPackageToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddPackageToolStrip.Name = "AddPackageToolStrip";
+            this.AddPackageToolStrip.Size = new System.Drawing.Size(76, 51);
+            this.AddPackageToolStrip.Text = "New &Package Type";
+            this.AddPackageToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AddPackageToolStrip.Click += new System.EventHandler(this.AddPackageToolStrip_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.label36);
+            this.groupBox8.Controls.Add(this.txtPurchaseRate);
+            this.groupBox8.Location = new System.Drawing.Point(13, 509);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(446, 46);
+            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Purchase Price Per Unit";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(271, 19);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(30, 13);
+            this.label36.TabIndex = 38;
+            this.label36.Text = "Rate";
+            // 
+            // txtPurchaseRate
+            // 
+            this.txtPurchaseRate.Location = new System.Drawing.Point(314, 16);
+            this.txtPurchaseRate.Name = "txtPurchaseRate";
+            this.txtPurchaseRate.Size = new System.Drawing.Size(113, 20);
+            this.txtPurchaseRate.TabIndex = 1;
+            this.txtPurchaseRate.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
+            this.txtPurchaseRate.Validated += new System.EventHandler(this.txtPurchaseRate_Validated);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(298, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 13);
+            this.label9.TabIndex = 52;
+            this.label9.Text = "*";
+            // 
             // Winform_ItemSKUDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(467, 637);
+            this.ClientSize = new System.Drawing.Size(467, 681);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -821,7 +866,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Winform_ItemSKUDetails";
-            this.Text = "Item SKU Details";
+            this.Text = "Item Pricing & Packaging Details";
             this.Load += new System.EventHandler(this.Winform_Item_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -829,6 +874,7 @@
             this.Controls.SetChildIndex(this.groupBox4, 0);
             this.Controls.SetChildIndex(this.groupBox5, 0);
             this.Controls.SetChildIndex(this.groupBox7, 0);
+            this.Controls.SetChildIndex(this.groupBox8, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -844,6 +890,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,7 +907,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpDOE;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtpDOM;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBasic;
@@ -921,5 +968,10 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox txtGrossWght;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DateTimePicker dtpDOM;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtPurchaseRate;
+        private System.Windows.Forms.Label label9;
     }
 }

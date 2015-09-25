@@ -63,10 +63,18 @@
             this.txtTotalWholesalePrice = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBillNo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtSCF = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdbCash
@@ -98,13 +106,13 @@
             this.groupBox1.Location = new System.Drawing.Point(123, 61);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(149, 35);
-            this.groupBox1.TabIndex = 125;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 72);
+            this.label1.Location = new System.Drawing.Point(35, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 126;
@@ -114,17 +122,17 @@
             // 
             this.dtpPurchaseDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpPurchaseDate.Location = new System.Drawing.Point(889, 75);
+            this.dtpPurchaseDate.Location = new System.Drawing.Point(883, 19);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
-            this.dtpPurchaseDate.Size = new System.Drawing.Size(149, 20);
-            this.dtpPurchaseDate.TabIndex = 127;
+            this.dtpPurchaseDate.Size = new System.Drawing.Size(130, 20);
+            this.dtpPurchaseDate.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(791, 79);
+            this.label2.Location = new System.Drawing.Point(785, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 128;
@@ -135,7 +143,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(801, 105);
+            this.label3.Location = new System.Drawing.Point(795, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 130;
@@ -145,15 +153,15 @@
             // 
             this.dtpInvoiceDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpInvoiceDate.Location = new System.Drawing.Point(889, 101);
+            this.dtpInvoiceDate.Location = new System.Drawing.Point(883, 47);
             this.dtpInvoiceDate.Name = "dtpInvoiceDate";
-            this.dtpInvoiceDate.Size = new System.Drawing.Size(149, 20);
-            this.dtpInvoiceDate.TabIndex = 129;
+            this.dtpInvoiceDate.Size = new System.Drawing.Size(130, 20);
+            this.dtpInvoiceDate.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 107);
+            this.label4.Location = new System.Drawing.Point(6, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 131;
@@ -343,7 +351,7 @@
             this.txtVendorName.Location = new System.Drawing.Point(123, 103);
             this.txtVendorName.Name = "txtVendorName";
             this.txtVendorName.Size = new System.Drawing.Size(149, 20);
-            this.txtVendorName.TabIndex = 138;
+            this.txtVendorName.TabIndex = 2;
             // 
             // txtTotalWholesalePrice
             // 
@@ -370,6 +378,75 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtInvoiceNo
+            // 
+            this.txtInvoiceNo.Location = new System.Drawing.Point(635, 19);
+            this.txtInvoiceNo.Name = "txtInvoiceNo";
+            this.txtInvoiceNo.Size = new System.Drawing.Size(117, 20);
+            this.txtInvoiceNo.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(584, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 13);
+            this.label8.TabIndex = 141;
+            this.label8.Text = "ICR No.";
+            // 
+            // txtBillNo
+            // 
+            this.txtBillNo.Location = new System.Drawing.Point(635, 47);
+            this.txtBillNo.Name = "txtBillNo";
+            this.txtBillNo.Size = new System.Drawing.Size(117, 20);
+            this.txtBillNo.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(548, 54);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 13);
+            this.label9.TabIndex = 143;
+            this.label9.Text = "Supplier Bill No.";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtSCF);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtBillNo);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.txtInvoiceNo);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.dtpPurchaseDate);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.dtpInvoiceDate);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(19, 52);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1019, 78);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Bill Details";
+            // 
+            // txtSCF
+            // 
+            this.txtSCF.Location = new System.Drawing.Point(376, 19);
+            this.txtSCF.Name = "txtSCF";
+            this.txtSCF.Size = new System.Drawing.Size(117, 20);
+            this.txtSCF.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(323, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 146;
+            this.label10.Text = "SCF No.";
+            // 
             // Winform_PurchaseBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,23 +460,13 @@
             this.Controls.Add(this.txtTotalPurchasePrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dtpInvoiceDate);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtpPurchaseDate);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
             this.Name = "Winform_PurchaseBill";
-            this.Text = "Add Purchase Bill";
+            this.Text = "Add Stock Control Form";
             this.Load += new System.EventHandler(this.Winform_PurchaseBill_Load);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.dtpPurchaseDate, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.dtpInvoiceDate, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.txtTotalPurchasePrice, 0);
@@ -413,6 +480,8 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +522,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotWholesaleVal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotResaleVal;
         private System.Windows.Forms.DataGridViewButtonColumn ColDel;
+        private System.Windows.Forms.TextBox txtBillNo;
+        private System.Windows.Forms.TextBox txtInvoiceNo;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtSCF;
+        private System.Windows.Forms.Label label10;
     }
 }

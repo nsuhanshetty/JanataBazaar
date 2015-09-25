@@ -42,12 +42,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,24 +65,52 @@
     <Compile Include="Builders\PeoplePracticeBuilder.cs" />
     <Compile Include="Builders\PurchaseBillBuilder.cs" />
     <Compile Include="Builders\ReportsBuilder.cs" />
+    <Compile Include="Builders\SaleItemBuilder.cs" />
+    <Compile Include="Builders\VATRevisionBuilder.cs" />
+    <Compile Include="Datasets\DataSet_SCF.cs">
+      <DependentUpon>DataSet_SCF.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\DataSet_SCF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_SCF.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Mappers\ItemMapping.cs" />
     <Compile Include="Mappers\PeoplePracticeMapper.cs" />
     <Compile Include="Mappers\PurchaseOrderMapping.cs" />
+    <Compile Include="Mappers\VATRevisionMapper.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\PeoplePractice.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\SaleItem.cs" />
+    <Compile Include="Models\VATRevision.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Report_SCF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_SCF.Designer.cs">
+      <DependentUpon>Report_SCF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Savers\ItemDetailsSavers.cs" />
     <Compile Include="Savers\PeoplePracticeSaver.cs" />
     <Compile Include="Savers\PurchaseOrderSaver.cs" />
+    <Compile Include="Savers\SaleDetailsSaver.cs" />
+    <Compile Include="Savers\VATPercentSavers.cs" />
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="View\Details\Winform_AddSection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Details\Winform_AddSection.Designer.cs">
       <DependentUpon>Winform_AddSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Details\Winform_CustomerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_CustomerDetails.Designer.cs">
+      <DependentUpon>Winform_CustomerDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Details\Winform_Details.cs">
       <SubType>Form</SubType>
@@ -105,6 +136,24 @@
     <Compile Include="View\Details\Winform_PurchaseBill.Designer.cs">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Details\Winform_SaleDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_SaleDetails.Designer.cs">
+      <DependentUpon>Winform_SaleDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Details\Winform_SaleItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_SaleItemDetails.Designer.cs">
+      <DependentUpon>Winform_SaleItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Details\Winform_VATDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_VATDetails.Designer.cs">
+      <DependentUpon>Winform_VATDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Details\Winform_VendorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,11 +166,23 @@
     <Compile Include="View\Details\Winform_ItemDetails.Designer.cs">
       <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Register\VATRevisionRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\VATRevisionRegister.Designer.cs">
+      <DependentUpon>VATRevisionRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Register\WinformRegister.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Register\WinformRegister.Designer.cs">
       <DependentUpon>WinformRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_AddCustomer.Designer.cs">
+      <DependentUpon>Winform_AddCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\Winform_AddItemRegistry.cs">
       <SubType>Form</SubType>
@@ -168,8 +229,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\ReportSFC.rdlc" />
+    <EmbeddedResource Include="Reports\Report_SCF.resx">
+      <DependentUpon>Report_SCF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_AddSection.resx">
       <DependentUpon>Winform_AddSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_CustomerDetails.resx">
+      <DependentUpon>Winform_CustomerDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_Details.resx">
       <DependentUpon>Winform_Details.cs</DependentUpon>
@@ -183,14 +251,29 @@
     <EmbeddedResource Include="View\Details\Winform_PurchaseBill.resx">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_SaleDetails.resx">
+      <DependentUpon>Winform_SaleDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_SaleItemDetails.resx">
+      <DependentUpon>Winform_SaleItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_VATDetails.resx">
+      <DependentUpon>Winform_VATDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_VendorDetails.resx">
       <DependentUpon>Winform_VendorDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_ItemDetails.resx">
       <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\VATRevisionRegister.resx">
+      <DependentUpon>VATRevisionRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Register\WinformRegister.resx">
       <DependentUpon>WinformRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_AddCustomer.resx">
+      <DependentUpon>Winform_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_AddItemRegistry.resx">
       <DependentUpon>Winform_AddItemRegistry.cs</DependentUpon>
@@ -210,6 +293,17 @@
     <EmbeddedResource Include="View\Winform_MainMenu.resx">
       <DependentUpon>Winform_MainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Datasets\DataSet_SCF.xsc">
+      <DependentUpon>DataSet_SCF.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\DataSet_SCF.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_SCF.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Datasets\DataSet_SCF.xss">
+      <DependentUpon>DataSet_SCF.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -236,6 +330,13 @@
   <ItemGroup>
     <None Include="Resources\Package_converted.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addReferral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addCustomer.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

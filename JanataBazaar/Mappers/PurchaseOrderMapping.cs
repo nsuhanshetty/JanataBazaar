@@ -14,6 +14,9 @@ namespace JanataBazaar.Mappers
         public PurchaseOrderMapping()
         {
             Id(x => x.ID).GeneratedBy.Identity();
+            Map(x => x.SCFNo);
+            Map(x => x.IRNNo);
+            Map(x => x.BillNo);
             Map(x => x.DateOfPurchase);
             Map(x => x.DateOfInvoice);
             Map(x => x.BillType);
@@ -26,6 +29,9 @@ namespace JanataBazaar.Mappers
             HasMany(x => x.SKUItems).KeyColumn("PurchaseID")
                                     .Inverse()
                                     .Cascade.All();
+            HasMany(x => x.Price).KeyColumn("PurchaseID")
+                                   .Inverse()
+                                   .Cascade.All();
         }
     }
 }

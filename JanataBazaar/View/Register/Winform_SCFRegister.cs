@@ -15,6 +15,7 @@ namespace JanataBazaar.View.Register
 {
     public partial class Winform_SCFRegister : WinformRegister
     {
+        List<ItemSKU> itemlist;
         public Winform_SCFRegister()
         {
             InitializeComponent();
@@ -36,13 +37,32 @@ namespace JanataBazaar.View.Register
                 return;
             }
 
-            IList list = (ReportsBuilder.GetSCFReport(txtName.Text, txtBrand.Text, cmbSection.Text));
-            dgvRegister.DataSource = list;
+            itemlist = (ReportsBuilder.GetSCFReport(txtName.Text, txtBrand.Text, cmbSection.Text));
+            dgvRegister.DataSource = (from itm in itemlist
+                                      select new
+                                      {
+                                          itm.Item.Name,
+                                          itm.Item.Brand,
+                                          PackageType = itm.Package.Name,
+                                          itm.PackageQuantity,
+                                          itm.QuantityPerPack,
+                                          itm.PurchaseValue,
+                                          TotalPurchase = itm.TotalPurchaseValue,
+                                          itm.Wholesale,
+                                          TotalWholesale = itm.TotalWholesaleValue,
+                                          itm.Retail,
+                                          TotalResale = itm.TotalResaleValue
+                                      }).ToList();
 
-            if (list == null)
+            if (itemlist == null)
                 UpdateStatus("No Results Found");
             else
-                UpdateStatus(list.Count + " Results Found", 100);
+                UpdateStatus(itemlist.Count + " Results Found", 100);
+        }
+
+        protected override void toolStripButtonPrint_Click(object sender, System.EventArgs e)
+        {
+            new Reports.Report_SCF(itemlist).ShowDialog();
         }
     }
 }

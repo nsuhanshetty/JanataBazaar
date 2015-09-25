@@ -56,7 +56,7 @@ namespace JanataBazaar.View.Details
                     new Winform_ItemSKUDetails(e.RowIndex).ShowDialog();
                 }
             }
-            else if (dgvProdDetails.Columns["ColDelete"].Index == e.ColumnIndex)
+            else if (dgvProdDetails.Columns["ColDel"].Index == e.ColumnIndex)
             {
                 if (dgvProdDetails.Rows[e.RowIndex].IsNewRow) return;
                 else
@@ -90,6 +90,8 @@ namespace JanataBazaar.View.Details
             _row.Cells["ColTotPurchaseVal"].Value = _itemsku.TotalPurchaseValue;
             _row.Cells["ColTotWholesaleVal"].Value = _itemsku.TotalWholesaleValue;
             _row.Cells["ColTotResaleVal"].Value = _itemsku.TotalResaleValue;
+
+            _itemsku.StockQuantity = _itemsku.PackageQuantity * _itemsku.QuantityPerPack;
 
             if (skuList.Count == 0 || skuList.Count <= index)
                 skuList.Add(_itemsku);
@@ -212,18 +214,37 @@ namespace JanataBazaar.View.Details
                 MessageBox.Show("Add items to Purchase Grid.", "Purchase Grid Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (Utilities.Validation.IsNullOrEmpty(this, true))
+                return;
             #endregion validate
 
             purchaseOrder.BillType = rdbCredit.Checked ? true : false;
+            purchaseOrder.SCFNo = txtSCF.Text;
+            purchaseOrder.IRNNo = txtInvoiceNo.Text;
+            purchaseOrder.BillNo = txtBillNo.Text;
+
             purchaseOrder.Vendor = vend;
             purchaseOrder.DateOfPurchase = dtpPurchaseDate.Value;
             purchaseOrder.DateOfInvoice = dtpInvoiceDate.Value;
-            purchaseOrder.TotalPurchasePrice = float.Parse(txtTotalPurchasePrice.Text);
-            purchaseOrder.TotalWholesalePrice = float.Parse(txtTotalWholesalePrice.Text);
-            purchaseOrder.TotalResalePrice = float.Parse(txtTotalResalePrice.Text);
+            purchaseOrder.TotalPurchasePrice = decimal.Parse(txtTotalPurchasePrice.Text);
+            purchaseOrder.TotalWholesalePrice = decimal.Parse(txtTotalWholesalePrice.Text);
+            purchaseOrder.TotalResalePrice = decimal.Parse(txtTotalResalePrice.Text);
             purchaseOrder.SKUItems = skuList;
 
-            bool success = Savers.PurchaseOrderSaver.SaversPurchaseOrder(purchaseOrder);
+            List<ItemPricing> pricelist = new List<ItemPricing>();
+            foreach (var itemsku in skuList)
+            {
+                ItemPricing price = new ItemPricing(itemsku.Basic, itemsku.TransportPercent, itemsku.Transport,
+                                 itemsku.Misc, itemsku.MiscPercent, itemsku.VATPercent, itemsku.VAT, itemsku.DiscountPercent, itemsku.Discount,
+                                 itemsku.WholesaleMargin, itemsku.Wholesale, itemsku.RetailMargin, itemsku.Retail, itemsku.PurchaseValue, itemsku.Purchase,
+                                 itemsku.Item);
+                pricelist.Add(price);
+            }
+
+            purchaseOrder.Price = pricelist;
+
+            bool success = Savers.PurchaseOrderSaver.SaverPurchaseOrder(purchaseOrder);
             if (success)
             {
                 UpdateStatus("Saved", 100);

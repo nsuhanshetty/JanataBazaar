@@ -14,7 +14,7 @@ namespace JanataBazaar.Builders
     class ReportsBuilder
     {
         /*Stock Control Form*/
-        public static IList GetSCFReport(string name = "", string brand = "", string section = "")
+        public static List<ItemSKU> GetSCFReport(string name = "", string brand = "", string section = "")
         {
             ItemSKU itemSKUAlias = null;
             Item itemAlias = null;
@@ -22,29 +22,16 @@ namespace JanataBazaar.Builders
 
             using (var session = NHibernateHelper.OpenSession())
             {
-                IList list = (from itm in (session.QueryOver<ItemSKU>(() => itemSKUAlias)
-                                            .JoinAlias(i => i.Item, () => itemAlias)
+                List<ItemSKU> list = (session.QueryOver<ItemSKU>(() => itemSKUAlias)
+                                            .Fetch(i => i.Package).Eager
+                                             .Fetch(i => i.Purchase).Eager
+                                            .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
                                             .JoinAlias(() => itemAlias.Section, () => sectionAlias)
                                             .Where(() => itemAlias.Name.IsLike(name + "%"))
                                             .Where(() => itemAlias.Brand.IsLike(brand + "%"))
                                             .Where(() => sectionAlias.Name.IsLike(section + "%"))
                                             .Take(15)
-                                            .List())
-                              select new
-                              {
-                                  itm.Item.Name,
-                                  itm.Item.Brand,
-                                  PackageType = itm.Package.Name,
-                                  itm.PackageQuantity,
-                                  itm.QuantityPerPack,
-                                  itm.PurchaseValue,
-                                  TotalPurchase = itm.TotalPurchaseValue,
-                                  itm.Wholesale,
-                                  TotalWholesale = itm.TotalWholesaleValue,
-                                  itm.Retail,
-                                  TotalResale = itm.TotalResaleValue
-                              })
-                              .ToList();
+                                            .List()).ToList<ItemSKU>();
                 return list;
             }
         }

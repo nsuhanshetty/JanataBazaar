@@ -15,7 +15,7 @@ namespace JanataBazaar.View.Register
             toolStripProgressBar1.Value = statusValue;
         }
 
-        protected virtual void NewVendToolStrip_Click(object sender, System.EventArgs e)
+        protected virtual void NewToolStrip_Click(object sender, System.EventArgs e)
         {
 
         }
@@ -26,6 +26,11 @@ namespace JanataBazaar.View.Register
         }
 
         protected virtual void dgvRegister_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        protected virtual void toolStripButtonPrint_Click(object sender, System.EventArgs e)
         {
 
         }

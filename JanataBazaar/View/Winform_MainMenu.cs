@@ -149,8 +149,8 @@ namespace JanataBazaar
             //    new WinForm_CustomerDetails().ShowDialog();
             //else if (rdbAlteration.Checked)
             //    new Winform_AlterationsDetails().ShowDialog();
-            //else if (rdbSales.Checked)
-            //    new Winform_SalesDetails().ShowDialog();
+            else if (rdbSales.Checked)
+                new Winform_SaleDetails().ShowDialog();
         }
 
         private void salaryRegisterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -267,7 +267,7 @@ namespace JanataBazaar
 
         private void addCatalogueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // new Winform_SalesDetails().ShowDialog();
+            new Winform_SaleDetails().ShowDialog();
         }
 
         private void stockCheckToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -308,6 +308,11 @@ namespace JanataBazaar
         private void stockControlFormToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new Winform_SCFRegister().ShowDialog();
+        }
+
+        private void vATRevisionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_VATDetails().ShowDialog();
         }
     }
 

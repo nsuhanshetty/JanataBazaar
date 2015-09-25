@@ -20,7 +20,7 @@ namespace JanataBazaar.View.Register
             InitializeComponent();
         }
 
-        protected override void NewVendToolStrip_Click(object sender, EventArgs e)
+        protected override void NewToolStrip_Click(object sender, EventArgs e)
         {
             new Details.Winform_VendorDetails().ShowDialog();
         }
@@ -43,9 +43,9 @@ namespace JanataBazaar.View.Register
 
         protected override void dgvRegister_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult _dialogResult = MessageBox.Show("Do you want to Add Customer " +
+            DialogResult _dialogResult = MessageBox.Show("Do you want to Add Vendor " +
                                          Convert.ToString(dgvRegister.Rows[e.RowIndex].Cells["Name"].Value),
-                                         "Add Customer Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                         "Add Vendor Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
                                          MessageBoxDefaultButton.Button2);
 
             if (_dialogResult == DialogResult.No) return;

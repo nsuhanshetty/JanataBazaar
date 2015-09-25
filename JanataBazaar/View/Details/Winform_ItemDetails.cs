@@ -76,13 +76,12 @@ namespace JanataBazaar.View.Details
 
             Section sect = Builders.ItemDetailsBuilder.GetSection(cmbSection.Text);
 
-            float _vatPerc;
+            decimal _vatPerc;
             if (!chkIsExempted.Checked && !IsNullOrEmpty(txtVATPerc.Text))
-                float.TryParse(txtVATPerc.Text, out _vatPerc);
+                decimal.TryParse(txtVATPerc.Text, out _vatPerc);
             else
                 _vatPerc = 0;
-
-            item = new Item(txtName.Text, cmbUnit.Text, sect, cmbBrand.Text, chkIsExempted.Checked, _vatPerc, int.Parse(txtReserve.Text));
+            item = new Item(txtName.Text,cmbUnit.Text, sect, cmbBrand.Text, chkIsExempted.Checked, _vatPerc, int.Parse(txtReserve.Text));
 
             if (Savers.ItemDetailsSavers.SaveItem(item) == 0)
             {

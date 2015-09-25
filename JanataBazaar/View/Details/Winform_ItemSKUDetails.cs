@@ -21,16 +21,16 @@ namespace JanataBazaar.View.Details
         int Index;
 
         #region Properties
-        public float Basic { get; set; }
+        public decimal Basic { get; set; }
 
-        private float _trans;
-        public float Trans
+        private decimal _trans;
+        public decimal Trans
         {
             get; set;
         }
 
-        private float _transpercent;
-        public float TransPercent
+        private decimal _transpercent;
+        public decimal TransPercent
         {
             get
             {
@@ -44,14 +44,14 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        private float _misc;
-        public float Misc
+        private decimal _misc;
+        public decimal Misc
         {
             get; set;
         }
 
-        private float _miscpercent;
-        public float MiscPercent
+        private decimal _miscpercent;
+        public decimal MiscPercent
         {
             get
             {
@@ -65,14 +65,14 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        private float _vat;
-        public float VAT
+        private decimal _vat;
+        public decimal VAT
         {
             get; set;
         }
 
-        private float _vatpercent;
-        public float VATPercent
+        private decimal _vatpercent;
+        public decimal VATPercent
         {
             get
             {
@@ -87,14 +87,14 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        private float _disc;
-        public float Discount
+        private decimal _disc;
+        public decimal Discount
         {
             get; set;
         }
 
-        private float _discpercent;
-        public float DiscountPercent
+        private decimal _discpercent;
+        public decimal DiscountPercent
         {
             get
             {
@@ -108,14 +108,43 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        private float _wRate;
-        public float WRate
+        private decimal _purchaseRate;
+        public decimal PurchaseRate
+        {
+            get
+            {
+                return _purchaseRate;
+            }
+            set
+            {
+                _purchaseRate = value;
+                txtPurchaseRate.Text = _purchaseRate.ToString();
+            }
+        }
+
+        private decimal _purchaseValue;
+        public decimal PurchaseValue
+        {
+            get
+            {
+                //decimal _purchaseValue = ((Basic + Trans + Misc + VAT) - Discount);
+               
+                return _purchaseValue;
+            }
+            set
+            {
+                _purchaseValue = value;
+                PurchaseRate = _purchaseValue;
+            }
+        }
+        private decimal _wRate;
+        public decimal WRate
         {
             get; set;
         }
 
-        private float _wRatepercent;
-        public float WRatePercent
+        private decimal _wRatepercent;
+        public decimal WRatePercent
         {
             get
             {
@@ -123,19 +152,19 @@ namespace JanataBazaar.View.Details
             }
             set
             {
-                WRate = (value != 0 ? (PurchaseValue * (value / 100)) : 0) + PurchaseValue;
+                WRate = (value != 0 ? (PurchaseRate * (value / 100)) : 0) + PurchaseRate;
                 _wRatepercent = value;
             }
         }
 
-        private float _rRate;
-        public float RRate
+        private decimal _rRate;
+        public decimal RRate
         {
             get; set;
         }
 
-        private float _rRatepercent;
-        public float RRatePercent
+        private decimal _rRatepercent;
+        public decimal RRatePercent
         {
             get
             {
@@ -148,16 +177,7 @@ namespace JanataBazaar.View.Details
             }
         }
 
-
-        public float PurchaseValue
-        {
-            get
-            {
-                return ((Basic + Trans + Misc + VAT) - Discount);
-            }
-        }
-
-        #endregion
+        #endregion 
 
         public Winform_ItemSKUDetails(int index = 0)
         {
@@ -334,12 +354,12 @@ namespace JanataBazaar.View.Details
 
         private void txtBasic_Validated(object sender, EventArgs e)
         {
-            float _basic;
-            Basic = float.TryParse(txtBasic.Text, out _basic) ? _basic : 0;
+            decimal _basic;
+            Basic = decimal.TryParse(txtBasic.Text, out _basic) ? _basic : 0;
 
             if (!string.IsNullOrEmpty(txtVATPercent.Text))
             {
-                VATPercent = float.Parse(txtVATPercent.Text);
+                VATPercent = decimal.Parse(txtVATPercent.Text);
                 txtVAT.Text = VAT.ToString();
             }
             UpdateRates();
@@ -347,60 +367,65 @@ namespace JanataBazaar.View.Details
 
         private void txtTransPercent_Validated(object sender, EventArgs e)
         {
-            TransPercent = (float.TryParse(txtTransPercent.Text, out _trans) ? _trans : 0);
+            TransPercent = (decimal.TryParse(txtTransPercent.Text, out _trans) ? _trans : 0);
             txtTrans.Text = Trans.ToString();
             UpdateRates();
         }
 
         private void txtMiscPercent_Validated(object sender, EventArgs e)
         {
-            MiscPercent = (float.TryParse(txtMiscPercent.Text, out _misc) ? _misc : 0);
+            MiscPercent = (decimal.TryParse(txtMiscPercent.Text, out _misc) ? _misc : 0);
             txtMisc.Text = Misc.ToString();
             UpdateRates();
         }
 
         private void cmbVATPercent_Validated(object sender, EventArgs e)
         {
-            VATPercent = (float.TryParse(txtVATPercent.Text, out _vat) ? _vat : 0);
+            VATPercent = (decimal.TryParse(txtVATPercent.Text, out _vat) ? _vat : 0);
             txtVAT.Text = VAT.ToString();
             UpdateRates();
         }
 
         private void txtDiscPercent_Validated(object sender, EventArgs e)
         {
-            DiscountPercent = (float.TryParse(txtDiscPercent.Text, out _disc) ? _disc : 0);
+            DiscountPercent = (decimal.TryParse(txtDiscPercent.Text, out _disc) ? _disc : 0);
             txtDisc.Text = Discount.ToString();
             UpdateRates();
         }
 
         private void txtWholePercent_Validated(object sender, EventArgs e)
         {
-            WRatePercent = (float.TryParse(txtWholePercent.Text, out _wRate) ? _wRate : 0);
+            WRatePercent = (decimal.TryParse(txtWholePercent.Text, out _wRate) ? _wRate : 0);
             txtWholeRate.Text = WRate.ToString();
         }
 
         private void txtRetailPercent_Validated(object sender, EventArgs e)
         {
-            RRatePercent = (float.TryParse(txtRetailPercent.Text, out _rRate) ? _rRate : 0);
+            RRatePercent = (decimal.TryParse(txtRetailPercent.Text, out _rRate) ? _rRate : 0);
             txtRetailRate.Text = RRate.ToString();
+        }
+
+        private void txtPurchaseRate_Validated(object sender, EventArgs e)
+        {
+            PurchaseRate = decimal.Parse(txtPurchaseRate.Text);
         }
 
         private void txtWholeRate_Validated(object sender, EventArgs e)
         {
-            WRate = float.Parse(txtWholeRate.Text);
+            WRate = decimal.Parse(txtWholeRate.Text);
         }
 
         private void txtRetailRate_Validated(object sender, EventArgs e)
         {
-            RRate = float.Parse(txtRetailRate.Text);
+            RRate = decimal.Parse(txtRetailRate.Text);
         }
 
         private void txtValues_Validated(object sender, EventArgs e)
         {
-            Trans = (float.TryParse(txtTrans.Text, out _trans) ? _trans : 0);
-            Misc = (float.TryParse(txtMisc.Text, out _misc) ? _misc : 0);
-            VAT = (float.TryParse(txtVAT.Text, out _vat) ? _vat : 0);
-            Discount = (float.TryParse(txtDisc.Text, out _disc) ? _disc : 0);
+            Trans = (decimal.TryParse(txtTrans.Text, out _trans) ? _trans : 0);
+            Misc = (decimal.TryParse(txtMisc.Text, out _misc) ? _misc : 0);
+            VAT = (decimal.TryParse(txtVAT.Text, out _vat) ? _vat : 0);
+            Discount = (decimal.TryParse(txtDisc.Text, out _disc) ? _disc : 0);
             UpdateRates();
         }
         #endregion
@@ -413,6 +438,7 @@ namespace JanataBazaar.View.Details
 
         private void UpdateRates()
         {
+            PurchaseValue = ((Basic + Trans + Misc + VAT) - Discount);
             txtWholePercent_Validated(this, new EventArgs());
             txtRetailPercent_Validated(this, new EventArgs());
         }
@@ -492,12 +518,13 @@ namespace JanataBazaar.View.Details
 
         private void txtNetWght_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNetWght.Text)) return;
-
             if (!string.IsNullOrEmpty(cmbPackType.Text))
                 this.pack = Builders.PackageDetailsBuilder.GetPackage(cmbPackType.Text);
 
+            if (string.IsNullOrEmpty(txtNetWght.Text)) return;
             txtGrossWght.Text = (int.Parse(txtNetWght.Text) + this.pack.Weight).ToString();
         }
+
+
     }
 }

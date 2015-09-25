@@ -12,7 +12,7 @@ namespace JanataBazaar.View.Register
             InitializeComponent();
         }
 
-        protected override void NewVendToolStrip_Click(object sender, EventArgs e)
+        protected override void NewToolStrip_Click(object sender, EventArgs e)
         {
             new Details.Winform_VendorDetails().ShowDialog();
         }

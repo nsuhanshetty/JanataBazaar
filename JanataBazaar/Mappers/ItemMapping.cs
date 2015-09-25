@@ -49,6 +49,7 @@ namespace JanataBazaar.Mappers
             References(x => x.Item).Class<Item>()
                                     .Columns("ItemID")
                                     .Cascade.None();
+
             Map(x => x.ManufacturedDate);
             Map(x => x.ExpiredDate);
             Map(x => x.Basic);
@@ -64,6 +65,8 @@ namespace JanataBazaar.Mappers
             Map(x => x.Wholesale);
             Map(x => x.RetailMargin);
             Map(x => x.Retail);
+
+            Map(x => x.StockQuantity);
 
             Map(x => x.PurchaseValue);
             Map(x => x.QuantityPerPack);
@@ -86,6 +89,37 @@ namespace JanataBazaar.Mappers
             Map(x => x.Name);
             Map(x => x.Weight);
             Map(x => x.IsStocked);
+        }
+    }
+
+    class ItemPricingMapping : ClassMap<ItemPricing>
+    {
+        public ItemPricingMapping()
+        {
+            Id(x => x.ID).GeneratedBy.Identity();
+            References(x => x.Purchase).Class<PurchaseOrder>()
+                                       .Columns("PurchaseID")
+                                       .Cascade.None();
+            References(x => x.Item).Class<Item>()
+                                   .Columns("ItemID")
+                                   .Cascade.None();
+
+            Map(x => x.Basic);
+            Map(x => x.TransportPercent);
+            Map(x => x.Transport);
+            Map(x => x.MiscPercent);
+            Map(x => x.Misc);
+            Map(x => x.VATPercent);
+            Map(x => x.VAT);
+            Map(x => x.DiscountPercent);
+            Map(x => x.Discount);
+            Map(x => x.WholesaleMargin);
+            Map(x => x.Wholesale);
+            Map(x => x.RetailMargin);
+            Map(x => x.Retail);
+
+            Map(x => x.PurchaseValue);
+
         }
     }
 }

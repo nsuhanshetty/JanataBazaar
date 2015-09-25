@@ -35,19 +35,23 @@ namespace JanataBazaar.View.Register
         public void LoadRegisterDgv()
         {
             //todo: find reason for "JanataBazaar.Models.Section" in cmb
-            if (cmbSection.Text == "JanataBazaar.Models.Section" || String.IsNullOrEmpty(txtName.Text))
+            if (cmbSection.Text == "JanataBazaar.Models.Section" ||
+                (String.IsNullOrEmpty(txtName.Text) && String.IsNullOrEmpty(txtBrand.Text)))
+            {
+                dgvRegister.DataSource = "";
                 return;
+            }
 
             UpdateStatus("Searching", 50);
-            dgvRegister.DataSource = (from item in (ItemDetailsBuilder.GetItemsList(txtName.Text, cmbSection.Text))
-                                      select new { item.ID, item.Name, item.QuantityUnit }).ToList();
+            dgvRegister.DataSource = (ItemDetailsBuilder.GetItemsList(txtName.Text, cmbSection.Text, txtBrand.Text));
+
             if (dgvRegister.RowCount == 0)
                 UpdateStatus("No Results found.", 100);
             else
                 UpdateStatus(dgvRegister.RowCount + " Results found.", 100);
         }
 
-        protected override void NewVendToolStrip_Click(object sender, EventArgs e)
+        protected override void NewToolStrip_Click(object sender, EventArgs e)
         {
             new Winform_ItemDetails().ShowDialog();
             txtName_TextChanged(this, new EventArgs());

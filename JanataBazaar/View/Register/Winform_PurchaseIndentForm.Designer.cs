@@ -35,6 +35,13 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Size = new System.Drawing.Size(631, 200);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbSection);
@@ -81,12 +88,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 349);
+            this.ClientSize = new System.Drawing.Size(631, 349);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_PurchaseIndentForm";
             this.Text = "Winform_PurchaseIndentForm";
             this.Load += new System.EventHandler(this.Winform_PurchaseIndentForm_Load);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.groupBox2.ResumeLayout(false);

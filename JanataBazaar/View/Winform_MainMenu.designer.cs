@@ -86,6 +86,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSearchText = new System.Windows.Forms.Label();
             this.rdbPurchase = new System.Windows.Forms.RadioButton();
+            this.vATRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -231,7 +232,8 @@
             // 
             this.purchaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addPurchaseBillToolStripMenuItem,
-            this.invoiceControlToolStripMenuItem});
+            this.invoiceControlToolStripMenuItem,
+            this.vATRevisionToolStripMenuItem});
             this.purchaseToolStripMenuItem.Name = "purchaseToolStripMenuItem";
             this.purchaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.purchaseToolStripMenuItem.Text = "Purchase";
@@ -239,14 +241,14 @@
             // addPurchaseBillToolStripMenuItem
             // 
             this.addPurchaseBillToolStripMenuItem.Name = "addPurchaseBillToolStripMenuItem";
-            this.addPurchaseBillToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.addPurchaseBillToolStripMenuItem.Text = "&Add Purchase Bill";
+            this.addPurchaseBillToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.addPurchaseBillToolStripMenuItem.Text = "&Add Stock Control Form";
             this.addPurchaseBillToolStripMenuItem.Click += new System.EventHandler(this.addPurchaseBillToolStripMenuItem_Click);
             // 
             // invoiceControlToolStripMenuItem
             // 
             this.invoiceControlToolStripMenuItem.Name = "invoiceControlToolStripMenuItem";
-            this.invoiceControlToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.invoiceControlToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.invoiceControlToolStripMenuItem.Text = "&Purchase Indent";
             // 
             // inventoryToolStripMenuItem
@@ -567,6 +569,13 @@
             this.rdbPurchase.UseVisualStyleBackColor = true;
             this.rdbPurchase.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // vATRevisionToolStripMenuItem
+            // 
+            this.vATRevisionToolStripMenuItem.Name = "vATRevisionToolStripMenuItem";
+            this.vATRevisionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.vATRevisionToolStripMenuItem.Text = "&VAT Revision";
+            this.vATRevisionToolStripMenuItem.Click += new System.EventHandler(this.vATRevisionToolStripMenuItem_Click);
+            // 
             // Winform_MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,6 +661,7 @@
         private System.Windows.Forms.ToolStripMenuItem stockLiabiltiyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockLiabilityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseIndentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vATRevisionToolStripMenuItem;
     }
 }
 

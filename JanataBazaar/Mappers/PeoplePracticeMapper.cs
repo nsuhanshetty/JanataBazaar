@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JanataBazaar.Model;
 using FluentNHibernate.Mapping;
+using JanataBazaar.Models;
 
 namespace JanataBazaar.Mappers
 {
@@ -13,7 +14,7 @@ namespace JanataBazaar.Mappers
 
     class VendorMapper : ClassMap<Vendor>
     {
-       public VendorMapper()
+        public VendorMapper()
         {
             Id(x => x.ID).GeneratedBy.Identity();
             Map(x => x.TIN);
@@ -32,6 +33,19 @@ namespace JanataBazaar.Mappers
 
             Map(x => x.DurationTerm);
             Map(x => x.DurationCount);
+        }
+    }
+
+    class CustomerMapper : ClassMap<Customer>
+    {
+        public CustomerMapper()
+        {
+            Id(x => x.ID).GeneratedBy.Identity();
+            Map(x => x.Name);
+            Map(x => x.Mobile_No);
+            Map(x => x.Phone_No);
+            Map(x => x.Email);
+            Map(x => x.Address);
         }
     }
 }

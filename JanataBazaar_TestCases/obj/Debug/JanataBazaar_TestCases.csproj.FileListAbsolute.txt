@@ -16,3 +16,15 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.csprojResolveAssemblyReference.cache
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.pdb
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll

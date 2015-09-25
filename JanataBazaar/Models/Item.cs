@@ -22,21 +22,23 @@ namespace JanataBazaar.Models
     public class Item
     {
         public virtual int ID { get; set; }
+
+
         public virtual string Name { get; set; }
         public virtual Section Section { get; set; }
         public virtual string QuantityUnit { get; set; }
         public virtual string Brand { get; set; }
-        public virtual float VatPercent { get; set; }
+        public virtual decimal VatPercent { get; set; }
         public virtual bool IsVatExempted { get; set; }
         public virtual bool InReserve { get; set; }
         public virtual int ReserveStock { get; set; }
 
         public Item() { }
-
-        public Item(string _name, string _quantityUnit, Section _section, string _brand, bool _isExempted, float _VATPercent, int _ReserveStock)
+        public Item(string _name, string _quantityUnit, Section _section, string _brand, bool _isExempted,
+            decimal _VATPercent, int _ReserveStock)
         {
             this.Name = _name;
-            this.QuantityUnit = _quantityUnit;  
+            this.QuantityUnit = _quantityUnit;
             this.Section = _section;
             this.Brand = _brand;
             this.IsVatExempted = _isExempted;
@@ -52,20 +54,21 @@ namespace JanataBazaar.Models
         public virtual Item Item { get; set; }
         public virtual DateTime ManufacturedDate { get; set; }
         public virtual DateTime ExpiredDate { get; set; }
-        public virtual float Basic { get; set; }
-        public virtual float TransportPercent { get; set; }
-        public virtual float Transport { get; set; }
-        public virtual float MiscPercent { get; set; }
-        public virtual float Misc { get; set; }
-        public virtual float VATPercent { get; set; }
-        public virtual float VAT { get; set; }
-        public virtual float DiscountPercent { get; set; }
-        public virtual float Discount { get; set; }
-        public virtual float WholesaleMargin { get; set; }
-        public virtual float Wholesale { get; set; }
-        public virtual float RetailMargin { get; set; }
-        public virtual float Retail { get; set; }
-        public virtual float PurchaseValue { get; set; }
+
+        public virtual decimal Basic { get; set; }
+        public virtual decimal TransportPercent { get; set; }
+        public virtual decimal Transport { get; set; }
+        public virtual decimal MiscPercent { get; set; }
+        public virtual decimal Misc { get; set; }
+        public virtual decimal VATPercent { get; set; }
+        public virtual decimal VAT { get; set; }
+        public virtual decimal DiscountPercent { get; set; }
+        public virtual decimal Discount { get; set; }
+        public virtual decimal WholesaleMargin { get; set; }
+        public virtual decimal Wholesale { get; set; }
+        public virtual decimal RetailMargin { get; set; }
+        public virtual decimal Retail { get; set; }
+        public virtual decimal PurchaseValue { get; set; }
 
         public virtual Package Package { get; set; }
         public virtual int QuantityPerPack { get; set; }
@@ -74,9 +77,68 @@ namespace JanataBazaar.Models
         public virtual int NetWeight { get; set; }
         public virtual int GrossWeight { get; set; }
 
-        public virtual float TotalPurchaseValue { get; set; }
-        public virtual float TotalWholesaleValue { get; set; }
-        public virtual float TotalResaleValue { get; set; }
+        public virtual int StockQuantity { get; set; }
+
+        public virtual decimal TotalPurchaseValue { get; set; }
+        public virtual decimal TotalWholesaleValue { get; set; }
+        public virtual decimal TotalResaleValue { get; set; }
+    }
+
+    public class ItemPricing
+    {
+        public virtual int ID { get; set; }
+        public virtual Item Item { get; set; }
+        public virtual PurchaseOrder Purchase { get; set; } //The bill which had following prices for the item
+
+        public virtual decimal Basic { get; set; }
+        public virtual decimal TransportPercent { get; set; }
+        public virtual decimal Transport { get; set; }
+        public virtual decimal MiscPercent { get; set; }
+        public virtual decimal Misc { get; set; }
+        public virtual decimal VATPercent { get; set; }
+        public virtual decimal VAT { get; set; }
+        public virtual decimal DiscountPercent { get; set; }
+        public virtual decimal Discount { get; set; }
+        public virtual decimal WholesaleMargin { get; set; }
+        public virtual decimal Wholesale { get; set; }
+        public virtual decimal RetailMargin { get; set; }
+        public virtual decimal Retail { get; set; }
+        public virtual decimal PurchaseValue { get; set; }
+
+        public ItemPricing() { }
+        public ItemPricing(decimal _basic, decimal _transportPercent, decimal _transport,
+                           decimal _miscPercent, decimal _misc,
+                           decimal _vatPercent, decimal _vat,
+                           decimal _discountPercent, decimal _discount,
+                           decimal _wholesaleMargin, decimal _wholesale,
+                           decimal _retailMargin, decimal _retail,
+                           decimal _purchaseValue, PurchaseOrder _purchase, Item item)
+        {
+            this.Basic = _basic;
+
+            this.TransportPercent = _transportPercent;
+            this.Transport = _transport;
+
+            this.MiscPercent = _miscPercent;
+            this.Misc = _misc;
+
+            this.VAT = _vat;
+            this.VATPercent = _vatPercent;
+
+            this.DiscountPercent = _discountPercent;
+            this.Discount = Discount;
+
+            this.WholesaleMargin = _wholesaleMargin;
+            this.Wholesale = _wholesale;
+
+            this.Retail = _retail;
+            this.RetailMargin = _retailMargin;
+
+            this.Purchase = _purchase;
+            this.PurchaseValue = _purchaseValue;
+
+            this.Item = item;
+        }
     }
 
     public class Package
@@ -86,8 +148,7 @@ namespace JanataBazaar.Models
         public virtual int Weight { get; set; }
         public virtual bool IsStocked { get; set; }
 
-        public Package()  { }
-
+        public Package() { }
         public Package(string _name, int _weight, bool _isStocked)
         {
             this.Name = _name;

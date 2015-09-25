@@ -1,6 +1,7 @@
 ﻿using JanataBazaar.Models;
 using NHibernate.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,18 +46,21 @@ namespace JanataBazaar.Builders
                         select _item.QuantityUnit).Distinct().ToList();
             }
         }
-        public static List<Item> GetItemsList(string name, string sectionName)
+        public static IList GetItemsList(string name, string sectionName, string brand = "")
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 Item itemAlias = null;
+                Section sectionAlias = null;
 
-                Section section = GetSection(sectionName);
-                List<Item> itemList = session.QueryOver<Item>(() => itemAlias)
-                                   .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Name).IsLike(name + "%"))
-                                   .Where(() => itemAlias.Section.ID == section.ID)
-                                   .TransformUsing(NHibernate.Transform.Transformers.DistinctRootEntity)
-                                   .List() as List<Item>;
+                IList itemList = (from item in (session.QueryOver<Item>(() => itemAlias)
+                                        .JoinAlias(() => itemAlias.Section, () => sectionAlias)
+                                        .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Name).IsLike(name + "%"))
+                                        .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Brand).IsLike(brand + "%"))
+                                        .Where(() => sectionAlias.Name == sectionName)
+                                        .List())
+                                  select new { item.ID, item.Name, item.QuantityUnit })
+                                  .ToList();
                 return itemList;
             }
         }
@@ -104,6 +108,38 @@ namespace JanataBazaar.Builders
                                 where _pack.Name == packageName
                                 select _pack).FirstOrDefault();
                 return pack;
+            }
+        }
+    }
+
+    public class ItemSKUBuilder
+    {
+        public static ItemSKU GetItemSKUInfo(int _ID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var _item = session.QueryOver<ItemSKU>()
+                    .Where(x => x.ID == _ID)
+                        .Fetch(i => i.Item).Eager
+                        .Future().SingleOrDefault();
+                return _item;
+            }
+        }
+
+        public static bool IsItemInStock(int _ID)
+        {
+            //todo: ask whats the minimum quantity for wholesale sale
+            ItemSKU itemskuAlias = null;
+            var minWholesaleQuant = 0;
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                //todo: Combine both the statments
+                ItemSKU _item = session.QueryOver(() => itemskuAlias)
+                    .Where(() => itemskuAlias.ID == _ID)
+                    .SingleOrDefault();
+
+                return _item.PackageQuantity * _item.QuantityPerPack > minWholesaleQuant ? true : false;
             }
         }
     }
