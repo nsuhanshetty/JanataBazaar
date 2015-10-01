@@ -43,8 +43,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtAccountNo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPLFNo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblPhoneNo
@@ -148,7 +154,7 @@
             this.groupBox1.Controls.Add(this.txtMobNo);
             this.groupBox1.Location = new System.Drawing.Point(12, 57);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(393, 168);
+            this.groupBox1.Size = new System.Drawing.Size(393, 164);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Details";
@@ -177,11 +183,59 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtPLFNo);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.txtAccountNo);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 227);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(393, 77);
+            this.groupBox2.TabIndex = 135;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Account Details";
+            // 
+            // txtAccountNo
+            // 
+            this.txtAccountNo.Location = new System.Drawing.Point(125, 19);
+            this.txtAccountNo.MaxLength = 100;
+            this.txtAccountNo.Name = "txtAccountNo";
+            this.txtAccountNo.Size = new System.Drawing.Size(243, 20);
+            this.txtAccountNo.TabIndex = 136;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 137;
+            this.label2.Text = "Account No.";
+            // 
+            // txtPLFNo
+            // 
+            this.txtPLFNo.Location = new System.Drawing.Point(125, 45);
+            this.txtPLFNo.MaxLength = 100;
+            this.txtPLFNo.Name = "txtPLFNo";
+            this.txtPLFNo.Size = new System.Drawing.Size(243, 20);
+            this.txtPLFNo.TabIndex = 138;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 139;
+            this.label3.Text = "PLF No.";
+            // 
             // Winform_CustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 255);
+            this.ClientSize = new System.Drawing.Size(417, 330);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblPhoneNo);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.lblEmailID);
@@ -196,9 +250,12 @@
             this.Controls.SetChildIndex(this.lblEmailID, 0);
             this.Controls.SetChildIndex(this.lblAddress, 0);
             this.Controls.SetChildIndex(this.lblPhoneNo, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +277,10 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        internal System.Windows.Forms.TextBox txtAccountNo;
+        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.TextBox txtPLFNo;
+        internal System.Windows.Forms.Label label3;
     }
 }

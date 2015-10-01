@@ -19,6 +19,7 @@ namespace JanataBazaar.View.Details
         Item item;
         Package pack;
         int Index;
+        int revisionID;
 
         #region Properties
         public decimal Basic { get; set; }
@@ -179,17 +180,32 @@ namespace JanataBazaar.View.Details
 
         #endregion 
 
-        public Winform_ItemSKUDetails(int index = 0)
+        public Winform_ItemSKUDetails(int index = 0, int revisionID=0)
         {
             InitializeComponent();
             cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
             this.Index = index;
+
+            this.revisionID = revisionID;
+            if (revisionID != 0)
+            {
+                cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
+                cmbVATPercent.DisplayMember = "Percent";
+            }
         }
 
-        public Winform_ItemSKUDetails(int index, ItemSKU itemsku = null)
+        public Winform_ItemSKUDetails(int index,int revisionID, ItemSKU itemsku = null)
         {
             InitializeComponent();
             this.Index = index;
+
+            this.revisionID = revisionID;
+            if (revisionID != 0)
+            {
+                cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
+                cmbVATPercent.DisplayMember = "Percent";
+            }
+
             cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
 
             //load controls
@@ -221,6 +237,9 @@ namespace JanataBazaar.View.Details
             txtDiscPercent.Text = itemsku.DiscountPercent.ToString();
             txtDisc.Text = itemsku.Discount.ToString();
 
+            cmbVATPercent.SelectedIndex = cmbVATPercent.Items.IndexOf(itemsku.VATPercent);
+            txtVAT.Text = itemsku.VAT.ToString();
+
             txtWholePercent.Text = itemsku.WholesaleMargin.ToString();
             txtWholeRate.Text = itemsku.Wholesale.ToString();
 
@@ -241,7 +260,11 @@ namespace JanataBazaar.View.Details
             this.toolStripParent.Items.Add(this.AddSectionToolStrip);
             this.toolStripParent.Items.Add(this.AddPackageToolStrip);
 
-            //cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
+            if (revisionID != 0)
+            {
+                cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
+                cmbVATPercent.DisplayMember = "Percent";
+            }
         }
 
         private void AddPackageToolStrip_Click(object sender, EventArgs e)
@@ -325,25 +348,25 @@ namespace JanataBazaar.View.Details
 
         private void cmbVATPercent_Validating(object sender, CancelEventArgs e)
         {
-            ComboBox cmb = (ComboBox)sender;
-            string _errorMsg;
+            //ComboBox cmb = (ComboBox)sender;
+            //string _errorMsg;
 
-            if (string.IsNullOrEmpty(cmb.Text))
-            {
-                _errorMsg = "Invalid Amount input data type.\nExample: '2.2'";
-            }
-            else
-            {
-                Match _match = Regex.Match(cmb.Text, "^[0-9]*\\.?[0-9]*$");
-                _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
-            }
-            errorProvider1.SetError(cmb, _errorMsg);
+            //if (string.IsNullOrEmpty(cmb.Text))
+            //{
+            //    _errorMsg = "Invalid Amount input data type.\nExample: '2.2'";
+            //}
+            //else
+            //{
+            //    Match _match = Regex.Match(cmb.Text, "^[0-9]*\\.?[0-9]*$");
+            //    _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
+            //}
+            //errorProvider1.SetError(cmb, _errorMsg);
 
-            if (_errorMsg != "")
-            {
-                e.Cancel = true;
-                cmb.Select(0, cmb.Text.Length);
-            }
+            //if (_errorMsg != "")
+            //{
+            //    e.Cancel = true;
+            //    cmb.Select(0, cmb.Text.Length);
+            //}
         }
 
         //private void cmbValue_Validated(object sender, EventArgs e)
@@ -357,9 +380,9 @@ namespace JanataBazaar.View.Details
             decimal _basic;
             Basic = decimal.TryParse(txtBasic.Text, out _basic) ? _basic : 0;
 
-            if (!string.IsNullOrEmpty(txtVATPercent.Text))
+            if (!string.IsNullOrEmpty(cmbVATPercent.Text))
             {
-                VATPercent = decimal.Parse(txtVATPercent.Text);
+                VATPercent = decimal.Parse(cmbVATPercent.Text);
                 txtVAT.Text = VAT.ToString();
             }
             UpdateRates();
@@ -381,9 +404,9 @@ namespace JanataBazaar.View.Details
 
         private void cmbVATPercent_Validated(object sender, EventArgs e)
         {
-            VATPercent = (decimal.TryParse(txtVATPercent.Text, out _vat) ? _vat : 0);
-            txtVAT.Text = VAT.ToString();
-            UpdateRates();
+            //VATPercent = (decimal.TryParse(txtVATPercent.Text, out _vat) ? _vat : 0);
+            //txtVAT.Text = VAT.ToString();
+            //UpdateRates();
         }
 
         private void txtDiscPercent_Validated(object sender, EventArgs e)
@@ -452,9 +475,9 @@ namespace JanataBazaar.View.Details
             txtSection.Text = item.Section.Name;
             txtBrand.Text = _item.Brand;
 
-            chkIsExempted.Checked = _item.IsVatExempted;
-            txtVATPercent.Text = _item.VatPercent.ToString();
-            txtVAT.Enabled = !chkIsExempted.Checked;
+            //chkIsExempted.Checked = _item.IsVatExempted;
+            //txtVATPercent.Text = _item.VatPercent.ToString();
+            //txtVAT.Enabled = !chkIsExempted.Checked;
 
             VATPercent = _item.VatPercent;
             txtVAT.Text = VAT.ToString();
@@ -525,6 +548,22 @@ namespace JanataBazaar.View.Details
             txtGrossWght.Text = (int.Parse(txtNetWght.Text) + this.pack.Weight).ToString();
         }
 
+        private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbVATPercent.Enabled = !chkIsExempted.Checked;
+            txtVAT.Enabled = false;
+            
+            //if (txtVATPerc.Enabled)
+            //    txtVATPerc.Validating += new CancelEventHandler(this.txtBox_Validating);
+            //else
+            //    txtVATPerc.Validating += null;
+        }
 
+        private void cmbVATPercent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VATPercent = decimal.Parse(cmbVATPercent.Text);
+            txtVAT.Text = VAT.ToString();
+            UpdateRates();
+        }
     }
 }

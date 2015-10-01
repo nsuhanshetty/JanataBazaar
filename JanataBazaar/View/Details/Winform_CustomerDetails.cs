@@ -108,7 +108,7 @@ namespace JanataBazaar.View.Details
                 return;
             }
 
-            Customer cust = new Customer(txtName.Text, txtMobNo.Text, txtPhoneNo.Text, txtAddress.Text, txtEmailID.Text);
+            Customer cust = new Customer(txtName.Text, txtMobNo.Text, txtPhoneNo.Text,txtAccountNo.Text, txtPLFNo.Text, txtAddress.Text, txtEmailID.Text);
             bool success = Savers.PeoplePracticeSaver.SaveCustomerInfo(cust);
 
             if (success)

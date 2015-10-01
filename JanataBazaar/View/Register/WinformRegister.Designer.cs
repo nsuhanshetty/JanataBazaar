@@ -58,7 +58,7 @@
             // toolStrip_Label
             // 
             this.toolStrip_Label.Name = "toolStrip_Label";
-            this.toolStrip_Label.Size = new System.Drawing.Size(276, 17);
+            this.toolStrip_Label.Size = new System.Drawing.Size(427, 17);
             this.toolStrip_Label.Spring = true;
             this.toolStrip_Label.Text = "Enter Details to Search.";
             this.toolStrip_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -94,6 +94,7 @@
             this.dgvRegister.Size = new System.Drawing.Size(538, 181);
             this.dgvRegister.TabIndex = 0;
             this.dgvRegister.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellContentClick);
+            this.dgvRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellDoubleClick);
             this.dgvRegister.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvRegister_DataError);
             // 
             // toolStrip1

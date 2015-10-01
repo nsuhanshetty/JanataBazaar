@@ -34,5 +34,10 @@ namespace JanataBazaar.View.Register
         {
 
         }
+
+        protected virtual void dgvRegister_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -48,6 +48,7 @@
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPurchaseBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vATRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockCheckToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +87,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSearchText = new System.Windows.Forms.Label();
             this.rdbPurchase = new System.Windows.Forms.RadioButton();
-            this.vATRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vATRevisionRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -250,6 +252,16 @@
             this.invoiceControlToolStripMenuItem.Name = "invoiceControlToolStripMenuItem";
             this.invoiceControlToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.invoiceControlToolStripMenuItem.Text = "&Purchase Indent";
+            // 
+            // vATRevisionToolStripMenuItem
+            // 
+            this.vATRevisionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addvToolStripMenuItem,
+            this.vATRevisionRegistryToolStripMenuItem});
+            this.vATRevisionToolStripMenuItem.Name = "vATRevisionToolStripMenuItem";
+            this.vATRevisionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.vATRevisionToolStripMenuItem.Text = "&VAT Revision";
+            this.vATRevisionToolStripMenuItem.Click += new System.EventHandler(this.vATRevisionToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
             // 
@@ -569,12 +581,19 @@
             this.rdbPurchase.UseVisualStyleBackColor = true;
             this.rdbPurchase.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // vATRevisionToolStripMenuItem
+            // addvToolStripMenuItem
             // 
-            this.vATRevisionToolStripMenuItem.Name = "vATRevisionToolStripMenuItem";
-            this.vATRevisionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.vATRevisionToolStripMenuItem.Text = "&VAT Revision";
-            this.vATRevisionToolStripMenuItem.Click += new System.EventHandler(this.vATRevisionToolStripMenuItem_Click);
+            this.addvToolStripMenuItem.Name = "addvToolStripMenuItem";
+            this.addvToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.addvToolStripMenuItem.Text = "Revise VAT";
+            this.addvToolStripMenuItem.Click += new System.EventHandler(this.addvToolStripMenuItem_Click);
+            // 
+            // vATRevisionRegistryToolStripMenuItem
+            // 
+            this.vATRevisionRegistryToolStripMenuItem.Name = "vATRevisionRegistryToolStripMenuItem";
+            this.vATRevisionRegistryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.vATRevisionRegistryToolStripMenuItem.Text = "VAT Revision Registry";
+            this.vATRevisionRegistryToolStripMenuItem.Click += new System.EventHandler(this.vATRevisionRegistryToolStripMenuItem_Click);
             // 
             // Winform_MainMenu
             // 
@@ -662,6 +681,8 @@
         private System.Windows.Forms.ToolStripMenuItem stockLiabilityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseIndentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vATRevisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vATRevisionRegistryToolStripMenuItem;
     }
 }
 

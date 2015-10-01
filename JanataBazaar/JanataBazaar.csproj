@@ -124,6 +124,12 @@
     <Compile Include="View\Details\Winform_ItemSKUDetails.Designer.cs">
       <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Details\Winform_MemberDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_MemberDetails.Designer.cs">
+      <DependentUpon>Winform_MemberDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Details\Winform_PackageDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_ItemSKUDetails.resx">
       <DependentUpon>Winform_ItemSKUDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_MemberDetails.resx">
+      <DependentUpon>Winform_MemberDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_PackageDetails.resx">
       <DependentUpon>Winform_PackageDetails.cs</DependentUpon>

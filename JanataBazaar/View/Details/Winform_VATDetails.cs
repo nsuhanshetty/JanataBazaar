@@ -17,6 +17,7 @@ namespace JanataBazaar.View.Details
         List<decimal> vatList = new List<decimal>();
         VATRevision vatRevision;
         List<VATPercent> vatPercentList;
+        //private object dgvOrderItems;
 
         public Winform_VATDetails()
         {
@@ -28,7 +29,12 @@ namespace JanataBazaar.View.Details
             InitializeComponent();
 
             //get VAT Percentages based on the _ID
+            VATRevision _vatRevision = Builders.VATRevisionBuilder.GetVATRevisionInfo(_ID);
+
             //load the controls
+            this.vatRevision = _vatRevision;
+            dtpFromYear.Value = vatRevision.DateOfRevision;
+            this.vatPercentList = vatRevision.VATList.ToList();
         }
 
         private void Winform_VATDetails_Load(object sender, EventArgs e)
@@ -37,7 +43,11 @@ namespace JanataBazaar.View.Details
 
             //fetch the VAT values from the previous term table
             //            else 
-            vatList.Add(0);
+            if (this.vatRevision == null)
+            {
+                vatPercentList = new List<VATPercent>();
+                vatPercentList.Add(new VATPercent(0));
+            }
             LoadDGV();
         }
 
@@ -51,41 +61,60 @@ namespace JanataBazaar.View.Details
             }
 
             decimal percentValue = decimal.Parse(txtVatPercent.Text);
-            if (vatList.IndexOf(percentValue) != -1)
+            if (vatPercentList.Any(x => x.Percent == percentValue))
             {
                 MessageBox.Show("VAT Percentage of the entered value already exists in the list", "Duplicate VAT value", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             else
             {
-                vatList.Add(percentValue);
+                //update the vatlist to add to 
+                vatPercentList.Add(new VATPercent(percentValue));
                 LoadDGV();
             }
+            txtVatPercent.Text = "";
         }
 
         private void LoadDGV()
         {
-            dgvPercentList.Rows.Clear();
-            if (vatList.Count == 0)
+            dgvPercentList.DataSource = (from vat in vatPercentList
+                                         select new { vat.ID, VATPercentage = vat.Percent }).ToList();
+
+            dgvPercentList.Columns["ID"].Visible = false;
+            if (dgvPercentList.Rows.Count == 0)
             {
-                dgvPercentList.Columns["colDelete"].Visible = true;
+                dgvPercentList.Columns["colDelete"].Visible = false;
                 return;
             }
-
-            foreach (var per in vatList)
+            else
             {
-                var index = dgvPercentList.Rows.Add();
-                dgvPercentList.Rows[index].Cells["colPercent"].Value = per;
+                dgvPercentList.Columns["colDelete"].DisplayIndex = dgvPercentList.Columns.Count - 1;
+                dgvPercentList.Columns["colDelete"].Visible = true;
             }
-            dgvPercentList.Columns["colDelete"].DisplayIndex = dgvPercentList.Columns.Count - 1;
-            dgvPercentList.Columns["colDelete"].Visible = true;
+
+            //dgvPercentList.Rows.Clear();
+            //if (vatList.Count == 0)
+            //{
+            //    dgvPercentList.Columns["colDelete"].Visible = true;
+            //    return;
+            //}
+
+            //foreach (var per in vatPercentList)
+            //{
+            //    var index = dgvPercentList.Rows.Add();
+            //    dgvPercentList.Rows[index].Cells["colPercent"].Value = per.Percent;
+            //}
+            //dgvPercentList.Columns["colDelete"].DisplayIndex = dgvPercentList.Columns.Count - 1;
+            //dgvPercentList.Columns["colDelete"].Visible = true;
         }
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
             errorProvider1.SetError(dtpFromYear, "");
 
-            if (vatList.Count == 0)
+            int _ID = vatRevision == null ? 0 : vatRevision.ID;
+
+            if (vatPercentList.Count == 0)
                 MessageBox.Show("VAT percentage List cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //todo: Verfiy what can be the constraints on RevisionDate
             else if (DateTime.Compare(dtpFromYear.Value.Date, DateTime.Today.Date) < 0)
@@ -93,33 +122,36 @@ namespace JanataBazaar.View.Details
                 errorProvider1.SetError(dtpFromYear, "Revision Date cannot be less than today");
                 return;
             }
-
-            if (vatRevision == null && vatPercentList == null)
+            else if (Savers.VATPercentSavers.IsUniqueRevisionDate(dtpFromYear.Value.Date, _ID))
             {
-
-                vatPercentList = new List<VATPercent>();
-                foreach (var item in vatList)
-                {
-                    VATPercent per = new VATPercent();
-                    per.Percent = item;
-                    vatPercentList.Add(per);
-                }
-
-                vatRevision = new VATRevision(dtpFromYear.Value.Date, vatPercentList);
-
-                //todo: save the vatrevision
-                bool success = Savers.VATPercentSavers.SaveVATRevision(vatRevision);
-
-                if (success)
-                {
-                    UpdateStatus("VAT Revision added successfully",100);
-                    this.Close();
-                }
-                else
-                {
-                    UpdateStatus("Error saving VAT Revision", 100);
-                }
+                MessageBox.Show("The Date of Revision already exists. Enter a different Date and try again", "Duplicate Revision Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            /*Add Or Updating Existing VAT Revisions.*/
+            if (vatRevision == null)
+            {
+                vatRevision = new VATRevision(dtpFromYear.Value.Date, vatPercentList);
+            }
+            else
+            {
+                vatRevision.DateOfRevision = dtpFromYear.Value.Date;
+                vatRevision.VATList = vatPercentList;
+            }
+            bool success = Savers.VATPercentSavers.SaveVATRevision(vatRevision);
+
+            if (success)
+            {
+                UpdateStatus("VAT Revision added successfully", 100);
+                DialogResult dr = MessageBox.Show("VAT Revision added successfully", "VAT Revision Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (dr == DialogResult.OK)
+                    this.Close();
+            }
+            else
+            {
+                UpdateStatus("Error saving VAT Revision", 100);
+            }
+            //}
         }
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
@@ -137,8 +169,22 @@ namespace JanataBazaar.View.Details
                 if (dr == DialogResult.No) return;
 
                 //todo:Delete from db
+                bool success = false;
+                if (vatPercentList.Count != 0 && e.RowIndex + 1 <= vatPercentList.Count)
+                {
+                    if (vatPercentList[e.RowIndex].ID != 0)
+                        success = Savers.VATPercentSavers.DeletePercentItems(vatPercentList[e.RowIndex].ID);
 
-                vatList.RemoveAt(e.RowIndex);
+                    if (success || vatPercentList[e.RowIndex].ID == 0) // "ID == 0" => Not yet Added to the db 
+                    {
+                        vatPercentList.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Could not delete the Item. Something Nasty happened!!");
+                        return;
+                    }
+                }
                 LoadDGV();
             }
         }

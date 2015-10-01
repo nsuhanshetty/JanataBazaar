@@ -46,6 +46,9 @@ namespace JanataBazaar.Mappers
             Map(x => x.Phone_No);
             Map(x => x.Email);
             Map(x => x.Address);
+
+            Map(x => x.AccountNo);
+            Map(x => x.PLFNo);
         }
     }
 }

@@ -312,6 +312,16 @@ namespace JanataBazaar
 
         private void vATRevisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void vATRevisionRegistryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new VATRevisionRegister().ShowDialog();
+        }
+
+        private void addvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             new Winform_VATDetails().ShowDialog();
         }
     }

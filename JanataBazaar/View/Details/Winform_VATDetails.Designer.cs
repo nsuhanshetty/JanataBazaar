@@ -34,13 +34,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPercentList = new System.Windows.Forms.DataGridView();
-            this.colPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.txtVatPercent = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPercentList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -94,7 +93,6 @@
             this.dgvPercentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPercentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPercentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colPercent,
             this.colDelete});
             this.dgvPercentList.Location = new System.Drawing.Point(8, 45);
             this.dgvPercentList.Name = "dgvPercentList";
@@ -102,20 +100,6 @@
             this.dgvPercentList.Size = new System.Drawing.Size(334, 124);
             this.dgvPercentList.TabIndex = 128;
             this.dgvPercentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPercentList_CellClick);
-            // 
-            // colPercent
-            // 
-            this.colPercent.HeaderText = "VAT Percentage";
-            this.colPercent.Name = "colPercent";
-            this.colPercent.ReadOnly = true;
-            // 
-            // colDelete
-            // 
-            this.colDelete.HeaderText = "Click to Delete";
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
-            this.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // label3
             // 
@@ -161,6 +145,14 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "Click to Delete";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Winform_VATDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,7 +188,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPercent;
         private System.Windows.Forms.DataGridViewButtonColumn colDelete;
     }
 }

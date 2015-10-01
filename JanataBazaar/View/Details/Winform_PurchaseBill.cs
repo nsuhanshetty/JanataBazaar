@@ -12,6 +12,7 @@ namespace JanataBazaar.View.Details
         Vendor vend = new Vendor();
         List<ItemSKU> skuList = new List<ItemSKU>();
         PurchaseOrder purchaseOrder = new PurchaseOrder();
+        int RevisionID;
 
         public Winform_PurchaseBill()
         {
@@ -22,7 +23,11 @@ namespace JanataBazaar.View.Details
         {
             //todo: Remove traces of AddPackageToolStrip
             //this.toolStripParent.Items.Add(this.AddPackageToolStrip);
+
             this.toolStripParent.Items.Add(this.AddVendorToolStrip);
+
+            //get the revision date based on Invoice date
+            RevisionID = Builders.VATRevisionBuilder.GetRevisionDate(dtpInvoiceDate.Value.Date);
         }
 
         public void UpdateVendorControls(Vendor _vend)
@@ -49,11 +54,11 @@ namespace JanataBazaar.View.Details
             {
                 if (e.RowIndex < skuList.Count)
                 {
-                    new Winform_ItemSKUDetails(e.RowIndex, skuList[e.RowIndex]).ShowDialog();
+                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID,skuList[e.RowIndex]).ShowDialog();
                 }
                 else
                 {
-                    new Winform_ItemSKUDetails(e.RowIndex).ShowDialog();
+                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID).ShowDialog();
                 }
             }
             else if (dgvProdDetails.Columns["ColDel"].Index == e.ColumnIndex)
@@ -252,6 +257,11 @@ namespace JanataBazaar.View.Details
             }
             else
                 UpdateStatus("Error saving Purchase Bill",100);
+        }
+
+        private void dtpInvoiceDate_ValueChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Changing Invoice dates will effect the item pricing ");
         }
     }
 }

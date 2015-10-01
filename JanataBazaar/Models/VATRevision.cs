@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JanataBazaar.Models
 {
-    class VATRevision
+    public class VATRevision
     {
         public virtual int ID { get; set; }
         public virtual DateTime DateOfRevision { get; set; }
@@ -20,10 +20,16 @@ namespace JanataBazaar.Models
         }
     }
 
-    class VATPercent
+    public  class VATPercent
     {
         public virtual int ID { get; set; }
         public virtual VATRevision VATRevision { get; set; }
         public virtual decimal Percent { get; set; }
+
+        public VATPercent() { }
+        public VATPercent(decimal _percent)
+        {
+            this.Percent = _percent;
+        }
     }
 }

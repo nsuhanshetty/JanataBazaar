@@ -15,14 +15,20 @@ namespace JanataBazaar.Models
         public virtual string Address { get; set; }
         public virtual string Email { get; set; }
 
+        public virtual string AccountNo { get; set; }
+        public virtual string PLFNo { get; set; }
+
         public Customer() { }
-        public Customer(string _name, string _mobileNo, string _phoneNo, string _address = "", string _email = "")
+        public Customer(string _name, string _mobileNo, string _phoneNo,string _accNo, string _plfNo, string _address = "", string _email = "")
         {
             this.Name = _name;
             this.Mobile_No = _mobileNo;
             this.Phone_No = _phoneNo;
             this.Address = _address;
             this.Email = _email;
+
+            this.AccountNo = _accNo;
+            this.PLFNo = _plfNo;
         }
     }
 }

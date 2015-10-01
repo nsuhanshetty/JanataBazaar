@@ -47,7 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.txtVATPercent = new System.Windows.Forms.TextBox();
             this.chkIsExempted = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -101,9 +100,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.AddPackageToolStrip = new System.Windows.Forms.ToolStripButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.txtPurchaseRate = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.cmbVATPercent = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -287,7 +287,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.txtVATPercent);
+            this.groupBox6.Controls.Add(this.cmbVATPercent);
             this.groupBox6.Controls.Add(this.chkIsExempted);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.label31);
@@ -299,14 +299,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "VAT Details";
             // 
-            // txtVATPercent
-            // 
-            this.txtVATPercent.Enabled = false;
-            this.txtVATPercent.Location = new System.Drawing.Point(116, 35);
-            this.txtVATPercent.Name = "txtVATPercent";
-            this.txtVATPercent.Size = new System.Drawing.Size(114, 20);
-            this.txtVATPercent.TabIndex = 1;
-            // 
             // chkIsExempted
             // 
             this.chkIsExempted.AutoSize = true;
@@ -317,6 +309,7 @@
             this.chkIsExempted.TabIndex = 0;
             this.chkIsExempted.Text = "Is VAT Exempted";
             this.chkIsExempted.UseVisualStyleBackColor = true;
+            this.chkIsExempted.CheckedChanged += new System.EventHandler(this.chkIsExempted_CheckedChanged);
             // 
             // label18
             // 
@@ -826,6 +819,16 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Purchase Price Per Unit";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(298, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 13);
+            this.label9.TabIndex = 52;
+            this.label9.Text = "*";
+            // 
             // label36
             // 
             this.label36.AutoSize = true;
@@ -844,15 +847,15 @@
             this.txtPurchaseRate.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtPurchaseRate.Validated += new System.EventHandler(this.txtPurchaseRate_Validated);
             // 
-            // label9
+            // cmbVATPercent
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(298, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(11, 13);
-            this.label9.TabIndex = 52;
-            this.label9.Text = "*";
+            this.cmbVATPercent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVATPercent.FormattingEnabled = true;
+            this.cmbVATPercent.Location = new System.Drawing.Point(117, 35);
+            this.cmbVATPercent.Name = "cmbVATPercent";
+            this.cmbVATPercent.Size = new System.Drawing.Size(113, 21);
+            this.cmbVATPercent.TabIndex = 50;
+            this.cmbVATPercent.SelectedIndexChanged += new System.EventHandler(this.cmbVATPercent_SelectedIndexChanged);
             // 
             // Winform_ItemSKUDetails
             // 
@@ -952,7 +955,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox chkIsExempted;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox txtVATPercent;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
@@ -973,5 +975,6 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox txtPurchaseRate;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbVATPercent;
     }
 }
