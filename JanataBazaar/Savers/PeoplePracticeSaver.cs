@@ -60,6 +60,75 @@ namespace JanataBazaar.Savers
                 }
             }
         }
+
+        public static bool DeleteCustomer(int custID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        Customer cust = session.Get<Customer>(custID);
+                        session.Delete(cust);
+                        tx.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+                        return false;
+                    }
+                }
+            }
+        }
         #endregion Customer
+
+        #region Member
+        public static bool SaveMemberInfo(Member _member)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.SaveOrUpdate(_member);
+                        tx.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+                        tx.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public static bool DeleteMember(int memID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        Member memb = session.Get<Member>(memID);
+                        session.Delete(memb);
+                        tx.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+                        return false;
+                    }
+                }
+            }
+        }
+        #endregion Member
+
     }
 }

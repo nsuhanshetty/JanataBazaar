@@ -28,12 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPLFNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMemberNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblEmailID = new System.Windows.Forms.Label();
+            this.lblPhoneNo = new System.Windows.Forms.Label();
+            this.lblMobile = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.txtPhoneNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -41,13 +47,10 @@
             this.txtEmailID = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtMobNo = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblMobile = new System.Windows.Forms.Label();
-            this.lblPhoneNo = new System.Windows.Forms.Label();
-            this.lblEmailID = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -56,7 +59,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtMemberNo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 182);
+            this.groupBox2.Location = new System.Drawing.Point(12, 227);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(393, 77);
             this.groupBox2.TabIndex = 137;
@@ -66,7 +69,7 @@
             // txtPLFNo
             // 
             this.txtPLFNo.Location = new System.Drawing.Point(125, 45);
-            this.txtPLFNo.MaxLength = 100;
+            this.txtPLFNo.MaxLength = 15;
             this.txtPLFNo.Name = "txtPLFNo";
             this.txtPLFNo.Size = new System.Drawing.Size(243, 20);
             this.txtPLFNo.TabIndex = 138;
@@ -83,7 +86,7 @@
             // txtMemberNo
             // 
             this.txtMemberNo.Location = new System.Drawing.Point(125, 19);
-            this.txtMemberNo.MaxLength = 100;
+            this.txtMemberNo.MaxLength = 15;
             this.txtMemberNo.Name = "txtMemberNo";
             this.txtMemberNo.Size = new System.Drawing.Size(243, 20);
             this.txtMemberNo.TabIndex = 136;
@@ -111,12 +114,57 @@
             this.groupBox1.Controls.Add(this.txtEmailID);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtMobNo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(393, 164);
             this.groupBox1.TabIndex = 136;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Member Details";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(16, 128);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 142;
+            this.lblAddress.Text = "Address";
+            // 
+            // lblEmailID
+            // 
+            this.lblEmailID.AutoSize = true;
+            this.lblEmailID.Location = new System.Drawing.Point(16, 101);
+            this.lblEmailID.Name = "lblEmailID";
+            this.lblEmailID.Size = new System.Drawing.Size(46, 13);
+            this.lblEmailID.TabIndex = 141;
+            this.lblEmailID.Text = "Email ID";
+            // 
+            // lblPhoneNo
+            // 
+            this.lblPhoneNo.AutoSize = true;
+            this.lblPhoneNo.Location = new System.Drawing.Point(16, 74);
+            this.lblPhoneNo.Name = "lblPhoneNo";
+            this.lblPhoneNo.Size = new System.Drawing.Size(82, 13);
+            this.lblPhoneNo.TabIndex = 140;
+            this.lblPhoneNo.Text = "Phone No. [+0 ]";
+            // 
+            // lblMobile
+            // 
+            this.lblMobile.AutoSize = true;
+            this.lblMobile.Location = new System.Drawing.Point(16, 45);
+            this.lblMobile.Name = "lblMobile";
+            this.lblMobile.Size = new System.Drawing.Size(85, 13);
+            this.lblMobile.TabIndex = 139;
+            this.lblMobile.Text = "Mobile No. [+91]";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(16, 20);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 138;
+            this.lblName.Text = "Name ";
             // 
             // txtPhoneNo
             // 
@@ -125,6 +173,7 @@
             this.txtPhoneNo.Name = "txtPhoneNo";
             this.txtPhoneNo.Size = new System.Drawing.Size(243, 20);
             this.txtPhoneNo.TabIndex = 2;
+            this.txtPhoneNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhoneNo_Validating);
             // 
             // label1
             // 
@@ -162,6 +211,7 @@
             this.txtEmailID.Name = "txtEmailID";
             this.txtEmailID.Size = new System.Drawing.Size(243, 20);
             this.txtEmailID.TabIndex = 3;
+            this.txtEmailID.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmailID_Validating);
             // 
             // txtName
             // 
@@ -169,6 +219,8 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(243, 20);
             this.txtName.TabIndex = 0;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
+            this.txtName.Validated += new System.EventHandler(this.txtName_Validated);
             // 
             // txtMobNo
             // 
@@ -177,66 +229,30 @@
             this.txtMobNo.Name = "txtMobNo";
             this.txtMobNo.Size = new System.Drawing.Size(243, 20);
             this.txtMobNo.TabIndex = 1;
+            this.txtMobNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtMobNo_Validating);
             // 
-            // lblName
+            // errorProvider1
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(16, 20);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 138;
-            this.lblName.Text = "Name ";
-            // 
-            // lblMobile
-            // 
-            this.lblMobile.AutoSize = true;
-            this.lblMobile.Location = new System.Drawing.Point(16, 45);
-            this.lblMobile.Name = "lblMobile";
-            this.lblMobile.Size = new System.Drawing.Size(85, 13);
-            this.lblMobile.TabIndex = 139;
-            this.lblMobile.Text = "Mobile No. [+91]";
-            // 
-            // lblPhoneNo
-            // 
-            this.lblPhoneNo.AutoSize = true;
-            this.lblPhoneNo.Location = new System.Drawing.Point(16, 74);
-            this.lblPhoneNo.Name = "lblPhoneNo";
-            this.lblPhoneNo.Size = new System.Drawing.Size(82, 13);
-            this.lblPhoneNo.TabIndex = 140;
-            this.lblPhoneNo.Text = "Phone No. [+0 ]";
-            // 
-            // lblEmailID
-            // 
-            this.lblEmailID.AutoSize = true;
-            this.lblEmailID.Location = new System.Drawing.Point(16, 101);
-            this.lblEmailID.Name = "lblEmailID";
-            this.lblEmailID.Size = new System.Drawing.Size(46, 13);
-            this.lblEmailID.TabIndex = 141;
-            this.lblEmailID.Text = "Email ID";
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(16, 128);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(45, 13);
-            this.lblAddress.TabIndex = 142;
-            this.lblAddress.Text = "Address";
+            this.errorProvider1.ContainerControl = this;
             // 
             // Winform_MemberDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 266);
+            this.ClientSize = new System.Drawing.Size(413, 331);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Winform_MemberDetails";
             this.Text = "Add Member Details";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -260,5 +276,6 @@
         internal System.Windows.Forms.Label lblPhoneNo;
         internal System.Windows.Forms.Label lblEmailID;
         internal System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

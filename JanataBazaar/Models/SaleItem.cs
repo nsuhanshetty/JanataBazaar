@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JanataBazaar.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace JanataBazaar.Models
         public int ID { get; set; }
         public List<SaleItem> Items { get; set; }
         public Customer Customer { get; set; }
+        public Member Member { get; set; }
         public decimal PaidAmount { get; set; }
         public decimal BalanceAmount { get; set; }
         public decimal TotalAmount { get; set; }

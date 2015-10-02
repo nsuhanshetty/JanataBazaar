@@ -51,3 +51,5 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_VATDetails.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.VATRevisionRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_MemberDetails.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_CustomerRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_MemberRegister.resources

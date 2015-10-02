@@ -45,8 +45,10 @@ namespace JanataBazaar.View.Details
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
+            ProcessTabKey(true);
+
             saleItem.Quantity = int.Parse(nudQuantity.Value.ToString());
-            saleItem.TotalPrice = decimal.Parse(txtTotalPrice.Text);
+            saleItem.TotalPrice = (decimal.Parse(nudQuantity.Value.ToString()) * decimal.Parse(txtPrice.Text));
 
             Winform_SaleDetails saleDetails = Application.OpenForms["Winform_SaleDetails"] as Winform_SaleDetails;
             if (saleDetails != null)

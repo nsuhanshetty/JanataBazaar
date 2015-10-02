@@ -1,4 +1,5 @@
 ﻿using JanataBazaar.Builders;
+using JanataBazaar.Model;
 using JanataBazaar.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace JanataBazaar.View.Details
     {
         List<SaleItem> saleItemList = new List<SaleItem>();
         Customer cust = new Customer();
+        Member memb = new Member();
 
         #region Property
         private decimal amntPaid = 0;
@@ -80,7 +82,15 @@ namespace JanataBazaar.View.Details
 
         private void AddCustomerToolStrip_Click(object sender, EventArgs e)
         {
-            new Register.Winform_AddCustomer().ShowDialog();
+            AddConsumerDetails();
+        }
+
+        private void AddConsumerDetails()
+        {
+            if (rdbMember.Checked)
+                new Register.WinForm_MemberRegister().ShowDialog();
+            else
+                new Register.WinForm_CustomerRegister().ShowDialog();
         }
 
         private void txtSrcName_TextChanged(object sender, EventArgs e)
@@ -122,15 +132,15 @@ namespace JanataBazaar.View.Details
             }
             #endregion Validation
 
-            SaleItem saleItem = new SaleItem(itemsku.Item, itemsku.Wholesale,itemsku.QuantityPerPack* itemsku.PackageQuantity, 1, itemsku.Wholesale);
+            SaleItem saleItem = new SaleItem(itemsku.Item, itemsku.Wholesale, itemsku.QuantityPerPack * itemsku.PackageQuantity, 1, itemsku.Wholesale);
             saleItemList.Add(saleItem);
 
             dgvSaleItem.Rows.Add();
             var _index = dgvSaleItem.Rows.Count - 1;
-            PopulateDgvSaleItem(saleItem,_index);
+            PopulateDgvSaleItem(saleItem, _index);
         }
 
-        private void PopulateDgvSaleItem(SaleItem itemsku,int index)
+        private void PopulateDgvSaleItem(SaleItem itemsku, int index)
         {
             /* sale item grid
              * name - Brand - quantity - price - total amount
@@ -166,7 +176,7 @@ namespace JanataBazaar.View.Details
         {
             saleItemList[index] = saleItem;
 
-            PopulateDgvSaleItem(saleItem,index);
+            PopulateDgvSaleItem(saleItem, index);
         }
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
@@ -174,7 +184,7 @@ namespace JanataBazaar.View.Details
             #region _validation
             if (this.cust == null)
             {
-                MessageBox.Show("Adding Customer is Mandatory.","Add Customer",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Adding Customer is Mandatory.", "Add Customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (this.saleItemList.Count == 0)
@@ -197,15 +207,19 @@ namespace JanataBazaar.View.Details
         private void dgvSaleItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            new Winform_SaleItemDetails(saleItemList[e.RowIndex],e.RowIndex).ShowDialog();
+            new Winform_SaleItemDetails(saleItemList[e.RowIndex], e.RowIndex).ShowDialog();
         }
 
-        public void UpdateCustomerControls(Customer _cust)
+        public void UpdateCustomerControls(Person _person)
         {
-            this.cust = _cust;
-            txtName.Text = _cust.Name;
-            txtPhoneNo.Text = _cust.Phone_No;
-            txtMobNo.Text = _cust.Mobile_No;
+            if (rdbMember.Checked)
+                this.memb = PeoplePracticeBuilder.GetMemberInfo(_person.ID);
+            else
+                this.cust = PeoplePracticeBuilder.GetCustomerInfo(_person.ID);
+
+            txtName.Text = _person.Name;
+            txtPhoneNo.Text = _person.Phone_No;
+            txtMobNo.Text = _person.Mobile_No;
         }
 
         private void txtAmntPaid_Validating(object sender, CancelEventArgs e)
@@ -234,6 +248,41 @@ namespace JanataBazaar.View.Details
                 //TotalAmount = totAmnt;
                 AmountPaid = int.Parse(txtAmntPaid.Text);
             }
+        }
+
+        private void rdbCash_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCash.Checked)
+                rdbMember.Checked = true;
+            else
+                rdbCustomer.Checked = true;
+        }
+
+        private void rdbMember_CheckedChanged(object sender, EventArgs e)
+        {
+            bool _checked = rdbMember.Checked;
+            rdbCash.Checked = _checked;
+            rdbCredit.Checked = !_checked;
+
+            if (!string.IsNullOrEmpty(txtName.Text))
+                AddConsumerDetails();
+        }
+
+        private void txtTransCharge_Validating(object sender, CancelEventArgs e)
+        {
+            Match _match = Regex.Match(txtTransCharge.Text, "^\\d*$");
+            string _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
+
+            errorProvider1.SetError(txtTransCharge, _errorMsg);
+            if (_errorMsg != "")
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                txtTransCharge.Text = "";
+                AmountPaid = 0;
+                return;
+            }
+
         }
     }
 }

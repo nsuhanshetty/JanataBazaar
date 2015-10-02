@@ -38,6 +38,7 @@
             this.NewVendToolStrip = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
+            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).BeginInit();
@@ -87,6 +88,8 @@
             this.dgvRegister.AllowUserToDeleteRows = false;
             this.dgvRegister.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colDelete});
             this.dgvRegister.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRegister.Location = new System.Drawing.Point(3, 16);
             this.dgvRegister.Name = "dgvRegister";
@@ -137,6 +140,13 @@
             this.toolStripButtonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "Click To Delete";
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Visible = false;
+            // 
             // WinformRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,5 +181,6 @@
         private System.Windows.Forms.ToolStripButton NewVendToolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.DataGridViewButtonColumn colDelete;
     }
 }

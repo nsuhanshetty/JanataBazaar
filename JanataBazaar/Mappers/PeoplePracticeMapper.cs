@@ -51,4 +51,20 @@ namespace JanataBazaar.Mappers
             Map(x => x.PLFNo);
         }
     }
+
+    class MemberMapper : ClassMap<Member>
+    {
+        public MemberMapper()
+        {
+            Id(x => x.ID).GeneratedBy.Identity();
+            Map(x => x.Name);
+            Map(x => x.Mobile_No);
+            Map(x => x.Phone_No);
+            Map(x => x.Email);
+            Map(x => x.Address);
+
+            Map(x => x.MemberNo);
+            Map(x => x.PLFNo);
+        }
+    }
 }

@@ -1,22 +1,35 @@
-﻿using JanataBazaar.Models;
+﻿using JanataBazaar.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JanataBazaar.View.Details
 {
     public partial class Winform_CustomerDetails : Winform_Details
     {
+        Customer _cust;
         public Winform_CustomerDetails()
         {
             InitializeComponent();
+        }
+
+        public Winform_CustomerDetails(Customer _cust)
+        {
+            InitializeComponent();
+
+            this._cust = _cust;
+
+            /*Load Controls*/
+            txtAddress.Text = _cust.Address;
+            txtEmailID.Text = _cust.Email;
+            txtMobNo.Text = _cust.Mobile_No;
+            txtName.Text = _cust.Name;
+            txtPhoneNo.Text = _cust.Phone_No;
+
+            txtAccountNo.Text = _cust.AccountNo;
+            txtPLFNo.Text = _cust.PLFNo;
         }
 
         #region _Validations
@@ -101,15 +114,27 @@ namespace JanataBazaar.View.Details
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
-            UpdateStatus("Saving Customer", 100);
-            string[] input = { "txtPhoneNo","txtAddress", "txtEmailID" };
+            UpdateStatus("Saving Customer", 50);
+            string[] input = { "txtPhoneNo", "txtAddress", "txtEmailID" };
             if (Utilities.Validation.IsNullOrEmpty(this, true, new List<string>(input)))
             {
                 return;
             }
 
-            Customer cust = new Customer(txtName.Text, txtMobNo.Text, txtPhoneNo.Text,txtAccountNo.Text, txtPLFNo.Text, txtAddress.Text, txtEmailID.Text);
-            bool success = Savers.PeoplePracticeSaver.SaveCustomerInfo(cust);
+            if (_cust == null)
+                _cust = new Customer(txtName.Text, txtMobNo.Text, txtPhoneNo.Text, txtAccountNo.Text, txtPLFNo.Text, txtAddress.Text, txtEmailID.Text);
+            else
+            {
+                _cust.Name = txtName.Text;
+                _cust.Mobile_No = txtMobNo.Text;
+                _cust.Phone_No = txtPhoneNo.Text;
+                _cust.AccountNo = txtAccountNo.Text;
+                _cust.PLFNo = txtPLFNo.Text;
+                _cust.Address = txtAddress.Text;
+                _cust.Email = txtEmailID.Text;
+            }
+
+            bool success = Savers.PeoplePracticeSaver.SaveCustomerInfo(_cust);
 
             if (success)
             {

@@ -79,7 +79,6 @@
     <Compile Include="Mappers\PeoplePracticeMapper.cs" />
     <Compile Include="Mappers\PurchaseOrderMapping.cs" />
     <Compile Include="Mappers\VATRevisionMapper.cs" />
-    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\PeoplePractice.cs" />
     <Compile Include="Models\Purchase.cs" />
@@ -202,6 +201,18 @@
     <Compile Include="View\Register\Winform_AddVendor.Designer.cs">
       <DependentUpon>Winform_AddVendor.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Register\WinForm_CustomerRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\WinForm_CustomerRegister.Designer.cs">
+      <DependentUpon>WinForm_CustomerRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\WinForm_MemberRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\WinForm_MemberRegister.Designer.cs">
+      <DependentUpon>WinForm_MemberRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Register\Winform_PurchaseIndentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_AddVendor.resx">
       <DependentUpon>Winform_AddVendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\WinForm_CustomerRegister.resx">
+      <DependentUpon>WinForm_CustomerRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\WinForm_MemberRegister.resx">
+      <DependentUpon>WinForm_MemberRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_PurchaseIndentForm.resx">
       <DependentUpon>Winform_PurchaseIndentForm.cs</DependentUpon>

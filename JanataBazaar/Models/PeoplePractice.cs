@@ -90,7 +90,7 @@ namespace JanataBazaar.Model
     //}
     #endregion Customer/Staff/Group
 
-    #region Vendor
+  
     public class Vendor
     {
         public virtual int ID { get; set; }
@@ -133,6 +133,68 @@ namespace JanataBazaar.Model
             this.DurationCount = dCount;
             this.DurationTerm = inDays;
         }
-    #endregion Vendor
+   
+    }
+
+    public class Person
+    {
+        public virtual int ID { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Mobile_No { get; set; }
+        public virtual string Phone_No { get; set; }
+        public virtual string Address { get; set; }
+        public virtual string Email { get; set; }
+    }
+   
+    public class Customer : Person
+    {
+        //public virtual int ID { get; set; }
+        //public virtual string Name { get; set; }
+        //public virtual string Mobile_No { get; set; }
+        //public virtual string Phone_No { get; set; }
+        //public virtual string Address { get; set; }
+        //public virtual string Email { get; set; }
+
+        public virtual string AccountNo { get; set; }
+        public virtual string PLFNo { get; set; }
+
+        public Customer() { }
+        public Customer(string _name, string _mobileNo, string _phoneNo, string _accNo, string _plfNo, string _address = "", string _email = "")
+        {
+            this.Name = _name;
+            this.Mobile_No = _mobileNo;
+            this.Phone_No = _phoneNo;
+            this.Address = _address;
+            this.Email = _email;
+
+            this.AccountNo = _accNo;
+            this.PLFNo = _plfNo;
+        }
+    }
+
+    public class Member:Person
+    {
+        //public virtual int ID { get; set; }
+        //public virtual string Name { get; set; }
+        //public virtual string Mobile_No { get; set; }
+        //public virtual string Phone_No { get; set; }
+        //public virtual string Address { get; set; }
+        //public virtual string Email { get; set; }
+
+        public virtual string MemberNo { get; set; }
+        public virtual string PLFNo { get; set; }
+
+        public Member() { }
+        public Member(string _name, string _mobileNo, string _phoneNo, string _memNo, string _plfNo, string _address = "", string _email = "")
+        {
+            this.Name = _name;
+            this.Mobile_No = _mobileNo;
+            this.Phone_No = _phoneNo;
+            this.Address = _address;
+            this.Email = _email;
+
+            this.MemberNo = _memNo;
+            this.PLFNo = _plfNo;
+        }
     }
 }

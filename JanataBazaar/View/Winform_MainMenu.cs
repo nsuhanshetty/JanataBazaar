@@ -84,12 +84,12 @@ namespace JanataBazaar
         #region toolstrip
         private void addCustomerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //new WinForm_CustomerDetails().ShowDialog();
+            new Winform_CustomerDetails().ShowDialog();
         }
 
         private void customerRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //new Winform_CustomerRegister().ShowDialog();
+            new WinForm_CustomerRegister().ShowDialog();
         }
 
         private void addStaffToolStripMenuItem_Click(object sender, EventArgs e)
@@ -323,6 +323,16 @@ namespace JanataBazaar
         private void addvToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Winform_VATDetails().ShowDialog();
+        }
+
+        private void addMemberDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_MemberDetails().ShowDialog();
+        }
+
+        private void memberRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new WinForm_MemberRegister().ShowDialog();
         }
     }
 

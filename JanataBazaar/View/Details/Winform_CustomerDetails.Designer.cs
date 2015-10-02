@@ -44,10 +44,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtAccountNo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtPLFNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtAccountNo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -196,27 +196,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Account Details";
             // 
-            // txtAccountNo
-            // 
-            this.txtAccountNo.Location = new System.Drawing.Point(125, 19);
-            this.txtAccountNo.MaxLength = 100;
-            this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.Size = new System.Drawing.Size(243, 20);
-            this.txtAccountNo.TabIndex = 136;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 137;
-            this.label2.Text = "Account No.";
-            // 
             // txtPLFNo
             // 
             this.txtPLFNo.Location = new System.Drawing.Point(125, 45);
-            this.txtPLFNo.MaxLength = 100;
+            this.txtPLFNo.MaxLength = 15;
             this.txtPLFNo.Name = "txtPLFNo";
             this.txtPLFNo.Size = new System.Drawing.Size(243, 20);
             this.txtPLFNo.TabIndex = 138;
@@ -229,6 +212,23 @@
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 139;
             this.label3.Text = "PLF No.";
+            // 
+            // txtAccountNo
+            // 
+            this.txtAccountNo.Location = new System.Drawing.Point(125, 19);
+            this.txtAccountNo.MaxLength = 15;
+            this.txtAccountNo.Name = "txtAccountNo";
+            this.txtAccountNo.Size = new System.Drawing.Size(243, 20);
+            this.txtAccountNo.TabIndex = 136;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 137;
+            this.label2.Text = "Account No.";
             // 
             // Winform_CustomerDetails
             // 

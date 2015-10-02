@@ -29,10 +29,10 @@ namespace JanataBazaar.View.Register
             dgvRegister.Columns.Add("colRevisionDate", "Date Of Revision");
             dgvRegister.Columns.Add("ID", "ID");
 
-            DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
-            btnCol.Name = "colDelete";
-            btnCol.HeaderText = "Click To Delete";
-            dgvRegister.Columns.Add(btnCol);
+            //DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn();
+            //btnCol.Name = "colDelete";
+            //btnCol.HeaderText = "Click To Delete";
+            //dgvRegister.Columns.Add(btnCol);
 
             LoadDGV();
         }
@@ -64,6 +64,7 @@ namespace JanataBazaar.View.Register
                     dgvRegister.Rows[index].Cells["colRevisionDate"].Value = item.DateOfRevision.ToString("dd/MMM/yy");
                     dgvRegister.Rows[index].Cells["ID"].Value = item.ID.ToString();
                     dgvRegister.Columns["colDelete"].Visible = true;
+                    dgvRegister.Columns["colDelete"].DisplayIndex = dgvRegister.Columns.Count - 1;
                 }
             }
 

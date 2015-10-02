@@ -1,4 +1,5 @@
 ﻿using JanataBazaar.Builders;
+using JanataBazaar.Model;
 using JanataBazaar.Models;
 using JanataBazaar.View.Details;
 using System;
