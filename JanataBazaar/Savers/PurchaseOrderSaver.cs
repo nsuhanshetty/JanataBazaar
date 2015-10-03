@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using NHibernate.Util;
 
 namespace JanataBazaar.Savers
 {
@@ -20,19 +21,25 @@ namespace JanataBazaar.Savers
                 {
                     try
                     {
-                        foreach (var itemsku in order.SKUItems)
+                        //update itemprice and also check if  item is inReserve
+                        foreach (var itemprice in order.ItemPriceList)
                         {
-                            itemsku.Purchase = order;
-
-                            if (itemsku.Item.InReserve && itemsku.Item.ReserveStock > (itemsku.PackageQuantity * itemsku.QuantityPerPack))
-                                itemsku.Item.InReserve = true;
-                            else
-                                itemsku.Item.InReserve = false;
+                            itemprice.Purchase = order;
+                            if (itemprice.Item.InReserve && itemprice.Item.ReserveStock < (itemprice.PackageQuantity * itemprice.QuantityPerPack))
+                                itemprice.Item.InReserve = false;
                         }
 
-                        foreach (var price in order.Price)
+                        // update/create  skuItem.
+                        foreach (var priceItem in order.ItemPriceList)
                         {
-                            price.Purchase = order;
+                            ItemSKU skuItem;
+
+                            skuItem = Builders.ItemSKUBuilder.GetItemSKUBasedOnPrice(priceItem.Item.ID, priceItem.Retail, priceItem.Wholesale);
+                            if (skuItem != null)
+                                skuItem.StockQuantity += priceItem.QuantityPerPack * priceItem.PackageQuantity;
+                            else
+                                skuItem = new ItemSKU(priceItem.Item, priceItem.QuantityPerPack * priceItem.PackageQuantity, priceItem.Retail, priceItem.Wholesale);
+                            session.SaveOrUpdate(skuItem);
                         }
 
                         session.SaveOrUpdate(order);

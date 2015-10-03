@@ -14,15 +14,15 @@ namespace JanataBazaar.Builders
     class ReportsBuilder
     {
         /*Stock Control Form*/
-        public static List<ItemSKU> GetSCFReport(string name = "", string brand = "", string section = "")
+        public static List<ItemPricing> GetSCFReport(string name = "", string brand = "", string section = "")
         {
-            ItemSKU itemSKUAlias = null;
+            ItemPricing itemSKUAlias = null;
             Item itemAlias = null;
             Section sectionAlias = null;
 
             using (var session = NHibernateHelper.OpenSession())
             {
-                List<ItemSKU> list = (session.QueryOver<ItemSKU>(() => itemSKUAlias)
+                List<ItemPricing> list = (session.QueryOver<ItemPricing>(() => itemSKUAlias)
                                             .Fetch(i => i.Package).Eager
                                              .Fetch(i => i.Purchase).Eager
                                             .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
@@ -31,7 +31,7 @@ namespace JanataBazaar.Builders
                                             .Where(() => itemAlias.Brand.IsLike(brand + "%"))
                                             .Where(() => sectionAlias.Name.IsLike(section + "%"))
                                             .Take(15)
-                                            .List()).ToList<ItemSKU>();
+                                            .List()).ToList<ItemPricing>();
                 return list;
             }
         }
@@ -41,10 +41,10 @@ namespace JanataBazaar.Builders
         {
             Item itemAlias = null;
             Section sectionAlias = null;
-            ItemSKU itemSKUAlias = null;
+            ItemPricing itemSKUAlias = null;
             using (var session = NHibernateHelper.OpenSession())
             {
-                IList list = (from itm in (session.QueryOver<ItemSKU>(() => itemSKUAlias)
+                IList list = (from itm in (session.QueryOver<ItemPricing>(() => itemSKUAlias)
                            .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
                            .JoinAlias(() => itemAlias.Section, () => sectionAlias)
                            .Where(() => sectionAlias.Name == section)

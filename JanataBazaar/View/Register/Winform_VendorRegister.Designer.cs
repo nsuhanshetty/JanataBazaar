@@ -36,6 +36,11 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 105);
+            this.groupBox1.Size = new System.Drawing.Size(385, 204);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtMobNo);
@@ -51,7 +56,7 @@
             // 
             // txtMobNo
             // 
-            this.txtMobNo.Location = new System.Drawing.Point(234, 16);
+            this.txtMobNo.Location = new System.Drawing.Point(284, 16);
             this.txtMobNo.MaxLength = 10;
             this.txtMobNo.Name = "txtMobNo";
             this.txtMobNo.Size = new System.Drawing.Size(94, 20);
@@ -61,7 +66,7 @@
             // lblMobile
             // 
             this.lblMobile.AutoSize = true;
-            this.lblMobile.Location = new System.Drawing.Point(170, 19);
+            this.lblMobile.Location = new System.Drawing.Point(220, 19);
             this.lblMobile.Name = "lblMobile";
             this.lblMobile.Size = new System.Drawing.Size(58, 13);
             this.lblMobile.TabIndex = 102;
@@ -88,11 +93,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 334);
+            this.ClientSize = new System.Drawing.Size(393, 334);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Winform_VendorRegister";
             this.Text = "Vendor Register";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

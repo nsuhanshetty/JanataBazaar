@@ -36,6 +36,11 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 105);
+            this.groupBox1.Size = new System.Drawing.Size(385, 200);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtMobNo);
@@ -92,6 +97,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_AddVendor";
             this.Text = "Add Vendor";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

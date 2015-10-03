@@ -14,14 +14,14 @@ namespace JanataBazaar.Builders
         public static IList GetSaleItem(string _name = null, string _brand = null, string _section=null)
         {
             IList saleItemList;
-            ItemSKU itemSKUAlias = null;
+            ItemPricing itemSKUAlias = null;
             Item itemAlias = null;
             Section sectionAlias = null;
 
             using ( var session = NHibernateHelper.OpenSession())
             {   //name - InStock Package- items/pack - Wholesaleprice/item
 
-                saleItemList = (from itm in (session.QueryOver<ItemSKU>(() => itemSKUAlias)
+                saleItemList = (from itm in (session.QueryOver<ItemPricing>(() => itemSKUAlias)
                                             .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
                                             .JoinAlias(() => itemAlias.Section, () => sectionAlias)
                                             .Where(() => itemAlias.Name.IsLike(_name + "%"))
@@ -34,9 +34,9 @@ namespace JanataBazaar.Builders
                                     itm.ID,
                                     itm.Item.Name,
                                     itm.Item.Brand,
-                                    PackageType = itm.Package.Name,
-                                    itm.PackageQuantity,
-                                    itm.QuantityPerPack,
+                                    PackType = itm.Package.Name,
+                                    Packages = itm.PackageQuantity,
+                                    QuantityPerPack = itm.QuantityPerPack,
                                     itm.Wholesale                                   
                                 })
                               .ToList();

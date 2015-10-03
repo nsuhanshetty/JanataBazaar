@@ -8,7 +8,6 @@ namespace JanataBazaar.Models
     {
         public virtual int ID { get; set; }
 
-
         public virtual string SCFNo { get; set; }
         public virtual string IRNNo { get; set; }
         public virtual string BillNo { get; set; }
@@ -20,8 +19,8 @@ namespace JanataBazaar.Models
         public virtual decimal TotalPurchasePrice { get; set; }
         public virtual decimal TotalWholesalePrice { get; set; }
         public virtual decimal TotalResalePrice { get; set; }
-        public virtual IList<ItemSKU> SKUItems { get; set; }
-        public virtual IList<ItemPricing> Price { get; set; }
+        public virtual IList<ItemPricing> ItemPriceList { get; set; }
+        //public virtual IList<ItemPricing> Price { get; set; }
 
         public PurchaseOrder() { }
 

@@ -13,13 +13,13 @@ namespace JanataBazaar.Reports
 {
     public partial class Report_SCF : Form
     {
-        List<ItemSKU> itemList;
+        List<ItemPricing> itemList;
         public Report_SCF()
         {
             InitializeComponent();
         }
 
-        public Report_SCF(List<ItemSKU> _itemList)
+        public Report_SCF(List<ItemPricing> _itemList)
         {
             InitializeComponent();
             this.itemList = _itemList;

@@ -12,7 +12,7 @@ namespace JanataBazaar.Savers
     {
         static ILog log = LogManager.GetLogger(typeof(SaleDetailsSaver));
 
-        public static bool SaveSaleDetails(Sale sale)
+        public static bool SaveSaleDetails(Sale sale, List<ItemSKU> skuList)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -20,9 +20,23 @@ namespace JanataBazaar.Savers
                 {
                     try
                     {
-                        //foreach (var item in sale.Items)
-                        //{
-                        //    item.Sale = sale;
+                        foreach (var item in sale.Items)
+                        {
+                            item.Sale = sale;
+                        }
+
+                        foreach (SaleItem saleitem in sale.Items)
+                        {
+                            int index = sale.Items.IndexOf(saleitem);
+
+                            ItemSKU skuitem = skuList[index];
+                            skuitem.StockQuantity -= saleitem.Quantity;
+
+                            session.SaveOrUpdate(skuitem);
+                        }
+
+                        session.SaveOrUpdate(sale);
+                        tx.Commit();
 
                         //    //update item stock
 
@@ -48,5 +62,7 @@ namespace JanataBazaar.Savers
                 }
             }
         }
+
+
     }
 }

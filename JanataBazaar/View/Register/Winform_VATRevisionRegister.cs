@@ -12,9 +12,9 @@ using JanataBazaar.View.Details;
 
 namespace JanataBazaar.View.Register
 {
-    public partial class VATRevisionRegister : WinformRegister
+    public partial class Winform_VATRevisionRegister : WinformRegister
     {
-        public VATRevisionRegister()
+        public Winform_VATRevisionRegister()
         {
             InitializeComponent();
         }

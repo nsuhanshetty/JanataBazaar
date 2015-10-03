@@ -112,6 +112,38 @@ namespace JanataBazaar.Builders
         }
     }
 
+    public class ItemPricingBuilder
+    {
+        public static ItemPricing GetItemPricingInfo(int _ID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                var _item = session.QueryOver<ItemPricing>()
+                    .Where(x => x.ID == _ID)
+                        .Fetch(i => i.Item).Eager
+                        .Future().SingleOrDefault();
+                return _item;
+            }
+        }
+
+        public static bool IsItemInStock(int _ID)
+        {
+            //todo: ask whats the minimum quantity for wholesale sale
+            ItemPricing itemskuAlias = null;
+            var minWholesaleQuant = 0;
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                //todo: Combine both the statments
+                ItemPricing _item = session.QueryOver(() => itemskuAlias)
+                    .Where(() => itemskuAlias.ID == _ID)
+                    .SingleOrDefault();
+
+                return _item.PackageQuantity * _item.QuantityPerPack > minWholesaleQuant ? true : false;
+            }
+        }
+    }
+
     public class ItemSKUBuilder
     {
         public static ItemSKU GetItemSKUInfo(int _ID)
@@ -126,20 +158,16 @@ namespace JanataBazaar.Builders
             }
         }
 
-        public static bool IsItemInStock(int _ID)
+        public static ItemSKU GetItemSKUBasedOnPrice(int _ID, decimal resalePrice, decimal wholesalePrice)
         {
-            //todo: ask whats the minimum quantity for wholesale sale
-            ItemSKU itemskuAlias = null;
-            var minWholesaleQuant = 0;
-
             using (var session = NHibernateHelper.OpenSession())
             {
-                //todo: Combine both the statments
-                ItemSKU _item = session.QueryOver(() => itemskuAlias)
-                    .Where(() => itemskuAlias.ID == _ID)
-                    .SingleOrDefault();
-
-                return _item.PackageQuantity * _item.QuantityPerPack > minWholesaleQuant ? true : false;
+                var _item = session.QueryOver<ItemSKU>()
+                    .Where(x => x.ID == _ID)
+                    .Where (x => x.ResalePrice == resalePrice && x.WholesalePrice == wholesalePrice)
+                        .Fetch(i => i.Item).Eager
+                        .Future().SingleOrDefault();
+                return _item;
             }
         }
     }

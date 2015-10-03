@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbVATPercent = new System.Windows.Forms.ComboBox();
             this.chkIsExempted = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -103,7 +104,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.txtPurchaseRate = new System.Windows.Forms.TextBox();
-            this.cmbVATPercent = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -299,10 +299,19 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "VAT Details";
             // 
+            // cmbVATPercent
+            // 
+            this.cmbVATPercent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVATPercent.FormattingEnabled = true;
+            this.cmbVATPercent.Location = new System.Drawing.Point(117, 35);
+            this.cmbVATPercent.Name = "cmbVATPercent";
+            this.cmbVATPercent.Size = new System.Drawing.Size(113, 21);
+            this.cmbVATPercent.TabIndex = 50;
+            this.cmbVATPercent.SelectedIndexChanged += new System.EventHandler(this.cmbVATPercent_SelectedIndexChanged);
+            // 
             // chkIsExempted
             // 
             this.chkIsExempted.AutoSize = true;
-            this.chkIsExempted.Enabled = false;
             this.chkIsExempted.Location = new System.Drawing.Point(116, 12);
             this.chkIsExempted.Name = "chkIsExempted";
             this.chkIsExempted.Size = new System.Drawing.Size(108, 17);
@@ -485,7 +494,7 @@
             this.groupBox3.Location = new System.Drawing.Point(13, 560);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(446, 46);
-            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wholesale Price Per Unit";
             // 
@@ -556,7 +565,7 @@
             this.groupBox4.Location = new System.Drawing.Point(13, 611);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(446, 46);
-            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Retail Price Per Unit";
             // 
@@ -815,7 +824,7 @@
             this.groupBox8.Location = new System.Drawing.Point(13, 509);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(446, 46);
-            this.groupBox8.TabIndex = 53;
+            this.groupBox8.TabIndex = 4;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Purchase Price Per Unit";
             // 
@@ -846,16 +855,6 @@
             this.txtPurchaseRate.TabIndex = 1;
             this.txtPurchaseRate.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtPurchaseRate.Validated += new System.EventHandler(this.txtPurchaseRate_Validated);
-            // 
-            // cmbVATPercent
-            // 
-            this.cmbVATPercent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVATPercent.FormattingEnabled = true;
-            this.cmbVATPercent.Location = new System.Drawing.Point(117, 35);
-            this.cmbVATPercent.Name = "cmbVATPercent";
-            this.cmbVATPercent.Size = new System.Drawing.Size(113, 21);
-            this.cmbVATPercent.TabIndex = 50;
-            this.cmbVATPercent.SelectedIndexChanged += new System.EventHandler(this.cmbVATPercent_SelectedIndexChanged);
             // 
             // Winform_ItemSKUDetails
             // 

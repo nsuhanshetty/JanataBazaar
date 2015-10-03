@@ -41,7 +41,7 @@
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(0, 101);
-            this.groupBox1.Size = new System.Drawing.Size(535, 200);
+            this.groupBox1.Size = new System.Drawing.Size(532, 200);
             // 
             // groupBox2
             // 
@@ -53,14 +53,14 @@
             this.groupBox2.Controls.Add(this.lblName);
             this.groupBox2.Location = new System.Drawing.Point(3, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(529, 45);
+            this.groupBox2.Size = new System.Drawing.Size(529, 42);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Item";
             // 
             // txtBrand
             // 
-            this.txtBrand.Location = new System.Drawing.Point(228, 19);
+            this.txtBrand.Location = new System.Drawing.Point(411, 16);
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(112, 20);
             this.txtBrand.TabIndex = 1;
@@ -69,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(181, 22);
+            this.label1.Location = new System.Drawing.Point(364, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 104;
@@ -79,7 +79,7 @@
             // 
             this.cmbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSection.FormattingEnabled = true;
-            this.cmbSection.Location = new System.Drawing.Point(404, 19);
+            this.cmbSection.Location = new System.Drawing.Point(63, 15);
             this.cmbSection.Name = "cmbSection";
             this.cmbSection.Size = new System.Drawing.Size(112, 21);
             this.cmbSection.TabIndex = 2;
@@ -87,7 +87,7 @@
             // lblMobile
             // 
             this.lblMobile.AutoSize = true;
-            this.lblMobile.Location = new System.Drawing.Point(351, 22);
+            this.lblMobile.Location = new System.Drawing.Point(10, 18);
             this.lblMobile.Name = "lblMobile";
             this.lblMobile.Size = new System.Drawing.Size(46, 13);
             this.lblMobile.TabIndex = 102;
@@ -95,7 +95,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(52, 19);
+            this.txtName.Location = new System.Drawing.Point(237, 16);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(112, 20);
             this.txtName.TabIndex = 0;
@@ -104,7 +104,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(8, 22);
+            this.lblName.Location = new System.Drawing.Point(193, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
             this.lblName.TabIndex = 100;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 327);
+            this.ClientSize = new System.Drawing.Size(538, 327);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_AddItemRegistry";
             this.Text = "Winform_AddItemRegistry";

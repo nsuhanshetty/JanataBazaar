@@ -383,6 +383,7 @@
             // txtInvoiceNo
             // 
             this.txtInvoiceNo.Location = new System.Drawing.Point(635, 19);
+            this.txtInvoiceNo.MaxLength = 15;
             this.txtInvoiceNo.Name = "txtInvoiceNo";
             this.txtInvoiceNo.Size = new System.Drawing.Size(117, 20);
             this.txtInvoiceNo.TabIndex = 1;
@@ -399,6 +400,7 @@
             // txtBillNo
             // 
             this.txtBillNo.Location = new System.Drawing.Point(635, 47);
+            this.txtBillNo.MaxLength = 15;
             this.txtBillNo.Name = "txtBillNo";
             this.txtBillNo.Size = new System.Drawing.Size(117, 20);
             this.txtBillNo.TabIndex = 2;
@@ -436,6 +438,7 @@
             // txtSCF
             // 
             this.txtSCF.Location = new System.Drawing.Point(376, 19);
+            this.txtSCF.MaxLength = 15;
             this.txtSCF.Name = "txtSCF";
             this.txtSCF.Size = new System.Drawing.Size(117, 20);
             this.txtSCF.TabIndex = 0;

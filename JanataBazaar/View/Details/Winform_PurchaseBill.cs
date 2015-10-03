@@ -10,7 +10,7 @@ namespace JanataBazaar.View.Details
     public partial class Winform_PurchaseBill : Winform_Details
     {
         Vendor vend = new Vendor();
-        List<ItemSKU> skuList = new List<ItemSKU>();
+        List<ItemPricing> ItemPriceList = new List<ItemPricing>();
         PurchaseOrder purchaseOrder = new PurchaseOrder();
         int RevisionID;
 
@@ -52,9 +52,9 @@ namespace JanataBazaar.View.Details
             if (e.RowIndex == -1) return;
             if (dgvProdDetails.Columns["ColProduct"].Index == e.ColumnIndex)
             {
-                if (e.RowIndex < skuList.Count)
+                if (e.RowIndex < ItemPriceList.Count)
                 {
-                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID,skuList[e.RowIndex]).ShowDialog();
+                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID,ItemPriceList[e.RowIndex]).ShowDialog();
                 }
                 else
                 {
@@ -65,16 +65,16 @@ namespace JanataBazaar.View.Details
             {
                 if (dgvProdDetails.Rows[e.RowIndex].IsNewRow) return;
                 else
-                    skuList.RemoveAt(e.RowIndex);
+                    ItemPriceList.RemoveAt(e.RowIndex);
             }
         }
 
-        internal void UpdateSKUItemList(int index, ItemSKU _itemsku)
+        internal void UpdateSKUItemList(int index, ItemPricing _itemsku)
         {
-            if (skuList.Count == 0 || skuList.Count <= index)
-                skuList.Add(_itemsku);
+            if (ItemPriceList.Count == 0 || ItemPriceList.Count <= index)
+                ItemPriceList.Add(_itemsku);
             else
-                skuList[index] = _itemsku;
+                ItemPriceList[index] = _itemsku;
 
             var _row = dgvProdDetails.Rows[index];
             _row.Cells["ColProduct"].Value = _itemsku.Item.Name;
@@ -96,18 +96,18 @@ namespace JanataBazaar.View.Details
             _row.Cells["ColTotWholesaleVal"].Value = _itemsku.TotalWholesaleValue;
             _row.Cells["ColTotResaleVal"].Value = _itemsku.TotalResaleValue;
 
-            _itemsku.StockQuantity = _itemsku.PackageQuantity * _itemsku.QuantityPerPack;
+            //_itemsku.StockQuantity = _itemsku.PackageQuantity * _itemsku.QuantityPerPack;
 
-            if (skuList.Count == 0 || skuList.Count <= index)
-                skuList.Add(_itemsku);
+            if (ItemPriceList.Count == 0 || ItemPriceList.Count <= index)
+                ItemPriceList.Add(_itemsku);
             else
-                skuList[index] = _itemsku;
+                ItemPriceList[index] = _itemsku;
 
             purchaseOrder.TotalPurchasePrice = 0;
             purchaseOrder.TotalWholesalePrice = 0;
             purchaseOrder.TotalResalePrice = 0;
 
-            foreach (var item in skuList)
+            foreach (var item in ItemPriceList)
             {
                 purchaseOrder.TotalPurchasePrice += item.TotalPurchaseValue;
                 purchaseOrder.TotalWholesalePrice += item.TotalWholesaleValue;
@@ -214,7 +214,7 @@ namespace JanataBazaar.View.Details
                 errorProvider1.SetError(txtVendorName, "Supplier Details Is Mandatory");
                 return;
             }
-            else if (skuList == null || skuList.Count == 0)
+            else if (ItemPriceList == null || ItemPriceList.Count == 0)
             {
                 MessageBox.Show("Add items to Purchase Grid.", "Purchase Grid Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -223,6 +223,10 @@ namespace JanataBazaar.View.Details
             if (Utilities.Validation.IsNullOrEmpty(this, true))
                 return;
             #endregion validate
+
+            DialogResult dr = MessageBox.Show("Purchase Order once placed cannot be altered. Do you want to Continue?","Save Purchase Order",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (dr == DialogResult.No)
+                return;
 
             purchaseOrder.BillType = rdbCredit.Checked ? true : false;
             purchaseOrder.SCFNo = txtSCF.Text;
@@ -235,19 +239,7 @@ namespace JanataBazaar.View.Details
             purchaseOrder.TotalPurchasePrice = decimal.Parse(txtTotalPurchasePrice.Text);
             purchaseOrder.TotalWholesalePrice = decimal.Parse(txtTotalWholesalePrice.Text);
             purchaseOrder.TotalResalePrice = decimal.Parse(txtTotalResalePrice.Text);
-            purchaseOrder.SKUItems = skuList;
-
-            List<ItemPricing> pricelist = new List<ItemPricing>();
-            foreach (var itemsku in skuList)
-            {
-                ItemPricing price = new ItemPricing(itemsku.Basic, itemsku.TransportPercent, itemsku.Transport,
-                                 itemsku.Misc, itemsku.MiscPercent, itemsku.VATPercent, itemsku.VAT, itemsku.DiscountPercent, itemsku.Discount,
-                                 itemsku.WholesaleMargin, itemsku.Wholesale, itemsku.RetailMargin, itemsku.Retail, itemsku.PurchaseValue, itemsku.Purchase,
-                                 itemsku.Item);
-                pricelist.Add(price);
-            }
-
-            purchaseOrder.Price = pricelist;
+            purchaseOrder.ItemPriceList = ItemPriceList;
 
             bool success = Savers.PurchaseOrderSaver.SaverPurchaseOrder(purchaseOrder);
             if (success)

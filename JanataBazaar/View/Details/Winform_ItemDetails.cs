@@ -54,10 +54,6 @@ namespace JanataBazaar.View.Details
             ProcessTabKey(true);
 
             List<string> except = new List<string> { "cmbBrand" };
-            if (chkIsExempted.Checked)
-                except.Add("txtVATPerc");
-            else
-                except.Remove("txtVATPerc");
 
             if (Utilities.Validation.IsNullOrEmpty(this, true, except))
                 return;
@@ -76,12 +72,12 @@ namespace JanataBazaar.View.Details
 
             Section sect = Builders.ItemDetailsBuilder.GetSection(cmbSection.Text);
 
-            decimal _vatPerc;
-            if (!chkIsExempted.Checked && !IsNullOrEmpty(txtVATPerc.Text))
-                decimal.TryParse(txtVATPerc.Text, out _vatPerc);
-            else
-                _vatPerc = 0;
-            item = new Item(txtName.Text,cmbUnit.Text, sect, cmbBrand.Text, chkIsExempted.Checked, _vatPerc, int.Parse(txtReserve.Text));
+            //decimal _vatPerc;
+            //if (!chkIsExempted.Checked && !IsNullOrEmpty(txtVATPerc.Text))
+            //    decimal.TryParse(txtVATPerc.Text, out _vatPerc);
+            //else
+            //    _vatPerc = 0;
+            item = new Item(txtName.Text, cmbUnit.Text, sect, cmbBrand.Text, int.Parse(txtReserve.Text));
 
             if (Savers.ItemDetailsSavers.SaveItem(item) == 0)
             {
@@ -93,15 +89,15 @@ namespace JanataBazaar.View.Details
             this.Close();
         }
 
-        private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
-        {
-            txtVATPerc.Enabled = !chkIsExempted.Checked;
+        //private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    txtVATPerc.Enabled = !chkIsExempted.Checked;
 
-            if (txtVATPerc.Enabled)
-                txtVATPerc.Validating += new CancelEventHandler(this.txtBox_Validating);
-            else
-                txtVATPerc.Validating += null;
-        }
+        //    if (txtVATPerc.Enabled)
+        //        txtVATPerc.Validating += new CancelEventHandler(this.txtBox_Validating);
+        //    else
+        //        txtVATPerc.Validating += null;
+        //}
 
         private void cmbVATPerc_Validating(object sender, CancelEventArgs e)
         {
@@ -131,7 +127,6 @@ namespace JanataBazaar.View.Details
                 e.Cancel = true;
             }
         }
-
 
         //todo: Check if BrandName, Name must be converted to uppercase. Must be done during userbased tests.
     }

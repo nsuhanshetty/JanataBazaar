@@ -35,12 +35,11 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                txtTrans.Text = _trans.ToString();
+                //txtTrans.Text = _trans.ToString();
                 return _transpercent;
             }
             set
             {
-                Trans = value != 0 ? Basic * (value / 100) : 0;
                 _transpercent = value;
             }
         }
@@ -56,12 +55,12 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                txtMisc.Text = _misc.ToString();
+                //txtMisc.Text = _misc.ToString();
                 return _miscpercent;
             }
             set
             {
-                Misc = value != 0 ? Basic * (value / 100) : 0;
+                //Misc = value != 0 ? Basic * (value / 100) : 0;
                 _miscpercent = value;
             }
         }
@@ -77,13 +76,11 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                txtVAT.Text = _vat.ToString();
+                //txtVAT.Text = _vat.ToString();
                 return _vatpercent;
             }
             set
             {
-
-                VAT = value != 0 ? Basic * (value / 100) : 0;
                 _vatpercent = value;
             }
         }
@@ -99,12 +96,12 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                txtDisc.Text = _disc.ToString();
+                //txtDisc.Text = _disc.ToString();
                 return _discpercent;
             }
             set
             {
-                Discount = value != 0 ? Basic * (value / 100) : 0;
+                // Discount = value != 0 ? Basic * (value / 100) : 0;
                 _discpercent = value;
             }
         }
@@ -129,7 +126,7 @@ namespace JanataBazaar.View.Details
             get
             {
                 //decimal _purchaseValue = ((Basic + Trans + Misc + VAT) - Discount);
-               
+
                 return _purchaseValue;
             }
             set
@@ -138,6 +135,7 @@ namespace JanataBazaar.View.Details
                 PurchaseRate = _purchaseValue;
             }
         }
+
         private decimal _wRate;
         public decimal WRate
         {
@@ -153,7 +151,7 @@ namespace JanataBazaar.View.Details
             }
             set
             {
-                WRate = (value != 0 ? (PurchaseRate * (value / 100)) : 0) + PurchaseRate;
+                //WRate = (value != 0 ? (PurchaseRate * (value / 100)) : 0) + PurchaseRate;
                 _wRatepercent = value;
             }
         }
@@ -173,14 +171,13 @@ namespace JanataBazaar.View.Details
             }
             set
             {
-                RRate = (value != 0 ? (WRate * (value / 100)) : 0) + WRate;
+                // RRate = (value != 0 ? (WRate * (value / 100)) : 0) + WRate;
                 _rRatepercent = value;
             }
         }
-
         #endregion 
 
-        public Winform_ItemSKUDetails(int index = 0, int revisionID=0)
+        public Winform_ItemSKUDetails(int index = 0, int revisionID = 0)
         {
             InitializeComponent();
             cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
@@ -190,20 +187,22 @@ namespace JanataBazaar.View.Details
             if (revisionID != 0)
             {
                 cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
-                cmbVATPercent.DisplayMember = "Percent";
+                //cmbVATPercent.DisplayMember = "Percent";
             }
         }
 
-        public Winform_ItemSKUDetails(int index,int revisionID, ItemSKU itemsku = null)
+        public Winform_ItemSKUDetails(int index, int revisionID, ItemPricing itemsku = null)
         {
             InitializeComponent();
             this.Index = index;
 
             this.revisionID = revisionID;
+
+            //set combobox is set to default.
             if (revisionID != 0)
             {
                 cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
-                cmbVATPercent.DisplayMember = "Percent";
+                //cmbVATPercent.DisplayMember = "Percent";
             }
 
             cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
@@ -226,6 +225,15 @@ namespace JanataBazaar.View.Details
                 dtpDOE.Value = itemsku.ExpiredDate;
             }
 
+
+            this.pack = itemsku.Package;
+            cmbPackType.SelectedIndex = cmbPackType.Items.IndexOf(this.pack.Name);
+            txtNoPacks.Text = itemsku.PackageQuantity.ToString();
+            txtItemsPerPack.Text = itemsku.QuantityPerPack.ToString();
+
+            txtNetWght.Text = itemsku.NetWeight.ToString();
+            txtGrossWght.Text = itemsku.GrossWeight.ToString();
+
             txtBasic.Text = itemsku.Basic.ToString();
 
             txtTransPercent.Text = itemsku.TransportPercent.ToString();
@@ -240,19 +248,38 @@ namespace JanataBazaar.View.Details
             cmbVATPercent.SelectedIndex = cmbVATPercent.Items.IndexOf(itemsku.VATPercent);
             txtVAT.Text = itemsku.VAT.ToString();
 
+            this.Basic = itemsku.Basic;
+
+            this.VATPercent = itemsku.VATPercent;
+            this.MiscPercent = itemsku.MiscPercent;
+            this.DiscountPercent = itemsku.DiscountPercent;
+            this.TransPercent = itemsku.TransportPercent;
+
+            this.VAT = itemsku.VAT;
+            this.Misc = itemsku.Misc;
+            this.Discount = itemsku.Discount;
+            this.Trans = itemsku.Transport;
+
+            //UpdateRates();
+            UpdateRates();
+
+            this.PurchaseRate = itemsku.PurchaseValue;
+
+            this.WRatePercent = itemsku.WholesaleMargin;
+            this.WRate = itemsku.Wholesale;
+
+            this.RRatePercent = itemsku.RetailMargin;
+            this.RRate = itemsku.Retail;
+
+            txtPurchaseRate.Text = itemsku.PurchaseValue.ToString();
+            //PurchaseRate = itemsku.PurchaseValue;
+
             txtWholePercent.Text = itemsku.WholesaleMargin.ToString();
             txtWholeRate.Text = itemsku.Wholesale.ToString();
 
             txtRetailPercent.Text = itemsku.RetailMargin.ToString();
             txtRetailRate.Text = itemsku.Retail.ToString();
 
-            this.pack = itemsku.Package;
-            cmbPackType.SelectedIndex = cmbPackType.Items.IndexOf(this.pack.Name);
-            txtNoPacks.Text = itemsku.PackageQuantity.ToString();
-            txtItemsPerPack.Text = itemsku.QuantityPerPack.ToString();
-
-            txtNetWght.Text = itemsku.NetWeight.ToString();
-            txtGrossWght.Text = itemsku.GrossWeight.ToString();
         }
 
         private void Winform_Item_Load(object sender, EventArgs e)
@@ -260,11 +287,11 @@ namespace JanataBazaar.View.Details
             this.toolStripParent.Items.Add(this.AddSectionToolStrip);
             this.toolStripParent.Items.Add(this.AddPackageToolStrip);
 
-            if (revisionID != 0)
-            {
-                cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
-                cmbVATPercent.DisplayMember = "Percent";
-            }
+            //if (revisionID != 0)
+            //{
+            //    cmbVATPercent.DataSource = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(revisionID);
+            //    cmbVATPercent.DisplayMember = "Percent";
+            //}
         }
 
         private void AddPackageToolStrip_Click(object sender, EventArgs e)
@@ -283,21 +310,6 @@ namespace JanataBazaar.View.Details
         }
 
         #region Validation
-        //  private void cmbName_Validating(object sender, CancelEventArgs e)
-        //  {
-        //      ComboBox cmb = (ComboBox)sender;
-        //      Match _match = Regex.Match(cmb.Text, "^[a-zA-Z\\s]+$");
-        //      string errorMsg = _match.Success ? "" : "Invalid Input\n" +
-        //"For example 'ABCabc'";
-        //      errorProvider1.SetError(cmb, errorMsg);
-
-        //      if (errorMsg != "")
-        //      {
-        //          e.Cancel = true;
-        //          cmb.Select(0, cmb.Text.Length);
-        //      }
-        //  }
-
         private void txtValue_Validating(object sender, CancelEventArgs e)
         {
             TextBox txt = (TextBox)sender;
@@ -346,35 +358,54 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        private void cmbVATPercent_Validating(object sender, CancelEventArgs e)
+        #region PercentValidated
+        //on validated update only the property
+        //updating control must be done seprately to encourage "Sepration Of Concerns."
+        private void txtTransPercent_Validated(object sender, EventArgs e)
         {
-            //ComboBox cmb = (ComboBox)sender;
-            //string _errorMsg;
+            TransPercent = (decimal.TryParse(txtTransPercent.Text, out _trans) ? _trans : 0);
+            Trans = TransPercent == 0 ? 0 : Basic * (TransPercent / 100);
+            txtTrans.Text = Trans.ToString();
 
-            //if (string.IsNullOrEmpty(cmb.Text))
-            //{
-            //    _errorMsg = "Invalid Amount input data type.\nExample: '2.2'";
-            //}
-            //else
-            //{
-            //    Match _match = Regex.Match(cmb.Text, "^[0-9]*\\.?[0-9]*$");
-            //    _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
-            //}
-            //errorProvider1.SetError(cmb, _errorMsg);
-
-            //if (_errorMsg != "")
-            //{
-            //    e.Cancel = true;
-            //    cmb.Select(0, cmb.Text.Length);
-            //}
+            UpdateRates();
         }
 
-        //private void cmbValue_Validated(object sender, EventArgs e)
-        //{
-        //    ComboBox cmb = (ComboBox)sender;
-        //    cmb.Text = Utilities.Validation.ToTitleCase(cmb.Text);
-        //}
+        private void txtMiscPercent_Validated(object sender, EventArgs e)
+        {
+            MiscPercent = (decimal.TryParse(txtMiscPercent.Text, out _misc) ? _misc : 0);
+            Misc = MiscPercent != 0 ? Basic * (MiscPercent / 100) : 0;
+            txtMisc.Text = Misc.ToString();
 
+            UpdateRates();
+        }
+
+        private void txtDiscPercent_Validated(object sender, EventArgs e)
+        {
+            DiscountPercent = (decimal.TryParse(txtDiscPercent.Text, out _disc) ? _disc : 0);
+            Discount = DiscountPercent != 0 ? Basic * (DiscountPercent / 100) : 0;
+            txtDisc.Text = Discount.ToString();
+
+            UpdateRates();
+        }
+
+        private void txtWholePercent_Validated(object sender, EventArgs e)
+        {
+            WRatePercent = (decimal.TryParse(txtWholePercent.Text, out _wRate) ? _wRate : 0);
+
+            WRate = (WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate;
+            txtWholeRate.Text = WRate.ToString();
+        }
+
+        private void txtRetailPercent_Validated(object sender, EventArgs e)
+        {
+            RRatePercent = (decimal.TryParse(txtRetailPercent.Text, out _rRate) ? _rRate : 0);
+
+            RRate = (RRatePercent != 0 ? (WRate * (RRatePercent / 100)) : 0) + WRate;
+            txtRetailRate.Text = RRate.ToString();
+        }
+        #endregion PercentValidated
+
+        #region ratesValidated
         private void txtBasic_Validated(object sender, EventArgs e)
         {
             decimal _basic;
@@ -388,69 +419,36 @@ namespace JanataBazaar.View.Details
             UpdateRates();
         }
 
-        private void txtTransPercent_Validated(object sender, EventArgs e)
-        {
-            TransPercent = (decimal.TryParse(txtTransPercent.Text, out _trans) ? _trans : 0);
-            txtTrans.Text = Trans.ToString();
-            UpdateRates();
-        }
-
-        private void txtMiscPercent_Validated(object sender, EventArgs e)
-        {
-            MiscPercent = (decimal.TryParse(txtMiscPercent.Text, out _misc) ? _misc : 0);
-            txtMisc.Text = Misc.ToString();
-            UpdateRates();
-        }
-
-        private void cmbVATPercent_Validated(object sender, EventArgs e)
-        {
-            //VATPercent = (decimal.TryParse(txtVATPercent.Text, out _vat) ? _vat : 0);
-            //txtVAT.Text = VAT.ToString();
-            //UpdateRates();
-        }
-
-        private void txtDiscPercent_Validated(object sender, EventArgs e)
-        {
-            DiscountPercent = (decimal.TryParse(txtDiscPercent.Text, out _disc) ? _disc : 0);
-            txtDisc.Text = Discount.ToString();
-            UpdateRates();
-        }
-
-        private void txtWholePercent_Validated(object sender, EventArgs e)
-        {
-            WRatePercent = (decimal.TryParse(txtWholePercent.Text, out _wRate) ? _wRate : 0);
-            txtWholeRate.Text = WRate.ToString();
-        }
-
-        private void txtRetailPercent_Validated(object sender, EventArgs e)
-        {
-            RRatePercent = (decimal.TryParse(txtRetailPercent.Text, out _rRate) ? _rRate : 0);
-            txtRetailRate.Text = RRate.ToString();
-        }
-
-        private void txtPurchaseRate_Validated(object sender, EventArgs e)
-        {
-            PurchaseRate = decimal.Parse(txtPurchaseRate.Text);
-        }
-
-        private void txtWholeRate_Validated(object sender, EventArgs e)
-        {
-            WRate = decimal.Parse(txtWholeRate.Text);
-        }
-
-        private void txtRetailRate_Validated(object sender, EventArgs e)
-        {
-            RRate = decimal.Parse(txtRetailRate.Text);
-        }
-
         private void txtValues_Validated(object sender, EventArgs e)
         {
             Trans = (decimal.TryParse(txtTrans.Text, out _trans) ? _trans : 0);
             Misc = (decimal.TryParse(txtMisc.Text, out _misc) ? _misc : 0);
             VAT = (decimal.TryParse(txtVAT.Text, out _vat) ? _vat : 0);
             Discount = (decimal.TryParse(txtDisc.Text, out _disc) ? _disc : 0);
+
             UpdateRates();
         }
+
+        private void txtPurchaseRate_Validated(object sender, EventArgs e)
+        {
+            PurchaseRate = decimal.Parse(txtPurchaseRate.Text);
+
+            txtWholePercent_Validated(this, new EventArgs());
+            txtRetailPercent_Validated(this, new EventArgs());
+        }
+
+        private void txtWholeRate_Validated(object sender, EventArgs e)
+        {
+            WRate = decimal.Parse(txtWholeRate.Text);
+            txtRetailPercent_Validated(this, new EventArgs());
+        }
+
+        private void txtRetailRate_Validated(object sender, EventArgs e)
+        {
+            RRate = decimal.Parse(txtRetailRate.Text);
+        }
+        #endregion ratesValidated
+
         #endregion
 
         private void AddSectionToolStrip_Click(object sender, EventArgs e)
@@ -462,6 +460,7 @@ namespace JanataBazaar.View.Details
         private void UpdateRates()
         {
             PurchaseValue = ((Basic + Trans + Misc + VAT) - Discount);
+
             txtWholePercent_Validated(this, new EventArgs());
             txtRetailPercent_Validated(this, new EventArgs());
         }
@@ -479,8 +478,8 @@ namespace JanataBazaar.View.Details
             //txtVATPercent.Text = _item.VatPercent.ToString();
             //txtVAT.Enabled = !chkIsExempted.Checked;
 
-            VATPercent = _item.VatPercent;
-            txtVAT.Text = VAT.ToString();
+            //VATPercent = _item.VatPercent;
+            //txtVAT.Text = VAT.ToString();
         }
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
@@ -490,50 +489,50 @@ namespace JanataBazaar.View.Details
                                                            "txtTransPercent", "txtVAT", "cmbVATPercent","txtBrand","cmbPackType","txtNoPacks","txtNetWght","txtGrossWght" };
             if (Utilities.Validation.IsNullOrEmpty(this, true, exceptList)) return;
 
-            ItemSKU _itemSKU = new ItemSKU();
+            ItemPricing _itemPrice = new ItemPricing();
 
-            _itemSKU.Item = item;
-            _itemSKU.Basic = Basic;
+            _itemPrice.Item = item;
+            _itemPrice.Basic = Basic;
 
-            _itemSKU.Discount = Discount;
-            _itemSKU.DiscountPercent = DiscountPercent;
+            _itemPrice.Discount = Discount;
+            _itemPrice.DiscountPercent = DiscountPercent;
 
             if (chkDOM.Checked == true)
-                _itemSKU.ManufacturedDate = dtpDOM.Value;
+                _itemPrice.ManufacturedDate = dtpDOM.Value;
 
             if (chkDOE.Checked == true)
-                _itemSKU.ExpiredDate = dtpDOE.Value;
+                _itemPrice.ExpiredDate = dtpDOE.Value;
 
-            _itemSKU.Transport = Trans;
-            _itemSKU.TransportPercent = TransPercent;
+            _itemPrice.Transport = Trans;
+            _itemPrice.TransportPercent = TransPercent;
 
-            _itemSKU.Misc = Misc;
-            _itemSKU.MiscPercent = MiscPercent;
+            _itemPrice.Misc = Misc;
+            _itemPrice.MiscPercent = MiscPercent;
 
-            _itemSKU.VAT = VAT;
-            _itemSKU.VATPercent = VATPercent;
+            _itemPrice.VAT = chkIsExempted.Checked == true ? 0 : VAT;
+            _itemPrice.VATPercent = chkIsExempted.Checked == true ? 0 : VATPercent;
 
-            _itemSKU.Discount = Discount;
-            _itemSKU.DiscountPercent = DiscountPercent;
+            _itemPrice.Discount = Discount;
+            _itemPrice.DiscountPercent = DiscountPercent;
 
-            _itemSKU.Wholesale = WRate;
-            _itemSKU.WholesaleMargin = WRatePercent;
+            _itemPrice.Wholesale = WRate;
+            _itemPrice.WholesaleMargin = WRatePercent;
 
-            _itemSKU.Retail = RRate;
-            _itemSKU.RetailMargin = RRatePercent;
+            _itemPrice.Retail = RRate;
+            _itemPrice.RetailMargin = RRatePercent;
 
-            _itemSKU.PurchaseValue = PurchaseValue;
+            _itemPrice.PurchaseValue = PurchaseRate;
 
-            _itemSKU.Package = this.pack;
-            _itemSKU.PackageQuantity = string.IsNullOrEmpty(txtNoPacks.Text) ? 1 : int.Parse(txtNoPacks.Text);
-            _itemSKU.QuantityPerPack = int.Parse(txtItemsPerPack.Text);
+            _itemPrice.Package = this.pack;
+            _itemPrice.PackageQuantity = string.IsNullOrEmpty(txtNoPacks.Text) ? 1 : int.Parse(txtNoPacks.Text);
+            _itemPrice.QuantityPerPack = int.Parse(txtItemsPerPack.Text);
 
-            _itemSKU.NetWeight = string.IsNullOrEmpty(txtNetWght.Text) ? 0 : int.Parse(txtNetWght.Text);
-            _itemSKU.GrossWeight = string.IsNullOrEmpty(txtGrossWght.Text) ? 0 : int.Parse(txtGrossWght.Text);
+            _itemPrice.NetWeight = string.IsNullOrEmpty(txtNetWght.Text) ? 0 : int.Parse(txtNetWght.Text);
+            _itemPrice.GrossWeight = string.IsNullOrEmpty(txtGrossWght.Text) ? 0 : int.Parse(txtGrossWght.Text);
 
             Winform_PurchaseBill purchaseBill = Application.OpenForms["Winform_PurchaseBill"] as Winform_PurchaseBill;
             if (purchaseBill != null)
-                purchaseBill.UpdateSKUItemList(this.Index, _itemSKU);
+                purchaseBill.UpdateSKUItemList(this.Index, _itemPrice);
 
             UpdateStatus("ItemSKU Saved", 100);
             this.Close();
@@ -552,7 +551,7 @@ namespace JanataBazaar.View.Details
         {
             cmbVATPercent.Enabled = !chkIsExempted.Checked;
             txtVAT.Enabled = false;
-            
+
             //if (txtVATPerc.Enabled)
             //    txtVATPerc.Validating += new CancelEventHandler(this.txtBox_Validating);
             //else
@@ -562,6 +561,8 @@ namespace JanataBazaar.View.Details
         private void cmbVATPercent_SelectedIndexChanged(object sender, EventArgs e)
         {
             VATPercent = decimal.Parse(cmbVATPercent.Text);
+
+            VAT = VATPercent != 0 ? Basic * (VATPercent / 100) : 0;
             txtVAT.Text = VAT.ToString();
             UpdateRates();
         }

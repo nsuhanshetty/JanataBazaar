@@ -15,7 +15,7 @@ namespace JanataBazaar.View.Register
 {
     public partial class Winform_SCFRegister : WinformRegister
     {
-        List<ItemSKU> itemlist;
+        List<ItemPricing> itemlist;
         public Winform_SCFRegister()
         {
             InitializeComponent();

@@ -1,6 +1,6 @@
 ﻿namespace JanataBazaar.View.Register
 {
-    partial class VATRevisionRegister
+    partial class Winform_VATRevisionRegister
     {
         /// <summary>
         /// Required designer variable.

@@ -35,14 +35,16 @@ namespace JanataBazaar.Models
         public Customer Customer { get; set; }
         public Member Member { get; set; }
         public decimal PaidAmount { get; set; }
+        public decimal TransportCharge { get; set; }
         public decimal BalanceAmount { get; set; }
         public decimal TotalAmount { get; set; }
 
         public Sale() { }
-        public Sale(List<SaleItem> _items, Customer _customer, decimal _paidAmount, decimal _totalAmount, decimal _balanceAmount = 0)
+        public Sale(List<SaleItem> _items, decimal _paidAmount, decimal _totalAmount, Customer _customer = null, Member member = null, decimal _transportCharge = 0, decimal _balanceAmount = 0)
         {
             this.Items = _items;
             this.Customer = _customer;
+            this.TransportCharge = _transportCharge;
             this.PaidAmount = _paidAmount;
             this.BalanceAmount = _balanceAmount;
             this.TotalAmount = _totalAmount;

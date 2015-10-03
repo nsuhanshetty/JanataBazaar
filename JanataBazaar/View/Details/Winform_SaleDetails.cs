@@ -17,13 +17,17 @@ namespace JanataBazaar.View.Details
     public partial class Winform_SaleDetails : Winform_Details
     {
         List<SaleItem> saleItemList = new List<SaleItem>();
-        Customer cust = new Customer();
-        Member memb = new Member();
+        List<ItemSKU> skuItemList = new List<ItemSKU>();
+
+        Customer cust;
+        Member memb;
 
         #region Property
         private decimal amntPaid = 0;
         private decimal balAmnt = 0;
         private decimal totalAmnt = 0;
+        private decimal transCharge = 0;
+
         public decimal AmountPaid
         {
             get
@@ -34,7 +38,7 @@ namespace JanataBazaar.View.Details
             {
                 amntPaid = value;
                 txtAmntPaid.Text = amntPaid.ToString();
-                BalanceAmount = TotalAmount - AmountPaid;
+                BalanceAmount = TotalAmount - AmountPaid - TransportCharge;
             }
         }
 
@@ -61,6 +65,18 @@ namespace JanataBazaar.View.Details
             {
                 totalAmnt = value;
                 txtTotAmnt.Text = totalAmnt.ToString();
+            }
+        }
+
+        public decimal TransportCharge
+        {
+            get
+            {
+                return transCharge;
+            }
+            set
+            {
+                transCharge = value;
             }
         }
         #endregion Property
@@ -112,7 +128,7 @@ namespace JanataBazaar.View.Details
             int _ID = int.Parse(dgvSearch.Rows[e.RowIndex].Cells["ID"].Value.ToString());
 
             /*Check if item is in stock*/
-            bool inStock = ItemSKUBuilder.IsItemInStock(_ID);
+            bool inStock = ItemPricingBuilder.IsItemInStock(_ID);
             if (!inStock)
             {
                 MessageBox.Show("Item cannot be added as its not in stock.", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -132,7 +148,9 @@ namespace JanataBazaar.View.Details
             }
             #endregion Validation
 
-            SaleItem saleItem = new SaleItem(itemsku.Item, itemsku.Wholesale, itemsku.QuantityPerPack * itemsku.PackageQuantity, 1, itemsku.Wholesale);
+            skuItemList.Add(itemsku);
+
+            SaleItem saleItem = new SaleItem(itemsku.Item, itemsku.WholesalePrice, itemsku.StockQuantity, 1, itemsku.WholesalePrice);
             saleItemList.Add(saleItem);
 
             dgvSaleItem.Rows.Add();
@@ -168,7 +186,7 @@ namespace JanataBazaar.View.Details
             decimal amntPaid = 0;
             decimal.TryParse(txtAmntPaid.Text, out amntPaid);
             AmountPaid = amntPaid;
-            TotalAmount = total;
+            TotalAmount = total + TransportCharge;
             BalanceAmount = TotalAmount - AmountPaid;
         }
 
@@ -182,9 +200,9 @@ namespace JanataBazaar.View.Details
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
             #region _validation
-            if (this.cust == null)
+            if (this.cust == null && this.memb == null)
             {
-                MessageBox.Show("Adding Customer is Mandatory.", "Add Customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Adding Consumer details is Mandatory.", "Add Consumer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (this.saleItemList.Count == 0)
@@ -194,10 +212,13 @@ namespace JanataBazaar.View.Details
             }
             #endregion _validation
 
+            UpdateStatus("Saving", 25);
+
             /*Prepare Model*/
-            Sale sale = new Sale(this.saleItemList, this.cust, AmountPaid, TotalAmount, BalanceAmount);
+            Sale sale = new Sale(this.saleItemList,AmountPaid,TotalAmount,this.cust,this.memb,TransportCharge,BalanceAmount);
 
             //deduct the total stock on save
+            bool success = Savers.SaleDetailsSaver.SaveSaleDetails(sale, skuItemList);
         }
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
@@ -270,19 +291,22 @@ namespace JanataBazaar.View.Details
 
         private void txtTransCharge_Validating(object sender, CancelEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtTransCharge.Text)) return;
+
             Match _match = Regex.Match(txtTransCharge.Text, "^\\d*$");
             string _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
-
             errorProvider1.SetError(txtTransCharge, _errorMsg);
             if (_errorMsg != "")
             {
-                // Cancel the event and select the text to be corrected by the user.
                 e.Cancel = true;
                 txtTransCharge.Text = "";
-                AmountPaid = 0;
+                TransportCharge = 0;
                 return;
             }
 
+            TransportCharge = decimal.Parse(txtTransCharge.Text);
+            CalculatePaymentDetails();
+           
         }
     }
 }

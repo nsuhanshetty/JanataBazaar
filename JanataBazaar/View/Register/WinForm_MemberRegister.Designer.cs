@@ -118,7 +118,7 @@
             this.ClientSize = new System.Drawing.Size(593, 380);
             this.Controls.Add(this.groupBox2);
             this.Name = "WinForm_MemberRegister";
-            this.Text = "WinForm_MemberRegister";
+            this.Text = "Member Register";
             this.Load += new System.EventHandler(this.WinForm_MemberRegister_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
