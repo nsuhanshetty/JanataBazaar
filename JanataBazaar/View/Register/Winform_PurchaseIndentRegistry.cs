@@ -25,19 +25,19 @@ namespace JanataBazaar.View.Register
 
         protected void SearchToolStrip_Click(object sender, System.EventArgs e)
         {
-            if (DateTime.Compare(dtpFrom.Value.Date,dtpTo.Value.Date)>0)
+            if (DateTime.Compare(dtpFrom.Value.Date, dtpTo.Value.Date) > 0)
             {
-                MessageBox.Show("From Date of search cannot be greater than To Date of search","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("From Date of search cannot be greater than To Date of search", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             List<PurchaseIndent> indentList = new List<PurchaseIndent>();
             indentList = Builders.PurchaseIndentBuilder.GetIndentList(dtpFrom.Value.Date, dtpTo.Value.Date);
 
-            if (indentList != null || indentList.Count !=0)
+            if (indentList != null || indentList.Count != 0)
             {
                 dgvRegister.DataSource = (from item in indentList
-                                         select new { item.ID, item.DateOfIndent}).ToList();
+                                          select new { item.ID, item.DateOfIndent }).ToList();
 
                 dgvRegister.Columns["ID"].Visible = false;
             }
@@ -53,6 +53,12 @@ namespace JanataBazaar.View.Register
 
             int _ID = int.Parse(dgvRegister.Rows[e.RowIndex].Cells["ID"].Value.ToString());
             new Winform_PurchaseIndentForm(_ID).ShowDialog();
+        }
+
+        protected override void NewToolStrip_Click(object sender, System.EventArgs e)
+        {
+            new Winform_PurchaseIndentForm().ShowDialog();
+            this.SearchToolStrip_Click(this, new EventArgs());
         }
     }
 }

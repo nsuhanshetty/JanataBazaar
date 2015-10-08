@@ -21,13 +21,9 @@ namespace JanataBazaar.View.Details
 
         private void Winform_PurchaseBill_Load(object sender, EventArgs e)
         {
-            //todo: Remove traces of AddPackageToolStrip
-            //this.toolStripParent.Items.Add(this.AddPackageToolStrip);
-
-            this.toolStripParent.Items.Add(this.AddVendorToolStrip);
-
             //get the revision date based on Invoice date
             RevisionID = Builders.VATRevisionBuilder.GetRevisionDate(dtpInvoiceDate.Value.Date);
+            this.toolStripParent.Items.Add(this.AddVendorToolStrip);
         }
 
         public void UpdateVendorControls(Vendor _vend)
@@ -255,6 +251,7 @@ namespace JanataBazaar.View.Details
         private void dtpInvoiceDate_ValueChanged(object sender, EventArgs e)
         {
             MessageBox.Show("Changing Invoice dates will effect the item pricing ");
+            RevisionID = Builders.VATRevisionBuilder.GetRevisionDate(dtpInvoiceDate.Value.Date);
         }
     }
 }

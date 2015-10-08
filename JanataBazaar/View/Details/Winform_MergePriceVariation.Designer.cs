@@ -73,7 +73,7 @@
             // 
             this.panel3.Controls.Add(this.btnMergerLeft);
             this.panel3.Controls.Add(this.btnMergeRight);
-            this.panel3.Location = new System.Drawing.Point(409, 130);
+            this.panel3.Location = new System.Drawing.Point(433, 50);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(82, 256);
             this.panel3.TabIndex = 2;
@@ -103,7 +103,7 @@
             this.groupBox1.Controls.Add(this.dgvLowerPrice);
             this.groupBox1.Location = new System.Drawing.Point(21, 114);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(372, 275);
+            this.groupBox1.Size = new System.Drawing.Size(412, 275);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stocks With Lower Prices";
@@ -125,7 +125,7 @@
             this.dgvLowerPrice.Name = "dgvLowerPrice";
             this.dgvLowerPrice.ReadOnly = true;
             this.dgvLowerPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLowerPrice.Size = new System.Drawing.Size(366, 256);
+            this.dgvLowerPrice.Size = new System.Drawing.Size(406, 256);
             this.dgvLowerPrice.TabIndex = 0;
             this.dgvLowerPrice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLowerPrice_CellClick);
             // 
@@ -163,9 +163,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvHigherPrice);
-            this.groupBox2.Location = new System.Drawing.Point(505, 114);
+            this.groupBox2.Location = new System.Drawing.Point(523, 34);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(372, 275);
+            this.groupBox2.Size = new System.Drawing.Size(412, 275);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Stocks With Higher Prices";
@@ -187,7 +187,7 @@
             this.dgvHigherPrice.Name = "dgvHigherPrice";
             this.dgvHigherPrice.ReadOnly = true;
             this.dgvHigherPrice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHigherPrice.Size = new System.Drawing.Size(366, 256);
+            this.dgvHigherPrice.Size = new System.Drawing.Size(406, 256);
             this.dgvHigherPrice.TabIndex = 9;
             this.dgvHigherPrice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLowerPrice_CellClick);
             // 
@@ -226,7 +226,7 @@
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(356, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(394, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 23);
             this.pictureBox1.TabIndex = 7;
@@ -323,10 +323,12 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.pictureBox2);
+            this.groupBox4.Controls.Add(this.groupBox2);
+            this.groupBox4.Controls.Add(this.panel3);
             this.groupBox4.Controls.Add(this.pictureBox1);
             this.groupBox4.Location = new System.Drawing.Point(12, 80);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(873, 311);
+            this.groupBox4.Size = new System.Drawing.Size(941, 311);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             // 
@@ -334,7 +336,7 @@
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(837, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(908, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 23);
             this.pictureBox2.TabIndex = 8;
@@ -344,11 +346,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 395);
+            this.ClientSize = new System.Drawing.Size(963, 395);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox4);
             this.Name = "Winform_MergePriceVariation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -60,3 +60,8 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_PurchaseIndentDetails.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_PurchaseIndentRegistry.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_VATStatementRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Winform_ReportViewer.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\bin\Debug\JanataBazaar.exe.manifest
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\bin\Debug\JanataBazaar.application
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.exe.manifest
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.application

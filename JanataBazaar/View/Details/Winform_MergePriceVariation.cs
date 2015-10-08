@@ -182,7 +182,7 @@ namespace JanataBazaar.View.Details
                 var mergeWithSKUItem = row;
                 List<ItemSKU> tobeMergedSKUItemList = new List<ItemSKU>();
 
-                foreach (var _row in selLPrice)
+                foreach (var _row in selHPrice)
                 {
                     tobeMergedSKUItemList.Add(_row);
                 }

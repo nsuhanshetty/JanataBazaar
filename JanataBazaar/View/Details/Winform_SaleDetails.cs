@@ -219,8 +219,15 @@ namespace JanataBazaar.View.Details
 
             UpdateStatus("Saving..", 25);
 
+            decimal totalRebate = 0;
+            foreach (var item in skuItemList)
+            {
+                int index = skuItemList.IndexOf(item);
+                totalRebate += (item.ResalePrice - item.WholesalePrice) * saleItemList[index].Quantity;
+            }
+
             /*Prepare Model*/
-            Sale sale = new Sale(this.saleItemList,rdbCredit.Checked, AmountPaid, TotalAmount, dtpDateOfSale.Value.Date, this.cust, this.memb, TransportCharge, BalanceAmount);
+            Sale sale = new Sale(this.saleItemList, rdbCredit.Checked, AmountPaid, TotalAmount, dtpDateOfSale.Value.Date, totalRebate,this.cust, this.memb, TransportCharge, BalanceAmount);
 
             UpdateStatus("Saving..", 50);
             //deduct the total stock on save

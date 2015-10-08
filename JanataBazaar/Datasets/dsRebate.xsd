@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRebate" targetNamespace="http://tempuri.org/dsRebate.xsd" xmlns:mstns="http://tempuri.org/dsRebate.xsd" xmlns="http://tempuri.org/dsRebate.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRebate" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRebate" msprop:Generator_UserDSName="dsRebate">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtRebate" msprop:Generator_TableClassName="dtRebateDataTable" msprop:Generator_TableVarName="tabledtRebate" msprop:Generator_TablePropName="dtRebate" msprop:Generator_RowDeletingName="dtRebateRowDeleting" msprop:Generator_RowChangingName="dtRebateRowChanging" msprop:Generator_RowEvHandlerName="dtRebateRowChangeEventHandler" msprop:Generator_RowDeletedName="dtRebateRowDeleted" msprop:Generator_UserTableName="dtRebate" msprop:Generator_RowChangedName="dtRebateRowChanged" msprop:Generator_RowEvArgName="dtRebateRowChangeEvent" msprop:Generator_RowClassName="dtRebateRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SI_No" msprop:Generator_ColumnVarNameInTable="columnSI_No" msprop:Generator_ColumnPropNameInRow="SI_No" msprop:Generator_ColumnPropNameInTable="SI_NoColumn" msprop:Generator_UserColumnName="SI_No" type="xs:string" minOccurs="0" />
+              <xs:element name="Bill_No" msprop:Generator_ColumnVarNameInTable="columnBill_No" msprop:Generator_ColumnPropNameInRow="Bill_No" msprop:Generator_ColumnPropNameInTable="Bill_NoColumn" msprop:Generator_UserColumnName="Bill_No" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmount" msprop:Generator_ColumnVarNameInTable="columnTotalAmount" msprop:Generator_ColumnPropNameInRow="TotalAmount" msprop:Generator_ColumnPropNameInTable="TotalAmountColumn" msprop:Generator_UserColumnName="TotalAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalRebate" msprop:Generator_ColumnVarNameInTable="columnTotalRebate" msprop:Generator_ColumnPropNameInRow="TotalRebate" msprop:Generator_ColumnPropNameInTable="TotalRebateColumn" msprop:Generator_UserColumnName="TotalRebate" type="xs:string" minOccurs="0" />
+              <xs:element name="GrossAmount" msprop:Generator_ColumnVarNameInTable="columnGrossAmount" msprop:Generator_ColumnPropNameInRow="GrossAmount" msprop:Generator_ColumnPropNameInTable="GrossAmountColumn" msprop:Generator_UserColumnName="GrossAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="AgeOfBill" msprop:Generator_ColumnVarNameInTable="columnAgeOfBill" msprop:Generator_ColumnPropNameInRow="AgeOfBill" msprop:Generator_ColumnPropNameInTable="AgeOfBillColumn" msprop:Generator_UserColumnName="AgeOfBill" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

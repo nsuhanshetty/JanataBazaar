@@ -90,7 +90,7 @@ namespace JanataBazaar.View.Register
                                           ICF_No = itm.Purchase.IRNNo,
                                           Supplier = itm.Purchase.Vendor.Name,
                                           Supplier_BillNo = itm.Purchase.BillNo,
-                                          itm.Purchase.DateOfInvoice,
+                                          itm.Purchase.DateOfInvoice.Date,
                                           itm.Purchase.TotalPurchasePrice,
                                           itm.Purchase.TotalWholesalePrice,
                                           itm.Purchase.TotalResalePrice

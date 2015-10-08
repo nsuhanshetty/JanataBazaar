@@ -76,5 +76,27 @@ namespace JanataBazaar.Builders
                 return salesSummaryList;
             }
         }
+
+        //public static Dictionary<int, decimal> GetRebateList(List<Sale> saleSummaryList)
+        //{
+        //    using (var session = NHibernateHelper.OpenSession())
+        //    {
+        //        Dictionary<int, decimal> _rebateList = new Dictionary<int, decimal>();
+        //        foreach (var sale in saleSummaryList)
+        //        {
+        //            //get the sum of all the saleitems.retail value.
+        //            ItemSKU itemSKUAlias = null;
+        //            SaleItem saleItemAlias = null;
+
+        //            List<ItemSKU> skuItemList = session.QueryOver<ItemSKU>()
+        //                                          .JoinAlias(() => saleItemAlias.Item, () => itemSKUAlias)
+        //                                          .Where(() => saleItemAlias.Sale == sale)
+        //                                          .List().ToList();
+
+
+        //        }
+
+        //    }
+        //}
     }
 }

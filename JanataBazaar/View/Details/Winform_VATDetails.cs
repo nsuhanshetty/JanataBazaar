@@ -78,6 +78,7 @@ namespace JanataBazaar.View.Details
         private void LoadDGV()
         {
             dgvPercentList.DataSource = (from vat in vatPercentList
+                                         orderby vat.Percent ascending
                                          select new { vat.ID, VATPercentage = vat.Percent }).ToList();
 
             dgvPercentList.Columns["ID"].Visible = false;
@@ -143,9 +144,7 @@ namespace JanataBazaar.View.Details
             if (success)
             {
                 UpdateStatus("VAT Revision added successfully", 100);
-                DialogResult dr = MessageBox.Show("VAT Revision added successfully", "VAT Revision Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (dr == DialogResult.OK)
-                    this.Close();
+                this.Close();
             }
             else
             {

@@ -89,7 +89,6 @@
             // 
             // txtVendorName
             // 
-            this.txtVendorName.Enabled = false;
             this.txtVendorName.Location = new System.Drawing.Point(287, 81);
             this.txtVendorName.Name = "txtVendorName";
             this.txtVendorName.Size = new System.Drawing.Size(149, 20);
@@ -98,11 +97,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(191, 87);
+            this.label6.Location = new System.Drawing.Point(205, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 13);
+            this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 159;
-            this.label6.Text = "Name Of Supplier";
+            this.label6.Text = "Supplier Name";
             // 
             // groupBox3
             // 
@@ -156,7 +155,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(234, 62);
+            this.label10.Location = new System.Drawing.Point(238, 62);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 13);
             this.label10.TabIndex = 155;

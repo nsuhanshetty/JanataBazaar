@@ -39,6 +39,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtIfscCode = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtPhoneNo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtMobNo = new System.Windows.Forms.TextBox();
@@ -60,9 +63,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdbMonth = new System.Windows.Forms.RadioButton();
             this.rdbDays = new System.Windows.Forms.RadioButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -176,6 +176,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(77, 101);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.TabIndex = 127;
+            this.label15.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(77, 53);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 13);
+            this.label14.TabIndex = 126;
+            this.label14.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(77, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 125;
+            this.label13.Text = "*";
+            // 
             // txtPhoneNo
             // 
             this.txtPhoneNo.Location = new System.Drawing.Point(94, 72);
@@ -274,15 +304,16 @@
             // 
             // txtPLP
             // 
-            this.txtPLP.Location = new System.Drawing.Point(177, 90);
+            this.txtPLP.Location = new System.Drawing.Point(159, 90);
+            this.txtPLP.MaxLength = 15;
             this.txtPLP.Name = "txtPLP";
-            this.txtPLP.Size = new System.Drawing.Size(84, 20);
+            this.txtPLP.Size = new System.Drawing.Size(118, 20);
             this.txtPLP.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(126, 67);
+            this.label5.Location = new System.Drawing.Point(108, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 38;
@@ -292,7 +323,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(126, 93);
+            this.label6.Location = new System.Drawing.Point(108, 93);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 39;
@@ -302,7 +333,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 119);
+            this.label7.Location = new System.Drawing.Point(108, 119);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 37;
@@ -311,16 +342,18 @@
             // 
             // txtTin
             // 
-            this.txtTin.Location = new System.Drawing.Point(177, 64);
+            this.txtTin.Location = new System.Drawing.Point(159, 64);
+            this.txtTin.MaxLength = 15;
             this.txtTin.Name = "txtTin";
-            this.txtTin.Size = new System.Drawing.Size(84, 20);
+            this.txtTin.Size = new System.Drawing.Size(118, 20);
             this.txtTin.TabIndex = 0;
             // 
             // txtCST
             // 
-            this.txtCST.Location = new System.Drawing.Point(177, 116);
+            this.txtCST.Location = new System.Drawing.Point(159, 116);
+            this.txtCST.MaxLength = 15;
             this.txtCST.Name = "txtCST";
-            this.txtCST.Size = new System.Drawing.Size(84, 20);
+            this.txtCST.Size = new System.Drawing.Size(118, 20);
             this.txtCST.TabIndex = 2;
             // 
             // groupBox2
@@ -358,36 +391,6 @@
             this.rdbDays.TabStop = true;
             this.rdbDays.Text = "Days";
             this.rdbDays.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(77, 29);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(11, 13);
-            this.label13.TabIndex = 125;
-            this.label13.Text = "*";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(77, 53);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(11, 13);
-            this.label14.TabIndex = 126;
-            this.label14.Text = "*";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(77, 101);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(11, 13);
-            this.label15.TabIndex = 127;
-            this.label15.Text = "*";
             // 
             // Winform_VendorDetails
             // 

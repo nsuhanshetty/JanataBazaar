@@ -35,6 +35,7 @@ namespace JanataBazaar.Builders
             using (var session = NHibernateHelper.OpenSession())
             {
                 List<VATRevision> revList = session.QueryOver<VATRevision>()
+                                            .OrderBy(v => v.DateOfRevision).Desc
                                             .List() as List<VATRevision>;
                 return revList;
             }
@@ -64,7 +65,7 @@ namespace JanataBazaar.Builders
                 try
                 {
                     var revision = session.QueryOver<VATRevision>()
-                                            .Where(v => v.DateOfRevision.Date < invoiceDate.Date)
+                                            .Where(v => v.DateOfRevision.Date <= invoiceDate.Date)
                                             .OrderBy(v => v.DateOfRevision).Desc
                                             .Take(1).SingleOrDefault();
                     return revision.ID;

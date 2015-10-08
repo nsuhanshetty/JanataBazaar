@@ -21,6 +21,7 @@ namespace JanataBazaar.Mappers
             References(x => x.Member).Class<Member>()
                                      .Columns("MemberID")
                                      .Cascade.None();
+            Map(x => x.TotalRebate);
             Map(x => x.PaidAmount);
             Map(x => x.TransportCharge);
             Map(x => x.BalanceAmount);

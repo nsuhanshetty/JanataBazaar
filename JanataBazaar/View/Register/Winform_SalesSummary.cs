@@ -1,4 +1,6 @@
-﻿using JanataBazaar.View.Details;
+﻿using JanataBazaar.Datasets;
+using JanataBazaar.Models;
+using JanataBazaar.View.Details;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +15,7 @@ namespace JanataBazaar.View.Register
 {
     public partial class Winform_SalesSummary : WinformRegister
     {
+        List<Sale> saleSummaryList;
         public Winform_SalesSummary()
         {
             InitializeComponent();
@@ -68,14 +71,12 @@ namespace JanataBazaar.View.Register
             }
             #endregion SetDuration
 
-            //int _billNo;
-            //int.TryParse(txtBillNo.Text, out _billNo);
-
             dgvRegister.Rows.Clear();
-            var saleSummaryList = Builders.SaleItemBuilder.GetSalesSummary(isCredit, fromDate, toDate, txtName.Text, txtConsumeID.Text);
+            saleSummaryList = Builders.SaleItemBuilder.GetSalesSummary(isCredit, fromDate, toDate, txtName.Text, txtConsumeID.Text);
             if (saleSummaryList.Count != 0)
             {
                 dgvRegister.Rows.Clear();
+
                 foreach (var item in saleSummaryList)
                 {
                     int index = saleSummaryList.IndexOf(item);
@@ -84,8 +85,8 @@ namespace JanataBazaar.View.Register
                     dgvRegister.Rows[index].Cells["colSINo"].Value = index + 1;
                     dgvRegister.Rows[index].Cells["colSaleNo"].Value = item.ID;
                     dgvRegister.Rows[index].Cells["colsaleAmount"].Value = item.TotalAmount;
-                    dgvRegister.Rows[index].Cells["colRebateAmount"].Value = 0;
-                    dgvRegister.Rows[index].Cells["colGrossAmount"].Value = item.TotalAmount;
+                    dgvRegister.Rows[index].Cells["colRebateAmount"].Value = item.TotalRebate;
+                    dgvRegister.Rows[index].Cells["colGrossAmount"].Value = item.TotalAmount + item.TotalRebate;
                     dgvRegister.Rows[index].Cells["colbillAge"].Value = DateTime.Compare(DateTime.Today.Date, item.DateOfSale.Date);
                 }
             }
@@ -107,12 +108,18 @@ namespace JanataBazaar.View.Register
 
         private void LoadDGV()
         {
-            dgvRegister.Columns.Add("colSINo", "SI.NO");
-            dgvRegister.Columns.Add("colSaleNo", "Bill.NO");
+            dgvRegister.Columns.Add("colSINo", "SI_No.");
+            dgvRegister.Columns.Add("colSaleNo", "Bill_No.");
             dgvRegister.Columns.Add("colsaleAmount", "Sale Amount");
             dgvRegister.Columns.Add("colRebateAmount", "Rebate Amount");
             dgvRegister.Columns.Add("colGrossAmount", "Gross Amount");
             dgvRegister.Columns.Add("colbillAge", "Age Of Bill");
         }
+
+        protected override void toolStripButtonPrint_Click(object sender, System.EventArgs e)
+        {
+            new Winform_ReportViewer(saleSummaryList).ShowDialog();
+        }
+
     }
 }

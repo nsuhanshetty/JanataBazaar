@@ -37,12 +37,12 @@
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(3, 57);
-            this.groupBox1.Size = new System.Drawing.Size(239, 139);
+            this.groupBox1.Size = new System.Drawing.Size(239, 180);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvPercentView);
-            this.groupBox3.Location = new System.Drawing.Point(6, 202);
+            this.groupBox3.Location = new System.Drawing.Point(6, 242);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(237, 139);
             this.groupBox3.TabIndex = 131;
@@ -62,13 +62,13 @@
             this.dgvPercentView.Size = new System.Drawing.Size(231, 120);
             this.dgvPercentView.TabIndex = 0;
             // 
-            // VATRevisionRegister
+            // Winform_VATRevisionRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(246, 366);
+            this.ClientSize = new System.Drawing.Size(246, 407);
             this.Controls.Add(this.groupBox3);
-            this.Name = "VATRevisionRegister";
+            this.Name = "Winform_VATRevisionRegister";
             this.Text = "VATRevisionRegister";
             this.Load += new System.EventHandler(this.VATRevisionRegister_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);

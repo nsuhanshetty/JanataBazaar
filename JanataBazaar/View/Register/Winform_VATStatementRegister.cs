@@ -14,7 +14,7 @@ namespace JanataBazaar.View.Register
     public partial class Winform_VATStatementRegister : WinformRegister
     {
         List<PurchaseOrder> purchaseOrderList;
-        int currRowIndex=-1;
+        int currRowIndex = -1;
         public Winform_VATStatementRegister()
         {
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace JanataBazaar.View.Register
                 dgvRegister.DataSource = (from item in purchaseOrderList
                                           select new
                                           {
-                                              SI_No = purchaseOrderList.IndexOf(item)+1,
+                                              SI_No = purchaseOrderList.IndexOf(item) + 1,
                                               item.BillNo,
                                               BillDate = item.DateOfInvoice.Date.ToString("dd/MMM/yyyy"),
                                               SupplierName = item.Vendor.Name,
@@ -89,7 +89,7 @@ namespace JanataBazaar.View.Register
             currRowIndex = e.RowIndex;
 
             dgvVATDetails.Rows.Clear();
-            dgvVATDetails.Rows.Clear();
+            dgvVATDetails.Columns.Clear();
 
             //get all the percentages for a particular revision
             int revisionID = int.Parse(dgvRegister.Rows[e.RowIndex].Cells["RevisionID"].Value.ToString());
@@ -101,6 +101,7 @@ namespace JanataBazaar.View.Register
             Dictionary<decimal, decimal> vatPercentageSum = new Dictionary<decimal, decimal>();
             foreach (decimal percent in vatPercentList)
             {
+                if (percent == 0) continue;
                 decimal sumVATPercent = order.ItemPriceList.Where(i => i.VATPercent == percent).Select(i => i.VAT).Sum();
                 vatPercentageSum.Add(percent, sumVATPercent);
             }
@@ -120,11 +121,22 @@ namespace JanataBazaar.View.Register
         private void LoadDGVColumns(List<decimal> vatPercentList)
         {
             foreach (var percent in vatPercentList)
+            {
+                if (percent == 0) continue;
                 dgvVATDetails.Columns.Add("col" + percent + "%", percent + "%");
+            }
 
             foreach (var percent in vatPercentList)
+            {
+                if (percent == 0)
+                {
+                    dgvVATDetails.Columns.Add("colExempted", "Excempted");
+                    continue;
+                }
                 dgvVATDetails.Columns.Add("col" + percent + "Value", percent + "%_Amount");
+            }
 
+            dgvVATDetails.Columns["colExempted"].DisplayIndex = dgvVATDetails.Columns.Count - 1;
             dgvVATDetails.Columns.Add("colPosRodOff", "+");
             dgvVATDetails.Columns.Add("colNegRodOff", "-");
 
@@ -140,8 +152,21 @@ namespace JanataBazaar.View.Register
             }
             foreach (var item in vatBasicSum)
             {
+                if(item.Key == 0)
+                {
+                    dgvVATDetails.Rows[0].Cells["colExempted"].Value = item.Value;
+                    continue;
+                }
                 dgvVATDetails.Rows[0].Cells["col" + item.Key + "Value"].Value = item.Value;
             }
+
+            //decimal totalPurchaseValue = 0;
+            //foreach (var item in order.ItemPriceList)
+            //{
+            //    var _basic = item.Basic;
+            //    totalPurchaseValue += (_basic * item.TransportPercent) + (_basic * item.MiscPercent) + (_basic * item.VATPercent) - (_basic * item.DiscountPercent);
+            //}
+
             dgvVATDetails.Rows[0].Cells["colPosRodOff"].Value = 0;
             dgvVATDetails.Rows[0].Cells["colNegRodOff"].Value = 0;
             dgvVATDetails.Rows[0].Cells["colTotalAmount"].Value = order.TotalPurchasePrice;

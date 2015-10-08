@@ -110,6 +110,11 @@ namespace JanataBazaar.View.Register
 
             UpdateStatus((dgvRegister.RowCount == 0) ? "No Results Found" : dgvRegister.RowCount + " Results Found", 100);
         }
+
+        protected override void NewToolStrip_Click(object sender, System.EventArgs e)
+        {
+            new Winform_CustomerDetails().ShowDialog();
+        }
         #endregion Events
     }
 }

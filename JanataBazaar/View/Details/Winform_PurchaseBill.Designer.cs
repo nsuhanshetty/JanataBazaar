@@ -65,9 +65,9 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtBillNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtBillNo = new System.Windows.Forms.TextBox();
             this.txtSCF = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -144,7 +144,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(795, 54);
+            this.label3.Location = new System.Drawing.Point(796, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 130;
@@ -163,11 +163,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 54);
+            this.label4.Location = new System.Drawing.Point(20, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 131;
-            this.label4.Text = "Name Of Supplier";
+            this.label4.Text = "Supplier Name";
             // 
             // groupBox2
             // 
@@ -391,19 +391,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(584, 24);
+            this.label8.Location = new System.Drawing.Point(567, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 13);
+            this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 141;
-            this.label8.Text = "ICR No.";
-            // 
-            // txtBillNo
-            // 
-            this.txtBillNo.Location = new System.Drawing.Point(635, 47);
-            this.txtBillNo.MaxLength = 15;
-            this.txtBillNo.Name = "txtBillNo";
-            this.txtBillNo.Size = new System.Drawing.Size(117, 20);
-            this.txtBillNo.TabIndex = 2;
+            this.label8.Text = "Invoice No.";
             // 
             // label9
             // 
@@ -416,9 +408,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtBillNo);
             this.groupBox3.Controls.Add(this.txtSCF);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtBillNo);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.txtInvoiceNo);
             this.groupBox3.Controls.Add(this.label9);
@@ -434,6 +426,14 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bill Details";
+            // 
+            // txtBillNo
+            // 
+            this.txtBillNo.Location = new System.Drawing.Point(635, 47);
+            this.txtBillNo.MaxLength = 15;
+            this.txtBillNo.Name = "txtBillNo";
+            this.txtBillNo.Size = new System.Drawing.Size(117, 20);
+            this.txtBillNo.TabIndex = 2;
             // 
             // txtSCF
             // 
@@ -468,6 +468,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 480);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtTotalWholesalePrice);
             this.Controls.Add(this.label7);
@@ -477,13 +478,11 @@
             this.Controls.Add(this.txtTotalPurchasePrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Name = "Winform_PurchaseBill";
             this.Text = "Add Stock Control Form";
             this.Load += new System.EventHandler(this.Winform_PurchaseBill_Load);
             this.Controls.SetChildIndex(this.groupBox3, 0);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.txtTotalPurchasePrice, 0);
@@ -493,6 +492,7 @@
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.txtTotalWholesalePrice, 0);
             this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -540,7 +540,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotWholesaleVal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotResaleVal;
         private System.Windows.Forms.DataGridViewButtonColumn ColDel;
-        private System.Windows.Forms.TextBox txtBillNo;
         private System.Windows.Forms.TextBox txtInvoiceNo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -548,5 +547,6 @@
         private System.Windows.Forms.TextBox txtSCF;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtBillNo;
     }
 }

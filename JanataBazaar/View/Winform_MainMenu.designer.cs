@@ -167,6 +167,7 @@
             this.addStaffToolStripMenuItem,
             this.staffRegisterToolStripMenuItem,
             this.salaryRegisterToolStripMenuItem});
+            this.searchCustomerToolStripMenuItem.Enabled = false;
             this.searchCustomerToolStripMenuItem.Name = "searchCustomerToolStripMenuItem";
             this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.searchCustomerToolStripMenuItem.Text = "&Staff";
@@ -223,7 +224,7 @@
             this.vATRevisionToolStripMenuItem});
             this.purchaseToolStripMenuItem.Name = "purchaseToolStripMenuItem";
             this.purchaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.purchaseToolStripMenuItem.Text = "Purchase";
+            this.purchaseToolStripMenuItem.Text = "P&urchase";
             // 
             // addPurchaseBillToolStripMenuItem
             // 
@@ -269,14 +270,14 @@
             // 
             this.addvToolStripMenuItem.Name = "addvToolStripMenuItem";
             this.addvToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.addvToolStripMenuItem.Text = "Revise VAT";
+            this.addvToolStripMenuItem.Text = "Revise &VAT";
             this.addvToolStripMenuItem.Click += new System.EventHandler(this.addvToolStripMenuItem_Click);
             // 
             // vATRevisionRegistryToolStripMenuItem
             // 
             this.vATRevisionRegistryToolStripMenuItem.Name = "vATRevisionRegistryToolStripMenuItem";
             this.vATRevisionRegistryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.vATRevisionRegistryToolStripMenuItem.Text = "VAT Revision Registry";
+            this.vATRevisionRegistryToolStripMenuItem.Text = "VAT Revision &Registry";
             this.vATRevisionRegistryToolStripMenuItem.Click += new System.EventHandler(this.vATRevisionRegistryToolStripMenuItem_Click);
             // 
             // inventoryToolStripMenuItem
@@ -376,6 +377,7 @@
             // 
             // stockLiabilityToolStripMenuItem
             // 
+            this.stockLiabilityToolStripMenuItem.Enabled = false;
             this.stockLiabilityToolStripMenuItem.Name = "stockLiabilityToolStripMenuItem";
             this.stockLiabilityToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.stockLiabilityToolStripMenuItem.Text = "Stock Liability";
@@ -391,6 +393,7 @@
             // 
             // stockLiabiltiyToolStripMenuItem
             // 
+            this.stockLiabiltiyToolStripMenuItem.Enabled = false;
             this.stockLiabiltiyToolStripMenuItem.Name = "stockLiabiltiyToolStripMenuItem";
             this.stockLiabiltiyToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.stockLiabiltiyToolStripMenuItem.Text = "Stock Liabiltiy";

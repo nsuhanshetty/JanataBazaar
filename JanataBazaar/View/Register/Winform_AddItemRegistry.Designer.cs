@@ -63,7 +63,7 @@
             this.txtBrand.Location = new System.Drawing.Point(411, 16);
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(112, 20);
-            this.txtBrand.TabIndex = 1;
+            this.txtBrand.TabIndex = 2;
             this.txtBrand.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label1
@@ -82,7 +82,7 @@
             this.cmbSection.Location = new System.Drawing.Point(63, 15);
             this.cmbSection.Name = "cmbSection";
             this.cmbSection.Size = new System.Drawing.Size(112, 21);
-            this.cmbSection.TabIndex = 2;
+            this.cmbSection.TabIndex = 0;
             // 
             // lblMobile
             // 
@@ -98,7 +98,7 @@
             this.txtName.Location = new System.Drawing.Point(237, 16);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(112, 20);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 1;
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblName

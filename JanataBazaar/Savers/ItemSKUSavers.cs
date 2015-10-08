@@ -47,6 +47,10 @@ namespace JanataBazaar.Savers
                         //Delete SKU
                         foreach (var skuItem in toDeleteSKUItemList)
                         {
+                            /*
+                            skuItem.StockQuantity = 0;
+                            session.SaveOrUpdate(skuItem);
+                            */
                             session.Delete(skuItem);
                         }
                         tx.Commit();
