@@ -1,4 +1,5 @@
-﻿using JanataBazaar.Models;
+﻿using JanataBazaar.Model;
+using JanataBazaar.Models;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
@@ -14,19 +15,34 @@ namespace JanataBazaar.Builders
     class ReportsBuilder
     {
         /*Stock Control Form*/
-        public static List<ItemPricing> GetSCFReport(string name = "", string brand = "", string section = "")
+        public static List<ItemPricing> GetSCFReport(bool isCredit, string SCFNo, string nameOfSupplier,
+                                                     DateTime toDate, DateTime fromDate, string name = "", string brand = "", string section = "")
         {
-            ItemPricing itemSKUAlias = null;
+            ItemPricing itemPricingAlias = null;
             Item itemAlias = null;
             Section sectionAlias = null;
+            PurchaseOrder purchaseOrderAlias = null;
+            Vendor vendorAlias = null;
 
             using (var session = NHibernateHelper.OpenSession())
             {
-                List<ItemPricing> list = (session.QueryOver<ItemPricing>(() => itemSKUAlias)
-                                            .Fetch(i => i.Package).Eager
-                                             .Fetch(i => i.Purchase).Eager
-                                            .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
+                List<ItemPricing> list = (session.QueryOver<ItemPricing>(() => itemPricingAlias)
+                                            .JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
+                                            .JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
+                                            .JoinAlias(() => purchaseOrderAlias.Vendor, () => vendorAlias)
                                             .JoinAlias(() => itemAlias.Section, () => sectionAlias)
+                                            
+
+                                            .Fetch(i => i.Package).Eager
+                                            //.Fetch(i => i.Purchase).Eager
+                                            //.Fetch(i => i.Purchase.Vendor).Eager
+
+                                            .Where(() => purchaseOrderAlias.IsCredit == isCredit)
+                                            .Where(() => purchaseOrderAlias.DateOfInvoice.Date >= fromDate.Date && purchaseOrderAlias.DateOfInvoice.Date <= toDate.Date)
+
+                                            .Where(() => purchaseOrderAlias.SCFNo.IsLike(SCFNo + "%"))
+                                            .Where(() => vendorAlias.Name.IsLike(nameOfSupplier + "%"))
+
                                             .Where(() => itemAlias.Name.IsLike(name + "%"))
                                             .Where(() => itemAlias.Brand.IsLike(brand + "%"))
                                             .Where(() => sectionAlias.Name.IsLike(section + "%"))
@@ -36,8 +52,48 @@ namespace JanataBazaar.Builders
             }
         }
 
+        /*Stock Control Form*/
+        public static List<ItemPricing> GetICFReport(bool isCredit, string ICFNo, string nameOfSupplier,
+                                                     DateTime toDate, DateTime fromDate, string name = "", string brand = "", string section = "")
+        {
+            ItemPricing itemPricingAlias = null;
+            Item itemAlias = null;
+            Section sectionAlias = null;
+            PurchaseOrder purchaseOrderAlias = null;
+            Vendor vendorAlias = null;
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                List<ItemPricing> list = (session.QueryOver(() => itemPricingAlias)
+                                            .JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
+                                            .JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
+                                            .JoinAlias(() => purchaseOrderAlias.Vendor, () => vendorAlias)
+                                            .JoinAlias(() => itemAlias.Section, () => sectionAlias)
+
+
+                                            .Fetch(i => i.Package).Eager
+                                            //.Fetch(i => i.Purchase).Eager
+                                            //.Fetch(i => i.Purchase.Vendor).Eager
+
+                                            .Where(() => purchaseOrderAlias.IsCredit == isCredit)
+                                            .Where(() => purchaseOrderAlias.DateOfInvoice.Date >= fromDate.Date && purchaseOrderAlias.DateOfInvoice.Date <= toDate.Date)
+
+                                            .Where(() => purchaseOrderAlias.IRNNo.IsLike(ICFNo + "%"))
+                                            .Where(() => vendorAlias.Name.IsLike(nameOfSupplier + "%"))
+
+                                            .Where(() => itemAlias.Name.IsLike(name + "%"))
+                                            .Where(() => itemAlias.Brand.IsLike(brand + "%"))
+                                            .Where(() => sectionAlias.Name.IsLike(section + "%"))
+                                            //.Select(() => purchaseOrderAlias.IRNNo)
+                                                    
+                                            .Take(15)
+                                            .List()).ToList();
+                return list;
+            }
+        }
+
         /*Purchase Indent Form*/
-        public static IList GetPIFReport(string section)
+        public static IList GetPIFReport()
         {
             Item itemAlias = null;
             Section sectionAlias = null;
@@ -47,7 +103,7 @@ namespace JanataBazaar.Builders
                 IList list = (from itm in (session.QueryOver<ItemPricing>(() => itemSKUAlias)
                            .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
                            .JoinAlias(() => itemAlias.Section, () => sectionAlias)
-                           .Where(() => sectionAlias.Name == section)
+                           //.Where(() => sectionAlias.Name == section)
                            .Where(() => itemAlias.InReserve == true)
                            .List())
                               select new

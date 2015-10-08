@@ -9,13 +9,13 @@ namespace JanataBazaar.Models
 {
     public class SaleItem
     {
-        public int ID { get; set; }
-        public Sale Sale { get; set; }
-        public Item Item { get; set; }
-        public int Quantity { get; set; }
-        public decimal Price { get; set; }
-        public decimal TotalPrice { get; set; }
-        public int StockCount { get; set; }
+        public virtual int ID { get; set; }
+        public virtual Sale Sale { get; set; }
+        public virtual Item Item { get; set; }
+        public virtual int Quantity { get; set; }
+        public virtual decimal Price { get; set; }
+        public virtual decimal TotalPrice { get; set; }
+        public virtual int StockCount { get; set; }
 
         public SaleItem() { }
         public SaleItem(Item _item, decimal _price, int _stockCount, int _quantity = 0, decimal _totalPrice = 0)
@@ -30,24 +30,31 @@ namespace JanataBazaar.Models
 
     public class Sale
     {
-        public int ID { get; set; }
-        public List<SaleItem> Items { get; set; }
-        public Customer Customer { get; set; }
-        public Member Member { get; set; }
-        public decimal PaidAmount { get; set; }
-        public decimal TransportCharge { get; set; }
-        public decimal BalanceAmount { get; set; }
-        public decimal TotalAmount { get; set; }
+        public virtual int ID { get; set; }
+        public virtual bool IsCredit{ get; set; }
+        public virtual IList<SaleItem> Items { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Member Member { get; set; }
+        public virtual decimal PaidAmount { get; set; }
+        public virtual decimal TransportCharge { get; set; }
+        public virtual decimal BalanceAmount { get; set; }
+        public virtual decimal TotalAmount { get; set; }
+        public virtual DateTime DateOfSale { get; set; }
 
         public Sale() { }
-        public Sale(List<SaleItem> _items, decimal _paidAmount, decimal _totalAmount, Customer _customer = null, Member member = null, decimal _transportCharge = 0, decimal _balanceAmount = 0)
+        public Sale(List<SaleItem> _items,bool _IsCredit, decimal _paidAmount, decimal _totalAmount,DateTime _dateOfSale,
+                    Customer _customer = null, Member _member = null,decimal _transportCharge = 0, decimal _balanceAmount = 0)
         {
             this.Items = _items;
+            this.IsCredit = _IsCredit;
             this.Customer = _customer;
+            this.Customer = _customer;
+            this.Member = _member;
             this.TransportCharge = _transportCharge;
             this.PaidAmount = _paidAmount;
             this.BalanceAmount = _balanceAmount;
             this.TotalAmount = _totalAmount;
+            this.DateOfSale = _dateOfSale;
         }
     }
 }

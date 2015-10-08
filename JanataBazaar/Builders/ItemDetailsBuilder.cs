@@ -53,7 +53,7 @@ namespace JanataBazaar.Builders
                 Item itemAlias = null;
                 Section sectionAlias = null;
 
-                IList itemList = (from item in (session.QueryOver<Item>(() => itemAlias)
+                IList itemList = (from item in (session.QueryOver(() => itemAlias)
                                         .JoinAlias(() => itemAlias.Section, () => sectionAlias)
                                         .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Name).IsLike(name + "%"))
                                         .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Brand).IsLike(brand + "%"))
@@ -125,23 +125,6 @@ namespace JanataBazaar.Builders
                 return _item;
             }
         }
-
-        public static bool IsItemInStock(int _ID)
-        {
-            //todo: ask whats the minimum quantity for wholesale sale
-            ItemPricing itemskuAlias = null;
-            var minWholesaleQuant = 0;
-
-            using (var session = NHibernateHelper.OpenSession())
-            {
-                //todo: Combine both the statments
-                ItemPricing _item = session.QueryOver(() => itemskuAlias)
-                    .Where(() => itemskuAlias.ID == _ID)
-                    .SingleOrDefault();
-
-                return _item.PackageQuantity * _item.QuantityPerPack > minWholesaleQuant ? true : false;
-            }
-        }
     }
 
     public class ItemSKUBuilder
@@ -164,7 +147,7 @@ namespace JanataBazaar.Builders
             {
                 var _item = session.QueryOver<ItemSKU>()
                     .Where(x => x.ID == _ID)
-                    .Where (x => x.ResalePrice == resalePrice && x.WholesalePrice == wholesalePrice)
+                    .Where(x => x.ResalePrice == resalePrice && x.WholesalePrice == wholesalePrice)
                         .Fetch(i => i.Item).Eager
                         .Future().SingleOrDefault();
                 return _item;

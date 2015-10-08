@@ -103,6 +103,11 @@ namespace JanataBazaar.View.Details
 
         private void AddConsumerDetails()
         {
+            this.cust = null;
+            this.memb = null;
+            this.UpdateCustomerControls(new Person());
+
+
             if (rdbMember.Checked)
                 new Register.WinForm_MemberRegister().ShowDialog();
             else
@@ -128,7 +133,7 @@ namespace JanataBazaar.View.Details
             int _ID = int.Parse(dgvSearch.Rows[e.RowIndex].Cells["ID"].Value.ToString());
 
             /*Check if item is in stock*/
-            bool inStock = ItemPricingBuilder.IsItemInStock(_ID);
+            bool inStock = int.Parse(dgvSearch.Rows[e.RowIndex].Cells["StockQuantity"].Value.ToString()) > 0;
             if (!inStock)
             {
                 MessageBox.Show("Item cannot be added as its not in stock.", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -212,13 +217,21 @@ namespace JanataBazaar.View.Details
             }
             #endregion _validation
 
-            UpdateStatus("Saving", 25);
+            UpdateStatus("Saving..", 25);
 
             /*Prepare Model*/
-            Sale sale = new Sale(this.saleItemList,AmountPaid,TotalAmount,this.cust,this.memb,TransportCharge,BalanceAmount);
+            Sale sale = new Sale(this.saleItemList,rdbCredit.Checked, AmountPaid, TotalAmount, dtpDateOfSale.Value.Date, this.cust, this.memb, TransportCharge, BalanceAmount);
 
+            UpdateStatus("Saving..", 50);
             //deduct the total stock on save
             bool success = Savers.SaleDetailsSaver.SaveSaleDetails(sale, skuItemList);
+
+            if (success)
+            {
+                UpdateStatus("Sale Saved.", 100);
+                this.Close();
+                return;
+            }
         }
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
@@ -306,7 +319,7 @@ namespace JanataBazaar.View.Details
 
             TransportCharge = decimal.Parse(txtTransCharge.Text);
             CalculatePaymentDetails();
-           
+
         }
     }
 }

@@ -63,7 +63,9 @@
   <ItemGroup>
     <Compile Include="Builders\ItemDetailsBuilder.cs" />
     <Compile Include="Builders\PeoplePracticeBuilder.cs" />
+    <Compile Include="Builders\PriceVariationBuilder.cs" />
     <Compile Include="Builders\PurchaseBillBuilder.cs" />
+    <Compile Include="Builders\PurchaseIndentBuilder.cs" />
     <Compile Include="Builders\ReportsBuilder.cs" />
     <Compile Include="Builders\SaleItemBuilder.cs" />
     <Compile Include="Builders\VATRevisionBuilder.cs" />
@@ -77,11 +79,14 @@
     </Compile>
     <Compile Include="Mappers\ItemMapping.cs" />
     <Compile Include="Mappers\PeoplePracticeMapper.cs" />
+    <Compile Include="Mappers\PurchaseIndentMapper.cs" />
     <Compile Include="Mappers\PurchaseOrderMapping.cs" />
+    <Compile Include="Mappers\SaleMapping.cs" />
     <Compile Include="Mappers\VATRevisionMapper.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\PeoplePractice.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseIndent.cs" />
     <Compile Include="Models\SaleItem.cs" />
     <Compile Include="Models\VATRevision.cs" />
     <Compile Include="NHibernateHelper.cs" />
@@ -94,7 +99,9 @@
       <DependentUpon>Report_SCF.cs</DependentUpon>
     </Compile>
     <Compile Include="Savers\ItemDetailsSavers.cs" />
+    <Compile Include="Savers\ItemSKUSavers.cs" />
     <Compile Include="Savers\PeoplePracticeSaver.cs" />
+    <Compile Include="Savers\PurchaseIndentSavers.cs" />
     <Compile Include="Savers\PurchaseOrderSaver.cs" />
     <Compile Include="Savers\SaleDetailsSaver.cs" />
     <Compile Include="Savers\VATPercentSavers.cs" />
@@ -129,6 +136,12 @@
     <Compile Include="View\Details\Winform_MemberDetails.Designer.cs">
       <DependentUpon>Winform_MemberDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Details\Winform_MergePriceVariation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_MergePriceVariation.Designer.cs">
+      <DependentUpon>Winform_MergePriceVariation.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Details\Winform_PackageDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +153,12 @@
     </Compile>
     <Compile Include="View\Details\Winform_PurchaseBill.Designer.cs">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Details\Winform_PurchaseIndentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Details\Winform_PurchaseIndentDetails.Designer.cs">
+      <DependentUpon>Winform_PurchaseIndentDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Details\Winform_SaleDetails.cs">
       <SubType>Form</SubType>
@@ -171,11 +190,35 @@
     <Compile Include="View\Details\Winform_ItemDetails.Designer.cs">
       <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Register\VATRevisionRegister.cs">
+    <Compile Include="View\Register\Winform_ICFRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Register\VATRevisionRegister.Designer.cs">
-      <DependentUpon>VATRevisionRegister.cs</DependentUpon>
+    <Compile Include="View\Register\Winform_ICFRegister.Designer.cs">
+      <DependentUpon>Winform_ICFRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_PriceVariationRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_PriceVariationRegister.Designer.cs">
+      <DependentUpon>Winform_PriceVariationRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_PurchaseIndentRegistry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_PurchaseIndentRegistry.Designer.cs">
+      <DependentUpon>Winform_PurchaseIndentRegistry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_SalesSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_SalesSummary.Designer.cs">
+      <DependentUpon>Winform_SalesSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_VATRevisionRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_VATRevisionRegister.Designer.cs">
+      <DependentUpon>Winform_VATRevisionRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\WinformRegister.cs">
       <SubType>Form</SubType>
@@ -213,10 +256,10 @@
     <Compile Include="View\Register\WinForm_MemberRegister.Designer.cs">
       <DependentUpon>WinForm_MemberRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Register\Winform_PurchaseIndentForm.cs">
+    <Compile Include="View\Details\Winform_PurchaseIndentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Register\Winform_PurchaseIndentForm.Designer.cs">
+    <Compile Include="View\Details\Winform_PurchaseIndentForm.Designer.cs">
       <DependentUpon>Winform_PurchaseIndentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\Winform_SCFRegister.cs">
@@ -224,6 +267,12 @@
     </Compile>
     <Compile Include="View\Register\Winform_SCFRegister.Designer.cs">
       <DependentUpon>Winform_SCFRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register\Winform_VATStatementRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Register\Winform_VATStatementRegister.Designer.cs">
+      <DependentUpon>Winform_VATStatementRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\Winform_VendorRegister.cs">
       <SubType>Form</SubType>
@@ -265,11 +314,17 @@
     <EmbeddedResource Include="View\Details\Winform_MemberDetails.resx">
       <DependentUpon>Winform_MemberDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_MergePriceVariation.resx">
+      <DependentUpon>Winform_MergePriceVariation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_PackageDetails.resx">
       <DependentUpon>Winform_PackageDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_PurchaseBill.resx">
       <DependentUpon>Winform_PurchaseBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Details\Winform_PurchaseIndentDetails.resx">
+      <DependentUpon>Winform_PurchaseIndentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Details\Winform_SaleDetails.resx">
       <DependentUpon>Winform_SaleDetails.cs</DependentUpon>
@@ -286,8 +341,20 @@
     <EmbeddedResource Include="View\Details\Winform_ItemDetails.resx">
       <DependentUpon>Winform_ItemDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Register\VATRevisionRegister.resx">
-      <DependentUpon>VATRevisionRegister.cs</DependentUpon>
+    <EmbeddedResource Include="View\Register\Winform_ICFRegister.resx">
+      <DependentUpon>Winform_ICFRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_PriceVariationRegister.resx">
+      <DependentUpon>Winform_PriceVariationRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_PurchaseIndentRegistry.resx">
+      <DependentUpon>Winform_PurchaseIndentRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_SalesSummary.resx">
+      <DependentUpon>Winform_SalesSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_VATRevisionRegister.resx">
+      <DependentUpon>Winform_VATRevisionRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\WinformRegister.resx">
       <DependentUpon>WinformRegister.cs</DependentUpon>
@@ -307,11 +374,14 @@
     <EmbeddedResource Include="View\Register\WinForm_MemberRegister.resx">
       <DependentUpon>WinForm_MemberRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Register\Winform_PurchaseIndentForm.resx">
+    <EmbeddedResource Include="View\Details\Winform_PurchaseIndentForm.resx">
       <DependentUpon>Winform_PurchaseIndentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_SCFRegister.resx">
       <DependentUpon>Winform_SCFRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Register\Winform_VATStatementRegister.resx">
+      <DependentUpon>Winform_VATStatementRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_VendorRegister.resx">
       <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
@@ -362,7 +432,9 @@
   <ItemGroup>
     <None Include="Resources\addCustomer.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

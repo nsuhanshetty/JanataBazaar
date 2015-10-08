@@ -12,9 +12,12 @@ namespace JanataBazaar.Mappers
             Map(x => x.SCFNo);
             Map(x => x.IRNNo);
             Map(x => x.BillNo);
+            References<VATRevision>(x => x.Revision).Class<VATRevision>()
+                                                    .Columns("RevisionID")
+                                                    .Cascade.None();
             Map(x => x.DateOfPurchase);
             Map(x => x.DateOfInvoice);
-            Map(x => x.BillType);
+            Map(x => x.IsCredit);
             References(x => x.Vendor).Class<Vendor>()
                                      .Columns("VendorID")
                                      .Cascade.None();

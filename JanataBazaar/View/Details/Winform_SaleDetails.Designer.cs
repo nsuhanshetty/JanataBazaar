@@ -69,6 +69,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbCredit = new System.Windows.Forms.RadioButton();
             this.rdbCash = new System.Windows.Forms.RadioButton();
+            this.dtpDateOfSale = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).BeginInit();
             this.grpBxSearch.SuspendLayout();
@@ -430,9 +432,9 @@
             // 
             this.groupBox1.Controls.Add(this.rdbCredit);
             this.groupBox1.Controls.Add(this.rdbCash);
-            this.groupBox1.Location = new System.Drawing.Point(773, 71);
+            this.groupBox1.Location = new System.Drawing.Point(523, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(197, 36);
+            this.groupBox1.Size = new System.Drawing.Size(243, 36);
             this.groupBox1.TabIndex = 141;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Mode";
@@ -440,7 +442,7 @@
             // rdbCredit
             // 
             this.rdbCredit.AutoSize = true;
-            this.rdbCredit.Location = new System.Drawing.Point(90, 14);
+            this.rdbCredit.Location = new System.Drawing.Point(152, 13);
             this.rdbCredit.Name = "rdbCredit";
             this.rdbCredit.Size = new System.Drawing.Size(52, 17);
             this.rdbCredit.TabIndex = 1;
@@ -451,7 +453,7 @@
             // 
             this.rdbCash.AutoSize = true;
             this.rdbCash.Checked = true;
-            this.rdbCash.Location = new System.Drawing.Point(21, 14);
+            this.rdbCash.Location = new System.Drawing.Point(83, 13);
             this.rdbCash.Name = "rdbCash";
             this.rdbCash.Size = new System.Drawing.Size(49, 17);
             this.rdbCash.TabIndex = 0;
@@ -460,11 +462,30 @@
             this.rdbCash.UseVisualStyleBackColor = true;
             this.rdbCash.CheckedChanged += new System.EventHandler(this.rdbCash_CheckedChanged);
             // 
+            // dtpDateOfSale
+            // 
+            this.dtpDateOfSale.Location = new System.Drawing.Point(852, 77);
+            this.dtpDateOfSale.Name = "dtpDateOfSale";
+            this.dtpDateOfSale.Size = new System.Drawing.Size(115, 20);
+            this.dtpDateOfSale.TabIndex = 142;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Enabled = false;
+            this.label8.Location = new System.Drawing.Point(778, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 13);
+            this.label8.TabIndex = 126;
+            this.label8.Text = "Date Of Sale";
+            // 
             // Winform_SaleDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 486);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dtpDateOfSale);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvSaleItem);
             this.Controls.Add(this.grpBoxCustomer);
@@ -478,6 +499,8 @@
             this.Controls.SetChildIndex(this.grpBoxCustomer, 0);
             this.Controls.SetChildIndex(this.dgvSaleItem, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.dtpDateOfSale, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearch)).EndInit();
             this.grpBxSearch.ResumeLayout(false);
@@ -537,5 +560,7 @@
         private System.Windows.Forms.RadioButton rdbMember;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox txtTransCharge;
+        internal System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dtpDateOfSale;
     }
 }

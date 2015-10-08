@@ -12,9 +12,11 @@ namespace JanataBazaar.Models
         public virtual string IRNNo { get; set; }
         public virtual string BillNo { get; set; }
 
+        public virtual VATRevision Revision { get; set; }
+
         public virtual DateTime DateOfPurchase { get; set; }
         public virtual DateTime DateOfInvoice { get; set; }
-        public virtual bool BillType { get; set; }
+        public virtual bool IsCredit { get; set; }
         public virtual Vendor Vendor { get; set; }
         public virtual decimal TotalPurchasePrice { get; set; }
         public virtual decimal TotalWholesalePrice { get; set; }
@@ -24,13 +26,15 @@ namespace JanataBazaar.Models
 
         public PurchaseOrder() { }
 
-        public PurchaseOrder(bool _billType, string _SCFNo, string _IRNNo, string _billNo, Vendor _vendor, DateTime _dop, DateTime _doi, decimal totPurchase, decimal totWholesale, decimal totResale)
+        public PurchaseOrder(bool _billType, string _SCFNo, string _IRNNo, string _billNo, VATRevision _revision, Vendor _vendor, DateTime _dop, DateTime _doi, decimal totPurchase, decimal totWholesale, decimal totResale)
         {
-            this.BillType = _billType;
+            this.IsCredit = _billType;
 
             this.SCFNo = SCFNo;
             this.IRNNo = IRNNo;
             this.BillNo = _billNo;
+
+            this.Revision = _revision;
 
             this.Vendor = _vendor;
             this.DateOfPurchase = _dop;

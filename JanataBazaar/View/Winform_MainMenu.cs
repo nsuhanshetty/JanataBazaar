@@ -151,6 +151,8 @@ namespace JanataBazaar
             //    new Winform_AlterationsDetails().ShowDialog();
             else if (rdbSales.Checked)
                 new Winform_SaleDetails().ShowDialog();
+            else if (rdbIndent.Checked)
+                new Winform_PurchaseIndentForm().ShowDialog();
         }
 
         private void salaryRegisterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,7 +319,7 @@ namespace JanataBazaar
 
         private void vATRevisionRegistryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new VATRevisionRegister().ShowDialog();
+            new Winform_VATRevisionRegister().ShowDialog();
         }
 
         private void addvToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,6 +335,36 @@ namespace JanataBazaar
         private void memberRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new WinForm_MemberRegister().ShowDialog();
+        }
+
+        private void priceVariationStatementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_PriceVariationRegister().ShowDialog();
+        }
+
+        private void salesSummaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_SalesSummary().ShowDialog();
+        }
+
+        private void invoiceControlFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_ICFRegister().ShowDialog();
+        }
+
+        private void purchaseIndentFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_PurchaseIndentForm().ShowDialog();
+        }
+
+        private void purchaseIndentRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_PurchaseIndentRegistry().ShowDialog();
+        }
+
+        private void vatStatementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_VATStatementRegister().ShowDialog();
         }
     }
 

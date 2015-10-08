@@ -35,7 +35,6 @@ namespace JanataBazaar.Builders
             using (var session = NHibernateHelper.OpenSession())
             {
                 List<VATRevision> revList = session.QueryOver<VATRevision>()
-                                            //.Where(NHibernate.Criterion.Restrictions.On(() => revisionAlias.DateOfRevision.ToString()).IsLike(revisionDate + "%"))
                                             .List() as List<VATRevision>;
                 return revList;
             }

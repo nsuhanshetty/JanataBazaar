@@ -49,7 +49,14 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_VATDetails.resources
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.VATRevisionRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_MemberDetails.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_CustomerRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_MemberRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_PriceVariationRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_VATRevisionRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_MergePriceVariation.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_SalesSummary.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_ICFRegister.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Details.Winform_PurchaseIndentDetails.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_PurchaseIndentRegistry.resources
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_VATStatementRegister.resources

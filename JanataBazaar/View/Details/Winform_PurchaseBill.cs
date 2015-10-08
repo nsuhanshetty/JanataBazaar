@@ -228,10 +228,11 @@ namespace JanataBazaar.View.Details
             if (dr == DialogResult.No)
                 return;
 
-            purchaseOrder.BillType = rdbCredit.Checked ? true : false;
+            purchaseOrder.IsCredit = rdbCredit.Checked ? true : false;
             purchaseOrder.SCFNo = txtSCF.Text;
             purchaseOrder.IRNNo = txtInvoiceNo.Text;
             purchaseOrder.BillNo = txtBillNo.Text;
+            purchaseOrder.Revision = Builders.VATRevisionBuilder.GetVATRevisionInfo(RevisionID);
 
             purchaseOrder.Vendor = vend;
             purchaseOrder.DateOfPurchase = dtpPurchaseDate.Value;

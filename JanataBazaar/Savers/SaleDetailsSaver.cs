@@ -1,5 +1,6 @@
 ﻿using JanataBazaar.Models;
 using log4net;
+using NHibernate.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,7 @@ namespace JanataBazaar.Savers
                 {
                     try
                     {
-                        foreach (var item in sale.Items)
-                        {
-                            item.Sale = sale;
-                        }
+                        sale.Items.ForEach(x => x.Sale = sale);
 
                         foreach (SaleItem saleitem in sale.Items)
                         {
@@ -31,30 +29,17 @@ namespace JanataBazaar.Savers
 
                             ItemSKU skuitem = skuList[index];
                             skuitem.StockQuantity -= saleitem.Quantity;
+                            skuitem.Item.InReserve = (skuitem.Item.ReserveStock > skuitem.StockQuantity) ? true : false;
 
                             session.SaveOrUpdate(skuitem);
                         }
-
                         session.SaveOrUpdate(sale);
                         tx.Commit();
-
-                        //    //update item stock
-
-                        //    //if stock less than reserve "InReserve" = true
-
-                        //    if (itemsku.Item.ReserveStock > (itemsku.PackageQuantity * itemsku.QuantityPerPack))
-                        //        itemsku.Item.InReserve = true;
-                        //    else
-                        //        itemsku.Item.InReserve = false;
-
-                        //}
-                        //session.SaveOrUpdate(order);
-                        //tx.Commit();
-                        //log.Info("Purchase Order Added.");
                     }
                     catch (Exception ex)
                     {
                         tx.Rollback();
+                        log.Info("Purchase Order Failed.");
                         log.Error(ex);
                         return false;
                     }

@@ -27,20 +27,103 @@ namespace JanataBazaar.View.Register
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
             cmbSection.ValueMember = "ID";
+
+            cmbDuration.SelectedIndex = 0;
+            this.toolStrip1.Items.Add(this.SearchToolStrip);
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtName.Text) && string.IsNullOrEmpty(txtBrand.Text))
-            {
-                dgvRegister.DataSource = "";
-                return;
-            }
+        //private void txtName_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(txtName.Text) && string.IsNullOrEmpty(txtBrand.Text))
+        //    {
+        //        dgvRegister.DataSource = "";
+        //        return;
+        //    }
 
-            itemlist = (ReportsBuilder.GetSCFReport(txtName.Text, txtBrand.Text, cmbSection.Text));
+        //    itemlist = (ReportsBuilder.GetSCFReport(rdbCredit.Checked, txtSCF.Text,txtVendorName.Text, txtName.Text, txtBrand.Text, cmbSection.Text));
+        //    dgvRegister.DataSource = (from itm in itemlist
+        //                              select new
+        //                              {
+        //                                  itm.Item.Name,
+        //                                  itm.Item.Brand,
+        //                                  PackageType = itm.Package.Name,
+        //                                  itm.PackageQuantity,
+        //                                  itm.QuantityPerPack,
+        //                                  itm.PurchaseValue,
+        //                                  TotalPurchase = itm.TotalPurchaseValue,
+        //                                  itm.Wholesale,
+        //                                  TotalWholesale = itm.TotalWholesaleValue,
+        //                                  itm.Retail,
+        //                                  TotalResale = itm.TotalResaleValue
+        //                              }).ToList();
+
+        //    if (itemlist == null)
+        //        UpdateStatus("No Results Found");
+        //    else
+        //        UpdateStatus(itemlist.Count + " Results Found", 100);
+        //}
+
+        protected override void toolStripButtonPrint_Click(object sender, System.EventArgs e)
+        {
+            new Reports.Report_SCF(itemlist).ShowDialog();
+        }
+
+        private void cmbDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isActive = (cmbDuration.Text == "Custom") ? true : false;
+
+            dtpTo.Enabled = isActive;
+            dtpFrom.Enabled = isActive;
+
+            nudDuration.Enabled = !isActive;
+        }
+
+        protected void SearchToolStrip_Click(object sender, System.EventArgs e)
+        {
+            DateTime toDate = new DateTime();
+            DateTime fromDate = new DateTime();
+
+            bool isCredit = rdbCredit.Checked;
+
+            int duration;
+            int.TryParse(nudDuration.Value.ToString(), out duration);
+            duration = duration == 0 ? 1 : duration;
+
+            #region SetDuration
+            if (cmbDuration.Text == "Custom")
+            {
+                if (DateTime.Compare(dtpFrom.Value.Date, dtpTo.Value.Date) > 0)
+                {
+                    MessageBox.Show("From date cannot be greater than To date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                toDate = dtpTo.Value.Date;
+                fromDate = dtpFrom.Value.Date;
+            }
+            else if (cmbDuration.Text == "Month")
+            {
+                toDate = DateTime.Today.Date;
+                fromDate = DateTime.Today.Date.AddMonths(-duration);
+            }
+            else if (cmbDuration.Text == "Week")
+            {
+                toDate = DateTime.Today.Date;
+                fromDate = DateTime.Today.Date.AddDays(-7 * duration);
+            }
+            else if (cmbDuration.Text == "Day")
+            {
+                toDate = DateTime.Today.Date;
+                fromDate = DateTime.Today.Date.AddDays(-duration);
+            }
+            #endregion SetDuration
+
+
+            itemlist = (ReportsBuilder.GetSCFReport(rdbCredit.Checked,txtSCF.Text,txtVendorName.Text,toDate,fromDate,txtName.Text, txtBrand.Text, cmbSection.Text));
             dgvRegister.DataSource = (from itm in itemlist
                                       select new
                                       {
+                                          itm.Purchase.SCFNo,
                                           itm.Item.Name,
                                           itm.Item.Brand,
                                           PackageType = itm.Package.Name,
@@ -58,11 +141,6 @@ namespace JanataBazaar.View.Register
                 UpdateStatus("No Results Found");
             else
                 UpdateStatus(itemlist.Count + " Results Found", 100);
-        }
-
-        protected override void toolStripButtonPrint_Click(object sender, System.EventArgs e)
-        {
-            new Reports.Report_SCF(itemlist).ShowDialog();
         }
     }
 }

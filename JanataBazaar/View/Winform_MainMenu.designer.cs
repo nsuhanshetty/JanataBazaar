@@ -34,6 +34,9 @@
             this.addCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCustomerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.customerRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.memberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMemberDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.memberRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addStaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +47,8 @@
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addPurchaseBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseIndentFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseIndentRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vATRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vATRevisionRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,18 +58,8 @@
             this.catalogueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCatalogueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SalesRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addExpensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenseReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salaryDetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bulkSMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendSMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSMSRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sMSReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordersReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.purchaseIndentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockControlFormToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.invoiceControlFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vatStatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +67,7 @@
             this.stockLiabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockLiabiltiyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateSpindleSoftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,15 +75,13 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbIndent = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvSearch = new System.Windows.Forms.DataGridView();
             this.rdbSales = new System.Windows.Forms.RadioButton();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSearchText = new System.Windows.Forms.Label();
             this.rdbPurchase = new System.Windows.Forms.RadioButton();
-            this.memberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addMemberDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.memberRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,8 +95,6 @@
             this.purchaseToolStripMenuItem,
             this.inventoryToolStripMenuItem,
             this.catalogueToolStripMenuItem,
-            this.expenseToolStripMenuItem,
-            this.bulkSMSToolStripMenuItem,
             this.reportsToolStripMenuItem,
             this.settingToolStripMenuItem,
             this.exitToolStripMenuItem});
@@ -129,7 +121,7 @@
             this.addCustomerToolStripMenuItem1,
             this.customerRegisterToolStripMenuItem});
             this.addCustomerToolStripMenuItem.Name = "addCustomerToolStripMenuItem";
-            this.addCustomerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCustomerToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.addCustomerToolStripMenuItem.Text = "&Customer";
             // 
             // addCustomerToolStripMenuItem1
@@ -146,6 +138,29 @@
             this.customerRegisterToolStripMenuItem.Text = "Customer Register";
             this.customerRegisterToolStripMenuItem.Click += new System.EventHandler(this.customerRegisterToolStripMenuItem_Click);
             // 
+            // memberToolStripMenuItem
+            // 
+            this.memberToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addMemberDetailsToolStripMenuItem,
+            this.memberRegisterToolStripMenuItem});
+            this.memberToolStripMenuItem.Name = "memberToolStripMenuItem";
+            this.memberToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.memberToolStripMenuItem.Text = "Member";
+            // 
+            // addMemberDetailsToolStripMenuItem
+            // 
+            this.addMemberDetailsToolStripMenuItem.Name = "addMemberDetailsToolStripMenuItem";
+            this.addMemberDetailsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.addMemberDetailsToolStripMenuItem.Text = "&Add Member";
+            this.addMemberDetailsToolStripMenuItem.Click += new System.EventHandler(this.addMemberDetailsToolStripMenuItem_Click);
+            // 
+            // memberRegisterToolStripMenuItem
+            // 
+            this.memberRegisterToolStripMenuItem.Name = "memberRegisterToolStripMenuItem";
+            this.memberRegisterToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.memberRegisterToolStripMenuItem.Text = "Member &Register";
+            this.memberRegisterToolStripMenuItem.Click += new System.EventHandler(this.memberRegisterToolStripMenuItem_Click);
+            // 
             // searchCustomerToolStripMenuItem
             // 
             this.searchCustomerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -153,27 +168,27 @@
             this.staffRegisterToolStripMenuItem,
             this.salaryRegisterToolStripMenuItem});
             this.searchCustomerToolStripMenuItem.Name = "searchCustomerToolStripMenuItem";
-            this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.searchCustomerToolStripMenuItem.Text = "&Staff";
             // 
             // addStaffToolStripMenuItem
             // 
             this.addStaffToolStripMenuItem.Name = "addStaffToolStripMenuItem";
-            this.addStaffToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addStaffToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.addStaffToolStripMenuItem.Text = "Add Staff";
             this.addStaffToolStripMenuItem.Click += new System.EventHandler(this.addStaffToolStripMenuItem_Click);
             // 
             // staffRegisterToolStripMenuItem
             // 
             this.staffRegisterToolStripMenuItem.Name = "staffRegisterToolStripMenuItem";
-            this.staffRegisterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.staffRegisterToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.staffRegisterToolStripMenuItem.Text = "Staff Register";
             this.staffRegisterToolStripMenuItem.Click += new System.EventHandler(this.staffRegisterToolStripMenuItem_Click);
             // 
             // salaryRegisterToolStripMenuItem
             // 
             this.salaryRegisterToolStripMenuItem.Name = "salaryRegisterToolStripMenuItem";
-            this.salaryRegisterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salaryRegisterToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.salaryRegisterToolStripMenuItem.Text = "Salary Register";
             this.salaryRegisterToolStripMenuItem.Click += new System.EventHandler(this.salaryRegisterToolStripMenuItem_Click);
             // 
@@ -183,7 +198,7 @@
             this.addVendorToolStripMenuItem2,
             this.vendorRegisterToolStripMenuItem});
             this.addVendorToolStripMenuItem1.Name = "addVendorToolStripMenuItem1";
-            this.addVendorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addVendorToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.addVendorToolStripMenuItem1.Text = "&Vendor";
             // 
             // addVendorToolStripMenuItem2
@@ -219,9 +234,26 @@
             // 
             // invoiceControlToolStripMenuItem
             // 
+            this.invoiceControlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.purchaseIndentFormToolStripMenuItem,
+            this.purchaseIndentRegisterToolStripMenuItem});
             this.invoiceControlToolStripMenuItem.Name = "invoiceControlToolStripMenuItem";
             this.invoiceControlToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.invoiceControlToolStripMenuItem.Text = "&Purchase Indent";
+            // 
+            // purchaseIndentFormToolStripMenuItem
+            // 
+            this.purchaseIndentFormToolStripMenuItem.Name = "purchaseIndentFormToolStripMenuItem";
+            this.purchaseIndentFormToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.purchaseIndentFormToolStripMenuItem.Text = "&Purchase Indent Form";
+            this.purchaseIndentFormToolStripMenuItem.Click += new System.EventHandler(this.purchaseIndentFormToolStripMenuItem_Click);
+            // 
+            // purchaseIndentRegisterToolStripMenuItem
+            // 
+            this.purchaseIndentRegisterToolStripMenuItem.Name = "purchaseIndentRegisterToolStripMenuItem";
+            this.purchaseIndentRegisterToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.purchaseIndentRegisterToolStripMenuItem.Text = "Purchase Indent &Register";
+            this.purchaseIndentRegisterToolStripMenuItem.Click += new System.EventHandler(this.purchaseIndentRegisterToolStripMenuItem_Click);
             // 
             // vATRevisionToolStripMenuItem
             // 
@@ -293,74 +325,6 @@
             this.SalesRegisterToolStripMenuItem.Text = "&Sales Register";
             this.SalesRegisterToolStripMenuItem.Click += new System.EventHandler(this.SalesRegisterToolStripMenuItem_Click);
             // 
-            // expenseToolStripMenuItem
-            // 
-            this.expenseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addExpensesToolStripMenuItem,
-            this.viewExpenseToolStripMenuItem,
-            this.expenseReportsToolStripMenuItem,
-            this.salaryDetailsToolStripMenuItem1});
-            this.expenseToolStripMenuItem.Name = "expenseToolStripMenuItem";
-            this.expenseToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.expenseToolStripMenuItem.Text = "&Expenses";
-            // 
-            // addExpensesToolStripMenuItem
-            // 
-            this.addExpensesToolStripMenuItem.Name = "addExpensesToolStripMenuItem";
-            this.addExpensesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.addExpensesToolStripMenuItem.Text = "Add Expenses";
-            this.addExpensesToolStripMenuItem.Click += new System.EventHandler(this.addExpensesToolStripMenuItem_Click);
-            // 
-            // viewExpenseToolStripMenuItem
-            // 
-            this.viewExpenseToolStripMenuItem.Name = "viewExpenseToolStripMenuItem";
-            this.viewExpenseToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.viewExpenseToolStripMenuItem.Text = "Expense Register";
-            this.viewExpenseToolStripMenuItem.Click += new System.EventHandler(this.viewExpenseToolStripMenuItem_Click);
-            // 
-            // expenseReportsToolStripMenuItem
-            // 
-            this.expenseReportsToolStripMenuItem.Name = "expenseReportsToolStripMenuItem";
-            this.expenseReportsToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.expenseReportsToolStripMenuItem.Text = "Expense Reports";
-            // 
-            // salaryDetailsToolStripMenuItem1
-            // 
-            this.salaryDetailsToolStripMenuItem1.Name = "salaryDetailsToolStripMenuItem1";
-            this.salaryDetailsToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
-            this.salaryDetailsToolStripMenuItem1.Text = "Salary Details";
-            // 
-            // bulkSMSToolStripMenuItem
-            // 
-            this.bulkSMSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sendSMSToolStripMenuItem,
-            this.viewSMSRegistryToolStripMenuItem,
-            this.sMSReportsToolStripMenuItem});
-            this.bulkSMSToolStripMenuItem.Name = "bulkSMSToolStripMenuItem";
-            this.bulkSMSToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.bulkSMSToolStripMenuItem.Text = "Pro&motions";
-            this.bulkSMSToolStripMenuItem.Click += new System.EventHandler(this.bulkSMSToolStripMenuItem_Click);
-            // 
-            // sendSMSToolStripMenuItem
-            // 
-            this.sendSMSToolStripMenuItem.Name = "sendSMSToolStripMenuItem";
-            this.sendSMSToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.sendSMSToolStripMenuItem.Text = "Send Bulk SMS";
-            this.sendSMSToolStripMenuItem.Click += new System.EventHandler(this.sendSMSToolStripMenuItem_Click);
-            // 
-            // viewSMSRegistryToolStripMenuItem
-            // 
-            this.viewSMSRegistryToolStripMenuItem.Name = "viewSMSRegistryToolStripMenuItem";
-            this.viewSMSRegistryToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.viewSMSRegistryToolStripMenuItem.Text = "Promotion Registry ";
-            this.viewSMSRegistryToolStripMenuItem.Click += new System.EventHandler(this.viewSMSRegistryToolStripMenuItem_Click);
-            // 
-            // sMSReportsToolStripMenuItem
-            // 
-            this.sMSReportsToolStripMenuItem.Name = "sMSReportsToolStripMenuItem";
-            this.sMSReportsToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.sMSReportsToolStripMenuItem.Text = "SMS Reports";
-            // 
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -373,7 +337,6 @@
             // ordersReportToolStripMenuItem
             // 
             this.ordersReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.purchaseIndentToolStripMenuItem,
             this.stockControlFormToolStripMenuItem1,
             this.invoiceControlFormToolStripMenuItem,
             this.vatStatementToolStripMenuItem,
@@ -383,48 +346,45 @@
             this.ordersReportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.ordersReportToolStripMenuItem.Text = "Purchase Report";
             // 
-            // purchaseIndentToolStripMenuItem
-            // 
-            this.purchaseIndentToolStripMenuItem.Name = "purchaseIndentToolStripMenuItem";
-            this.purchaseIndentToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.purchaseIndentToolStripMenuItem.Text = "P&urchase Indent Form";
-            this.purchaseIndentToolStripMenuItem.Click += new System.EventHandler(this.purchaseIndentToolStripMenuItem_Click);
-            // 
             // stockControlFormToolStripMenuItem1
             // 
             this.stockControlFormToolStripMenuItem1.Name = "stockControlFormToolStripMenuItem1";
-            this.stockControlFormToolStripMenuItem1.Size = new System.Drawing.Size(206, 22);
-            this.stockControlFormToolStripMenuItem1.Text = "&Stock Control Form";
+            this.stockControlFormToolStripMenuItem1.Size = new System.Drawing.Size(231, 22);
+            this.stockControlFormToolStripMenuItem1.Text = "&Stock Control Form  Register";
             this.stockControlFormToolStripMenuItem1.Click += new System.EventHandler(this.stockControlFormToolStripMenuItem1_Click);
             // 
             // invoiceControlFormToolStripMenuItem
             // 
             this.invoiceControlFormToolStripMenuItem.Name = "invoiceControlFormToolStripMenuItem";
-            this.invoiceControlFormToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.invoiceControlFormToolStripMenuItem.Text = "&Invoice Control Form";
+            this.invoiceControlFormToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.invoiceControlFormToolStripMenuItem.Text = "&Invoice Control Form Register";
+            this.invoiceControlFormToolStripMenuItem.Click += new System.EventHandler(this.invoiceControlFormToolStripMenuItem_Click);
             // 
             // vatStatementToolStripMenuItem
             // 
             this.vatStatementToolStripMenuItem.Name = "vatStatementToolStripMenuItem";
-            this.vatStatementToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.vatStatementToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.vatStatementToolStripMenuItem.Text = "&VAT Statement";
+            this.vatStatementToolStripMenuItem.Click += new System.EventHandler(this.vatStatementToolStripMenuItem_Click);
             // 
             // priceVariationStatementToolStripMenuItem
             // 
             this.priceVariationStatementToolStripMenuItem.Name = "priceVariationStatementToolStripMenuItem";
-            this.priceVariationStatementToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.priceVariationStatementToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.priceVariationStatementToolStripMenuItem.Text = "&Price Variation Statement";
+            this.priceVariationStatementToolStripMenuItem.Click += new System.EventHandler(this.priceVariationStatementToolStripMenuItem_Click);
             // 
             // stockLiabilityToolStripMenuItem
             // 
             this.stockLiabilityToolStripMenuItem.Name = "stockLiabilityToolStripMenuItem";
-            this.stockLiabilityToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.stockLiabilityToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.stockLiabilityToolStripMenuItem.Text = "Stock Liability";
             // 
             // salesrToolStripMenuItem
             // 
             this.salesrToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stockLiabiltiyToolStripMenuItem});
+            this.stockLiabiltiyToolStripMenuItem,
+            this.salesSummaryToolStripMenuItem});
             this.salesrToolStripMenuItem.Name = "salesrToolStripMenuItem";
             this.salesrToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.salesrToolStripMenuItem.Text = "Sales Report";
@@ -432,14 +392,22 @@
             // stockLiabiltiyToolStripMenuItem
             // 
             this.stockLiabiltiyToolStripMenuItem.Name = "stockLiabiltiyToolStripMenuItem";
-            this.stockLiabiltiyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.stockLiabiltiyToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.stockLiabiltiyToolStripMenuItem.Text = "Stock Liabiltiy";
+            // 
+            // salesSummaryToolStripMenuItem
+            // 
+            this.salesSummaryToolStripMenuItem.Name = "salesSummaryToolStripMenuItem";
+            this.salesSummaryToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.salesSummaryToolStripMenuItem.Text = "Sales Summary";
+            this.salesSummaryToolStripMenuItem.Click += new System.EventHandler(this.salesSummaryToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userManagerToolStripMenuItem,
             this.updateSpindleSoftToolStripMenuItem});
+            this.settingToolStripMenuItem.Enabled = false;
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.settingToolStripMenuItem.Text = "Se&tting";
@@ -484,6 +452,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rdbIndent);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.dgvSearch);
             this.groupBox1.Controls.Add(this.rdbSales);
@@ -497,8 +466,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Category";
             // 
+            // rdbIndent
+            // 
+            this.rdbIndent.AutoSize = true;
+            this.rdbIndent.Location = new System.Drawing.Point(140, 62);
+            this.rdbIndent.Name = "rdbIndent";
+            this.rdbIndent.Size = new System.Drawing.Size(103, 17);
+            this.rdbIndent.TabIndex = 8;
+            this.rdbIndent.Text = "Purchase Indent";
+            this.rdbIndent.UseVisualStyleBackColor = true;
+            // 
             // txtSearch
             // 
+            this.txtSearch.Enabled = false;
             this.txtSearch.Location = new System.Drawing.Point(9, 114);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(256, 20);
@@ -512,6 +492,7 @@
             this.dgvSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSearch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSearch.Enabled = false;
             this.dgvSearch.Location = new System.Drawing.Point(9, 140);
             this.dgvSearch.Name = "dgvSearch";
             this.dgvSearch.ReadOnly = true;
@@ -546,6 +527,7 @@
             // lblSearchText
             // 
             this.lblSearchText.AutoSize = true;
+            this.lblSearchText.Enabled = false;
             this.lblSearchText.Location = new System.Drawing.Point(6, 92);
             this.lblSearchText.Name = "lblSearchText";
             this.lblSearchText.Size = new System.Drawing.Size(125, 13);
@@ -564,29 +546,6 @@
             this.rdbPurchase.Text = "Purchase";
             this.rdbPurchase.UseVisualStyleBackColor = true;
             this.rdbPurchase.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // memberToolStripMenuItem
-            // 
-            this.memberToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addMemberDetailsToolStripMenuItem,
-            this.memberRegisterToolStripMenuItem});
-            this.memberToolStripMenuItem.Name = "memberToolStripMenuItem";
-            this.memberToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.memberToolStripMenuItem.Text = "Member";
-            // 
-            // addMemberDetailsToolStripMenuItem
-            // 
-            this.addMemberDetailsToolStripMenuItem.Name = "addMemberDetailsToolStripMenuItem";
-            this.addMemberDetailsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.addMemberDetailsToolStripMenuItem.Text = "&Add Member";
-            this.addMemberDetailsToolStripMenuItem.Click += new System.EventHandler(this.addMemberDetailsToolStripMenuItem_Click);
-            // 
-            // memberRegisterToolStripMenuItem
-            // 
-            this.memberRegisterToolStripMenuItem.Name = "memberRegisterToolStripMenuItem";
-            this.memberRegisterToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.memberRegisterToolStripMenuItem.Text = "Member &Register";
-            this.memberRegisterToolStripMenuItem.Click += new System.EventHandler(this.memberRegisterToolStripMenuItem_Click);
             // 
             // Winform_MainMenu
             // 
@@ -620,20 +579,12 @@
         private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem catalogueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem expenseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bulkSMSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchCustomerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCatalogueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addExpensesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userManagerToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripMenuItem viewExpenseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem expenseReportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sendSMSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewSMSRegistryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sMSReportsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbPurchase;
@@ -650,7 +601,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ToolStripMenuItem SalesRegisterToolStripMenuItem;
         private System.Windows.Forms.RadioButton rdbSales;
-        private System.Windows.Forms.ToolStripMenuItem salaryDetailsToolStripMenuItem1;
         private System.Windows.Forms.DataGridView dgvSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
@@ -668,13 +618,16 @@
         private System.Windows.Forms.ToolStripMenuItem priceVariationStatementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockLiabiltiyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockLiabilityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem purchaseIndentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vATRevisionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addvToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vATRevisionRegistryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memberToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addMemberDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memberRegisterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salesSummaryToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rdbIndent;
+        private System.Windows.Forms.ToolStripMenuItem purchaseIndentFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem purchaseIndentRegisterToolStripMenuItem;
     }
 }
 

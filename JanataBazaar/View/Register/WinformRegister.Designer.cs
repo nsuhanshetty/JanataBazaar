@@ -177,7 +177,7 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         protected System.Windows.Forms.GroupBox groupBox1;
         protected System.Windows.Forms.DataGridView dgvRegister;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        protected System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton NewVendToolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
