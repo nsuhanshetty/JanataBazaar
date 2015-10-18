@@ -117,7 +117,7 @@
             this.ClientSize = new System.Drawing.Size(538, 327);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_AddItemRegistry";
-            this.Text = "Winform_AddItemRegistry";
+            this.Text = "Add Item Registry";
             this.Load += new System.EventHandler(this.Winform_AddItemRegistry_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);

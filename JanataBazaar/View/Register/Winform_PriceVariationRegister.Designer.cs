@@ -37,14 +37,14 @@
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(12, 57);
-            this.groupBox1.Size = new System.Drawing.Size(517, 158);
+            this.groupBox1.Size = new System.Drawing.Size(518, 215);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvStockPriceDetails);
-            this.groupBox2.Location = new System.Drawing.Point(15, 221);
+            this.groupBox2.Location = new System.Drawing.Point(12, 278);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(517, 158);
+            this.groupBox2.Size = new System.Drawing.Size(517, 215);
             this.groupBox2.TabIndex = 128;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Stock\\Price Details";
@@ -59,14 +59,14 @@
             this.dgvStockPriceDetails.Location = new System.Drawing.Point(3, 16);
             this.dgvStockPriceDetails.Name = "dgvStockPriceDetails";
             this.dgvStockPriceDetails.ReadOnly = true;
-            this.dgvStockPriceDetails.Size = new System.Drawing.Size(511, 139);
+            this.dgvStockPriceDetails.Size = new System.Drawing.Size(511, 196);
             this.dgvStockPriceDetails.TabIndex = 0;
             // 
             // Winform_PriceVariationRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 403);
+            this.ClientSize = new System.Drawing.Size(542, 518);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_PriceVariationRegister";
             this.Text = "Price Variation Register";

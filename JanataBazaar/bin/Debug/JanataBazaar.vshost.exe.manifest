@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="JanataBazaar.exe" version="1.0.0.0" publicKeyToken="c15e153a1f534d85" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="JanataBazaar.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="JanataBazaar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -81,14 +81,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JanataBazaar.exe" size="450056">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JanataBazaar.exe" size="453640">
       <assemblyIdentity name="JanataBazaar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>G6kXLcL6r7bV8d7TsST+5Z963c+nFDHrmb0XNtj9Q4A=</dsig:DigestValue>
+        <dsig:DigestValue>cJxIE0jPwMBN953XhdZOnb3NyWKUoXXYNNIJtXWDCs0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -269,4 +269,4 @@
       <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
     </hash>
   </file>
-<publisherIdentity name="CN=Suhan_Shetty-PC\NSuhanShetty" issuerKeyHash="ad42fa1759596954d713b25d929b747eb3b3845a" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>GedM4hjJysD5xh3e9fFekh1F7DIl5Jm/yfAanjij3pQ=</DigestValue></Reference></SignedInfo><SignatureValue>O/LzsPvQXcALAPvqNYtPA5HeGn5nNCic2sD4ESd4XXBO/2AiEThQkECsNR6Mhim+iwG4wVPW/zU/2lJYeOB+asp8gnuGfaZJfsbL9pqmUZgJHh+Xe8sVNiDQJvN6NBH9vQF0/a1nS79pYRMnnIX6ha5Zt9qX+F/F9Fms2ZGs2w4=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>xAkTB7MDdFzJv5oqzGayDhc065T/74yLlLemVhIaW/hSkfuFA1d1XPMTyjyQQWvpQASx8S6X1vuuL1cPMc0i7U/+pe0I7XJtCDIn/ASxgcP4PJTYjahxeResvlaE5VGk6+gWlus5Rw69F6Px3CewmmomJweykc62Dbk4lbmk7LE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="94dea3389e1af0c9bf99e42532ec451d925ef1f5de1dc6f9c0cac918e24ce719" Description="" Url=""><as:assemblyIdentity name="JanataBazaar.exe" version="1.0.0.0" publicKeyToken="c15e153a1f534d85" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Suhan_Shetty-PC\NSuhanShetty</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>8GBrorGzOl8rPxG4KC07Q2HMdspyqeqeUd4nHWx0YK0=</DigestValue></Reference></SignedInfo><SignatureValue>ncKxFeF3jc6sgq6IqKpHnvGsh80dpFWM+utg85oxuWli3r52x6OxEuYbIdF55Y4Hiys5t4I0yTKpdZ/V2lNdTQQoz85Ebp62kXzcwCwp/T8/jCCUVhUAHiCKF/+O0C1LqHEFNYPSZksuWfDHkGjKwdbQTcAIzbspebSPV/hKpsQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>xAkTB7MDdFzJv5oqzGayDhc065T/74yLlLemVhIaW/hSkfuFA1d1XPMTyjyQQWvpQASx8S6X1vuuL1cPMc0i7U/+pe0I7XJtCDIn/ASxgcP4PJTYjahxeResvlaE5VGk6+gWlus5Rw69F6Px3CewmmomJweykc62Dbk4lbmk7LE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICCTCCAXKgAwIBAgIQOlkz2PG+3KBHDChzehQz8zANBgkqhkiG9w0BAQsFADBDMUEwPwYDVQQDHjgAUwB1AGgAYQBuAF8AUwBoAGUAdAB0AHkALQBQAEMAXABOAFMAdQBoAGEAbgBTAGgAZQB0AHQAeTAeFw0xNTEwMDgxMjA5MjBaFw0xNjEwMDcxODA5MjBaMEMxQTA/BgNVBAMeOABTAHUAaABhAG4AXwBTAGgAZQB0AHQAeQAtAFAAQwBcAE4AUwB1AGgAYQBuAFMAaABlAHQAdAB5MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDECRMHswN0XMm/mirMZrIOFzTrlP/vjIuUt6ZWEhpb+FKR+4UDV3Vc8xPKPJBBa+lABLHxLpfW+64vVw8xzSLtT/6l7Qjtcm0IMif8BLGBw/g8lNiNqHF5F6y+VoTlUaTr6BaW6zlHDr0Xo/HcJ7CaaiYnB7KRzrYNuTiVuaTssQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAFDI1a4W3f1Gl7SwgHz6To6UnVXy2Yo9yb3ww4r2gGUNLWIqDcVPWuiffhLJjZ38CXxLpRH2ySl+dj/2dYch9msujBEt2BPkCPKViVrEuonk/i981PyA0F/TAYyIbeWywDsqhLOWkNWIhbbEZ3XmEcvu2Ng4eRzzWmoOPRjsGBx8</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
+</asmv1:assembly>

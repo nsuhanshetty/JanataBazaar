@@ -306,7 +306,7 @@
             this.cmbVATPercent.Location = new System.Drawing.Point(117, 35);
             this.cmbVATPercent.Name = "cmbVATPercent";
             this.cmbVATPercent.Size = new System.Drawing.Size(113, 21);
-            this.cmbVATPercent.TabIndex = 50;
+            this.cmbVATPercent.TabIndex = 1;
             this.cmbVATPercent.SelectedIndexChanged += new System.EventHandler(this.cmbVATPercent_SelectedIndexChanged);
             // 
             // chkIsExempted
@@ -789,6 +789,7 @@
             // 
             // cmbPackType
             // 
+            this.cmbPackType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPackType.FormattingEnabled = true;
             this.cmbPackType.Location = new System.Drawing.Point(122, 17);
             this.cmbPackType.Name = "cmbPackType";

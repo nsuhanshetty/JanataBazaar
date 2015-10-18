@@ -144,7 +144,7 @@ namespace JanataBazaar.View.Details
             //check if atleast one chkbox is selected  in LowerPrice
             if (selHPrice.Count < 1)
             {
-                MessageBox.Show("Atleast one Item must be selected in the lower prices to be merged OR transferred to the higher price grid.", "Select Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Atleast one Item must be selected in the higher prices to be merged OR transferred with the lower price grid.", "Select Items", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -193,7 +193,7 @@ namespace JanataBazaar.View.Details
                 {
                     LoadSKUList();
                     LoadDGV();
-                    selLPrice.Clear();
+                    selHPrice.Clear();
                 }
             }
         }

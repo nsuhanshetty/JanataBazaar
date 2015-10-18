@@ -31,5 +31,10 @@ namespace JanataBazaar.View.Details
         {
             return (obj == null || obj.ToString() == "");
         }
+
+        private void Winform_Details_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

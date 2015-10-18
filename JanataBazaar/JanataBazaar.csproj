@@ -22,10 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://buyhoney.in/janatabazaar/janatabazaar/</InstallUrl>
+    <InstallUrl>http://buyhoney.in/spindlesoft/janatabazaar/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -122,6 +122,7 @@
     <Compile Include="Mappers\PurchaseOrderMapping.cs" />
     <Compile Include="Mappers\SaleMapping.cs" />
     <Compile Include="Mappers\VATRevisionMapper.cs" />
+    <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\PeoplePractice.cs" />
     <Compile Include="Models\Purchase.cs" />

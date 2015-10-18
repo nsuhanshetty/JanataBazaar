@@ -18,14 +18,17 @@ namespace JanataBazaar.Builders
             {
                 ItemSKU itemSKUAlias = null;
                 Item itemAlias = null;
+                Section sectionAlias = null;
 
                 var results = session.QueryOver(() => itemSKUAlias)
                                      .JoinAlias(() => itemSKUAlias.Item, () => itemAlias)
+                                     .JoinAlias(() => itemAlias.Section, () => sectionAlias)
                                      .SelectList(list => list
                                                          .SelectGroup(() => itemAlias.ID)
                                                          .Select(() => itemAlias.Name)
                                                          .Select(() => itemAlias.Brand)
                                                          .Select(() => itemAlias.QuantityUnit))
+                                     .Where(() => sectionAlias.Name == "Consumerable" || sectionAlias.Name == "Grocery")
                                      .Where(Restrictions.Gt(Projections.Count(Projections.Property(() => itemAlias.ID)), 1))
                                      .List<object[]>();
                 return results.ToList();

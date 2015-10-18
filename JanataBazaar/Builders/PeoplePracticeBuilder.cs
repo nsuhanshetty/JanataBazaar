@@ -2,6 +2,7 @@
 using JanataBazaar.Models;
 using log4net;
 using NHibernate.Criterion;
+using NHibernate.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,11 @@ namespace JanataBazaar.Builders
             {
                 try
                 {
-                    return session.Get<Vendor>(_ID);
+                    var vendor = session.QueryOver<Vendor>()
+                                  .Where(x => x.ID == _ID)
+                                  .Fetch(x => x.Bank).Eager
+                                  .Future().SingleOrDefault();
+                    return vendor;
                 }
                 catch (Exception ex)
                 {
@@ -42,6 +47,24 @@ namespace JanataBazaar.Builders
                     .List() as List<Vendor>;
 
                 return vendorList;
+            }
+        }
+
+        public static List<Bank> GetBankNames()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                try
+                {
+                    List<Bank> bankList = session.Query<Bank>().ToList();
+                    log.Info("Fetching Bank Names successfull");
+                    return bankList;
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    return null;
+                }
             }
         }
         #endregion Vendor
@@ -111,5 +134,42 @@ namespace JanataBazaar.Builders
             }
         }
         #endregion Member
+
+        public static bool IfBankExits(string name)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                try
+                {
+                    bool exists = session.Query<Bank>().Any(x => x.Name == name);
+                    return exists;
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    return false;
+                }
+            }
+        }
+
+        public static Bank GetBankNames(string name)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                try
+                {
+                    Bank bank = session.Query<Bank>()
+                        .Where(x => x.Name == name).SingleOrDefault();
+
+                    log.Info("Fetching Bank Names successfull");
+                    return bank;
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+                    return null;
+                }
+            }
+        }
     }
 }

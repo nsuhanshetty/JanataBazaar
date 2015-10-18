@@ -26,13 +26,24 @@ namespace JanataBazaar.Mappers
             Map(x => x.PhoneNo);
             Map(x => x.Address);
 
-            Map(x => x.BankName);
+            References(x => x.Bank).Class<Bank>()
+                                   .Columns("BankID")
+                                   .Cascade.None(); ;
             Map(x => x.IFSCCode);
             Map(x => x.BankUserName);
             Map(x => x.AccNo);
 
             Map(x => x.DurationTerm);
             Map(x => x.DurationCount);
+        }
+    }
+
+    class BankMapping : ClassMap<Bank>
+    {
+        public BankMapping()
+        {
+            Id(x => x.ID);
+            Map(x => x.Name);
         }
     }
 

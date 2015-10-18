@@ -121,6 +121,7 @@
             this.MinimizeBox = false;
             this.Name = "Winform_Details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.Winform_Details_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStripParent.ResumeLayout(false);

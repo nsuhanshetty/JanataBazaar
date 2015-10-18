@@ -180,7 +180,15 @@ namespace JanataBazaar.View.Details
         public Winform_ItemSKUDetails(int index = 0, int revisionID = 0)
         {
             InitializeComponent();
-            cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
+           var packageTypes = Builders.PurchaseBillBuilder.GetPackageTypes();
+            cmbPackType.DataSource = packageTypes;
+
+            //string[] packAutoCol = packageTypes.ToArray();
+            //AutoCompleteStringCollection packAuto = new AutoCompleteStringCollection();
+            //packAuto.AddRange(packAutoCol);
+            //cmbPackType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            //cmbPackType.AutoCompleteMode = AutoCompleteMode.Suggest;
+
             this.Index = index;
 
             this.revisionID = revisionID;
@@ -565,6 +573,17 @@ namespace JanataBazaar.View.Details
             VAT = VATPercent != 0 ? Basic * (VATPercent / 100) : 0;
             txtVAT.Text = VAT.ToString();
             UpdateRates();
+        }
+
+        protected override void CancelToolStrip_Click(object sender, EventArgs e)
+        {
+            if (Utilities.Validation.IsInEdit(this,true))
+            {
+                DialogResult dr  = MessageBox.Show("Continue to Exit?","Exit",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                    this.Close();
+            }
+
         }
     }
 }

@@ -60,18 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).BeginInit();
             this.SuspendLayout();
             // 
-            // SearchToolStrip
-            // 
-            this.SearchToolStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.SearchToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("SearchToolStrip.Image")));
-            this.SearchToolStrip.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SearchToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SearchToolStrip.Name = "SearchToolStrip";
-            this.SearchToolStrip.Size = new System.Drawing.Size(46, 51);
-            this.SearchToolStrip.Text = "&Search";
-            this.SearchToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SearchToolStrip.Click += new System.EventHandler(this.SearchToolStrip_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(4, 178);
@@ -289,7 +277,6 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.Size = new System.Drawing.Size(110, 20);
             this.txtBrand.TabIndex = 1;
-            //this.txtBrand.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label1
             // 
@@ -315,7 +302,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(110, 20);
             this.txtName.TabIndex = 0;
-            //this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // lblMobile
             // 
@@ -335,6 +321,18 @@
             this.lblName.TabIndex = 130;
             this.lblName.Text = "Name ";
             // 
+            // SearchToolStrip
+            // 
+            this.SearchToolStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.SearchToolStrip.Image = ((System.Drawing.Image)(resources.GetObject("SearchToolStrip.Image")));
+            this.SearchToolStrip.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SearchToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SearchToolStrip.Name = "SearchToolStrip";
+            this.SearchToolStrip.Size = new System.Drawing.Size(46, 51);
+            this.SearchToolStrip.Text = "&Search";
+            this.SearchToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SearchToolStrip.Click += new System.EventHandler(this.SearchToolStrip_Click);
+            // 
             // Winform_SCFRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,7 +340,7 @@
             this.ClientSize = new System.Drawing.Size(1041, 409);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_SCFRegister";
-            this.Text = "Winform_SCFRegister";
+            this.Text = "Stock Control Form Register";
             this.Load += new System.EventHandler(this.Winform_SCFRegister_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);

@@ -1,4 +1,5 @@
 ﻿//using Newtonsoft.Json;
+using JanataBazaar.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -103,7 +104,7 @@ namespace JanataBazaar.Model
         public virtual string PhoneNo { get; set; }
         public virtual string Address { get; set; }
 
-        public virtual string BankName { get; set; }
+        public virtual Bank Bank { get; set; }
         public virtual string AccNo { get; set; }
         public virtual string IFSCCode { get; set; }
         public virtual string BankUserName { get; set; }
@@ -114,7 +115,7 @@ namespace JanataBazaar.Model
         public Vendor() { }
 
         public Vendor(string name, string mobno, string phoneno, string address, string bankusername, string accno, 
-            string bankname, string IfscNo, int dCount, bool inDays, string tin = "", string plp = "", string cst = "")
+            string IfscNo, int dCount, bool inDays, string tin = "", string plp = "", string cst = "")
         {
             this.TIN = tin;
             this.PLP = plp;
@@ -127,7 +128,7 @@ namespace JanataBazaar.Model
 
             this.BankUserName = bankusername;
             this.AccNo = accno;
-            this.BankName = bankname;
+            //this.BankName = bankname;
             this.IFSCCode = IfscNo;
 
             this.DurationCount = dCount;

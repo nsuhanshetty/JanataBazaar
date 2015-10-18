@@ -59,7 +59,7 @@ namespace JanataBazaar.Builders
                                         .Where(NHibernate.Criterion.Restrictions.On(() => itemAlias.Brand).IsLike(brand + "%"))
                                         .Where(() => sectionAlias.Name == sectionName)
                                         .List())
-                                  select new { item.ID, item.Name, item.QuantityUnit })
+                                  select new { item.ID, item.Name, item.Brand, item.QuantityUnit })
                                   .ToList();
                 return itemList;
             }

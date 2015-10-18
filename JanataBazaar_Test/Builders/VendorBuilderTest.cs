@@ -13,7 +13,7 @@ namespace JanataBazaar_Test
         public void SaveVendorsList_Test(string name, string mobno, string phoneno, string address, string bankusername, string accno,
             string bankname, string IfscNo, int dCount, bool inDays, string tin = "", string plp = "", string cst = "")
         {
-            Vendor vendor = new Vendor(name, mobno, phoneno, address, bankname, accno, bankname, IfscNo, dCount, inDays, tin, plp, cst);
+            Vendor vendor = new Vendor(name, mobno, phoneno, address, bankname, accno, IfscNo, dCount, inDays, tin, plp, cst);
             bool response = PeoplePracticeSaver.SaveVendorInfo(vendor);
             Assert.AreEqual(true, response);
         }

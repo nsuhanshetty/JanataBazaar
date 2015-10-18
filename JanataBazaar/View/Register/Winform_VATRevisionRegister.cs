@@ -71,6 +71,11 @@ namespace JanataBazaar.View.Register
             UpdateStatus(revisionList.Count() + " results found.");
         }
 
+        protected override void NewToolStrip_Click(object sender, System.EventArgs e)
+        {
+            new Winform_VATDetails().ShowDialog();
+        }
+
         private void cmbRevisionDate_SelectedIndexChanged(object sender, EventArgs e)
         {
             //todo: Fetch the vat percents where date of Revision = cmb.text

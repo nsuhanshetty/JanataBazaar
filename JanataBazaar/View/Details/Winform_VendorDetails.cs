@@ -1,8 +1,11 @@
-﻿using JanataBazaar.Model;
+﻿using JanataBazaar.Builders;
+using JanataBazaar.Model;
+using JanataBazaar.Models;
 using JanataBazaar.Savers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -10,7 +13,7 @@ namespace JanataBazaar.View.Details
 {
     public partial class Winform_VendorDetails : JanataBazaar.View.Details.Winform_Details
     {
-        Vendor _vendor = new Vendor();
+        Vendor _vendor;
 
         public Winform_VendorDetails(Vendor vendor)
         {
@@ -29,7 +32,7 @@ namespace JanataBazaar.View.Details
             txtBankUserName.Text = _vendor.BankUserName;
             txtIfscCode.Text = _vendor.IFSCCode;
             txtAccNo.Text = _vendor.AccNo;
-            cmbBankName.Text = _vendor.BankName;
+            //cmbBankName.Text = _vendor.BankName;
 
             udDuration.Value = _vendor.DurationCount;
             if (_vendor.DurationTerm)
@@ -50,8 +53,15 @@ namespace JanataBazaar.View.Details
 
             UpdateStatus("fetching Vendor Details..", 33);
 
+            if (this._vendor == null)
+                this._vendor = new Vendor();
             _vendor.BankUserName = txtBankUserName.Text;
-            _vendor.BankName = cmbBankName.Text;
+
+            if (!PeoplePracticeBuilder.IfBankExits(cmbBankName.Text))
+                this._vendor.Bank = new Bank(cmbBankName.Text);
+            else
+                this._vendor.Bank = Builders.PeoplePracticeBuilder.GetBankNames(cmbBankName.Text);
+
             _vendor.IFSCCode = txtIfscCode.Text;
             _vendor.AccNo = txtAccNo.Text;
 
@@ -71,7 +81,10 @@ namespace JanataBazaar.View.Details
             bool response = PeoplePracticeSaver.SaveVendorInfo(this._vendor);
 
             if (response)
+            {
                 UpdateStatus("Saved.", 100);
+                this.Close();
+            }
             else
                 UpdateStatus("Error Saving Vendor Details.", 100);
 
@@ -79,7 +92,7 @@ namespace JanataBazaar.View.Details
             //if (addSaleReg != null)
             //    addSaleReg.LoadDgv();
 
-            this.Close();
+           
         }
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
@@ -141,6 +154,22 @@ namespace JanataBazaar.View.Details
         private void Winform_VendorDetails_Load(object sender, EventArgs e)
         {
             //todo: Load the bank names
+            List<Bank> BankList = PeoplePracticeBuilder.GetBankNames();
+            cmbBankName.DataSource = BankList;
+            cmbBankName.DisplayMember = "Name";
+            cmbBankName.ValueMember = "ID";
+
+            string[] bankNames = BankList.Select(x => x.Name).ToArray();
+            var nameCollection = new AutoCompleteStringCollection();
+            nameCollection.AddRange(bankNames);
+
+            cmbBankName.AutoCompleteCustomSource = nameCollection;
+            cmbBankName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cmbBankName.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cmbBankName.Text = "";
+            if (this._vendor != null)
+                cmbBankName.SelectedText = this._vendor.Bank.Name;
         }
     }
 }
