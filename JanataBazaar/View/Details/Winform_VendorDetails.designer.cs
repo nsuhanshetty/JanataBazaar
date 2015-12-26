@@ -40,7 +40,6 @@
             this.txtIfscCode = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtPhoneNo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -80,7 +79,7 @@
             this.groupBox4.Controls.Add(this.cmbBankName);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.txtIfscCode);
-            this.groupBox4.Location = new System.Drawing.Point(12, 274);
+            this.groupBox4.Location = new System.Drawing.Point(12, 296);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(268, 128);
             this.groupBox4.TabIndex = 4;
@@ -90,6 +89,7 @@
             // txtAccNo
             // 
             this.txtAccNo.Location = new System.Drawing.Point(94, 49);
+            this.txtAccNo.MaxLength = 20;
             this.txtAccNo.Name = "txtAccNo";
             this.txtAccNo.Size = new System.Drawing.Size(156, 20);
             this.txtAccNo.TabIndex = 1;
@@ -152,6 +152,7 @@
             // txtIfscCode
             // 
             this.txtIfscCode.Location = new System.Drawing.Point(94, 102);
+            this.txtIfscCode.MaxLength = 20;
             this.txtIfscCode.Name = "txtIfscCode";
             this.txtIfscCode.Size = new System.Drawing.Size(156, 20);
             this.txtIfscCode.TabIndex = 3;
@@ -159,7 +160,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtPhoneNo);
             this.groupBox1.Controls.Add(this.label12);
@@ -171,7 +171,7 @@
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Location = new System.Drawing.Point(12, 137);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 134);
+            this.groupBox1.Size = new System.Drawing.Size(268, 153);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Details";
@@ -185,16 +185,6 @@
             this.label15.Size = new System.Drawing.Size(11, 13);
             this.label15.TabIndex = 127;
             this.label15.Text = "*";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(77, 53);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(11, 13);
-            this.label14.TabIndex = 126;
-            this.label14.Text = "*";
             // 
             // label13
             // 
@@ -274,7 +264,7 @@
             this.txtAddress.Location = new System.Drawing.Point(94, 96);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(156, 30);
+            this.txtAddress.Size = new System.Drawing.Size(156, 51);
             this.txtAddress.TabIndex = 3;
             // 
             // errorProvider1
@@ -362,7 +352,7 @@
             this.groupBox2.Controls.Add(this.rdbDays);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.udDuration);
-            this.groupBox2.Location = new System.Drawing.Point(12, 405);
+            this.groupBox2.Location = new System.Drawing.Point(12, 427);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(268, 51);
             this.groupBox2.TabIndex = 5;
@@ -396,7 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 481);
+            this.ClientSize = new System.Drawing.Size(288, 503);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtCST);
             this.Controls.Add(this.txtPLP);
@@ -465,7 +455,6 @@
         private System.Windows.Forms.TextBox txtPhoneNo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
     }
 }

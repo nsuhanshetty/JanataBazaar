@@ -19,6 +19,15 @@ namespace JanataBazaar.Builders
             }
         }
 
+        public static List<string> GetNamesList()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return (from _item in session.Query<Item>()
+                        select _item.Name).Distinct().ToList();
+            }
+        }
+
         public static Section GetSection(string _name)
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -30,13 +39,22 @@ namespace JanataBazaar.Builders
             }
         }
 
-        public static List<Section> GetSectionsList()
+        public static List<string> GetSectionsList()
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                return session.Query<Section>().ToList();
+                return (from sect in session.Query<Section>() 
+                       select sect.Name).ToList();
             }
         }
+
+        //public static List<Section> GetSectionsList()
+        //{
+        //    using (var session = NHibernateHelper.OpenSession())
+        //    {
+        //        return session.Query<Section>().ToList();
+        //    }
+        //}
 
         public static List<string> GetUnitList()
         {

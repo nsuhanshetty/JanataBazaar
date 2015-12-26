@@ -28,15 +28,18 @@ namespace JanataBazaar.Reports
         private void Report_SCF_Load(object sender, EventArgs e)
         {
             Datasets.DataSet_SCF.DataTable_SCFDataTable dt = new Datasets.DataSet_SCF.DataTable_SCFDataTable();
-            dt.Rows.Add();
-            var index = dt.Rows.Count - 1;
-
+           
+            var index =0;
             foreach (var item in itemList)
             {
+                dt.Rows.Add();
                 dt.Rows[index]["Name"] = item.Item.Name;
                 dt.Rows[index]["Brand"] = item.Item.Brand;
-                dt.Rows[index]["PackageType"] = item.Package.Name;
-                dt.Rows[index]["PackageQuantity"] = item.PackageQuantity;
+                if (item.Package != null)
+                {
+                    dt.Rows[index]["PackageType"] = item.Package.Name;
+                    dt.Rows[index]["PackageQuantity"] = item.PackageQuantity;
+                }
                 dt.Rows[index]["QuantityPerPack"] = item.QuantityPerPack;
                 dt.Rows[index]["PurchaseValue"] = item.PurchaseValue;
                 dt.Rows[index]["TotalPurchase"] = item.TotalPurchaseValue;
@@ -44,6 +47,7 @@ namespace JanataBazaar.Reports
                 dt.Rows[index]["TotalWholesale"] = item.TotalWholesaleValue;
                 dt.Rows[index]["Retail"] = item.Retail;
                 dt.Rows[index]["TotalResale"] = item.TotalResaleValue;
+                index++;
             }
 
             this.dataSetSCFBindingSource.DataSource = dt;

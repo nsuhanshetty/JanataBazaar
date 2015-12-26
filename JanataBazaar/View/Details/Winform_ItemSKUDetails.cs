@@ -15,7 +15,7 @@ namespace JanataBazaar.View.Details
 {
     public partial class Winform_ItemSKUDetails : Winform_Details
     {
-        List<string> exceptList = new List<string> { "txtBasic", "txtWholePercent", "txtRetailPercent" };
+        List<string> exceptList = new List<string> { "txtBasic", "txtWholePercent", "txtRetailPercent", "txtTotalBasic" };
         Item item;
         Package pack;
         int Index;
@@ -180,7 +180,7 @@ namespace JanataBazaar.View.Details
         public Winform_ItemSKUDetails(int index = 0, int revisionID = 0)
         {
             InitializeComponent();
-           var packageTypes = Builders.PurchaseBillBuilder.GetPackageTypes();
+            var packageTypes = Builders.PurchaseBillBuilder.GetPackageTypes();
             cmbPackType.DataSource = packageTypes;
 
             //string[] packAutoCol = packageTypes.ToArray();
@@ -235,9 +235,10 @@ namespace JanataBazaar.View.Details
 
 
             this.pack = itemsku.Package;
-            cmbPackType.SelectedIndex = cmbPackType.Items.IndexOf(this.pack.Name);
-            txtNoPacks.Text = itemsku.PackageQuantity.ToString();
-            txtItemsPerPack.Text = itemsku.QuantityPerPack.ToString();
+            if (this.pack != null)
+                cmbPackType.SelectedIndex = cmbPackType.Items.IndexOf(this.pack.Name);
+            nudNoPacks.Value = itemsku.PackageQuantity;
+            nudItemsPerPack.Value = itemsku.QuantityPerPack;
 
             txtNetWght.Text = itemsku.NetWeight.ToString();
             txtGrossWght.Text = itemsku.GrossWeight.ToString();
@@ -257,6 +258,7 @@ namespace JanataBazaar.View.Details
             txtVAT.Text = itemsku.VAT.ToString();
 
             this.Basic = itemsku.Basic;
+            txtTotalBasic.Text = (this.Basic * (nudNoPacks.Value * nudItemsPerPack.Value)).ToString("#.##");
 
             this.VATPercent = itemsku.VATPercent;
             this.MiscPercent = itemsku.MiscPercent;
@@ -283,9 +285,11 @@ namespace JanataBazaar.View.Details
             //PurchaseRate = itemsku.PurchaseValue;
 
             txtWholePercent.Text = itemsku.WholesaleMargin.ToString();
+            txtWholeMarginPrice.Text = ((WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate).ToString("#.##");
             txtWholeRate.Text = itemsku.Wholesale.ToString();
 
             txtRetailPercent.Text = itemsku.RetailMargin.ToString();
+            txtRetailMarginPrice.Text = ((RRatePercent != 0 ? (WRate * (RRatePercent / 100)) : 0) + WRate).ToString("#.##");
             txtRetailRate.Text = itemsku.Retail.ToString();
 
         }
@@ -344,18 +348,18 @@ namespace JanataBazaar.View.Details
 
         private void txtValueInt_Validating(object sender, CancelEventArgs e)
         {
+            string _errorMsg = "";
             TextBox txt = (TextBox)sender;
-            string _errorMsg;
 
             if (string.IsNullOrEmpty(txt.Text))
             {
                 if (!exceptList.Contains(txt.Name)) return;
-                _errorMsg = "Invalid Amount input data type.\nExample: '10'";
+                _errorMsg = "Invalid Amount input data value.\nExample: '10'";
             }
             else
             {
                 Match _match = Regex.Match(txt.Text, "^[0-9]*$");
-                _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '10'" : "";
+                _errorMsg = !_match.Success ? "Invalid input data type.\nExample: '10'" : "";
             }
             errorProvider1.SetError(txt, _errorMsg);
 
@@ -401,7 +405,7 @@ namespace JanataBazaar.View.Details
             WRatePercent = (decimal.TryParse(txtWholePercent.Text, out _wRate) ? _wRate : 0);
 
             WRate = (WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate;
-            txtWholeRate.Text = WRate.ToString();
+            txtWholeRate.Text = txtWholeMarginPrice.Text = WRate.ToString("#.##");
         }
 
         private void txtRetailPercent_Validated(object sender, EventArgs e)
@@ -409,7 +413,7 @@ namespace JanataBazaar.View.Details
             RRatePercent = (decimal.TryParse(txtRetailPercent.Text, out _rRate) ? _rRate : 0);
 
             RRate = (RRatePercent != 0 ? (WRate * (RRatePercent / 100)) : 0) + WRate;
-            txtRetailRate.Text = RRate.ToString();
+            txtRetailRate.Text = txtRetailMarginPrice.Text = RRate.ToString("#.##");
         }
         #endregion PercentValidated
 
@@ -419,12 +423,26 @@ namespace JanataBazaar.View.Details
             decimal _basic;
             Basic = decimal.TryParse(txtBasic.Text, out _basic) ? _basic : 0;
 
+            var totalItem = nudItemsPerPack.Value * nudNoPacks.Value;
+
+            txtTotalBasic.Text = (Basic * totalItem).ToString("#.##");
+
             if (!string.IsNullOrEmpty(cmbVATPercent.Text))
             {
                 VATPercent = decimal.Parse(cmbVATPercent.Text);
                 txtVAT.Text = VAT.ToString();
             }
             UpdateRates();
+        }
+
+        private void txtTotalBasic_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTotalBasic.Text)) return;
+
+            var totalItem = nudItemsPerPack.Value * nudNoPacks.Value;
+
+            txtBasic.Text = (decimal.Parse(txtTotalBasic.Text) / totalItem).ToString("#.##");
+            txtBasic_Validated(this, new EventArgs());
         }
 
         private void txtValues_Validated(object sender, EventArgs e)
@@ -531,9 +549,10 @@ namespace JanataBazaar.View.Details
 
             _itemPrice.PurchaseValue = PurchaseRate;
 
-            _itemPrice.Package = this.pack;
-            _itemPrice.PackageQuantity = string.IsNullOrEmpty(txtNoPacks.Text) ? 1 : int.Parse(txtNoPacks.Text);
-            _itemPrice.QuantityPerPack = int.Parse(txtItemsPerPack.Text);
+            if (this.pack != null)
+                _itemPrice.Package = this.pack;
+            _itemPrice.PackageQuantity = int.Parse(nudNoPacks.Value.ToString());
+            _itemPrice.QuantityPerPack = int.Parse(nudItemsPerPack.Value.ToString());
 
             _itemPrice.NetWeight = string.IsNullOrEmpty(txtNetWght.Text) ? 0 : int.Parse(txtNetWght.Text);
             _itemPrice.GrossWeight = string.IsNullOrEmpty(txtGrossWght.Text) ? 0 : int.Parse(txtGrossWght.Text);
@@ -552,7 +571,7 @@ namespace JanataBazaar.View.Details
                 this.pack = Builders.PackageDetailsBuilder.GetPackage(cmbPackType.Text);
 
             if (string.IsNullOrEmpty(txtNetWght.Text)) return;
-            txtGrossWght.Text = (int.Parse(txtNetWght.Text) + this.pack.Weight).ToString();
+            txtGrossWght.Text = (int.Parse(txtNetWght.Text) + (this.pack != null ? this.pack.Weight : 0)).ToString();
         }
 
         private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
@@ -577,13 +596,15 @@ namespace JanataBazaar.View.Details
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
         {
-            if (Utilities.Validation.IsInEdit(this,true))
+            if (Utilities.Validation.IsInEdit(this, true))
             {
-                DialogResult dr  = MessageBox.Show("Continue to Exit?","Exit",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show("Continue to Exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                     this.Close();
             }
 
         }
+
+
     }
 }

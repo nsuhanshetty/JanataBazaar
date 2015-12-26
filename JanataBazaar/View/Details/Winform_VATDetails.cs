@@ -118,11 +118,11 @@ namespace JanataBazaar.View.Details
             if (vatPercentList.Count == 0)
                 MessageBox.Show("VAT percentage List cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //todo: Verfiy what can be the constraints on RevisionDate
-            else if (DateTime.Compare(dtpFromYear.Value.Date, DateTime.Today.Date) < 0)
-            {
-                errorProvider1.SetError(dtpFromYear, "Revision Date cannot be less than today");
-                return;
-            }
+            //else if (DateTime.Compare(dtpFromYear.Value.Date, DateTime.Today.Date) < 0)
+            //{
+            //    errorProvider1.SetError(dtpFromYear, "Revision Date cannot be less than today");
+            //    return;
+            //}
             else if (Savers.VATPercentSavers.IsUniqueRevisionDate(dtpFromYear.Value.Date, _ID))
             {
                 MessageBox.Show("The Date of Revision already exists. Enter a different Date and try again", "Duplicate Revision Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -211,17 +211,6 @@ namespace JanataBazaar.View.Details
             {
                 e.Cancel = true;
                 txtBox.Select(0, txtBox.Text.Length);
-            }
-        }
-
-        private void dtpFromYear_ValueChanged(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(dtpFromYear, "");
-
-            if (DateTime.Compare(dtpFromYear.Value.Date, DateTime.Today.Date) < 0)
-            {
-                errorProvider1.SetError(dtpFromYear, "Revision Date cannot be less than today");
-                return;
             }
         }
     }

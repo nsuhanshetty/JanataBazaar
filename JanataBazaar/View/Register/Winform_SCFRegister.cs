@@ -23,10 +23,13 @@ namespace JanataBazaar.View.Register
 
         private void Winform_SCFRegister_Load(object sender, EventArgs e)
         {
-            List<Section> sectList = ItemDetailsBuilder.GetSectionsList();
+            List<string> sectList = ItemDetailsBuilder.GetSectionsList();
+            sectList.Add("");
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            cmbSection.ValueMember = "ID";
+            //cmbSection.ValueMember = "ID";
+
+            cmbSection.Text = "";
 
             cmbDuration.SelectedIndex = 0;
             this.toolStrip1.Items.Add(this.SearchToolStrip);
@@ -117,30 +120,33 @@ namespace JanataBazaar.View.Register
                 fromDate = DateTime.Today.Date.AddDays(-duration);
             }
             #endregion SetDuration
-
-
-            itemlist = (ReportsBuilder.GetSCFReport(rdbCredit.Checked,txtSCF.Text,txtVendorName.Text,toDate,fromDate,txtName.Text, txtBrand.Text, cmbSection.Text));
-            dgvRegister.DataSource = (from itm in itemlist
-                                      select new
-                                      {
-                                          itm.Purchase.SCFNo,
-                                          itm.Item.Name,
-                                          itm.Item.Brand,
-                                          PackageType = itm.Package.Name,
-                                          itm.PackageQuantity,
-                                          itm.QuantityPerPack,
-                                          itm.PurchaseValue,
-                                          TotalPurchase = itm.TotalPurchaseValue,
-                                          itm.Wholesale,
-                                          TotalWholesale = itm.TotalWholesaleValue,
-                                          itm.Retail,
-                                          TotalResale = itm.TotalResaleValue
-                                      }).ToList();
-
-            if (itemlist == null)
+            
+            itemlist = (ReportsBuilder.GetSCFReport(rdbCredit.Checked, txtSCF.Text, txtVendorName.Text, toDate, fromDate, txtName.Text, txtBrand.Text, cmbSection.Text));
+            if (itemlist.Count == 0)
+            {
+                dgvRegister.DataSource = null;
                 UpdateStatus("No Results Found");
+            }
             else
+            {
+                dgvRegister.DataSource = (from itm in itemlist
+                                          select new
+                                          {
+                                              itm.Purchase.SCFNo,
+                                              itm.Item.Name,
+                                              itm.Item.Brand,
+                                              //PackageType = itm.Package.Name,
+                                              itm.PackageQuantity,
+                                              itm.QuantityPerPack,
+                                              itm.PurchaseValue,
+                                              TotalPurchase = itm.TotalPurchaseValue,
+                                              itm.Wholesale,
+                                              TotalWholesale = itm.TotalWholesaleValue,
+                                              itm.Retail,
+                                              TotalResale = itm.TotalResaleValue
+                                          }).ToList();
                 UpdateStatus(itemlist.Count + " Results Found", 100);
+            }
         }
     }
 }

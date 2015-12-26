@@ -38,8 +38,8 @@ namespace JanataBazaar.Builders
                 List<PurchaseOrder> purchaseOrderList = session.QueryOver<PurchaseOrder>(() => purchaseOrderAlias)
                                                         .Fetch(p => p.Vendor).Eager
                                                         .Fetch(p => p.Revision).Eager
-                                                        .Where(() => purchaseOrderAlias.DateOfInvoice >= fromDate.Date && purchaseOrderAlias.DateOfInvoice <= toDate.Date)
                                                         .Where(() => purchaseOrderAlias.IsCredit == isCredit)
+                                                        .Where(() => purchaseOrderAlias.DateOfInvoice.Date >= fromDate.Date && purchaseOrderAlias.DateOfInvoice.Date <= toDate.Date)
                                                         .List().ToList();
                 foreach (var item in purchaseOrderList)
                 {

@@ -4,8 +4,10 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\nunit.framework.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\NHibernate.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\FluentNHibernate.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\log4net.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Iesi.Collections.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\JanataBazaar.pdb
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\nunit.framework.xml
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\NHibernate.xml
@@ -13,11 +15,6 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\FluentNHibernate.xml
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\log4net.xml
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Iesi.Collections.xml
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.csprojResolveAssemblyReference.cache
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.dll
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.pdb
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
@@ -28,3 +25,6 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.csprojResolveAssemblyReference.cache
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.dll
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar_TestCases\obj\Debug\JanataBazaar_TestCases.pdb

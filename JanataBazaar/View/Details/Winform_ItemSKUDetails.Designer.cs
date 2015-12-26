@@ -46,14 +46,20 @@
             this.dtpDOE = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTotalBasic = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cmbVATPercent = new System.Windows.Forms.ComboBox();
             this.chkIsExempted = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.txtVAT = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.txtPurchaseRate = new System.Windows.Forms.TextBox();
             this.txtMisc = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtTrans = new System.Windows.Forms.TextBox();
@@ -68,6 +74,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtBasic = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtWholeMarginPrice = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -75,6 +82,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtWholePercent = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtRetailMarginPrice = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -88,22 +96,17 @@
             this.AddSectionToolStrip = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.nudItemsPerPack = new System.Windows.Forms.NumericUpDown();
+            this.nudNoPacks = new System.Windows.Forms.NumericUpDown();
             this.txtGrossWght = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.txtNetWght = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.txtItemsPerPack = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.txtNoPacks = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.cmbPackType = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.AddPackageToolStrip = new System.Windows.Forms.ToolStripButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.txtPurchaseRate = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -112,7 +115,8 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudItemsPerPack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNoPacks)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -262,9 +266,15 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtTotalBasic);
+            this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.groupBox6);
+            this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.txtPurchaseRate);
             this.groupBox2.Controls.Add(this.txtMisc);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtTrans);
@@ -280,10 +290,48 @@
             this.groupBox2.Controls.Add(this.txtBasic);
             this.groupBox2.Location = new System.Drawing.Point(14, 312);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(445, 192);
+            this.groupBox2.Size = new System.Drawing.Size(445, 219);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pricing Details Per Unit";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.Color.Red;
+            this.label36.Location = new System.Drawing.Point(302, 21);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(11, 13);
+            this.label36.TabIndex = 58;
+            this.label36.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(246, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.TabIndex = 57;
+            this.label9.Text = "Total Basic";
+            // 
+            // txtTotalBasic
+            // 
+            this.txtTotalBasic.Location = new System.Drawing.Point(314, 18);
+            this.txtTotalBasic.Name = "txtTotalBasic";
+            this.txtTotalBasic.Size = new System.Drawing.Size(113, 20);
+            this.txtTotalBasic.TabIndex = 1;
+            this.txtTotalBasic.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
+            this.txtTotalBasic.Validated += new System.EventHandler(this.txtTotalBasic_Validated);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(302, 196);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(11, 13);
+            this.label28.TabIndex = 55;
+            this.label28.Text = "*";
             // 
             // groupBox6
             // 
@@ -295,7 +343,7 @@
             this.groupBox6.Location = new System.Drawing.Point(6, 94);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(433, 67);
-            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "VAT Details";
             // 
@@ -323,7 +371,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(266, 42);
+            this.label18.Location = new System.Drawing.Point(274, 38);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(28, 13);
             this.label18.TabIndex = 49;
@@ -347,6 +395,15 @@
             this.txtVAT.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtVAT.Validated += new System.EventHandler(this.txtValues_Validated);
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(246, 196);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(58, 13);
+            this.label37.TabIndex = 54;
+            this.label37.Text = "Price /Unit";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -360,25 +417,33 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(279, 71);
+            this.label17.Location = new System.Drawing.Point(284, 71);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(29, 13);
             this.label17.TabIndex = 47;
             this.label17.Text = "Misc";
+            // 
+            // txtPurchaseRate
+            // 
+            this.txtPurchaseRate.Enabled = false;
+            this.txtPurchaseRate.Location = new System.Drawing.Point(314, 193);
+            this.txtPurchaseRate.Name = "txtPurchaseRate";
+            this.txtPurchaseRate.Size = new System.Drawing.Size(113, 20);
+            this.txtPurchaseRate.TabIndex = 53;
             // 
             // txtMisc
             // 
             this.txtMisc.Location = new System.Drawing.Point(314, 71);
             this.txtMisc.Name = "txtMisc";
             this.txtMisc.Size = new System.Drawing.Size(113, 20);
-            this.txtMisc.TabIndex = 4;
+            this.txtMisc.TabIndex = 5;
             this.txtMisc.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtMisc.Validated += new System.EventHandler(this.txtValues_Validated);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(256, 47);
+            this.label12.Location = new System.Drawing.Point(261, 47);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 13);
             this.label12.TabIndex = 45;
@@ -389,14 +454,14 @@
             this.txtTrans.Location = new System.Drawing.Point(314, 44);
             this.txtTrans.Name = "txtTrans";
             this.txtTrans.Size = new System.Drawing.Size(113, 20);
-            this.txtTrans.TabIndex = 2;
+            this.txtTrans.TabIndex = 3;
             this.txtTrans.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtTrans.Validated += new System.EventHandler(this.txtValues_Validated);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(259, 171);
+            this.label11.Location = new System.Drawing.Point(264, 171);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 43;
@@ -443,7 +508,7 @@
             this.txtMiscPercent.Location = new System.Drawing.Point(123, 71);
             this.txtMiscPercent.Name = "txtMiscPercent";
             this.txtMiscPercent.Size = new System.Drawing.Size(113, 20);
-            this.txtMiscPercent.TabIndex = 3;
+            this.txtMiscPercent.TabIndex = 4;
             this.txtMiscPercent.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtMiscPercent.Validated += new System.EventHandler(this.txtMiscPercent_Validated);
             // 
@@ -461,18 +526,18 @@
             this.txtTransPercent.Location = new System.Drawing.Point(123, 44);
             this.txtTransPercent.Name = "txtTransPercent";
             this.txtTransPercent.Size = new System.Drawing.Size(113, 20);
-            this.txtTransPercent.TabIndex = 1;
+            this.txtTransPercent.TabIndex = 2;
             this.txtTransPercent.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtTransPercent.Validated += new System.EventHandler(this.txtTransPercent_Validated);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(74, 21);
+            this.label6.Location = new System.Drawing.Point(47, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 33;
-            this.label6.Text = "Basic";
+            this.label6.Text = "Basic /Unit";
             // 
             // txtBasic
             // 
@@ -485,24 +550,33 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtWholeMarginPrice);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.label23);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.txtWholeRate);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtWholePercent);
-            this.groupBox3.Location = new System.Drawing.Point(13, 560);
+            this.groupBox3.Location = new System.Drawing.Point(13, 536);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(446, 46);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wholesale Price Per Unit";
             // 
+            // txtWholeMarginPrice
+            // 
+            this.txtWholeMarginPrice.Enabled = false;
+            this.txtWholeMarginPrice.Location = new System.Drawing.Point(177, 16);
+            this.txtWholeMarginPrice.Name = "txtWholeMarginPrice";
+            this.txtWholeMarginPrice.Size = new System.Drawing.Size(60, 20);
+            this.txtWholeMarginPrice.TabIndex = 53;
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(298, 16);
+            this.label26.Location = new System.Drawing.Point(298, 19);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(11, 13);
             this.label26.TabIndex = 52;
@@ -549,31 +623,40 @@
             // 
             this.txtWholePercent.Location = new System.Drawing.Point(123, 16);
             this.txtWholePercent.Name = "txtWholePercent";
-            this.txtWholePercent.Size = new System.Drawing.Size(113, 20);
+            this.txtWholePercent.Size = new System.Drawing.Size(48, 20);
             this.txtWholePercent.TabIndex = 0;
             this.txtWholePercent.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtWholePercent.Validated += new System.EventHandler(this.txtWholePercent_Validated);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtRetailMarginPrice);
             this.groupBox4.Controls.Add(this.label27);
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.txtRetailRate);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.txtRetailPercent);
-            this.groupBox4.Location = new System.Drawing.Point(13, 611);
+            this.groupBox4.Location = new System.Drawing.Point(13, 588);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(446, 46);
+            this.groupBox4.Size = new System.Drawing.Size(446, 44);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Retail Price Per Unit";
+            // 
+            // txtRetailMarginPrice
+            // 
+            this.txtRetailMarginPrice.Enabled = false;
+            this.txtRetailMarginPrice.Location = new System.Drawing.Point(177, 16);
+            this.txtRetailMarginPrice.Name = "txtRetailMarginPrice";
+            this.txtRetailMarginPrice.Size = new System.Drawing.Size(60, 20);
+            this.txtRetailMarginPrice.TabIndex = 54;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(297, 16);
+            this.label27.Location = new System.Drawing.Point(302, 19);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(11, 13);
             this.label27.TabIndex = 53;
@@ -592,7 +675,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(271, 19);
+            this.label14.Location = new System.Drawing.Point(275, 19);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(30, 13);
             this.label14.TabIndex = 38;
@@ -620,7 +703,7 @@
             // 
             this.txtRetailPercent.Location = new System.Drawing.Point(123, 16);
             this.txtRetailPercent.Name = "txtRetailPercent";
-            this.txtRetailPercent.Size = new System.Drawing.Size(113, 20);
+            this.txtRetailPercent.Size = new System.Drawing.Size(48, 20);
             this.txtRetailPercent.TabIndex = 0;
             this.txtRetailPercent.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
             this.txtRetailPercent.Validated += new System.EventHandler(this.txtRetailPercent_Validated);
@@ -690,14 +773,13 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.nudItemsPerPack);
+            this.groupBox7.Controls.Add(this.nudNoPacks);
             this.groupBox7.Controls.Add(this.txtGrossWght);
             this.groupBox7.Controls.Add(this.label34);
             this.groupBox7.Controls.Add(this.txtNetWght);
             this.groupBox7.Controls.Add(this.label35);
-            this.groupBox7.Controls.Add(this.txtItemsPerPack);
-            this.groupBox7.Controls.Add(this.label32);
             this.groupBox7.Controls.Add(this.label33);
-            this.groupBox7.Controls.Add(this.txtNoPacks);
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.cmbPackType);
             this.groupBox7.Controls.Add(this.label25);
@@ -707,6 +789,42 @@
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Package Details";
+            // 
+            // nudItemsPerPack
+            // 
+            this.nudItemsPerPack.Location = new System.Drawing.Point(315, 45);
+            this.nudItemsPerPack.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudItemsPerPack.Name = "nudItemsPerPack";
+            this.nudItemsPerPack.Size = new System.Drawing.Size(113, 20);
+            this.nudItemsPerPack.TabIndex = 2;
+            this.nudItemsPerPack.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudItemsPerPack.Validated += new System.EventHandler(this.txtTotalBasic_Validated);
+            // 
+            // nudNoPacks
+            // 
+            this.nudNoPacks.Location = new System.Drawing.Point(122, 45);
+            this.nudNoPacks.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudNoPacks.Name = "nudNoPacks";
+            this.nudNoPacks.Size = new System.Drawing.Size(113, 20);
+            this.nudNoPacks.TabIndex = 1;
+            this.nudNoPacks.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudNoPacks.Validated += new System.EventHandler(this.txtTotalBasic_Validated);
             // 
             // txtGrossWght
             // 
@@ -719,7 +837,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(241, 71);
+            this.label34.Location = new System.Drawing.Point(243, 72);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(71, 13);
             this.label34.TabIndex = 143;
@@ -727,7 +845,7 @@
             // 
             // txtNetWght
             // 
-            this.txtNetWght.Location = new System.Drawing.Point(122, 68);
+            this.txtNetWght.Location = new System.Drawing.Point(122, 69);
             this.txtNetWght.Name = "txtNetWght";
             this.txtNetWght.Size = new System.Drawing.Size(113, 20);
             this.txtNetWght.TabIndex = 3;
@@ -737,46 +855,20 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(47, 71);
+            this.label35.Location = new System.Drawing.Point(47, 72);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(61, 13);
             this.label35.TabIndex = 141;
             this.label35.Text = "Net Weight";
             // 
-            // txtItemsPerPack
-            // 
-            this.txtItemsPerPack.Location = new System.Drawing.Point(315, 44);
-            this.txtItemsPerPack.Name = "txtItemsPerPack";
-            this.txtItemsPerPack.Size = new System.Drawing.Size(113, 20);
-            this.txtItemsPerPack.TabIndex = 2;
-            this.txtItemsPerPack.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueInt_Validating);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.Color.Red;
-            this.label32.Location = new System.Drawing.Point(302, 47);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(11, 13);
-            this.label32.TabIndex = 139;
-            this.label32.Text = "*";
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(244, 47);
+            this.label33.Location = new System.Drawing.Point(251, 47);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(62, 13);
             this.label33.TabIndex = 138;
             this.label33.Text = "Items/Pack";
-            // 
-            // txtNoPacks
-            // 
-            this.txtNoPacks.Location = new System.Drawing.Point(122, 43);
-            this.txtNoPacks.Name = "txtNoPacks";
-            this.txtNoPacks.Size = new System.Drawing.Size(113, 20);
-            this.txtNoPacks.TabIndex = 1;
-            this.txtNoPacks.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueInt_Validating);
             // 
             // label30
             // 
@@ -817,67 +909,25 @@
             this.AddPackageToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddPackageToolStrip.Click += new System.EventHandler(this.AddPackageToolStrip_Click);
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label9);
-            this.groupBox8.Controls.Add(this.label36);
-            this.groupBox8.Controls.Add(this.txtPurchaseRate);
-            this.groupBox8.Location = new System.Drawing.Point(13, 509);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(446, 46);
-            this.groupBox8.TabIndex = 4;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Purchase Price Per Unit";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(298, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(11, 13);
-            this.label9.TabIndex = 52;
-            this.label9.Text = "*";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(271, 19);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(30, 13);
-            this.label36.TabIndex = 38;
-            this.label36.Text = "Rate";
-            // 
-            // txtPurchaseRate
-            // 
-            this.txtPurchaseRate.Location = new System.Drawing.Point(314, 16);
-            this.txtPurchaseRate.Name = "txtPurchaseRate";
-            this.txtPurchaseRate.Size = new System.Drawing.Size(113, 20);
-            this.txtPurchaseRate.TabIndex = 1;
-            this.txtPurchaseRate.Validating += new System.ComponentModel.CancelEventHandler(this.txtValue_Validating);
-            this.txtPurchaseRate.Validated += new System.EventHandler(this.txtPurchaseRate_Validated);
-            // 
             // Winform_ItemSKUDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(467, 681);
-            this.Controls.Add(this.groupBox8);
+            this.ClientSize = new System.Drawing.Size(466, 657);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox4);
             this.Name = "Winform_ItemSKUDetails";
             this.Text = "Item Pricing & Packaging Details";
             this.Load += new System.EventHandler(this.Winform_Item_Load);
+            this.Controls.SetChildIndex(this.groupBox4, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
-            this.Controls.SetChildIndex(this.groupBox3, 0);
-            this.Controls.SetChildIndex(this.groupBox4, 0);
             this.Controls.SetChildIndex(this.groupBox5, 0);
             this.Controls.SetChildIndex(this.groupBox7, 0);
-            this.Controls.SetChildIndex(this.groupBox8, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -893,8 +943,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudItemsPerPack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNoPacks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -961,20 +1011,23 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cmbPackType;
-        private System.Windows.Forms.TextBox txtNoPacks;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox txtItemsPerPack;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtNetWght;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox txtGrossWght;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DateTimePicker dtpDOM;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox cmbVATPercent;
+        private System.Windows.Forms.TextBox txtWholeMarginPrice;
+        private System.Windows.Forms.TextBox txtRetailMarginPrice;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txtPurchaseRate;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cmbVATPercent;
+        private System.Windows.Forms.TextBox txtTotalBasic;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown nudNoPacks;
+        private System.Windows.Forms.NumericUpDown nudItemsPerPack;
     }
 }

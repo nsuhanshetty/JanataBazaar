@@ -10,7 +10,7 @@ namespace JanataBazaar.Models
 
         public virtual string SCFNo { get; set; }
         public virtual string IRNNo { get; set; }
-        public virtual string BillNo { get; set; }
+        //public virtual string BillNo { get; set; }
 
         public virtual VATRevision Revision { get; set; }
 
@@ -32,7 +32,7 @@ namespace JanataBazaar.Models
 
             this.SCFNo = SCFNo;
             this.IRNNo = IRNNo;
-            this.BillNo = _billNo;
+           //this.BillNo = _billNo;
 
             this.Revision = _revision;
 

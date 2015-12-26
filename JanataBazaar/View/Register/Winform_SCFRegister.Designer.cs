@@ -224,6 +224,7 @@
             this.cmbDuration.Name = "cmbDuration";
             this.cmbDuration.Size = new System.Drawing.Size(126, 21);
             this.cmbDuration.TabIndex = 125;
+            this.cmbDuration.SelectedIndexChanged += new System.EventHandler(this.cmbDuration_SelectedIndexChanged);
             // 
             // label3
             // 

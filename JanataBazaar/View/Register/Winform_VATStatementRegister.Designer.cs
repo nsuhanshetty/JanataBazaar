@@ -64,7 +64,7 @@
             this.groupBox4.Controls.Add(this.groupBox3);
             this.groupBox4.Location = new System.Drawing.Point(12, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(496, 125);
+            this.groupBox4.Size = new System.Drawing.Size(453, 125);
             this.groupBox4.TabIndex = 146;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Search Details";
@@ -75,7 +75,7 @@
             this.groupBox2.Controls.Add(this.rdbCash);
             this.groupBox2.Location = new System.Drawing.Point(10, 22);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(159, 40);
+            this.groupBox2.Size = new System.Drawing.Size(117, 40);
             this.groupBox2.TabIndex = 142;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Payment Mode";
@@ -83,22 +83,22 @@
             // rdbCredit
             // 
             this.rdbCredit.AutoSize = true;
-            this.rdbCredit.Location = new System.Drawing.Point(92, 18);
+            this.rdbCredit.Checked = true;
+            this.rdbCredit.Location = new System.Drawing.Point(6, 17);
             this.rdbCredit.Name = "rdbCredit";
             this.rdbCredit.Size = new System.Drawing.Size(52, 17);
             this.rdbCredit.TabIndex = 1;
+            this.rdbCredit.TabStop = true;
             this.rdbCredit.Text = "Credit";
             this.rdbCredit.UseVisualStyleBackColor = true;
             // 
             // rdbCash
             // 
             this.rdbCash.AutoSize = true;
-            this.rdbCash.Checked = true;
-            this.rdbCash.Location = new System.Drawing.Point(23, 18);
+            this.rdbCash.Location = new System.Drawing.Point(64, 17);
             this.rdbCash.Name = "rdbCash";
             this.rdbCash.Size = new System.Drawing.Size(49, 17);
             this.rdbCash.TabIndex = 0;
-            this.rdbCash.TabStop = true;
             this.rdbCash.Text = "Cash";
             this.rdbCash.UseVisualStyleBackColor = true;
             // 
@@ -112,7 +112,7 @@
             this.groupBox3.Controls.Add(this.dtpTo);
             this.groupBox3.Controls.Add(this.dtpFrom);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(175, 22);
+            this.groupBox3.Location = new System.Drawing.Point(133, 22);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(312, 97);
             this.groupBox3.TabIndex = 144;
@@ -164,6 +164,7 @@
             this.cmbDuration.Name = "cmbDuration";
             this.cmbDuration.Size = new System.Drawing.Size(126, 21);
             this.cmbDuration.TabIndex = 125;
+            this.cmbDuration.SelectedIndexChanged += new System.EventHandler(this.cmbDuration_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -237,7 +238,7 @@
             // 
             this.dgvVATDetails.AllowUserToAddRows = false;
             this.dgvVATDetails.AllowUserToDeleteRows = false;
-            this.dgvVATDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVATDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvVATDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVATDetails.Location = new System.Drawing.Point(3, 16);
             this.dgvVATDetails.Name = "dgvVATDetails";
@@ -253,7 +254,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Name = "Winform_VATStatementRegister";
-            this.Text = "Winform_VATStatement";
+            this.Text = "VAT Statement Register";
             this.Load += new System.EventHandler(this.Winform_VATStatementRegister_Load);
             this.Controls.SetChildIndex(this.groupBox4, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

@@ -69,7 +69,7 @@ namespace JanataBazaar.View.Register
                                           select new
                                           {
                                               SI_No = purchaseOrderList.IndexOf(item) + 1,
-                                              item.BillNo,
+                                              //item.BillNo,
                                               BillDate = item.DateOfInvoice.Date.ToString("dd/MMM/yyyy"),
                                               SupplierName = item.Vendor.Name,
                                               item.SCFNo,
@@ -176,6 +176,16 @@ namespace JanataBazaar.View.Register
         {
             cmbDuration.SelectedIndex = 0;
             this.toolStrip1.Items.Add(SearchToolStrip);
+        }
+
+        private void cmbDuration_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool isActive = (cmbDuration.Text == "Custom") ? true : false;
+
+            dtpTo.Enabled = isActive;
+            dtpFrom.Enabled = isActive;
+
+            nudDuration.Enabled = !isActive;
         }
     }
 }

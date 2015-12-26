@@ -49,11 +49,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtBrand = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbSection = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.lblMobile = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.SearchToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.cmbSection = new System.Windows.Forms.ComboBox();
+            this.lblMobile = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -287,30 +287,12 @@
             this.label1.TabIndex = 132;
             this.label1.Text = "Brand";
             // 
-            // cmbSection
-            // 
-            this.cmbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSection.FormattingEnabled = true;
-            this.cmbSection.Location = new System.Drawing.Point(55, 30);
-            this.cmbSection.Name = "cmbSection";
-            this.cmbSection.Size = new System.Drawing.Size(112, 21);
-            this.cmbSection.TabIndex = 2;
-            // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(55, 57);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(110, 20);
             this.txtName.TabIndex = 0;
-            // 
-            // lblMobile
-            // 
-            this.lblMobile.AutoSize = true;
-            this.lblMobile.Location = new System.Drawing.Point(4, 33);
-            this.lblMobile.Name = "lblMobile";
-            this.lblMobile.Size = new System.Drawing.Size(46, 13);
-            this.lblMobile.TabIndex = 130;
-            this.lblMobile.Text = "Section ";
             // 
             // lblName
             // 
@@ -332,6 +314,24 @@
             this.SearchToolStrip.Text = "&Search";
             this.SearchToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SearchToolStrip.Click += new System.EventHandler(this.SearchToolStrip_Click);
+            // 
+            // cmbSection
+            // 
+            this.cmbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSection.FormattingEnabled = true;
+            this.cmbSection.Location = new System.Drawing.Point(55, 30);
+            this.cmbSection.Name = "cmbSection";
+            this.cmbSection.Size = new System.Drawing.Size(112, 21);
+            this.cmbSection.TabIndex = 2;
+            // 
+            // lblMobile
+            // 
+            this.lblMobile.AutoSize = true;
+            this.lblMobile.Location = new System.Drawing.Point(4, 33);
+            this.lblMobile.Name = "lblMobile";
+            this.lblMobile.Size = new System.Drawing.Size(46, 13);
+            this.lblMobile.TabIndex = 130;
+            this.lblMobile.Text = "Section ";
             // 
             // Winform_ICFRegister
             // 
@@ -378,12 +378,12 @@
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.TextBox txtBrand;
         internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbSection;
         internal System.Windows.Forms.TextBox txtName;
-        internal System.Windows.Forms.Label lblMobile;
         internal System.Windows.Forms.Label lblName;
 
         //Custom
         private System.Windows.Forms.ToolStripButton SearchToolStrip;
+        private System.Windows.Forms.ComboBox cmbSection;
+        internal System.Windows.Forms.Label lblMobile;
     }
 }

@@ -25,22 +25,37 @@ namespace JanataBazaar.View.Details
             InitializeComponent();
 
             this.item = _item;
-            txtName.Text = item.Name;
-            cmbSection.SelectedIndex = item.Section.ID;
+            cmbName.Text = item.Name;
             cmbUnit.Text = item.QuantityUnit;
         }
 
         private void Winfrom_ItemDetails_Load(object sender, EventArgs e)
         {
+            //todo : make the extraction faster
             this.toolStripParent.Items.Add(this.AddSectionToolStrip);
 
-            List<Section> sectList = Builders.ItemDetailsBuilder.GetSectionsList();
+            AutoCompletionSource(Builders.ItemDetailsBuilder.GetNamesList(), cmbName);
+            AutoCompletionSource(Builders.ItemDetailsBuilder.GetUnitList(), cmbUnit);
+
+            List<string> sectList = Builders.ItemDetailsBuilder.GetSectionsList();
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            cmbSection.ValueMember = "ID";
+            //cmbSection.ValueMember = "ID";
 
-            List<string> unitList = Builders.ItemDetailsBuilder.GetUnitList();
-            cmbUnit.DataSource = unitList;
+            if (item != null)
+            {
+                cmbSection.SelectedIndex = sectList.IndexOf(item.Section.Name);//item.Section.ID;
+            }
+        }
+
+        private void AutoCompletionSource(List<string> srcList, ComboBox cmb)
+        {
+            var autoCollection = new AutoCompleteStringCollection();
+            autoCollection.AddRange(srcList.ToArray());
+
+            cmb.AutoCompleteCustomSource = autoCollection;
+            cmb.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cmb.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void AddSectionToolStrip_Click(object sender, EventArgs e)
@@ -59,10 +74,10 @@ namespace JanataBazaar.View.Details
                 return;
 
             UpdateStatus("Saving", 25);
-            if (Builders.ItemDetailsBuilder.ItemExists(txtName.Text, cmbBrand.Text, cmbUnit.Text, cmbSection.Text))
+            if (Builders.ItemDetailsBuilder.ItemExists(cmbName.Text, cmbBrand.Text, cmbUnit.Text, cmbSection.Text))
             {
-                errorProvider1.SetError(txtName, "Item is a Duplicate as it already exists");
-                txtName.Select(0, txtName.TextLength);
+                errorProvider1.SetError(cmbName, "Item is a Duplicate as it already exists");
+                cmbName.Select(0, cmbName.Text.Length);
                 UpdateStatus("Error in Saving Item", 100);
                 return;
             }
@@ -77,7 +92,7 @@ namespace JanataBazaar.View.Details
             //    decimal.TryParse(txtVATPerc.Text, out _vatPerc);
             //else
             //    _vatPerc = 0;
-            item = new Item(txtName.Text, cmbUnit.Text, sect, cmbBrand.Text, int.Parse(txtReserve.Text));
+            item = new Item(cmbName.Text, cmbUnit.Text, sect, cmbBrand.Text, int.Parse(txtReserve.Text));
 
             if (Savers.ItemDetailsSavers.SaveItem(item) == 0)
             {
@@ -128,6 +143,11 @@ namespace JanataBazaar.View.Details
             }
         }
 
-        //todo: Check if BrandName, Name must be converted to uppercase. Must be done during userbased tests.
+        private void txtName_Validated(object sender, EventArgs e)
+        {
+            cmbName.Text = Utilities.Validation.ToTitleCase(cmbName.Text.ToLower());
+        }
+
+        //todo:  Must be done during userbased tests.
     }
 }

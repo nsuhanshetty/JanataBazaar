@@ -2,8 +2,8 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>ftp://buyhoney.in/janatabazaar/|publish\</PublishUrlHistory>
-    <InstallUrlHistory>http://buyhoney.in/spindlesoft/janatabazaar/|http://buyhoney.in/janatabazaar/janatabazaar/|http://buyhoney.in/SpindleSoft/SpindleSoft/</InstallUrlHistory>
+    <PublishUrlHistory>ftp://solutionstudios.in/janatabazaar/|ftp://solutionstudio.in/janatabazaar/|ftp://buyhoney.in/janatabazaar/|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://solutionstudios.in/janatabazaar/|http://solutionstudio.in/janatabazaar/|http://solutionstudio.in/janatabazaar/janatabazaar/|http://solutionstudio.in/spindlesoft/janatabazaar/|http://buyhoney.in/spindlesoft/janatabazaar/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />

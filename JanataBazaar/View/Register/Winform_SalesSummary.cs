@@ -109,6 +109,7 @@ namespace JanataBazaar.View.Register
         private void LoadDGV()
         {
             dgvRegister.Columns.Add("colSINo", "SI_No.");
+            dgvRegister.Columns.Add("colVendName", "Vendor Name");
             dgvRegister.Columns.Add("colSaleNo", "Bill_No.");
             dgvRegister.Columns.Add("colsaleAmount", "Sale Amount");
             dgvRegister.Columns.Add("colRebateAmount", "Rebate Amount");

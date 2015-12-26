@@ -11,7 +11,7 @@ namespace JanataBazaar.Mappers
             Id(x => x.ID).GeneratedBy.Identity();
             Map(x => x.SCFNo);
             Map(x => x.IRNNo);
-            Map(x => x.BillNo);
+            //Map(x => x.BillNo);
             References<VATRevision>(x => x.Revision).Class<VATRevision>()
                                                     .Columns("RevisionID")
                                                     .Cascade.None();

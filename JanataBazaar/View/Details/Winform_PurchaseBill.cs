@@ -50,7 +50,7 @@ namespace JanataBazaar.View.Details
             {
                 if (e.RowIndex < ItemPriceList.Count)
                 {
-                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID,ItemPriceList[e.RowIndex]).ShowDialog();
+                    new Winform_ItemSKUDetails(e.RowIndex, RevisionID, ItemPriceList[e.RowIndex]).ShowDialog();
                 }
                 else
                 {
@@ -61,7 +61,15 @@ namespace JanataBazaar.View.Details
             {
                 if (dgvProdDetails.Rows[e.RowIndex].IsNewRow) return;
                 else
+                {
+                    DialogResult dr = MessageBox.Show("Do you want to Delete Item " + ItemPriceList[e.RowIndex].Item.Name, "Delete Order",
+                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.No) return;
+
                     ItemPriceList.RemoveAt(e.RowIndex);
+                    dgvProdDetails.Rows.RemoveAt(e.RowIndex);
+                    CalculatePaymentDetails();
+                }
             }
         }
 
@@ -94,11 +102,19 @@ namespace JanataBazaar.View.Details
 
             //_itemsku.StockQuantity = _itemsku.PackageQuantity * _itemsku.QuantityPerPack;
 
-            if (ItemPriceList.Count == 0 || ItemPriceList.Count <= index)
-                ItemPriceList.Add(_itemsku);
-            else
-                ItemPriceList[index] = _itemsku;
+            //if (ItemPriceList.Count == 0 || ItemPriceList.Count <= index)
+            //    ItemPriceList.Add(_itemsku);
+            //else
+            //    ItemPriceList[index] = _itemsku;
 
+            CalculatePaymentDetails();
+
+            dgvProdDetails.NotifyCurrentCellDirty(true);
+            dgvProdDetails.NotifyCurrentCellDirty(false);
+        }
+
+        private void CalculatePaymentDetails()
+        {
             purchaseOrder.TotalPurchasePrice = 0;
             purchaseOrder.TotalWholesalePrice = 0;
             purchaseOrder.TotalResalePrice = 0;
@@ -110,13 +126,13 @@ namespace JanataBazaar.View.Details
                 purchaseOrder.TotalResalePrice += item.TotalResaleValue;
             }
 
-            txtTotalPurchasePrice.Text = purchaseOrder.TotalPurchasePrice.ToString();
-            txtTotalWholesalePrice.Text = purchaseOrder.TotalWholesalePrice.ToString();
-            txtTotalResalePrice.Text = purchaseOrder.TotalResalePrice.ToString();
+            txtTotalPurchasePrice.Text = purchaseOrder.TotalPurchasePrice.ToString("#.##");
+            txtTotalWholesalePrice.Text = purchaseOrder.TotalWholesalePrice.ToString("#.##");
+            txtTotalResalePrice.Text = purchaseOrder.TotalResalePrice.ToString("#.##");
 
-            dgvProdDetails.NotifyCurrentCellDirty(true);
-            dgvProdDetails.NotifyCurrentCellDirty(false);
-
+            txtTotalPurchasePrice_ROff.Text = purchaseOrder.TotalPurchasePrice.ToString("#.##");
+            txtTotalWholesalePrice_ROff.Text = purchaseOrder.TotalWholesalePrice.ToString("#.##");
+            txtTotalResalePrice_ROff.Text = purchaseOrder.TotalResalePrice.ToString("#.##");
         }
 
         //private void dgvDetails_RowLeave(object sender, DataGridViewCellEventArgs e)
@@ -220,32 +236,33 @@ namespace JanataBazaar.View.Details
                 return;
             #endregion validate
 
-            DialogResult dr = MessageBox.Show("Purchase Order once placed cannot be altered. Do you want to Continue?","Save Purchase Order",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show("Purchase Order once placed cannot be altered. Do you want to Continue?", "Save Purchase Order", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.No)
                 return;
 
             purchaseOrder.IsCredit = rdbCredit.Checked ? true : false;
             purchaseOrder.SCFNo = txtSCF.Text;
             purchaseOrder.IRNNo = txtInvoiceNo.Text;
-            purchaseOrder.BillNo = txtBillNo.Text;
+            //purchaseOrder.BillNo = txtBillNo.Text;
             purchaseOrder.Revision = Builders.VATRevisionBuilder.GetVATRevisionInfo(RevisionID);
 
             purchaseOrder.Vendor = vend;
             purchaseOrder.DateOfPurchase = dtpPurchaseDate.Value;
             purchaseOrder.DateOfInvoice = dtpInvoiceDate.Value;
-            purchaseOrder.TotalPurchasePrice = decimal.Parse(txtTotalPurchasePrice.Text);
-            purchaseOrder.TotalWholesalePrice = decimal.Parse(txtTotalWholesalePrice.Text);
-            purchaseOrder.TotalResalePrice = decimal.Parse(txtTotalResalePrice.Text);
+
+            purchaseOrder.TotalPurchasePrice = decimal.Parse(txtTotalPurchasePrice_ROff.Text);
+            purchaseOrder.TotalWholesalePrice = decimal.Parse(txtTotalWholesalePrice_ROff.Text);
+            purchaseOrder.TotalResalePrice = decimal.Parse(txtTotalResalePrice_ROff.Text);
             purchaseOrder.ItemPriceList = ItemPriceList;
 
             bool success = Savers.PurchaseOrderSaver.SaverPurchaseOrder(purchaseOrder);
             if (success)
             {
-                UpdateStatus("Saved", 100);
+                UpdateStatus("Purchase Order Saved", 100);
                 this.Close();
             }
             else
-                UpdateStatus("Error saving Purchase Bill",100);
+                UpdateStatus("Error saving Purchase Bill", 100);
         }
 
         private void dtpInvoiceDate_ValueChanged(object sender, EventArgs e)

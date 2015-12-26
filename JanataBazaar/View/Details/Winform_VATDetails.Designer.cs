@@ -53,7 +53,7 @@
             this.dtpFromYear.Name = "dtpFromYear";
             this.dtpFromYear.Size = new System.Drawing.Size(127, 20);
             this.dtpFromYear.TabIndex = 126;
-            this.dtpFromYear.ValueChanged += new System.EventHandler(this.dtpFromYear_ValueChanged);
+            //this.dtpFromYear.ValueChanged += new System.EventHandler(this.dtpFromYear_ValueChanged);
             // 
             // groupBox1
             // 

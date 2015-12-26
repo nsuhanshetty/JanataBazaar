@@ -24,10 +24,12 @@ namespace JanataBazaar.View.Register
 
         private void Winform_ICFRegister_Load(object sender, EventArgs e)
         {
-            List<Section> sectList = ItemDetailsBuilder.GetSectionsList();
+            List<string> sectList = ItemDetailsBuilder.GetSectionsList();
+            sectList.Add("");
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            cmbSection.ValueMember = "ID";
+            //cmbSection.ValueMember = "ID";
+            cmbSection.Text = "";
 
             cmbDuration.SelectedIndex = 0;
             this.toolStrip1.Items.Add(this.SearchToolStrip);
@@ -84,22 +86,26 @@ namespace JanataBazaar.View.Register
             #endregion SetDuration
 
             itemlist = (ReportsBuilder.GetICFReport(rdbCredit.Checked, txtICF.Text, txtVendorName.Text, toDate, fromDate, txtName.Text, txtBrand.Text, cmbSection.Text));
-            dgvRegister.DataSource = (from itm in itemlist
-                                      select new
-                                      {
-                                          ICF_No = itm.Purchase.IRNNo,
-                                          Supplier = itm.Purchase.Vendor.Name,
-                                          Supplier_BillNo = itm.Purchase.BillNo,
-                                          itm.Purchase.DateOfInvoice.Date,
-                                          itm.Purchase.TotalPurchasePrice,
-                                          itm.Purchase.TotalWholesalePrice,
-                                          itm.Purchase.TotalResalePrice
-                                      }).ToList();
-
             if (itemlist == null)
+            {
+                dgvRegister.DataSource = null;
                 UpdateStatus("No Results Found");
+            }
             else
+            {
+                dgvRegister.DataSource = (from itm in itemlist
+                                          select new
+                                          {
+                                              ICF_No = itm.Purchase.IRNNo,
+                                              Supplier = itm.Purchase.Vendor.Name,
+                                              //Supplier_BillNo = itm.Purchase.BillNo,
+                                              itm.Purchase.DateOfInvoice.Date,
+                                              itm.Purchase.TotalPurchasePrice,
+                                              itm.Purchase.TotalWholesalePrice,
+                                              itm.Purchase.TotalResalePrice
+                                          }).ToList();
                 UpdateStatus(itemlist.Count + " Results Found", 100);
+            }
         }
     }
 }

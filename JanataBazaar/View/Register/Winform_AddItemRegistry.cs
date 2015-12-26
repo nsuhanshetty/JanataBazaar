@@ -18,10 +18,10 @@ namespace JanataBazaar.View.Register
 
         private void Winform_AddItemRegistry_Load(object sender, EventArgs e)
         {
-            List<Section> sectList = ItemDetailsBuilder.GetSectionsList();
+            List<string> sectList = ItemDetailsBuilder.GetSectionsList();
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            cmbSection.ValueMember = "ID";
+            //cmbSection.ValueMember = "ID";
 
             cmbSection.Text = "";
         }

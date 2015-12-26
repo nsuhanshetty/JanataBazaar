@@ -48,7 +48,7 @@ namespace JanataBazaar.View.Details
 
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
-            List<string> exceptionList = new List<string> { "txtCST", "txtPLP", "txtTin", "txtPhoneNo", "txtBankUserName", "txtIfscCode", "txtAccNo", "cmbBankName" };
+            List<string> exceptionList = new List<string> { "txtCST", "txtPLP", "txtTin", "txtPhoneNo", "txtMobNo", "txtBankUserName", "txtIfscCode", "txtAccNo", "cmbBankName" };
             if (Utilities.Validation.IsNullOrEmpty(this, true, exceptionList)) return;
 
             UpdateStatus("fetching Vendor Details..", 33);
@@ -57,10 +57,10 @@ namespace JanataBazaar.View.Details
                 this._vendor = new Vendor();
             _vendor.BankUserName = txtBankUserName.Text;
 
-            if (!PeoplePracticeBuilder.IfBankExits(cmbBankName.Text))
+            if (!IsNullOrEmpty(cmbBankName.Text) && !PeoplePracticeBuilder.IfBankExits(cmbBankName.Text))
                 this._vendor.Bank = new Bank(cmbBankName.Text);
-            else
-                this._vendor.Bank = Builders.PeoplePracticeBuilder.GetBankNames(cmbBankName.Text);
+            else if (!string.IsNullOrEmpty(cmbBankName.Text))
+                this._vendor.Bank = PeoplePracticeBuilder.GetBankNames(cmbBankName.Text);
 
             _vendor.IFSCCode = txtIfscCode.Text;
             _vendor.AccNo = txtAccNo.Text;
@@ -92,7 +92,7 @@ namespace JanataBazaar.View.Details
             //if (addSaleReg != null)
             //    addSaleReg.LoadDgv();
 
-           
+
         }
 
         protected override void CancelToolStrip_Click(object sender, EventArgs e)
@@ -125,6 +125,8 @@ namespace JanataBazaar.View.Details
 
         private void txtMobNo_Validating(object sender, CancelEventArgs e)
         {
+            if (String.IsNullOrEmpty(txtMobNo.Text)) return;
+
             var txtBox = (TextBox)sender;
             Match _match = Regex.Match(txtBox.Text, "\\d{10}$");
             string errorMsg = _match.Success ? "" : "Invalid Input for Contact Number\n" +
@@ -147,7 +149,7 @@ namespace JanataBazaar.View.Details
 
         private void txtName_Validated(object sender, EventArgs e)
         {
-            txtName.Text = Utilities.Validation.ToTitleCase(txtName.Text);
+            txtName.Text = Utilities.Validation.ToTitleCase(txtName.Text.ToLower());
         }
         #endregion Validation
 
@@ -168,7 +170,7 @@ namespace JanataBazaar.View.Details
             cmbBankName.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             cmbBankName.Text = "";
-            if (this._vendor != null)
+            if (this._vendor != null && this._vendor.Bank != null)
                 cmbBankName.SelectedText = this._vendor.Bank.Name;
         }
     }

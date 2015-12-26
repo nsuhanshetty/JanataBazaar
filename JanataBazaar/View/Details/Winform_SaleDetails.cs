@@ -90,10 +90,10 @@ namespace JanataBazaar.View.Details
         {
             this.toolStripParent.Items.Add(this.AddCustomerToolStrip);
 
-            List<Section> sectList = ItemDetailsBuilder.GetSectionsList();
+            List<string> sectList = ItemDetailsBuilder.GetSectionsList();
             cmbSrcSection.DataSource = sectList;
             cmbSrcSection.DisplayMember = "Name";
-            cmbSrcSection.ValueMember = "ID";
+            //cmbSrcSection.ValueMember = "ID";
         }
 
         private void AddCustomerToolStrip_Click(object sender, EventArgs e)
