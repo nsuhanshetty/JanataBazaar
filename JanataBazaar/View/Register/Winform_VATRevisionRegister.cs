@@ -51,7 +51,7 @@ namespace JanataBazaar.View.Register
             //btnCol.Name = "colDelete";
             //btnCol.HeaderText = "Click To Delete";
             //dgvRegister.Columns.Add(btnCol);
-            dgvRegister.Columns["colDelete"].Visible = false;
+            //dgvRegister.Columns["colDelete"].Visible = false;
 
             var revisionList = (from rev in Builders.VATRevisionBuilder.GetVATRevisionList()
                                 select new { rev.DateOfRevision, rev.ID });
@@ -84,10 +84,18 @@ namespace JanataBazaar.View.Register
         protected override void dgvRegister_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-
-            //get the percentage details for the VAT Revision
             var percentageList = Builders.VATRevisionBuilder.GetVATRevisionPercentageList(int.Parse(dgvRegister.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
-            dgvPercentView.DataSource = percentageList.Count != 0 ? percentageList : null;
+            dgvPercentView.Rows.Clear();
+            if (percentageList != null)
+            {
+                if (dgvPercentView.Columns.Count == 0)
+                    dgvPercentView.Columns.Add("colPercentage", "Percentage");
+                for (int i = 0; i < percentageList.Count; i++)
+                {
+                    dgvPercentView.Rows.Add();
+                    dgvPercentView.Rows[i].Cells[0].Value = percentageList[i];
+                }
+            }
 
         }
 

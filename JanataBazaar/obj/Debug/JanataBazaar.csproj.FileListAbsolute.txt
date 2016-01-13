@@ -48,7 +48,6 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_VATRevisionRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinformRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_AddCustomer.resources
-C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_AddItemRegistry.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_AddVendor.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_CustomerRegister.resources
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.WinForm_MemberRegister.resources
@@ -66,3 +65,4 @@ C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataB
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.exe
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.pdb
 C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.csprojResolveAssemblyReference.cache
+C:\Users\NSuhanShetty\Documents\Visual Studio 2013\Projects\JanataBazaar\JanataBazaar\obj\Debug\JanataBazaar.View.Register.Winform_ItemRegistry.resources

@@ -27,6 +27,8 @@ namespace JanataBazaar.View.Details
             this.item = _item;
             cmbName.Text = item.Name;
             cmbUnit.Text = item.QuantityUnit;
+            cmbBrand.Text = item.Brand;
+            txtReserve.Text = item.ReserveStock.ToString();
         }
 
         private void Winfrom_ItemDetails_Load(object sender, EventArgs e)
@@ -40,7 +42,6 @@ namespace JanataBazaar.View.Details
             List<string> sectList = Builders.ItemDetailsBuilder.GetSectionsList();
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            //cmbSection.ValueMember = "ID";
 
             if (item != null)
             {
@@ -69,12 +70,11 @@ namespace JanataBazaar.View.Details
             ProcessTabKey(true);
 
             List<string> except = new List<string> { "cmbBrand" };
-
             if (Utilities.Validation.IsNullOrEmpty(this, true, except))
                 return;
 
             UpdateStatus("Saving", 25);
-            if (Builders.ItemDetailsBuilder.ItemExists(cmbName.Text, cmbBrand.Text, cmbUnit.Text, cmbSection.Text))
+            if (Builders.ItemDetailsBuilder.ItemExists(cmbName.Text, cmbBrand.Text, cmbUnit.Text, cmbSection.Text) && item.ID == 0)
             {
                 errorProvider1.SetError(cmbName, "Item is a Duplicate as it already exists");
                 cmbName.Select(0, cmbName.Text.Length);
@@ -86,13 +86,15 @@ namespace JanataBazaar.View.Details
             if (Utilities.Validation.IsNullOrEmpty(this, false)) return;
 
             Section sect = Builders.ItemDetailsBuilder.GetSection(cmbSection.Text);
-
-            //decimal _vatPerc;
-            //if (!chkIsExempted.Checked && !IsNullOrEmpty(txtVATPerc.Text))
-            //    decimal.TryParse(txtVATPerc.Text, out _vatPerc);
-            //else
-            //    _vatPerc = 0;
+            if (item ==null || item.ID == 0)
             item = new Item(cmbName.Text, cmbUnit.Text, sect, cmbBrand.Text, int.Parse(txtReserve.Text));
+            else
+            {
+                item.Name = cmbName.Text;
+                item.Brand = cmbBrand.Text;
+                item.QuantityUnit = cmbUnit.Text;
+                item.ReserveStock = string.IsNullOrEmpty(txtReserve.Text)? 0: int.Parse(txtReserve.Text);
+            }
 
             if (Savers.ItemDetailsSavers.SaveItem(item) == 0)
             {
@@ -101,7 +103,7 @@ namespace JanataBazaar.View.Details
             }
 
             UpdateStatus("Item Saved.", 100);
-            this.Close();
+            Close();
         }
 
         //private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
@@ -114,22 +116,22 @@ namespace JanataBazaar.View.Details
         //        txtVATPerc.Validating += null;
         //}
 
-        private void cmbVATPerc_Validating(object sender, CancelEventArgs e)
-        {
-            TextBox txtBox = (TextBox)sender;
-            string _errorMsg;
+        //private void cmbVATPerc_Validating(object sender, CancelEventArgs e)
+        //{
+        //    TextBox txtBox = (TextBox)sender;
+        //    string _errorMsg;
 
-            Match _match = Regex.Match(txtBox.Text, "^[0-9]*\\.?[0-9]*$");
-            _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '2.2'" : "";
+        //    Match _match = Regex.Match(txtBox.Text, "^[0-9]*\\.?[0-9]*$");
+        //    _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '2.2'" : "";
 
-            errorProvider1.SetError(txtBox, _errorMsg);
+        //    errorProvider1.SetError(txtBox, _errorMsg);
 
-            if (_errorMsg != "")
-            {
-                e.Cancel = true;
-                txtBox.Select(0, txtBox.Text.Length);
-            }
-        }
+        //    if (_errorMsg != "")
+        //    {
+        //        e.Cancel = true;
+        //        txtBox.Select(0, txtBox.Text.Length);
+        //    }
+        //}
 
         private void txtBox_Validating(object sender, CancelEventArgs e)
         {

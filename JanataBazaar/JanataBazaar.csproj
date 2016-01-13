@@ -25,7 +25,7 @@
     <InstallUrl>http://solutionstudios.in/janatabazaar/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -276,11 +276,11 @@
     <Compile Include="View\Register\Winform_AddCustomer.Designer.cs">
       <DependentUpon>Winform_AddCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Register\Winform_AddItemRegistry.cs">
+    <Compile Include="View\Register\Winform_ItemRegistry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Register\Winform_AddItemRegistry.Designer.cs">
-      <DependentUpon>Winform_AddItemRegistry.cs</DependentUpon>
+    <Compile Include="View\Register\Winform_ItemRegistry.Designer.cs">
+      <DependentUpon>Winform_ItemRegistry.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Register\Winform_AddVendor.cs">
       <SubType>Form</SubType>
@@ -414,8 +414,8 @@
     <EmbeddedResource Include="View\Register\Winform_AddCustomer.resx">
       <DependentUpon>Winform_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Register\Winform_AddItemRegistry.resx">
-      <DependentUpon>Winform_AddItemRegistry.cs</DependentUpon>
+    <EmbeddedResource Include="View\Register\Winform_ItemRegistry.resx">
+      <DependentUpon>Winform_ItemRegistry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_AddVendor.resx">
       <DependentUpon>Winform_AddVendor.cs</DependentUpon>

@@ -2,6 +2,7 @@
 using JanataBazaar.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace JanataBazaar.View.Details
         List<ItemPricing> ItemPriceList = new List<ItemPricing>();
         PurchaseOrder purchaseOrder = new PurchaseOrder();
         int RevisionID;
+        private object txtWholeMarginPrice;
 
         public Winform_PurchaseBill()
         {
@@ -267,8 +269,46 @@ namespace JanataBazaar.View.Details
 
         private void dtpInvoiceDate_ValueChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Changing Invoice dates will effect the item pricing ");
+            //MessageBox.Show("Changing Invoice dates will effect the item pricing ");
             RevisionID = Builders.VATRevisionBuilder.GetRevisionDate(dtpInvoiceDate.Value.Date);
+        }
+
+        private void txtValueDecimal_Validating(object sender, CancelEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            string _errorMsg;
+
+            Match _match = Regex.Match(txt.Text, "^[0-9]*\\.?[0-9]*$");
+            _errorMsg = !_match.Success ? "Invalid Amount input data type.\nExample: '1100'" : "";
+
+            errorProvider1.SetError(txt, _errorMsg);
+
+            if (_errorMsg != "")
+            {
+                e.Cancel = true;
+                txt.Select(0, txt.Text.Length);
+            }
+        }
+
+        private void txtTotalPurchasePrice_ROff_Validated(object sender, EventArgs e)
+        {
+            decimal psaleMargin = !string.IsNullOrEmpty(txtTotalPurchasePrice.Text) && decimal.TryParse(txtTotalPurchasePrice.Text, out psaleMargin) ? psaleMargin : 0;
+            decimal totalPurchasePrice = !string.IsNullOrEmpty(txtTotalPurchasePrice_ROff.Text) && decimal.TryParse(txtTotalPurchasePrice_ROff.Text, out totalPurchasePrice) ? totalPurchasePrice : 0;
+            lblPPriceRdOff.Text = (totalPurchasePrice - psaleMargin).ToString("#.##");
+        }
+
+        private void txtTotalWholesalePrice_ROff_Validated(object sender, EventArgs e)
+        {
+            decimal wsaleMargin = !string.IsNullOrEmpty(txtTotalWholesalePrice.Text) && decimal.TryParse(txtTotalWholesalePrice.Text, out wsaleMargin) ? wsaleMargin : 0;
+            decimal totalWholePrice = !string.IsNullOrEmpty(txtTotalWholesalePrice_ROff.Text) && decimal.TryParse(txtTotalWholesalePrice_ROff.Text, out totalWholePrice) ? totalWholePrice : 0;
+            lblWPriceRdOff.Text = (totalWholePrice - wsaleMargin).ToString("#.##");
+        }
+
+        private void txtTotalResalePrice_ROff_Validated(object sender, EventArgs e)
+        {
+            decimal rsaleMargin = !string.IsNullOrEmpty(txtTotalResalePrice.Text) && decimal.TryParse(txtTotalResalePrice.Text, out rsaleMargin) ? rsaleMargin : 0;
+            decimal totalRetailPrice = !string.IsNullOrEmpty(txtTotalResalePrice_ROff.Text) && decimal.TryParse(txtTotalResalePrice_ROff.Text, out totalRetailPrice) ? totalRetailPrice : 0;
+            lblRPriceRdOff.Text = (totalRetailPrice - rsaleMargin).ToString("#.##");
         }
     }
 }

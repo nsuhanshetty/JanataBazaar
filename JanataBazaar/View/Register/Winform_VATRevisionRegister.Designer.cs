@@ -54,8 +54,6 @@
             this.dgvPercentView.AllowUserToAddRows = false;
             this.dgvPercentView.AllowUserToDeleteRows = false;
             this.dgvPercentView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPercentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPercentView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPercentView.Location = new System.Drawing.Point(3, 16);
             this.dgvPercentView.Name = "dgvPercentView";
             this.dgvPercentView.ReadOnly = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,10 @@ namespace JanataBazaar
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            ILog log = LogManager.GetLogger(typeof(Program));
+            log.Info("Application Janata Bazaar Started");
+
+            Application.EnableVisualStyles();           
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Winform_MainMenu());
         }

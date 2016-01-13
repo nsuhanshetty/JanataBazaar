@@ -27,7 +27,15 @@ namespace JanataBazaar.View.Details
         private decimal _trans;
         public decimal Trans
         {
-            get; set;
+            get
+            {
+                txtTrans.Text = _trans.ToString();
+                return _trans;
+            }
+            set
+            {
+                _trans = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+            }
         }
 
         private decimal _transpercent;
@@ -35,19 +43,42 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                //txtTrans.Text = _trans.ToString();
+                //txtTransPercent.Text = _transpercent.ToString();
                 return _transpercent;
             }
             set
             {
-                _transpercent = value;
+                _transpercent = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtTransPercent.Text = _transpercent.ToString("#.##");
+            }
+        }
+
+        private decimal _totalTrans;
+        public decimal TotalTrans
+        {
+            get
+            {
+                return _totalTrans;
+            }
+            set
+            {
+                _totalTrans = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtTotalTrans.Text = _totalTrans.ToString();
             }
         }
 
         private decimal _misc;
         public decimal Misc
         {
-            get; set;
+            get
+            {
+                txtMisc.Text = _misc.ToString();
+                return _misc;
+            }
+            set
+            {
+                _misc = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+            }
         }
 
         private decimal _miscpercent;
@@ -55,13 +86,26 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                //txtMisc.Text = _misc.ToString();
                 return _miscpercent;
             }
             set
             {
-                //Misc = value != 0 ? Basic * (value / 100) : 0;
-                _miscpercent = value;
+                _miscpercent = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtMiscPercent.Text = _miscpercent.ToString();
+            }
+        }
+
+        private decimal _totalMisc;
+        public decimal TotalMisc
+        {
+            get
+            {
+                return _totalMisc;
+            }
+            set
+            {
+                _totalMisc = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtTotalMisc.Text = _totalMisc.ToString();
             }
         }
 
@@ -88,7 +132,15 @@ namespace JanataBazaar.View.Details
         private decimal _disc;
         public decimal Discount
         {
-            get; set;
+            get
+            {
+                txtDisc.Text = _disc.ToString();
+                return _disc;
+            }
+            set
+            {
+                _disc = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+            }
         }
 
         private decimal _discpercent;
@@ -96,13 +148,26 @@ namespace JanataBazaar.View.Details
         {
             get
             {
-                //txtDisc.Text = _disc.ToString();
                 return _discpercent;
             }
             set
             {
-                // Discount = value != 0 ? Basic * (value / 100) : 0;
-                _discpercent = value;
+                _discpercent = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtDiscPercent.Text = _discpercent.ToString();
+            }
+        }
+
+        private decimal _totalDisc;
+        public decimal TotalDiscount
+        {
+            get
+            {
+                return _totalDisc;
+            }
+            set
+            {
+                _totalDisc = value == 0 ? 0 : decimal.Parse(value.ToString("#.##"));
+                txtTotalDiscount.Text = _totalDisc.ToString();
             }
         }
 
@@ -117,6 +182,7 @@ namespace JanataBazaar.View.Details
             {
                 _purchaseRate = value;
                 txtPurchaseRate.Text = _purchaseRate.ToString();
+                txtTotalPurcPrice.Text = (_purchaseRate * nudItemsPerPack.Value * nudNoPacks.Value).ToString("#.##");
             }
         }
 
@@ -176,6 +242,72 @@ namespace JanataBazaar.View.Details
             }
         }
         #endregion 
+
+        private void UpdateTransSet(decimal _percent, decimal _value, decimal _total)
+        {
+            if (_percent != 0)
+            {
+                TransPercent = _percent;
+                Trans = Basic * (TransPercent / 100);
+                TotalTrans = (Trans * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_value != 0)
+            {
+                Trans = _value;
+                TransPercent = (Trans * 100) / Basic;
+                TotalTrans = (Trans * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_total != 0)
+            {
+                TotalTrans = _total;
+                Trans = (_total / (nudItemsPerPack.Value * nudNoPacks.Value));
+                TransPercent = (Trans * 100) / Basic;
+            }
+        }
+
+        private void UpdateMiscSet(decimal _percent, decimal _value, decimal _total)
+        {
+            if (_percent != 0)
+            {
+                MiscPercent = _percent;
+                Misc = Basic * (MiscPercent / 100);
+                TotalMisc = (Misc * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_value != 0)
+            {
+                Misc = _value;
+                MiscPercent = (Misc * 100) / Basic;
+                TotalMisc = (Misc * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_total != 0)
+            {
+                TotalMisc = _total;
+                Misc = (_total / (nudItemsPerPack.Value * nudNoPacks.Value));
+                MiscPercent = (Misc * 100) / Basic;
+            }
+        }
+
+        private void UpdateDiscSet(decimal _percent, decimal _value, decimal _total)
+        {
+            if (_percent != 0)
+            {
+                DiscountPercent = _percent;
+                Discount = Basic * (DiscountPercent / 100);
+                TotalDiscount = (Discount * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_value != 0)
+            {
+                Discount = _value;
+                DiscountPercent = (Discount * 100) / Basic;
+                TotalDiscount = (Discount * (nudItemsPerPack.Value * nudNoPacks.Value));
+            }
+            else if (_total != 0)
+            {
+                TotalDiscount = _total;
+                Discount = (_total / (nudItemsPerPack.Value * nudNoPacks.Value));
+                DiscountPercent = (Discount * 100) / Basic;
+            }
+        }
 
         public Winform_ItemSKUDetails(int index = 0, int revisionID = 0)
         {
@@ -255,7 +387,7 @@ namespace JanataBazaar.View.Details
             txtDisc.Text = itemsku.Discount.ToString();
 
             cmbVATPercent.SelectedIndex = cmbVATPercent.Items.IndexOf(itemsku.VATPercent);
-            txtVAT.Text = itemsku.VAT.ToString();
+            txtVAT.Text = itemsku.VAT.ToString("#.##");
 
             this.Basic = itemsku.Basic;
             txtTotalBasic.Text = (this.Basic * (nudNoPacks.Value * nudItemsPerPack.Value)).ToString("#.##");
@@ -309,6 +441,7 @@ namespace JanataBazaar.View.Details
         private void AddPackageToolStrip_Click(object sender, EventArgs e)
         {
             new Winform_PackageDetails().ShowDialog();
+            cmbPackType.DataSource = Builders.PurchaseBillBuilder.GetPackageTypes();
         }
 
         private void chkDOM_CheckedChanged(object sender, EventArgs e)
@@ -322,7 +455,7 @@ namespace JanataBazaar.View.Details
         }
 
         #region Validation
-        private void txtValue_Validating(object sender, CancelEventArgs e)
+        private void txtValueDecimal_Validating(object sender, CancelEventArgs e)
         {
             TextBox txt = (TextBox)sender;
             string _errorMsg;
@@ -376,8 +509,10 @@ namespace JanataBazaar.View.Details
         private void txtTransPercent_Validated(object sender, EventArgs e)
         {
             TransPercent = (decimal.TryParse(txtTransPercent.Text, out _trans) ? _trans : 0);
-            Trans = TransPercent == 0 ? 0 : Basic * (TransPercent / 100);
-            txtTrans.Text = Trans.ToString();
+            //Trans = TransPercent == 0 ? 0 : Basic * (TransPercent / 100);
+            //TotalTrans = (Trans * (nudItemsPerPack.Value * nudNoPacks.Value));
+
+            UpdateTransSet(TransPercent, 0, 0);
 
             UpdateRates();
         }
@@ -385,8 +520,9 @@ namespace JanataBazaar.View.Details
         private void txtMiscPercent_Validated(object sender, EventArgs e)
         {
             MiscPercent = (decimal.TryParse(txtMiscPercent.Text, out _misc) ? _misc : 0);
-            Misc = MiscPercent != 0 ? Basic * (MiscPercent / 100) : 0;
-            txtMisc.Text = Misc.ToString();
+            //Misc = MiscPercent != 0 ? Basic * (MiscPercent / 100) : 0;
+            //TotalMisc = (Misc * (nudItemsPerPack.Value * nudNoPacks.Value));
+            UpdateMiscSet(MiscPercent, 0, 0);
 
             UpdateRates();
         }
@@ -394,8 +530,9 @@ namespace JanataBazaar.View.Details
         private void txtDiscPercent_Validated(object sender, EventArgs e)
         {
             DiscountPercent = (decimal.TryParse(txtDiscPercent.Text, out _disc) ? _disc : 0);
-            Discount = DiscountPercent != 0 ? Basic * (DiscountPercent / 100) : 0;
-            txtDisc.Text = Discount.ToString();
+            //Discount = DiscountPercent != 0 ? Basic * (DiscountPercent / 100) : 0;
+            //TotalDiscount = (Discount * (nudItemsPerPack.Value * nudNoPacks.Value));
+            UpdateDiscSet(DiscountPercent, 0, 0);
 
             UpdateRates();
         }
@@ -406,6 +543,7 @@ namespace JanataBazaar.View.Details
 
             WRate = (WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate;
             txtWholeRate.Text = txtWholeMarginPrice.Text = WRate.ToString("#.##");
+            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
         }
 
         private void txtRetailPercent_Validated(object sender, EventArgs e)
@@ -414,6 +552,7 @@ namespace JanataBazaar.View.Details
 
             RRate = (RRatePercent != 0 ? (WRate * (RRatePercent / 100)) : 0) + WRate;
             txtRetailRate.Text = txtRetailMarginPrice.Text = RRate.ToString("#.##");
+            txtTotalRSalePrice.Text = (RRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
         }
         #endregion PercentValidated
 
@@ -422,7 +561,6 @@ namespace JanataBazaar.View.Details
         {
             decimal _basic;
             Basic = decimal.TryParse(txtBasic.Text, out _basic) ? _basic : 0;
-
             var totalItem = nudItemsPerPack.Value * nudNoPacks.Value;
 
             txtTotalBasic.Text = (Basic * totalItem).ToString("#.##");
@@ -430,7 +568,7 @@ namespace JanataBazaar.View.Details
             if (!string.IsNullOrEmpty(cmbVATPercent.Text))
             {
                 VATPercent = decimal.Parse(cmbVATPercent.Text);
-                txtVAT.Text = VAT.ToString();
+                txtVAT.Text = VAT.ToString("#.##");
             }
             UpdateRates();
         }
@@ -440,7 +578,6 @@ namespace JanataBazaar.View.Details
             if (string.IsNullOrEmpty(txtTotalBasic.Text)) return;
 
             var totalItem = nudItemsPerPack.Value * nudNoPacks.Value;
-
             txtBasic.Text = (decimal.Parse(txtTotalBasic.Text) / totalItem).ToString("#.##");
             txtBasic_Validated(this, new EventArgs());
         }
@@ -448,9 +585,15 @@ namespace JanataBazaar.View.Details
         private void txtValues_Validated(object sender, EventArgs e)
         {
             Trans = (decimal.TryParse(txtTrans.Text, out _trans) ? _trans : 0);
+            UpdateTransSet(0, Trans, 0);
+
             Misc = (decimal.TryParse(txtMisc.Text, out _misc) ? _misc : 0);
+            UpdateMiscSet(0, Misc, 0);
+
             VAT = (decimal.TryParse(txtVAT.Text, out _vat) ? _vat : 0);
+
             Discount = (decimal.TryParse(txtDisc.Text, out _disc) ? _disc : 0);
+            UpdateDiscSet(0, Discount, 0);
 
             UpdateRates();
         }
@@ -467,11 +610,21 @@ namespace JanataBazaar.View.Details
         {
             WRate = decimal.Parse(txtWholeRate.Text);
             txtRetailPercent_Validated(this, new EventArgs());
+
+            decimal wsaleMargin = !string.IsNullOrEmpty(txtWholeMarginPrice.Text) && decimal.TryParse(txtWholeMarginPrice.Text, out wsaleMargin) ? wsaleMargin : 0;
+            lblWRateRdOff.Text = (WRate - wsaleMargin).ToString("#.##");
+
+            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
         }
 
         private void txtRetailRate_Validated(object sender, EventArgs e)
         {
             RRate = decimal.Parse(txtRetailRate.Text);
+
+            decimal rsaleMargin = !string.IsNullOrEmpty(txtRetailMarginPrice.Text) && decimal.TryParse(txtRetailMarginPrice.Text, out rsaleMargin) ? rsaleMargin : 0;
+            lblRRateRdOff.Text = (RRate - rsaleMargin).ToString("##.##");
+
+            txtTotalRSalePrice.Text = (RRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
         }
         #endregion ratesValidated
 
@@ -479,7 +632,7 @@ namespace JanataBazaar.View.Details
 
         private void AddSectionToolStrip_Click(object sender, EventArgs e)
         {
-            new Register.Winform_AddItemRegistry().ShowDialog();
+            new Register.Winform_ItemRegistry().ShowDialog();
 
         }
 
@@ -577,8 +730,9 @@ namespace JanataBazaar.View.Details
         private void chkIsExempted_CheckedChanged(object sender, EventArgs e)
         {
             cmbVATPercent.Enabled = !chkIsExempted.Checked;
-            txtVAT.Enabled = false;
+            cmbVATPercent.SelectedIndex = 0;
 
+            //txtVAT.Enabled = false;
             //if (txtVATPerc.Enabled)
             //    txtVATPerc.Validating += new CancelEventHandler(this.txtBox_Validating);
             //else
@@ -588,9 +742,11 @@ namespace JanataBazaar.View.Details
         private void cmbVATPercent_SelectedIndexChanged(object sender, EventArgs e)
         {
             VATPercent = decimal.Parse(cmbVATPercent.Text);
-
             VAT = VATPercent != 0 ? Basic * (VATPercent / 100) : 0;
-            txtVAT.Text = VAT.ToString();
+
+            txtVAT.Text = VAT.ToString("#.##");
+            txtTotalVAT.Text = (VAT * nudItemsPerPack.Value * nudNoPacks.Value).ToString("#.##");
+
             UpdateRates();
         }
 
@@ -605,6 +761,18 @@ namespace JanataBazaar.View.Details
 
         }
 
+        private void txtTotalTrans_Validated(object sender, EventArgs e)
+        {
+            TotalTrans = (decimal.TryParse(txtTotalTrans.Text, out _totalTrans) ? _totalTrans : 0);
+            UpdateTransSet(0, 0, TotalTrans);
 
+            TotalMisc = (decimal.TryParse(txtTotalMisc.Text, out _totalMisc) ? _totalMisc : 0);
+            UpdateMiscSet(0, 0, TotalMisc);
+
+            TotalDiscount = (decimal.TryParse(txtTotalDiscount.Text, out _totalDisc) ? _totalDisc : 0);
+            UpdateDiscSet(0, 0, TotalDiscount);
+
+            UpdateRates();
+        }
     }
 }

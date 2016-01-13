@@ -71,6 +71,12 @@
             this.txtTotalWholesalePrice_ROff = new System.Windows.Forms.TextBox();
             this.txtTotalResalePrice_ROff = new System.Windows.Forms.TextBox();
             this.txtTotalPurchasePrice_ROff = new System.Windows.Forms.TextBox();
+            this.lblPPriceRdOff = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.lblWPriceRdOff = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblRPriceRdOff = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdDetails)).BeginInit();
@@ -282,7 +288,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(708, 365);
+            this.label5.Location = new System.Drawing.Point(618, 365);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 13);
             this.label5.TabIndex = 134;
@@ -291,7 +297,7 @@
             // txtTotalPurchasePrice
             // 
             this.txtTotalPurchasePrice.Enabled = false;
-            this.txtTotalPurchasePrice.Location = new System.Drawing.Point(820, 362);
+            this.txtTotalPurchasePrice.Location = new System.Drawing.Point(730, 362);
             this.txtTotalPurchasePrice.Name = "txtTotalPurchasePrice";
             this.txtTotalPurchasePrice.Size = new System.Drawing.Size(103, 20);
             this.txtTotalPurchasePrice.TabIndex = 135;
@@ -303,7 +309,7 @@
             this.AddVendorToolStrip.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddVendorToolStrip.Name = "AddVendorToolStrip";
             this.AddVendorToolStrip.Size = new System.Drawing.Size(76, 51);
-            this.AddVendorToolStrip.Text = "Add &Vendor";
+            this.AddVendorToolStrip.Text = "Add S&upplier";
             this.AddVendorToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddVendorToolStrip.Click += new System.EventHandler(this.AddVendorToolStrip_Click);
             // 
@@ -321,7 +327,7 @@
             // txtTotalResalePrice
             // 
             this.txtTotalResalePrice.Enabled = false;
-            this.txtTotalResalePrice.Location = new System.Drawing.Point(820, 414);
+            this.txtTotalResalePrice.Location = new System.Drawing.Point(730, 414);
             this.txtTotalResalePrice.Name = "txtTotalResalePrice";
             this.txtTotalResalePrice.Size = new System.Drawing.Size(103, 20);
             this.txtTotalResalePrice.TabIndex = 137;
@@ -331,7 +337,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(720, 417);
+            this.label6.Location = new System.Drawing.Point(630, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 136;
@@ -348,7 +354,7 @@
             // txtTotalWholesalePrice
             // 
             this.txtTotalWholesalePrice.Enabled = false;
-            this.txtTotalWholesalePrice.Location = new System.Drawing.Point(820, 388);
+            this.txtTotalWholesalePrice.Location = new System.Drawing.Point(730, 388);
             this.txtTotalWholesalePrice.Name = "txtTotalWholesalePrice";
             this.txtTotalWholesalePrice.Size = new System.Drawing.Size(103, 20);
             this.txtTotalWholesalePrice.TabIndex = 140;
@@ -358,7 +364,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(703, 391);
+            this.label7.Location = new System.Drawing.Point(613, 391);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 13);
             this.label7.TabIndex = 139;
@@ -425,30 +431,102 @@
             // 
             // txtTotalWholesalePrice_ROff
             // 
-            this.txtTotalWholesalePrice_ROff.Location = new System.Drawing.Point(929, 388);
+            this.txtTotalWholesalePrice_ROff.Location = new System.Drawing.Point(926, 388);
             this.txtTotalWholesalePrice_ROff.Name = "txtTotalWholesalePrice_ROff";
             this.txtTotalWholesalePrice_ROff.Size = new System.Drawing.Size(103, 20);
             this.txtTotalWholesalePrice_ROff.TabIndex = 3;
+            this.txtTotalWholesalePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
+            this.txtTotalWholesalePrice_ROff.Validated += new System.EventHandler(this.txtTotalWholesalePrice_ROff_Validated);
             // 
             // txtTotalResalePrice_ROff
             // 
-            this.txtTotalResalePrice_ROff.Location = new System.Drawing.Point(929, 414);
+            this.txtTotalResalePrice_ROff.Location = new System.Drawing.Point(926, 414);
             this.txtTotalResalePrice_ROff.Name = "txtTotalResalePrice_ROff";
             this.txtTotalResalePrice_ROff.Size = new System.Drawing.Size(103, 20);
             this.txtTotalResalePrice_ROff.TabIndex = 4;
+            this.txtTotalResalePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
+            this.txtTotalResalePrice_ROff.Validated += new System.EventHandler(this.txtTotalResalePrice_ROff_Validated);
             // 
             // txtTotalPurchasePrice_ROff
             // 
-            this.txtTotalPurchasePrice_ROff.Location = new System.Drawing.Point(929, 362);
+            this.txtTotalPurchasePrice_ROff.Location = new System.Drawing.Point(926, 362);
             this.txtTotalPurchasePrice_ROff.Name = "txtTotalPurchasePrice_ROff";
             this.txtTotalPurchasePrice_ROff.Size = new System.Drawing.Size(103, 20);
             this.txtTotalPurchasePrice_ROff.TabIndex = 2;
+            this.txtTotalPurchasePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
+            this.txtTotalPurchasePrice_ROff.Validated += new System.EventHandler(this.txtTotalPurchasePrice_ROff_Validated);
+            // 
+            // lblPPriceRdOff
+            // 
+            this.lblPPriceRdOff.AutoSize = true;
+            this.lblPPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
+            this.lblPPriceRdOff.Location = new System.Drawing.Point(894, 365);
+            this.lblPPriceRdOff.Name = "lblPPriceRdOff";
+            this.lblPPriceRdOff.Size = new System.Drawing.Size(13, 13);
+            this.lblPPriceRdOff.TabIndex = 142;
+            this.lblPPriceRdOff.Text = "0";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label44.Location = new System.Drawing.Point(839, 365);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(56, 13);
+            this.label44.TabIndex = 141;
+            this.label44.Text = "RoundOff ";
+            // 
+            // lblWPriceRdOff
+            // 
+            this.lblWPriceRdOff.AutoSize = true;
+            this.lblWPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
+            this.lblWPriceRdOff.Location = new System.Drawing.Point(894, 391);
+            this.lblWPriceRdOff.Name = "lblWPriceRdOff";
+            this.lblWPriceRdOff.Size = new System.Drawing.Size(13, 13);
+            this.lblWPriceRdOff.TabIndex = 144;
+            this.lblWPriceRdOff.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label11.Location = new System.Drawing.Point(839, 391);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 143;
+            this.label11.Text = "RoundOff ";
+            // 
+            // lblRPriceRdOff
+            // 
+            this.lblRPriceRdOff.AutoSize = true;
+            this.lblRPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
+            this.lblRPriceRdOff.Location = new System.Drawing.Point(894, 417);
+            this.lblRPriceRdOff.Name = "lblRPriceRdOff";
+            this.lblRPriceRdOff.Size = new System.Drawing.Size(13, 13);
+            this.lblRPriceRdOff.TabIndex = 146;
+            this.lblRPriceRdOff.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label13.Location = new System.Drawing.Point(839, 417);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(56, 13);
+            this.label13.TabIndex = 145;
+            this.label13.Text = "RoundOff ";
             // 
             // Winform_PurchaseBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 461);
+            this.Controls.Add(this.lblRPriceRdOff);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lblWPriceRdOff);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblPPriceRdOff);
+            this.Controls.Add(this.label44);
             this.Controls.Add(this.txtTotalWholesalePrice_ROff);
             this.Controls.Add(this.txtTotalResalePrice_ROff);
             this.Controls.Add(this.txtTotalPurchasePrice_ROff);
@@ -474,6 +552,12 @@
             this.Controls.SetChildIndex(this.txtTotalPurchasePrice_ROff, 0);
             this.Controls.SetChildIndex(this.txtTotalResalePrice_ROff, 0);
             this.Controls.SetChildIndex(this.txtTotalWholesalePrice_ROff, 0);
+            this.Controls.SetChildIndex(this.label44, 0);
+            this.Controls.SetChildIndex(this.lblPPriceRdOff, 0);
+            this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.lblWPriceRdOff, 0);
+            this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.lblRPriceRdOff, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -529,5 +613,11 @@
         private System.Windows.Forms.TextBox txtTotalWholesalePrice_ROff;
         private System.Windows.Forms.TextBox txtTotalResalePrice_ROff;
         private System.Windows.Forms.TextBox txtTotalPurchasePrice_ROff;
+        private System.Windows.Forms.Label lblRPriceRdOff;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblWPriceRdOff;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblPPriceRdOff;
+        private System.Windows.Forms.Label label44;
     }
 }

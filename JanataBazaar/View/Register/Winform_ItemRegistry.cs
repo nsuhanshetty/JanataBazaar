@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace JanataBazaar.View.Register
 {
-    public partial class Winform_AddItemRegistry : WinformRegister
+    public partial class Winform_ItemRegistry : WinformRegister
     {
-        public Winform_AddItemRegistry()
+        public Winform_ItemRegistry()
         {
             InitializeComponent();
         }
@@ -59,7 +59,7 @@ namespace JanataBazaar.View.Register
 
         protected override void dgvRegister_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(typeof(Winform_AddItemRegistry));
+            log4net.ILog log = log4net.LogManager.GetLogger(typeof(Winform_ItemRegistry));
             log.Error(e.Context);
         }
 
@@ -72,11 +72,22 @@ namespace JanataBazaar.View.Register
 
             Winform_ItemSKUDetails itemDetail = Application.OpenForms["Winform_ItemSKUDetails"] as Winform_ItemSKUDetails;
             if (itemDetail != null)
+            {
                 itemDetail.UpdateItemDetailControls(_item);
+                this.Close();
+            }
+            else
+            {
+                DialogResult _dialogResult = MessageBox.Show("Do you want to Modify the details of Item " +
+                                         Convert.ToString(dgvRegister.Rows[e.RowIndex].Cells["Name"].Value),
+                                         "Modify Item Details", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                         MessageBoxDefaultButton.Button2);
 
-            this.Close();
+                if (_dialogResult == DialogResult.No) return;
+
+                new Winform_ItemDetails(_item).ShowDialog();
+                txtName_TextChanged(this, new EventArgs());
+            }
         }
-
-
     }
 }

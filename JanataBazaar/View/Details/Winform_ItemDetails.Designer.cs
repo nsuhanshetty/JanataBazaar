@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Winform_ItemDetails));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbName = new System.Windows.Forms.ComboBox();
-            this.txtReserve = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,14 +46,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddSectionToolStrip = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtReserve = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReserve)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbName);
             this.groupBox1.Controls.Add(this.txtReserve);
+            this.groupBox1.Controls.Add(this.cmbName);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -83,14 +84,6 @@
             this.cmbName.TabIndex = 0;
             this.cmbName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBox_Validating);
             this.cmbName.Validated += new System.EventHandler(this.txtName_Validated);
-            // 
-            // txtReserve
-            // 
-            this.txtReserve.Location = new System.Drawing.Point(143, 138);
-            this.txtReserve.Name = "txtReserve";
-            this.txtReserve.Size = new System.Drawing.Size(88, 20);
-            this.txtReserve.TabIndex = 4;
-            this.txtReserve.Validating += new System.ComponentModel.CancelEventHandler(this.txtBox_Validating);
             // 
             // label6
             // 
@@ -219,6 +212,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtReserve
+            // 
+            this.txtReserve.Location = new System.Drawing.Point(144, 140);
+            this.txtReserve.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.txtReserve.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtReserve.Name = "txtReserve";
+            this.txtReserve.Size = new System.Drawing.Size(87, 20);
+            this.txtReserve.TabIndex = 43;
+            this.txtReserve.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Winform_ItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,6 +247,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReserve)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,7 +270,7 @@
         private System.Windows.Forms.ToolStripButton AddSectionToolStrip;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtReserve;
         private System.Windows.Forms.ComboBox cmbName;
+        private System.Windows.Forms.NumericUpDown txtReserve;
     }
 }

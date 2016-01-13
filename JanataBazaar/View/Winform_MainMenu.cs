@@ -274,7 +274,7 @@ namespace JanataBazaar
 
         private void stockCheckToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           // new Winform_SKURegister().ShowDialog();
+            new Winform_ItemRegistry().ShowDialog();
         }
 
         private void addVendorToolStripMenuItem2_Click(object sender, EventArgs e)
