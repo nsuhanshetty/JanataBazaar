@@ -82,6 +82,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSearchText = new System.Windows.Forms.Label();
             this.rdbPurchase = new System.Windows.Forms.RadioButton();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,6 +98,7 @@
             this.catalogueToolStripMenuItem,
             this.reportsToolStripMenuItem,
             this.settingToolStripMenuItem,
+            this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -550,6 +552,14 @@
             this.rdbPurchase.UseVisualStyleBackColor = true;
             this.rdbPurchase.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // Winform_MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,6 +641,7 @@
         private System.Windows.Forms.RadioButton rdbIndent;
         private System.Windows.Forms.ToolStripMenuItem purchaseIndentFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseIndentRegisterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

@@ -25,7 +25,7 @@
     <InstallUrl>http://solutionstudios.in/janatabazaar/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,9 +69,9 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -324,6 +324,12 @@
     <Compile Include="View\Register\Winform_VendorRegister.Designer.cs">
       <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Winform_About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Winform_About.Designer.cs">
+      <DependentUpon>Winform_About.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Winform_MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Register\Winform_VendorRegister.resx">
       <DependentUpon>Winform_VendorRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Winform_About.resx">
+      <DependentUpon>Winform_About.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Winform_MainMenu.resx">
       <DependentUpon>Winform_MainMenu.cs</DependentUpon>

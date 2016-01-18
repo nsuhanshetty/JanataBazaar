@@ -21,7 +21,6 @@ namespace JanataBazaar.View.Register
             List<string> sectList = ItemDetailsBuilder.GetSectionsList();
             cmbSection.DataSource = sectList;
             cmbSection.DisplayMember = "Name";
-            //cmbSection.ValueMember = "ID";
 
             cmbSection.Text = "";
         }
@@ -46,9 +45,20 @@ namespace JanataBazaar.View.Register
             dgvRegister.DataSource = (ItemDetailsBuilder.GetItemsList(txtName.Text, cmbSection.Text, txtBrand.Text));
 
             if (dgvRegister.RowCount == 0)
+            {
+                dgvRegister.Columns["colDelete"].Visible = false;
                 UpdateStatus("No Results found.", 100);
+            }
             else
+            {
+                Winform_ItemSKUDetails itemDetail = Application.OpenForms["Winform_ItemSKUDetails"] as Winform_ItemSKUDetails;
+                if (itemDetail == null)
+                {
+                    dgvRegister.Columns["colDelete"].Visible = true;
+                    dgvRegister.Columns["colDelete"].DisplayIndex = dgvRegister.Columns.Count - 1;
+                }
                 UpdateStatus(dgvRegister.RowCount + " Results found.", 100);
+            }
         }
 
         protected override void NewToolStrip_Click(object sender, EventArgs e)
@@ -75,6 +85,31 @@ namespace JanataBazaar.View.Register
             {
                 itemDetail.UpdateItemDetailControls(_item);
                 this.Close();
+            }
+            else if (dgvRegister.Columns["colDelete"].Index == e.ColumnIndex)
+            {
+                var row = dgvRegister.Rows[e.RowIndex];
+                int itemID = int.Parse(row.Cells["ID"].Value.ToString());
+                DialogResult dr = MessageBox.Show("Do you want to delete Item " + row.Cells["Name"].Value.ToString(), "Delete Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.No) return;
+
+                bool isBilled = Savers.ItemDetailsSavers.IsItemBilled(itemID);
+                if (isBilled)
+                {
+                    MessageBox.Show("Item is already billed and cannot be deleted","Cannot delete Item",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                    return;
+                }
+
+                bool success = Savers.ItemDetailsSavers.DeleteItem(itemID);
+                if (success)
+                {
+                    txtName_TextChanged(this, new EventArgs());
+                    UpdateStatus("Item Deleted.", 100);
+                }
+                else
+                {
+                    UpdateStatus("Error deleting Item. ", 100);
+                }
             }
             else
             {

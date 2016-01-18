@@ -54,6 +54,50 @@ namespace JanataBazaar.Savers
                     }
             }
         }
+
+        public static bool IsItemBilled(int itemID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        bool isBilled = session.Query<ItemPricing>().Any(i => i.Item.ID == itemID);
+                        return isBilled;
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        log.Error(ex);
+                        return true;
+                    }
+                }
+            }
+        }
+
+        public static bool DeleteItem(int itemID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        var _item = session.Get<Item>(itemID);
+                        session.Delete(_item);
+                        tx.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        log.Error(ex);
+                        return false;
+                    }
+                }
+            }
+        }
     }
 
     class PackageDetailsSavers

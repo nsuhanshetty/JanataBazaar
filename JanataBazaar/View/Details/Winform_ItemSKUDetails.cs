@@ -376,31 +376,36 @@ namespace JanataBazaar.View.Details
             txtGrossWght.Text = itemsku.GrossWeight.ToString();
 
             txtBasic.Text = itemsku.Basic.ToString();
-
-            txtTransPercent.Text = itemsku.TransportPercent.ToString();
-            txtTrans.Text = itemsku.Transport.ToString();
-
-            txtMiscPercent.Text = itemsku.MiscPercent.ToString();
-            txtMisc.Text = itemsku.Misc.ToString();
-
-            txtDiscPercent.Text = itemsku.DiscountPercent.ToString();
-            txtDisc.Text = itemsku.Discount.ToString();
-
-            cmbVATPercent.SelectedIndex = cmbVATPercent.Items.IndexOf(itemsku.VATPercent);
-            txtVAT.Text = itemsku.VAT.ToString("#.##");
-
             this.Basic = itemsku.Basic;
             txtTotalBasic.Text = (this.Basic * (nudNoPacks.Value * nudItemsPerPack.Value)).ToString("#.##");
 
-            this.VATPercent = itemsku.VATPercent;
-            this.MiscPercent = itemsku.MiscPercent;
-            this.DiscountPercent = itemsku.DiscountPercent;
-            this.TransPercent = itemsku.TransportPercent;
+            txtTransPercent.Text = itemsku.TransportPercent.ToString();
+            //txtTrans.Text = itemsku.Transport.ToString();
+            UpdateTransSet(itemsku.TransportPercent, 0, 0);
 
-            this.VAT = itemsku.VAT;
-            this.Misc = itemsku.Misc;
-            this.Discount = itemsku.Discount;
-            this.Trans = itemsku.Transport;
+            txtMiscPercent.Text = itemsku.MiscPercent.ToString();
+            //txtMisc.Text = itemsku.Misc.ToString();
+            UpdateMiscSet(itemsku.MiscPercent, 0, 0);
+
+            txtDiscPercent.Text = itemsku.DiscountPercent.ToString();
+            ///txtDisc.Text = itemsku.Discount.ToString();
+            UpdateDiscSet(itemsku.DiscountPercent, 0, 0);
+
+            cmbVATPercent.SelectedIndex = cmbVATPercent.Items.IndexOf(itemsku.VATPercent);
+            txtVAT.Text = itemsku.VAT.ToString("#.##");
+            txtTotalVAT.Text = (itemsku.VAT * nudItemsPerPack.Value * nudNoPacks.Value).ToString("#.##");
+
+
+
+            //this.VATPercent = itemsku.VATPercent;
+            //this.MiscPercent = itemsku.MiscPercent;
+            //this.DiscountPercent = itemsku.DiscountPercent;
+            //this.TransPercent = itemsku.TransportPercent;
+
+            //this.VAT = itemsku.VAT;
+            //this.Misc = itemsku.Misc;
+            //this.Discount = itemsku.Discount;
+            //this.Trans = itemsku.Transport;
 
             //UpdateRates();
             UpdateRates();
@@ -419,11 +424,12 @@ namespace JanataBazaar.View.Details
             txtWholePercent.Text = itemsku.WholesaleMargin.ToString();
             txtWholeMarginPrice.Text = ((WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate).ToString("#.##");
             txtWholeRate.Text = itemsku.Wholesale.ToString();
+            UpdateWSaleSet();
 
             txtRetailPercent.Text = itemsku.RetailMargin.ToString();
             txtRetailMarginPrice.Text = ((RRatePercent != 0 ? (WRate * (RRatePercent / 100)) : 0) + WRate).ToString("#.##");
             txtRetailRate.Text = itemsku.Retail.ToString();
-
+            UpdateRSaleSet();
         }
 
         private void Winform_Item_Load(object sender, EventArgs e)
@@ -543,7 +549,7 @@ namespace JanataBazaar.View.Details
 
             WRate = (WRatePercent != 0 ? (PurchaseRate * (WRatePercent / 100)) : 0) + PurchaseRate;
             txtWholeRate.Text = txtWholeMarginPrice.Text = WRate.ToString("#.##");
-            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
+            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudNoPacks.Value)).ToString("#.##");
         }
 
         private void txtRetailPercent_Validated(object sender, EventArgs e)
@@ -610,21 +616,29 @@ namespace JanataBazaar.View.Details
         {
             WRate = decimal.Parse(txtWholeRate.Text);
             txtRetailPercent_Validated(this, new EventArgs());
+            UpdateWSaleSet();
+        }
 
+        private void UpdateWSaleSet()
+        {
             decimal wsaleMargin = !string.IsNullOrEmpty(txtWholeMarginPrice.Text) && decimal.TryParse(txtWholeMarginPrice.Text, out wsaleMargin) ? wsaleMargin : 0;
             lblWRateRdOff.Text = (WRate - wsaleMargin).ToString("#.##");
 
-            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
+            txtTotalWSalePrice.Text = (WRate * (nudItemsPerPack.Value * nudNoPacks.Value)).ToString("#.##");
         }
 
         private void txtRetailRate_Validated(object sender, EventArgs e)
         {
             RRate = decimal.Parse(txtRetailRate.Text);
+            UpdateRSaleSet();
+        }
 
+        private void UpdateRSaleSet()
+        {
             decimal rsaleMargin = !string.IsNullOrEmpty(txtRetailMarginPrice.Text) && decimal.TryParse(txtRetailMarginPrice.Text, out rsaleMargin) ? rsaleMargin : 0;
             lblRRateRdOff.Text = (RRate - rsaleMargin).ToString("##.##");
 
-            txtTotalRSalePrice.Text = (RRate * (nudItemsPerPack.Value * nudItemsPerPack.Value)).ToString("#.##");
+            txtTotalRSalePrice.Text = (RRate * (nudItemsPerPack.Value * nudNoPacks.Value)).ToString("#.##");
         }
         #endregion ratesValidated
 
@@ -664,8 +678,8 @@ namespace JanataBazaar.View.Details
         protected override void SaveToolStrip_Click(object sender, EventArgs e)
         {
             this.ProcessTabKey(true);
-            List<string> exceptList = new List<string>() { "txtDisc", "txtDiscPercent", "txtMisc", "txtMiscPercent", "txtTrans",
-                                                           "txtTransPercent", "txtVAT", "cmbVATPercent","txtBrand","cmbPackType","txtNoPacks","txtNetWght","txtGrossWght" };
+            List<string> exceptList = new List<string>() { "txtDisc", "txtDiscPercent","txtTotalDiscount" ,"txtMisc", "txtMiscPercent","txtTotalMisc" ,"txtTrans",
+                                                           "txtTransPercent","txtTotalTrans" ,"txtVAT", "cmbVATPercent","txtTotalVAT", "txtBrand","cmbPackType","txtNoPacks","txtNetWght","txtGrossWght" };
             if (Utilities.Validation.IsNullOrEmpty(this, true, exceptList)) return;
 
             ItemPricing _itemPrice = new ItemPricing();

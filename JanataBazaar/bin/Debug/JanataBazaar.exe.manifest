@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="JanataBazaar.exe" version="1.0.0.11" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="JanataBazaar.exe" version="1.0.0.14" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="JanataBazaar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -81,26 +81,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JanataBazaar.exe" size="463880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JanataBazaar.exe" size="469512">
       <assemblyIdentity name="JanataBazaar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fjlrgYPrmPjvlDA0hkYMDq1tCdAWv6DLa1ShG7s7rc0=</dsig:DigestValue>
+        <dsig:DigestValue>qB+lHjO7MM7uYjYxfSTVF7WbVvSxyj6/SHR9tfOmTmU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="301056">
-      <assemblyIdentity name="log4net" version="1.2.13.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="304640">
+      <assemblyIdentity name="log4net" version="1.2.15.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zm7k/ceDpb+QXyQBeKyW6ut+3iL/4GoGuhec0aBEK9M=</dsig:DigestValue>
+        <dsig:DigestValue>Z2OH/G3Np/KCcKz6vWX3mAW7f2In5+tcvgojRgIx0rc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

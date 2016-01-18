@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JanataBazaar.Model;
 using log4net;
 using JanataBazaar.Models;
+using NHibernate.Linq;
 
 namespace JanataBazaar.Savers
 {
@@ -32,6 +33,49 @@ namespace JanataBazaar.Savers
                         transaction.Rollback();
                         log.Error(ex);
                         return false;
+                    }
+                }
+            }
+        }
+
+        public static bool DeleteVendor(int vendorID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        session.Delete(session.Get<Vendor>(vendorID));
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        log.Error(ex);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public static bool IsVendorBilled(int _vendID)
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    try
+                    {
+                        bool isBilled = session.Query<PurchaseOrder>().Any(i => i.Vendor.ID == _vendID);
+                        return isBilled;
+                    }
+                    catch (Exception ex)
+                    {
+                        tx.Rollback();
+                        log.Error(ex);
+                        return true;
                     }
                 }
             }

@@ -28,6 +28,15 @@ namespace JanataBazaar.Builders
             }
         }
 
+        public static List<string> GetBrandsList()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                return (from _item in session.Query<Item>()
+                        select _item.Brand).Distinct().ToList();
+            }
+        }
+
         public static Section GetSection(string _name)
         {
             using (var session = NHibernateHelper.OpenSession())

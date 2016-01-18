@@ -41,18 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvProdDetails = new System.Windows.Forms.DataGridView();
-            this.ColProduct = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColPackageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPackQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colItemPerPack = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colItemUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPurchaseValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colWholesaleValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColResaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotPurchaseVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotWholesaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotResaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTotalPurchasePrice = new System.Windows.Forms.TextBox();
             this.AddVendorToolStrip = new System.Windows.Forms.ToolStripButton();
@@ -77,6 +65,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblRPriceRdOff = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.ColProduct = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColPackageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPackQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colItemPerPack = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colItemUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPurchaseValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWholesaleValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWSaleROff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColResaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRSaleROff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotalBasic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotPurchaseVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotWholesaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotResaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdDetails)).BeginInit();
@@ -174,7 +178,7 @@
             this.groupBox2.Controls.Add(this.dgvProdDetails);
             this.groupBox2.Location = new System.Drawing.Point(12, 134);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1023, 225);
+            this.groupBox2.Size = new System.Drawing.Size(1170, 225);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product Details";
@@ -190,9 +194,13 @@
             this.ColPackQuantity,
             this.colItemPerPack,
             this.colItemUnit,
+            this.colVat,
             this.ColPurchaseValue,
             this.colWholesaleValue,
+            this.colWSaleROff,
             this.ColResaleVal,
+            this.colRSaleROff,
+            this.colTotalBasic,
             this.colTotPurchaseVal,
             this.colTotWholesaleVal,
             this.colTotResaleVal,
@@ -201,94 +209,16 @@
             this.dgvProdDetails.Location = new System.Drawing.Point(3, 16);
             this.dgvProdDetails.Name = "dgvProdDetails";
             this.dgvProdDetails.ReadOnly = true;
-            this.dgvProdDetails.Size = new System.Drawing.Size(1017, 206);
+            this.dgvProdDetails.Size = new System.Drawing.Size(1164, 206);
             this.dgvProdDetails.TabIndex = 0;
             this.dgvProdDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetails_CellClick);
-            // 
-            // ColProduct
-            // 
-            this.ColProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColProduct.HeaderText = "Add Commodity";
-            this.ColProduct.Name = "ColProduct";
-            this.ColProduct.ReadOnly = true;
-            this.ColProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColPackageType
-            // 
-            this.ColPackageType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColPackageType.HeaderText = "Package Type";
-            this.ColPackageType.Name = "ColPackageType";
-            this.ColPackageType.ReadOnly = true;
-            this.ColPackageType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColPackageType.Width = 79;
-            // 
-            // ColPackQuantity
-            // 
-            this.ColPackQuantity.HeaderText = "Package Quantity";
-            this.ColPackQuantity.Name = "ColPackQuantity";
-            this.ColPackQuantity.ReadOnly = true;
-            // 
-            // colItemPerPack
-            // 
-            this.colItemPerPack.HeaderText = "Items/ Pack";
-            this.colItemPerPack.Name = "colItemPerPack";
-            this.colItemPerPack.ReadOnly = true;
-            // 
-            // colItemUnit
-            // 
-            this.colItemUnit.HeaderText = "Item Unit";
-            this.colItemUnit.Name = "colItemUnit";
-            this.colItemUnit.ReadOnly = true;
-            // 
-            // ColPurchaseValue
-            // 
-            this.ColPurchaseValue.HeaderText = "Purchase Value";
-            this.ColPurchaseValue.Name = "ColPurchaseValue";
-            this.ColPurchaseValue.ReadOnly = true;
-            // 
-            // colWholesaleValue
-            // 
-            this.colWholesaleValue.HeaderText = "Wholesale Value";
-            this.colWholesaleValue.Name = "colWholesaleValue";
-            this.colWholesaleValue.ReadOnly = true;
-            // 
-            // ColResaleVal
-            // 
-            this.ColResaleVal.HeaderText = "Resale Value";
-            this.ColResaleVal.Name = "ColResaleVal";
-            this.ColResaleVal.ReadOnly = true;
-            // 
-            // colTotPurchaseVal
-            // 
-            this.colTotPurchaseVal.HeaderText = "Total Purchase Value";
-            this.colTotPurchaseVal.Name = "colTotPurchaseVal";
-            this.colTotPurchaseVal.ReadOnly = true;
-            // 
-            // colTotWholesaleVal
-            // 
-            this.colTotWholesaleVal.HeaderText = "Total Wholesale Value";
-            this.colTotWholesaleVal.Name = "colTotWholesaleVal";
-            this.colTotWholesaleVal.ReadOnly = true;
-            // 
-            // colTotResaleVal
-            // 
-            this.colTotResaleVal.HeaderText = "Total Resale Value";
-            this.colTotResaleVal.Name = "colTotResaleVal";
-            this.colTotResaleVal.ReadOnly = true;
-            // 
-            // ColDel
-            // 
-            this.ColDel.HeaderText = "Click To Delete";
-            this.ColDel.Name = "ColDel";
-            this.ColDel.ReadOnly = true;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(618, 365);
+            this.label5.Location = new System.Drawing.Point(768, 365);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 13);
             this.label5.TabIndex = 134;
@@ -297,9 +227,9 @@
             // txtTotalPurchasePrice
             // 
             this.txtTotalPurchasePrice.Enabled = false;
-            this.txtTotalPurchasePrice.Location = new System.Drawing.Point(730, 362);
+            this.txtTotalPurchasePrice.Location = new System.Drawing.Point(880, 362);
             this.txtTotalPurchasePrice.Name = "txtTotalPurchasePrice";
-            this.txtTotalPurchasePrice.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalPurchasePrice.Size = new System.Drawing.Size(104, 20);
             this.txtTotalPurchasePrice.TabIndex = 135;
             // 
             // AddVendorToolStrip
@@ -327,9 +257,9 @@
             // txtTotalResalePrice
             // 
             this.txtTotalResalePrice.Enabled = false;
-            this.txtTotalResalePrice.Location = new System.Drawing.Point(730, 414);
+            this.txtTotalResalePrice.Location = new System.Drawing.Point(880, 414);
             this.txtTotalResalePrice.Name = "txtTotalResalePrice";
-            this.txtTotalResalePrice.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalResalePrice.Size = new System.Drawing.Size(104, 20);
             this.txtTotalResalePrice.TabIndex = 137;
             // 
             // label6
@@ -337,7 +267,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(630, 417);
+            this.label6.Location = new System.Drawing.Point(780, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 136;
@@ -354,9 +284,9 @@
             // txtTotalWholesalePrice
             // 
             this.txtTotalWholesalePrice.Enabled = false;
-            this.txtTotalWholesalePrice.Location = new System.Drawing.Point(730, 388);
+            this.txtTotalWholesalePrice.Location = new System.Drawing.Point(880, 388);
             this.txtTotalWholesalePrice.Name = "txtTotalWholesalePrice";
-            this.txtTotalWholesalePrice.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalWholesalePrice.Size = new System.Drawing.Size(104, 20);
             this.txtTotalWholesalePrice.TabIndex = 140;
             // 
             // label7
@@ -364,7 +294,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(613, 391);
+            this.label7.Location = new System.Drawing.Point(763, 391);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 13);
             this.label7.TabIndex = 139;
@@ -431,27 +361,27 @@
             // 
             // txtTotalWholesalePrice_ROff
             // 
-            this.txtTotalWholesalePrice_ROff.Location = new System.Drawing.Point(926, 388);
+            this.txtTotalWholesalePrice_ROff.Location = new System.Drawing.Point(1076, 388);
             this.txtTotalWholesalePrice_ROff.Name = "txtTotalWholesalePrice_ROff";
-            this.txtTotalWholesalePrice_ROff.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalWholesalePrice_ROff.Size = new System.Drawing.Size(104, 20);
             this.txtTotalWholesalePrice_ROff.TabIndex = 3;
             this.txtTotalWholesalePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
             this.txtTotalWholesalePrice_ROff.Validated += new System.EventHandler(this.txtTotalWholesalePrice_ROff_Validated);
             // 
             // txtTotalResalePrice_ROff
             // 
-            this.txtTotalResalePrice_ROff.Location = new System.Drawing.Point(926, 414);
+            this.txtTotalResalePrice_ROff.Location = new System.Drawing.Point(1076, 414);
             this.txtTotalResalePrice_ROff.Name = "txtTotalResalePrice_ROff";
-            this.txtTotalResalePrice_ROff.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalResalePrice_ROff.Size = new System.Drawing.Size(104, 20);
             this.txtTotalResalePrice_ROff.TabIndex = 4;
             this.txtTotalResalePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
             this.txtTotalResalePrice_ROff.Validated += new System.EventHandler(this.txtTotalResalePrice_ROff_Validated);
             // 
             // txtTotalPurchasePrice_ROff
             // 
-            this.txtTotalPurchasePrice_ROff.Location = new System.Drawing.Point(926, 362);
+            this.txtTotalPurchasePrice_ROff.Location = new System.Drawing.Point(1076, 362);
             this.txtTotalPurchasePrice_ROff.Name = "txtTotalPurchasePrice_ROff";
-            this.txtTotalPurchasePrice_ROff.Size = new System.Drawing.Size(103, 20);
+            this.txtTotalPurchasePrice_ROff.Size = new System.Drawing.Size(104, 20);
             this.txtTotalPurchasePrice_ROff.TabIndex = 2;
             this.txtTotalPurchasePrice_ROff.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
             this.txtTotalPurchasePrice_ROff.Validated += new System.EventHandler(this.txtTotalPurchasePrice_ROff_Validated);
@@ -460,7 +390,7 @@
             // 
             this.lblPPriceRdOff.AutoSize = true;
             this.lblPPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
-            this.lblPPriceRdOff.Location = new System.Drawing.Point(894, 365);
+            this.lblPPriceRdOff.Location = new System.Drawing.Point(1044, 365);
             this.lblPPriceRdOff.Name = "lblPPriceRdOff";
             this.lblPPriceRdOff.Size = new System.Drawing.Size(13, 13);
             this.lblPPriceRdOff.TabIndex = 142;
@@ -470,7 +400,7 @@
             // 
             this.label44.AutoSize = true;
             this.label44.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label44.Location = new System.Drawing.Point(839, 365);
+            this.label44.Location = new System.Drawing.Point(989, 365);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(56, 13);
             this.label44.TabIndex = 141;
@@ -480,7 +410,7 @@
             // 
             this.lblWPriceRdOff.AutoSize = true;
             this.lblWPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
-            this.lblWPriceRdOff.Location = new System.Drawing.Point(894, 391);
+            this.lblWPriceRdOff.Location = new System.Drawing.Point(1044, 391);
             this.lblWPriceRdOff.Name = "lblWPriceRdOff";
             this.lblWPriceRdOff.Size = new System.Drawing.Size(13, 13);
             this.lblWPriceRdOff.TabIndex = 144;
@@ -490,7 +420,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label11.Location = new System.Drawing.Point(839, 391);
+            this.label11.Location = new System.Drawing.Point(989, 391);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 13);
             this.label11.TabIndex = 143;
@@ -500,7 +430,7 @@
             // 
             this.lblRPriceRdOff.AutoSize = true;
             this.lblRPriceRdOff.ForeColor = System.Drawing.Color.Maroon;
-            this.lblRPriceRdOff.Location = new System.Drawing.Point(894, 417);
+            this.lblRPriceRdOff.Location = new System.Drawing.Point(1044, 417);
             this.lblRPriceRdOff.Name = "lblRPriceRdOff";
             this.lblRPriceRdOff.Size = new System.Drawing.Size(13, 13);
             this.lblRPriceRdOff.TabIndex = 146;
@@ -510,17 +440,119 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label13.Location = new System.Drawing.Point(839, 417);
+            this.label13.Location = new System.Drawing.Point(989, 417);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 145;
             this.label13.Text = "RoundOff ";
             // 
+            // ColProduct
+            // 
+            this.ColProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColProduct.HeaderText = "Add Commodity";
+            this.ColProduct.Name = "ColProduct";
+            this.ColProduct.ReadOnly = true;
+            this.ColProduct.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColProduct.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColPackageType
+            // 
+            this.ColPackageType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColPackageType.HeaderText = "Package Type";
+            this.ColPackageType.Name = "ColPackageType";
+            this.ColPackageType.ReadOnly = true;
+            this.ColPackageType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColPackageType.Width = 79;
+            // 
+            // ColPackQuantity
+            // 
+            this.ColPackQuantity.HeaderText = "Package Quantity";
+            this.ColPackQuantity.Name = "ColPackQuantity";
+            this.ColPackQuantity.ReadOnly = true;
+            // 
+            // colItemPerPack
+            // 
+            this.colItemPerPack.HeaderText = "Items/ Pack";
+            this.colItemPerPack.Name = "colItemPerPack";
+            this.colItemPerPack.ReadOnly = true;
+            // 
+            // colItemUnit
+            // 
+            this.colItemUnit.HeaderText = "Item Unit";
+            this.colItemUnit.Name = "colItemUnit";
+            this.colItemUnit.ReadOnly = true;
+            // 
+            // colVat
+            // 
+            this.colVat.HeaderText = "VAT%";
+            this.colVat.Name = "colVat";
+            this.colVat.ReadOnly = true;
+            // 
+            // ColPurchaseValue
+            // 
+            this.ColPurchaseValue.HeaderText = "Purchase Value";
+            this.ColPurchaseValue.Name = "ColPurchaseValue";
+            this.ColPurchaseValue.ReadOnly = true;
+            // 
+            // colWholesaleValue
+            // 
+            this.colWholesaleValue.HeaderText = "Wholesale Value";
+            this.colWholesaleValue.Name = "colWholesaleValue";
+            this.colWholesaleValue.ReadOnly = true;
+            // 
+            // colWSaleROff
+            // 
+            this.colWSaleROff.HeaderText = "Wholesale Round Off";
+            this.colWSaleROff.Name = "colWSaleROff";
+            this.colWSaleROff.ReadOnly = true;
+            // 
+            // ColResaleVal
+            // 
+            this.ColResaleVal.HeaderText = "Resale Value";
+            this.ColResaleVal.Name = "ColResaleVal";
+            this.ColResaleVal.ReadOnly = true;
+            // 
+            // colRSaleROff
+            // 
+            this.colRSaleROff.HeaderText = "Retail Round Off";
+            this.colRSaleROff.Name = "colRSaleROff";
+            this.colRSaleROff.ReadOnly = true;
+            // 
+            // colTotalBasic
+            // 
+            this.colTotalBasic.HeaderText = "Total Basic Value";
+            this.colTotalBasic.Name = "colTotalBasic";
+            this.colTotalBasic.ReadOnly = true;
+            // 
+            // colTotPurchaseVal
+            // 
+            this.colTotPurchaseVal.HeaderText = "Total Purchase Value";
+            this.colTotPurchaseVal.Name = "colTotPurchaseVal";
+            this.colTotPurchaseVal.ReadOnly = true;
+            // 
+            // colTotWholesaleVal
+            // 
+            this.colTotWholesaleVal.HeaderText = "Total Wholesale Value";
+            this.colTotWholesaleVal.Name = "colTotWholesaleVal";
+            this.colTotWholesaleVal.ReadOnly = true;
+            // 
+            // colTotResaleVal
+            // 
+            this.colTotResaleVal.HeaderText = "Total Resale Value";
+            this.colTotResaleVal.Name = "colTotResaleVal";
+            this.colTotResaleVal.ReadOnly = true;
+            // 
+            // ColDel
+            // 
+            this.ColDel.HeaderText = "Click To Delete";
+            this.ColDel.Name = "ColDel";
+            this.ColDel.ReadOnly = true;
+            // 
             // Winform_PurchaseBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 461);
+            this.ClientSize = new System.Drawing.Size(1188, 461);
             this.Controls.Add(this.lblRPriceRdOff);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblWPriceRdOff);
@@ -593,18 +625,6 @@
         private System.Windows.Forms.TextBox txtTotalWholesalePrice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.DataGridViewButtonColumn ColProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPackageType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPackQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colItemPerPack;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colItemUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPurchaseValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colWholesaleValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColResaleVal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotPurchaseVal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotWholesaleVal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTotResaleVal;
-        private System.Windows.Forms.DataGridViewButtonColumn ColDel;
         private System.Windows.Forms.TextBox txtInvoiceNo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -619,5 +639,21 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblPPriceRdOff;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.DataGridViewButtonColumn ColProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPackageType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPackQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colItemPerPack;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colItemUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPurchaseValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWholesaleValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWSaleROff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColResaleVal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRSaleROff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotalBasic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotPurchaseVal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotWholesaleVal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotResaleVal;
+        private System.Windows.Forms.DataGridViewButtonColumn ColDel;
     }
 }

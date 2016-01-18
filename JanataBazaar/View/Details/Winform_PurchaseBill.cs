@@ -14,7 +14,7 @@ namespace JanataBazaar.View.Details
         List<ItemPricing> ItemPriceList = new List<ItemPricing>();
         PurchaseOrder purchaseOrder = new PurchaseOrder();
         int RevisionID;
-        private object txtWholeMarginPrice;
+        //private object txtWholeMarginPrice;
 
         public Winform_PurchaseBill()
         {
@@ -84,10 +84,18 @@ namespace JanataBazaar.View.Details
 
             var _row = dgvProdDetails.Rows[index];
             _row.Cells["ColProduct"].Value = _itemsku.Item.Name;
-            _row.Cells["ColPurchaseValue"].Value = _itemsku.PurchaseValue;
-            _row.Cells["ColWholesaleValue"].Value = _itemsku.Wholesale;
-            _row.Cells["ColResaleVal"].Value = _itemsku.Retail;
+            _row.Cells["ColPurchaseValue"].Value = _itemsku.PurchaseValue.ToString("#.##");
+
+            var wROff = (_itemsku.Wholesale - (((_itemsku.WholesaleMargin * _itemsku.PurchaseValue) / 100) + _itemsku.PurchaseValue));
+            _row.Cells["colWSaleROff"].Value = (wROff == 0 ? "0" : wROff.ToString("#.##"));
+            _row.Cells["ColWholesaleValue"].Value = _itemsku.Wholesale.ToString("#.##");
+
+            var rROff = (_itemsku.Retail - (((_itemsku.RetailMargin * _itemsku.Wholesale) / 100) + _itemsku.Wholesale));
+            _row.Cells["ColResaleVal"].Value = _itemsku.Retail.ToString("#.##");
+            _row.Cells["colRSaleROff"].Value = (rROff == 0 ? "0" : rROff.ToString("#.##"));
+
             _row.Cells["colItemUnit"].Value = _itemsku.Item.QuantityUnit;
+            _row.Cells["colVat"].Value = _itemsku.VATPercent;
 
             if (_itemsku.Package != null)
                 _row.Cells["ColPackageType"].Value = _itemsku.Package.Name;
@@ -98,16 +106,10 @@ namespace JanataBazaar.View.Details
             _itemsku.TotalWholesaleValue = (_itemsku.PackageQuantity * (_itemsku.QuantityPerPack * _itemsku.Wholesale));
             _itemsku.TotalResaleValue = (_itemsku.PackageQuantity * (_itemsku.QuantityPerPack * _itemsku.Retail));
 
-            _row.Cells["ColTotPurchaseVal"].Value = _itemsku.TotalPurchaseValue;
-            _row.Cells["ColTotWholesaleVal"].Value = _itemsku.TotalWholesaleValue;
-            _row.Cells["ColTotResaleVal"].Value = _itemsku.TotalResaleValue;
-
-            //_itemsku.StockQuantity = _itemsku.PackageQuantity * _itemsku.QuantityPerPack;
-
-            //if (ItemPriceList.Count == 0 || ItemPriceList.Count <= index)
-            //    ItemPriceList.Add(_itemsku);
-            //else
-            //    ItemPriceList[index] = _itemsku;
+            _row.Cells["colTotalBasic"].Value = (_itemsku.Basic * _itemsku.PackageQuantity * _itemsku.QuantityPerPack).ToString("#.##");
+            _row.Cells["ColTotPurchaseVal"].Value = _itemsku.TotalPurchaseValue.ToString("#.##");
+            _row.Cells["ColTotWholesaleVal"].Value = _itemsku.TotalWholesaleValue.ToString("#.##");
+            _row.Cells["ColTotResaleVal"].Value = _itemsku.TotalResaleValue.ToString("#.##");
 
             CalculatePaymentDetails();
 
@@ -309,6 +311,11 @@ namespace JanataBazaar.View.Details
             decimal rsaleMargin = !string.IsNullOrEmpty(txtTotalResalePrice.Text) && decimal.TryParse(txtTotalResalePrice.Text, out rsaleMargin) ? rsaleMargin : 0;
             decimal totalRetailPrice = !string.IsNullOrEmpty(txtTotalResalePrice_ROff.Text) && decimal.TryParse(txtTotalResalePrice_ROff.Text, out totalRetailPrice) ? totalRetailPrice : 0;
             lblRPriceRdOff.Text = (totalRetailPrice - rsaleMargin).ToString("#.##");
+        }
+
+        protected override void CancelToolStrip_Click(object sender, EventArgs e)
+        {
+            base.CancelToolStrip_Click(sender, e);
         }
     }
 }

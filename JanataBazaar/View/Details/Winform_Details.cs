@@ -16,6 +16,11 @@ namespace JanataBazaar.View.Details
 
         protected virtual void CancelToolStrip_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Continue to Exit?","Exit",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+            if (DialogResult.Yes == dr)
+            {
+                this.Close();
+            }
         }
 
         protected virtual void UpdateStatus(string statusText= "Enter Details and Click Save.", int statusValue = 0)

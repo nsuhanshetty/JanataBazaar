@@ -37,6 +37,7 @@ namespace JanataBazaar.View.Details
             this.toolStripParent.Items.Add(this.AddSectionToolStrip);
 
             AutoCompletionSource(Builders.ItemDetailsBuilder.GetNamesList(), cmbName);
+            AutoCompletionSource(Builders.ItemDetailsBuilder.GetBrandsList(), cmbBrand);
             AutoCompletionSource(Builders.ItemDetailsBuilder.GetUnitList(), cmbUnit);
 
             List<string> sectList = Builders.ItemDetailsBuilder.GetSectionsList();
@@ -148,8 +149,6 @@ namespace JanataBazaar.View.Details
         private void txtName_Validated(object sender, EventArgs e)
         {
             cmbName.Text = Utilities.Validation.ToTitleCase(cmbName.Text.ToLower());
-        }
-
-        //todo:  Must be done during userbased tests.
+        }      
     }
 }

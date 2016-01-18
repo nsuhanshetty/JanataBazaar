@@ -1,4 +1,5 @@
-﻿using JanataBazaar.View.Details;
+﻿using JanataBazaar.View;
+using JanataBazaar.View.Details;
 using JanataBazaar.View.Register;
 using System;
 using System.Windows.Forms;
@@ -365,6 +366,11 @@ namespace JanataBazaar
         private void vatStatementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Winform_VATStatementRegister().ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Winform_About().ShowDialog();
         }
     }
 
