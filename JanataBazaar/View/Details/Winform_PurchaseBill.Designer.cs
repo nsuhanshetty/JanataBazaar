@@ -70,12 +70,11 @@
             this.ColPackQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colItemPerPack = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colItemUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVatPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColPurchaseValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colWholesaleValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colWSaleROff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColResaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRSaleROff = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotalBasic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotPurchaseVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotWholesaleVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,7 +177,7 @@
             this.groupBox2.Controls.Add(this.dgvProdDetails);
             this.groupBox2.Location = new System.Drawing.Point(12, 134);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1170, 225);
+            this.groupBox2.Size = new System.Drawing.Size(1243, 225);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product Details";
@@ -194,12 +193,11 @@
             this.ColPackQuantity,
             this.colItemPerPack,
             this.colItemUnit,
+            this.colVatPercent,
             this.colVat,
             this.ColPurchaseValue,
             this.colWholesaleValue,
-            this.colWSaleROff,
             this.ColResaleVal,
-            this.colRSaleROff,
             this.colTotalBasic,
             this.colTotPurchaseVal,
             this.colTotWholesaleVal,
@@ -209,7 +207,7 @@
             this.dgvProdDetails.Location = new System.Drawing.Point(3, 16);
             this.dgvProdDetails.Name = "dgvProdDetails";
             this.dgvProdDetails.ReadOnly = true;
-            this.dgvProdDetails.Size = new System.Drawing.Size(1164, 206);
+            this.dgvProdDetails.Size = new System.Drawing.Size(1237, 206);
             this.dgvProdDetails.TabIndex = 0;
             this.dgvProdDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetails_CellClick);
             // 
@@ -482,9 +480,15 @@
             this.colItemUnit.Name = "colItemUnit";
             this.colItemUnit.ReadOnly = true;
             // 
+            // colVatPercent
+            // 
+            this.colVatPercent.HeaderText = "VAT%";
+            this.colVatPercent.Name = "colVatPercent";
+            this.colVatPercent.ReadOnly = true;
+            // 
             // colVat
             // 
-            this.colVat.HeaderText = "VAT%";
+            this.colVat.HeaderText = "VAT Amount";
             this.colVat.Name = "colVat";
             this.colVat.ReadOnly = true;
             // 
@@ -500,23 +504,11 @@
             this.colWholesaleValue.Name = "colWholesaleValue";
             this.colWholesaleValue.ReadOnly = true;
             // 
-            // colWSaleROff
-            // 
-            this.colWSaleROff.HeaderText = "Wholesale Round Off";
-            this.colWSaleROff.Name = "colWSaleROff";
-            this.colWSaleROff.ReadOnly = true;
-            // 
             // ColResaleVal
             // 
             this.ColResaleVal.HeaderText = "Resale Value";
             this.ColResaleVal.Name = "ColResaleVal";
             this.ColResaleVal.ReadOnly = true;
-            // 
-            // colRSaleROff
-            // 
-            this.colRSaleROff.HeaderText = "Retail Round Off";
-            this.colRSaleROff.Name = "colRSaleROff";
-            this.colRSaleROff.ReadOnly = true;
             // 
             // colTotalBasic
             // 
@@ -552,7 +544,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 461);
+            this.ClientSize = new System.Drawing.Size(1261, 461);
             this.Controls.Add(this.lblRPriceRdOff);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblWPriceRdOff);
@@ -644,12 +636,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPackQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemPerPack;
         private System.Windows.Forms.DataGridViewTextBoxColumn colItemUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVatPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVat;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPurchaseValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn colWholesaleValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colWSaleROff;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColResaleVal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRSaleROff;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotalBasic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotPurchaseVal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotWholesaleVal;

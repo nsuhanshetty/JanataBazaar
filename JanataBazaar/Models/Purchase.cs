@@ -21,6 +21,9 @@ namespace JanataBazaar.Models
         public virtual decimal TotalPurchasePrice { get; set; }
         public virtual decimal TotalWholesalePrice { get; set; }
         public virtual decimal TotalResalePrice { get; set; }
+        //public virtual decimal TotalPurchasePriceAlt { get; set; }
+        //public virtual decimal TotalWholesalePriceAlt { get; set; }
+        //public virtual decimal TotalResalePriceAlt { get; set; }
         public virtual IList<ItemPricing> ItemPriceList { get; set; }
         //public virtual IList<ItemPricing> Price { get; set; }
 

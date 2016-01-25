@@ -584,7 +584,7 @@ namespace JanataBazaar.View.Details
             if (string.IsNullOrEmpty(txtTotalBasic.Text)) return;
 
             var totalItem = nudItemsPerPack.Value * nudNoPacks.Value;
-            txtBasic.Text = (decimal.Parse(txtTotalBasic.Text) / totalItem).ToString("#.##");
+            txtBasic.Text = (decimal.Parse(txtTotalBasic.Text) / totalItem).ToString("#.#####");
             txtBasic_Validated(this, new EventArgs());
         }
 
@@ -614,6 +614,8 @@ namespace JanataBazaar.View.Details
 
         private void txtWholeRate_Validated(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtWholeRate.Text)) return;
+
             WRate = decimal.Parse(txtWholeRate.Text);
             txtRetailPercent_Validated(this, new EventArgs());
             UpdateWSaleSet();
@@ -629,6 +631,8 @@ namespace JanataBazaar.View.Details
 
         private void txtRetailRate_Validated(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtRetailRate.Text)) return;
+
             RRate = decimal.Parse(txtRetailRate.Text);
             UpdateRSaleSet();
         }

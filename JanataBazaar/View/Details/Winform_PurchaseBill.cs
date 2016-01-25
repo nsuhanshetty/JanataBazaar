@@ -87,15 +87,16 @@ namespace JanataBazaar.View.Details
             _row.Cells["ColPurchaseValue"].Value = _itemsku.PurchaseValue.ToString("#.##");
 
             var wROff = (_itemsku.Wholesale - (((_itemsku.WholesaleMargin * _itemsku.PurchaseValue) / 100) + _itemsku.PurchaseValue));
-            _row.Cells["colWSaleROff"].Value = (wROff == 0 ? "0" : wROff.ToString("#.##"));
+            //_row.Cells["colWSaleROff"].Value = (wROff == 0 ? "0" : wROff.ToString("#.##"));
             _row.Cells["ColWholesaleValue"].Value = _itemsku.Wholesale.ToString("#.##");
 
             var rROff = (_itemsku.Retail - (((_itemsku.RetailMargin * _itemsku.Wholesale) / 100) + _itemsku.Wholesale));
             _row.Cells["ColResaleVal"].Value = _itemsku.Retail.ToString("#.##");
-            _row.Cells["colRSaleROff"].Value = (rROff == 0 ? "0" : rROff.ToString("#.##"));
+            //_row.Cells["colRSaleROff"].Value = (rROff == 0 ? "0" : rROff.ToString("#.##"));
 
             _row.Cells["colItemUnit"].Value = _itemsku.Item.QuantityUnit;
-            _row.Cells["colVat"].Value = _itemsku.VATPercent;
+            _row.Cells["colVatPercent"].Value = _itemsku.VATPercent;
+            _row.Cells["colVat"].Value = _itemsku.VAT;
 
             if (_itemsku.Package != null)
                 _row.Cells["ColPackageType"].Value = _itemsku.Package.Name;
@@ -137,6 +138,10 @@ namespace JanataBazaar.View.Details
             txtTotalPurchasePrice_ROff.Text = purchaseOrder.TotalPurchasePrice.ToString("#.##");
             txtTotalWholesalePrice_ROff.Text = purchaseOrder.TotalWholesalePrice.ToString("#.##");
             txtTotalResalePrice_ROff.Text = purchaseOrder.TotalResalePrice.ToString("#.##");
+
+            lblPPriceRdOff.Text = "";
+            lblRPriceRdOff.Text = "";
+            lblWPriceRdOff.Text = "";
         }
 
         //private void dgvDetails_RowLeave(object sender, DataGridViewCellEventArgs e)

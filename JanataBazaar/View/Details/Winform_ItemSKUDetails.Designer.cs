@@ -994,6 +994,11 @@
             // nudItemsPerPack
             // 
             this.nudItemsPerPack.Location = new System.Drawing.Point(315, 45);
+            this.nudItemsPerPack.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudItemsPerPack.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1012,6 +1017,11 @@
             // nudNoPacks
             // 
             this.nudNoPacks.Location = new System.Drawing.Point(122, 45);
+            this.nudNoPacks.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudNoPacks.Minimum = new decimal(new int[] {
             1,
             0,
