@@ -106,19 +106,25 @@ namespace JanataBazaar.View.Register
                 vatPercentageSum.Add(percent, sumVATPercent);
             }
 
-            //create dictionary for each percentage with sum of all basic
-            Dictionary<decimal, decimal> vatBasicSum = new Dictionary<decimal, decimal>();
-            foreach (decimal percent in vatPercentList)
+            var rdOffList = new List<decimal>();
+            foreach (var item in order.ItemPriceList)
             {
-                decimal sumVATPercent = order.ItemPriceList.Where(i => i.VATPercent == percent).Select(i => i.Basic).Sum();
-                vatBasicSum.Add(percent, sumVATPercent);
+                rdOffList.Add(item.VAT - (item.Basic * (item.VATPercent / 100)));
             }
 
-            LoadDGVColumns(vatPercentList);
-            LoadDGVValues(order, vatPercentageSum, vatBasicSum);
+            //create dictionary for each percentage with sum of all basic
+            Dictionary<decimal, decimal> vatPurchaseSum = new Dictionary<decimal, decimal>();
+            foreach (decimal percent in vatPercentList)
+            {
+                decimal sumVATPercent = order.ItemPriceList.Where(i => i.VATPercent == percent).Select(i => i.PurchaseValue).Sum();
+                vatPurchaseSum.Add(percent, sumVATPercent);
+            }
+
+            LoadDGVAddColumns(vatPercentList);
+            LoadDGVAddValues(order, vatPercentageSum, vatPurchaseSum, rdOffList);
         }
 
-        private void LoadDGVColumns(List<decimal> vatPercentList)
+        private void LoadDGVAddColumns(List<decimal> vatPercentList)
         {
             foreach (var percent in vatPercentList)
             {
@@ -143,7 +149,7 @@ namespace JanataBazaar.View.Register
             dgvVATDetails.Columns.Add("colTotalAmount", "TotalAmount");
         }
 
-        private void LoadDGVValues(PurchaseOrder order, Dictionary<decimal, decimal> vatPercentageSum, Dictionary<decimal, decimal> vatBasicSum)
+        private void LoadDGVAddValues(PurchaseOrder order, Dictionary<decimal, decimal> vatPercentageSum, Dictionary<decimal, decimal> vatBasicSum, List<decimal> rdOffList)
         {
             dgvVATDetails.Rows.Add();
             foreach (var item in vatPercentageSum)
@@ -152,7 +158,7 @@ namespace JanataBazaar.View.Register
             }
             foreach (var item in vatBasicSum)
             {
-                if(item.Key == 0)
+                if (item.Key == 0)
                 {
                     dgvVATDetails.Rows[0].Cells["colExempted"].Value = item.Value;
                     continue;
@@ -167,8 +173,8 @@ namespace JanataBazaar.View.Register
             //    totalPurchaseValue += (_basic * item.TransportPercent) + (_basic * item.MiscPercent) + (_basic * item.VATPercent) - (_basic * item.DiscountPercent);
             //}
 
-            dgvVATDetails.Rows[0].Cells["colPosRodOff"].Value = 0;
-            dgvVATDetails.Rows[0].Cells["colNegRodOff"].Value = 0;
+            dgvVATDetails.Rows[0].Cells["colPosRodOff"].Value = rdOffList.Where(i => i > 0).Sum().ToString("#.##");
+            dgvVATDetails.Rows[0].Cells["colNegRodOff"].Value = rdOffList.Where(i => i < 0).Sum().ToString("#.##");
             dgvVATDetails.Rows[0].Cells["colTotalAmount"].Value = order.TotalPurchasePrice;
         }
 

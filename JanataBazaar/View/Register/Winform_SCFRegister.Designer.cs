@@ -47,23 +47,21 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBrand = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbSection = new System.Windows.Forms.ComboBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblMobile = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.SearchToolStrip = new System.Windows.Forms.ToolStripButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvItemRegister = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItemRegister)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(4, 178);
-            this.groupBox1.Size = new System.Drawing.Size(1029, 211);
+            this.groupBox1.Size = new System.Drawing.Size(1029, 206);
             // 
             // groupBox2
             // 
@@ -74,23 +72,16 @@
             this.groupBox2.Controls.Add(this.txtSCF);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.txtBrand);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cmbSection);
-            this.groupBox2.Controls.Add(this.txtName);
-            this.groupBox2.Controls.Add(this.lblMobile);
-            this.groupBox2.Controls.Add(this.lblName);
             this.groupBox2.Location = new System.Drawing.Point(3, 59);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(784, 118);
+            this.groupBox2.Size = new System.Drawing.Size(602, 118);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Items";
             // 
             // txtVendorName
             // 
-            this.txtVendorName.Enabled = false;
-            this.txtVendorName.Location = new System.Drawing.Point(287, 81);
+            this.txtVendorName.Location = new System.Drawing.Point(106, 83);
             this.txtVendorName.Name = "txtVendorName";
             this.txtVendorName.Size = new System.Drawing.Size(149, 20);
             this.txtVendorName.TabIndex = 158;
@@ -98,7 +89,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(191, 87);
+            this.label6.Location = new System.Drawing.Point(10, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 159;
@@ -108,7 +99,7 @@
             // 
             this.groupBox3.Controls.Add(this.rdbCash);
             this.groupBox3.Controls.Add(this.rdbCredit);
-            this.groupBox3.Location = new System.Drawing.Point(287, 18);
+            this.groupBox3.Location = new System.Drawing.Point(106, 20);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(149, 33);
             this.groupBox3.TabIndex = 156;
@@ -139,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(220, 33);
+            this.label4.Location = new System.Drawing.Point(39, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 157;
@@ -147,7 +138,7 @@
             // 
             // txtSCF
             // 
-            this.txtSCF.Location = new System.Drawing.Point(287, 56);
+            this.txtSCF.Location = new System.Drawing.Point(106, 58);
             this.txtSCF.MaxLength = 15;
             this.txtSCF.Name = "txtSCF";
             this.txtSCF.Size = new System.Drawing.Size(149, 20);
@@ -156,7 +147,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(234, 62);
+            this.label10.Location = new System.Drawing.Point(53, 64);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 13);
             this.label10.TabIndex = 155;
@@ -172,7 +163,7 @@
             this.groupBox4.Controls.Add(this.dtpTo);
             this.groupBox4.Controls.Add(this.dtpFrom);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Location = new System.Drawing.Point(464, 10);
+            this.groupBox4.Location = new System.Drawing.Point(279, 11);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(312, 102);
             this.groupBox4.TabIndex = 153;
@@ -272,56 +263,6 @@
             this.label7.TabIndex = 122;
             this.label7.Text = "From";
             // 
-            // txtBrand
-            // 
-            this.txtBrand.Location = new System.Drawing.Point(55, 83);
-            this.txtBrand.Name = "txtBrand";
-            this.txtBrand.Size = new System.Drawing.Size(110, 20);
-            this.txtBrand.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 132;
-            this.label1.Text = "Brand";
-            // 
-            // cmbSection
-            // 
-            this.cmbSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSection.FormattingEnabled = true;
-            this.cmbSection.Location = new System.Drawing.Point(55, 30);
-            this.cmbSection.Name = "cmbSection";
-            this.cmbSection.Size = new System.Drawing.Size(112, 21);
-            this.cmbSection.TabIndex = 2;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(55, 57);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(110, 20);
-            this.txtName.TabIndex = 0;
-            // 
-            // lblMobile
-            // 
-            this.lblMobile.AutoSize = true;
-            this.lblMobile.Location = new System.Drawing.Point(4, 33);
-            this.lblMobile.Name = "lblMobile";
-            this.lblMobile.Size = new System.Drawing.Size(46, 13);
-            this.lblMobile.TabIndex = 130;
-            this.lblMobile.Text = "Section ";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(11, 60);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 130;
-            this.lblName.Text = "Name ";
-            // 
             // SearchToolStrip
             // 
             this.SearchToolStrip.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -334,17 +275,41 @@
             this.SearchToolStrip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SearchToolStrip.Click += new System.EventHandler(this.SearchToolStrip_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dgvItemRegister);
+            this.groupBox5.Location = new System.Drawing.Point(4, 390);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1026, 170);
+            this.groupBox5.TabIndex = 128;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Item Details";
+            // 
+            // dgvItemRegister
+            // 
+            this.dgvItemRegister.AllowUserToAddRows = false;
+            this.dgvItemRegister.AllowUserToDeleteRows = false;
+            this.dgvItemRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItemRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvItemRegister.Location = new System.Drawing.Point(3, 16);
+            this.dgvItemRegister.Name = "dgvItemRegister";
+            this.dgvItemRegister.ReadOnly = true;
+            this.dgvItemRegister.Size = new System.Drawing.Size(1020, 151);
+            this.dgvItemRegister.TabIndex = 0;
+            // 
             // Winform_SCFRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 409);
+            this.ClientSize = new System.Drawing.Size(1041, 585);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_SCFRegister";
             this.Text = "Stock Control Form Register";
             this.Load += new System.EventHandler(this.Winform_SCFRegister_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox5, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -352,6 +317,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItemRegister)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,12 +327,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        internal System.Windows.Forms.TextBox txtBrand;
-        internal System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbSection;
-        internal System.Windows.Forms.TextBox txtName;
-        internal System.Windows.Forms.Label lblMobile;
-        internal System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtVendorName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -386,5 +347,7 @@
 
         //Custom
         private System.Windows.Forms.ToolStripButton SearchToolStrip;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridView dgvItemRegister;
     }
 }

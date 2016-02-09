@@ -15,25 +15,24 @@ namespace JanataBazaar.Builders
     class ReportsBuilder
     {
         /*Stock Control Form*/
-        public static List<ItemPricing> GetSCFReport(bool isCredit, string SCFNo, string nameOfSupplier,
-                                                     DateTime toDate, DateTime fromDate, string name = "", string brand = "", string section = "")
+        public static List<PurchaseOrder> GetSCFReport(bool isCredit, string SCFNo, string nameOfSupplier, DateTime toDate, DateTime fromDate)
         {
-            ItemPricing itemPricingAlias = null;
-            Item itemAlias = null;
-            Section sectionAlias = null;
+            //ItemPricing itemPricingAlias = null;
+            //Item itemAlias = null;
+            //Section sectionAlias = null;
             PurchaseOrder purchaseOrderAlias = null;
             Vendor vendorAlias = null;
 
             using (var session = NHibernateHelper.OpenSession())
             {
-                List<ItemPricing> list = (session.QueryOver<ItemPricing>(() => itemPricingAlias)
-                                            .JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
-                                            .JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
+                List<PurchaseOrder> list = (session.QueryOver<PurchaseOrder>(() => purchaseOrderAlias)
+                                            //.JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
+                                            //.JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
                                             .JoinAlias(() => purchaseOrderAlias.Vendor, () => vendorAlias)
-                                            .JoinAlias(() => itemAlias.Section, () => sectionAlias)
-                                            
+                                            //.JoinAlias(() => itemAlias.Section, () => sectionAlias)
 
-                                            .Fetch(i => i.Package).Eager
+
+                                            //.Fetch(i => i.Package).Eager
                                             //.Fetch(i => i.Purchase).Eager
                                             //.Fetch(i => i.Purchase.Vendor).Eager
 
@@ -42,13 +41,25 @@ namespace JanataBazaar.Builders
 
                                             .Where(() => purchaseOrderAlias.SCFNo.IsLike(SCFNo + "%"))
                                             .Where(() => vendorAlias.Name.IsLike(nameOfSupplier + "%"))
-
-                                            .Where(() => itemAlias.Name.IsLike(name + "%"))
-                                            .Where(() => itemAlias.Brand.IsLike(brand + "%"))
-                                            .Where(() => sectionAlias.Name.IsLike(section + "%"))
                                             .Take(15)
-                                            .List()).ToList<ItemPricing>();
+                                            .List()).ToList<PurchaseOrder>();
                 return list;
+            }
+        }
+
+        public static List<ItemPricing> GetOrderList(int _ordNo)
+        {
+            PurchaseOrder purchaseOrderAlias = null;
+            ItemPricing itemPricingAlias = null;
+            Item itemAlias = null;
+
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                List<ItemPricing> _itemlist = (session.QueryOver<ItemPricing>(() => itemPricingAlias)
+                                          .JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
+                                          .JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
+                                          .Where(() => purchaseOrderAlias.ID == _ordNo).List()).Take(15).ToList<ItemPricing>();
+                return _itemlist;
             }
         }
 
@@ -85,8 +96,7 @@ namespace JanataBazaar.Builders
                                             .Where(() => itemAlias.Brand.IsLike(brand + "%"))
                                             .Where(() => sectionAlias.Name.IsLike(section + "%"))
                                             //.Select(() => purchaseOrderAlias.IRNNo)
-                                                    
-                                            .Take(15)
+
                                             .List()).ToList();
                 return list;
             }

@@ -55,10 +55,12 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalBasic = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtVATMarginPrice = new System.Windows.Forms.TextBox();
+            this.lblVATRdOff = new System.Windows.Forms.Label();
             this.cmbVATPercent = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
             this.chkIsExempted = new System.Windows.Forms.CheckBox();
             this.txtTotalVAT = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -277,7 +279,6 @@
             this.groupBox2.Controls.Add(this.label36);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtTotalBasic);
-            this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.label22);
@@ -298,7 +299,7 @@
             this.groupBox2.Controls.Add(this.txtBasic);
             this.groupBox2.Location = new System.Drawing.Point(14, 239);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(693, 219);
+            this.groupBox2.Size = new System.Drawing.Size(693, 240);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pricing Details Per Unit";
@@ -306,7 +307,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(480, 196);
+            this.label39.Location = new System.Drawing.Point(480, 206);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(58, 13);
             this.label39.TabIndex = 70;
@@ -315,7 +316,7 @@
             // txtTotalPurcPrice
             // 
             this.txtTotalPurcPrice.Enabled = false;
-            this.txtTotalPurcPrice.Location = new System.Drawing.Point(549, 193);
+            this.txtTotalPurcPrice.Location = new System.Drawing.Point(549, 203);
             this.txtTotalPurcPrice.Name = "txtTotalPurcPrice";
             this.txtTotalPurcPrice.Size = new System.Drawing.Size(113, 20);
             this.txtTotalPurcPrice.TabIndex = 13;
@@ -323,7 +324,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(462, 174);
+            this.label32.Location = new System.Drawing.Point(462, 184);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(76, 13);
             this.label32.TabIndex = 68;
@@ -340,7 +341,7 @@
             // 
             // txtTotalDiscount
             // 
-            this.txtTotalDiscount.Location = new System.Drawing.Point(549, 168);
+            this.txtTotalDiscount.Location = new System.Drawing.Point(549, 178);
             this.txtTotalDiscount.Name = "txtTotalDiscount";
             this.txtTotalDiscount.Size = new System.Drawing.Size(113, 20);
             this.txtTotalDiscount.TabIndex = 11;
@@ -402,20 +403,13 @@
             this.txtTotalBasic.Validating += new System.ComponentModel.CancelEventHandler(this.txtValueDecimal_Validating);
             this.txtTotalBasic.Validated += new System.EventHandler(this.txtTotalBasic_Validated);
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.Location = new System.Drawing.Point(302, 196);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(11, 13);
-            this.label28.TabIndex = 55;
-            this.label28.Text = "*";
-            // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtVATMarginPrice);
+            this.groupBox6.Controls.Add(this.lblVATRdOff);
             this.groupBox6.Controls.Add(this.cmbVATPercent);
             this.groupBox6.Controls.Add(this.label42);
+            this.groupBox6.Controls.Add(this.label47);
             this.groupBox6.Controls.Add(this.chkIsExempted);
             this.groupBox6.Controls.Add(this.txtTotalVAT);
             this.groupBox6.Controls.Add(this.label18);
@@ -423,10 +417,28 @@
             this.groupBox6.Controls.Add(this.txtVAT);
             this.groupBox6.Location = new System.Drawing.Point(6, 94);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(681, 67);
+            this.groupBox6.Size = new System.Drawing.Size(681, 77);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "VAT Details";
+            // 
+            // txtVATMarginPrice
+            // 
+            this.txtVATMarginPrice.Enabled = false;
+            this.txtVATMarginPrice.Location = new System.Drawing.Point(170, 35);
+            this.txtVATMarginPrice.Name = "txtVATMarginPrice";
+            this.txtVATMarginPrice.Size = new System.Drawing.Size(60, 20);
+            this.txtVATMarginPrice.TabIndex = 75;
+            // 
+            // lblVATRdOff
+            // 
+            this.lblVATRdOff.AutoSize = true;
+            this.lblVATRdOff.ForeColor = System.Drawing.Color.Maroon;
+            this.lblVATRdOff.Location = new System.Drawing.Point(364, 58);
+            this.lblVATRdOff.Name = "lblVATRdOff";
+            this.lblVATRdOff.Size = new System.Drawing.Size(13, 13);
+            this.lblVATRdOff.TabIndex = 77;
+            this.lblVATRdOff.Text = "0";
             // 
             // cmbVATPercent
             // 
@@ -434,7 +446,7 @@
             this.cmbVATPercent.FormattingEnabled = true;
             this.cmbVATPercent.Location = new System.Drawing.Point(117, 35);
             this.cmbVATPercent.Name = "cmbVATPercent";
-            this.cmbVATPercent.Size = new System.Drawing.Size(113, 21);
+            this.cmbVATPercent.Size = new System.Drawing.Size(48, 21);
             this.cmbVATPercent.TabIndex = 1;
             this.cmbVATPercent.SelectedIndexChanged += new System.EventHandler(this.cmbVATPercent_SelectedIndexChanged);
             // 
@@ -446,6 +458,16 @@
             this.label42.Size = new System.Drawing.Size(55, 13);
             this.label42.TabIndex = 66;
             this.label42.Text = "Total VAT";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label47.Location = new System.Drawing.Point(307, 58);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(56, 13);
+            this.label47.TabIndex = 76;
+            this.label47.Text = "RoundOff ";
             // 
             // chkIsExempted
             // 
@@ -486,7 +508,6 @@
             // 
             // txtVAT
             // 
-            this.txtVAT.Enabled = false;
             this.txtVAT.Location = new System.Drawing.Point(308, 35);
             this.txtVAT.Name = "txtVAT";
             this.txtVAT.Size = new System.Drawing.Size(113, 20);
@@ -497,7 +518,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(246, 196);
+            this.label37.Location = new System.Drawing.Point(255, 206);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(58, 13);
             this.label37.TabIndex = 54;
@@ -525,7 +546,7 @@
             // txtPurchaseRate
             // 
             this.txtPurchaseRate.Enabled = false;
-            this.txtPurchaseRate.Location = new System.Drawing.Point(314, 193);
+            this.txtPurchaseRate.Location = new System.Drawing.Point(314, 203);
             this.txtPurchaseRate.Name = "txtPurchaseRate";
             this.txtPurchaseRate.Size = new System.Drawing.Size(113, 20);
             this.txtPurchaseRate.TabIndex = 12;
@@ -560,7 +581,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(264, 171);
+            this.label11.Location = new System.Drawing.Point(264, 181);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 43;
@@ -568,7 +589,7 @@
             // 
             // txtDisc
             // 
-            this.txtDisc.Location = new System.Drawing.Point(314, 167);
+            this.txtDisc.Location = new System.Drawing.Point(314, 177);
             this.txtDisc.Name = "txtDisc";
             this.txtDisc.Size = new System.Drawing.Size(113, 20);
             this.txtDisc.TabIndex = 10;
@@ -578,7 +599,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(41, 171);
+            this.label10.Location = new System.Drawing.Point(41, 181);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 13);
             this.label10.TabIndex = 41;
@@ -586,7 +607,7 @@
             // 
             // txtDiscPercent
             // 
-            this.txtDiscPercent.Location = new System.Drawing.Point(123, 167);
+            this.txtDiscPercent.Location = new System.Drawing.Point(123, 177);
             this.txtDiscPercent.Name = "txtDiscPercent";
             this.txtDiscPercent.Size = new System.Drawing.Size(113, 20);
             this.txtDiscPercent.TabIndex = 9;
@@ -660,7 +681,7 @@
             this.groupBox3.Controls.Add(this.txtWholeRate);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtWholePercent);
-            this.groupBox3.Location = new System.Drawing.Point(14, 464);
+            this.groupBox3.Location = new System.Drawing.Point(14, 485);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(694, 57);
             this.groupBox3.TabIndex = 4;
@@ -781,7 +802,7 @@
             this.groupBox4.Controls.Add(this.txtRetailRate);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.txtRetailPercent);
-            this.groupBox4.Location = new System.Drawing.Point(14, 527);
+            this.groupBox4.Location = new System.Drawing.Point(14, 548);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(694, 58);
             this.groupBox4.TabIndex = 5;
@@ -1123,7 +1144,7 @@
             // Winform_ItemSKUDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(764, 609);
+            this.ClientSize = new System.Drawing.Size(764, 631);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
@@ -1230,7 +1251,6 @@
         private System.Windows.Forms.ComboBox cmbVATPercent;
         private System.Windows.Forms.TextBox txtWholeMarginPrice;
         private System.Windows.Forms.TextBox txtRetailMarginPrice;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txtPurchaseRate;
         private System.Windows.Forms.Label label9;
@@ -1258,5 +1278,8 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label lblWRateRdOff;
         private System.Windows.Forms.Label lblRRateRdOff;
+        private System.Windows.Forms.Label lblVATRdOff;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox txtVATMarginPrice;
     }
 }
