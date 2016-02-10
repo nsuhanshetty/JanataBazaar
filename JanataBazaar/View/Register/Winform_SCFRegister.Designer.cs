@@ -50,18 +50,22 @@
             this.SearchToolStrip = new System.Windows.Forms.ToolStripButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgvItemRegister = new System.Windows.Forms.DataGridView();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.dgvVATDetails = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemRegister)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVATDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(4, 178);
-            this.groupBox1.Size = new System.Drawing.Size(1029, 206);
+            this.groupBox1.Size = new System.Drawing.Size(1029, 202);
             // 
             // groupBox2
             // 
@@ -278,7 +282,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.dgvItemRegister);
-            this.groupBox5.Location = new System.Drawing.Point(4, 390);
+            this.groupBox5.Location = new System.Drawing.Point(7, 386);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1026, 170);
             this.groupBox5.TabIndex = 128;
@@ -297,11 +301,34 @@
             this.dgvItemRegister.Size = new System.Drawing.Size(1020, 151);
             this.dgvItemRegister.TabIndex = 0;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.dgvVATDetails);
+            this.groupBox6.Location = new System.Drawing.Point(7, 563);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1023, 88);
+            this.groupBox6.TabIndex = 148;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Order VAT Details";
+            // 
+            // dgvVATDetails
+            // 
+            this.dgvVATDetails.AllowUserToAddRows = false;
+            this.dgvVATDetails.AllowUserToDeleteRows = false;
+            this.dgvVATDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvVATDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvVATDetails.Location = new System.Drawing.Point(3, 16);
+            this.dgvVATDetails.Name = "dgvVATDetails";
+            this.dgvVATDetails.ReadOnly = true;
+            this.dgvVATDetails.Size = new System.Drawing.Size(1017, 69);
+            this.dgvVATDetails.TabIndex = 0;
+            // 
             // Winform_SCFRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 585);
+            this.ClientSize = new System.Drawing.Size(1041, 676);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Name = "Winform_SCFRegister";
@@ -310,6 +337,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox5, 0);
+            this.Controls.SetChildIndex(this.groupBox6, 0);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -319,6 +347,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDuration)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemRegister)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVATDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,5 +379,7 @@
         private System.Windows.Forms.ToolStripButton SearchToolStrip;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dgvItemRegister;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.DataGridView dgvVATDetails;
     }
 }

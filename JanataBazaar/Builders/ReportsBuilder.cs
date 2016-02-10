@@ -26,15 +26,16 @@ namespace JanataBazaar.Builders
             using (var session = NHibernateHelper.OpenSession())
             {
                 List<PurchaseOrder> list = (session.QueryOver<PurchaseOrder>(() => purchaseOrderAlias)
-                                            //.JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
-                                            //.JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
-                                            .JoinAlias(() => purchaseOrderAlias.Vendor, () => vendorAlias)
+                                        //.JoinAlias(() => itemPricingAlias.Item, () => itemAlias)
+                                        .JoinAlias(() => purchaseOrderAlias.Vendor, () => vendorAlias)
+                                        //.JoinAlias(() => itemPricingAlias.Purchase, () => purchaseOrderAlias)
+
                                             //.JoinAlias(() => itemAlias.Section, () => sectionAlias)
 
 
                                             //.Fetch(i => i.Package).Eager
                                             //.Fetch(i => i.Purchase).Eager
-                                            //.Fetch(i => i.Purchase.Vendor).Eager
+                                            .Fetch(i => i.Revision).Eager
 
                                             .Where(() => purchaseOrderAlias.IsCredit == isCredit)
                                             .Where(() => purchaseOrderAlias.DateOfInvoice.Date >= fromDate.Date && purchaseOrderAlias.DateOfInvoice.Date <= toDate.Date)
